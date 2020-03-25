@@ -42,6 +42,17 @@ export default class GameManager {
         this.instance.currentScene.update(delta);
       }
     });
+
+    //右クリックのデフォ動作を力技で止める
+    document.body.addEventListener(
+      "contextmenu",
+      function(ev) {
+        ev.preventDefault();
+        return false;
+      },
+      false
+    );
+
     SoundManager.init();
   }
 

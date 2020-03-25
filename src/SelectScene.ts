@@ -6,6 +6,7 @@ import LoaderAddParam from "./LoaderAddParam";
 import Resource from "./Resources";
 
 import MyMap from "./MyMap";
+import Country from "./Country";
 
 export default class SelectScene extends Scene {
   constructor() {
@@ -18,6 +19,9 @@ export default class SelectScene extends Scene {
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = super.createInitialResourceList();
     assets.push(Resource.Map);
+    GameManager.instance.data.countries.forEach(country => {
+      assets.push(country.flagSrc);
+    });
     console.log(assets);
     return assets;
   }
@@ -36,6 +40,7 @@ export default class SelectScene extends Scene {
         replacements.push([province.id, province.owner.color]);
       });
       map.update(replacements);
+      map.position.set(renderer.width * 0.1, renderer.height * 0.1);
       this.addChild(map);
     });
     const resources = GameManager.instance.game.loader.resources;
@@ -44,7 +49,15 @@ export default class SelectScene extends Scene {
     const button = new PIXI.Sprite(resources[Resource.Title.Bg].texture);
     button.position.set(renderer.width * 0.8, renderer.height * 0.8);
     button.scale.set(0.2, 0.2);
+    button.interactive = true;
+    button.buttonMode = true;
+    button.on("mousedown", () => {
+      GameManager.instance.data.download();
+    });
+    this.addChild(button);
   }
+
+  public select(country: Country) {}
 
   public update(dt: number) {
     super.update(dt);

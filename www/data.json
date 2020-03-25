@@ -1,7 +1,9 @@
 {
   "Countries": {
     "UPR": {
-      "Color": "FF0000"
+      "Color": "005BBB",
+      "Name": "ウクライナ人民共和国",
+      "Flag": "UPR.png"
     }
   },
   "Provinces": {

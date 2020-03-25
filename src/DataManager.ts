@@ -27,11 +27,11 @@ export default class DataManager {
   }
 
   public download() {
-    let json = '{"Countries":';
+    let json = '{"Countries":{';
     this.countries.forEach(country => (json += country.toJson()));
     json += '},"Provinces":{';
     this.provinces.forEach(province => (json += province.toJson()));
-    json += "}";
+    json += "}}";
     const blob = new Blob([json], {
       type: "application/json"
     });
