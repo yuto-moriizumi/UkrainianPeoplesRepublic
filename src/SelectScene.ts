@@ -5,6 +5,8 @@ import GameManager from "./GameManager";
 import LoaderAddParam from "./LoaderAddParam";
 import Resource from "./Resources";
 
+import MyMap from "./MyMap";
+
 export default class SelectScene extends Scene {
   constructor() {
     super();
@@ -15,9 +17,7 @@ export default class SelectScene extends Scene {
   //リソースリストを作成し返却する
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = super.createInitialResourceList();
-    const staticResource = Resource.Static;
-    //assets.push(staticResource.Audio.Bgm.Title);
-    // assets.push(staticResource.Title.Bg);
+    assets.push(Resource.Map);
     console.log(assets);
     return assets;
   }
@@ -25,19 +25,25 @@ export default class SelectScene extends Scene {
   //リソースがロードされたときのコールバック
   protected onResourceLoaded(): void {
     super.onResourceLoaded();
+    GameManager.instance.data.load(() => {
+      const resources = GameManager.instance.game.loader.resources;
+      //地図
+      const map = new MyMap(resources[Resource.Map].texture);
+      let replacements = [];
+      GameManager.instance.data.provinces.forEach(province => {
+        console.log("replace", [province.id, province.owner.color]);
+
+        replacements.push([province.id, province.owner.color]);
+      });
+      map.update(replacements);
+      this.addChild(map);
+    });
     const resources = GameManager.instance.game.loader.resources;
     const renderer = GameManager.instance.game.renderer;
 
-    //背景
-    const sprite = new PIXI.Sprite(resources[Resource.Static.Title.Bg].texture);
-    sprite.width = renderer.width;
-    sprite.height = renderer.height;
-    this.addChild(sprite);
-  }
-
-  private onPointerDown() {
-    //次のシーン
-    //GameManager.loadScene();
+    const button = new PIXI.Sprite(resources[Resource.Title.Bg].texture);
+    button.position.set(renderer.width * 0.8, renderer.height * 0.8);
+    button.scale.set(0.2, 0.2);
   }
 
   public update(dt: number) {

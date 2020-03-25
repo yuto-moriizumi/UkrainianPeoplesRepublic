@@ -19,10 +19,9 @@ export default class TitleScene extends Scene {
   //リソースリストを作成し返却する
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = super.createInitialResourceList();
-    const staticResource = Resource.Static;
     //assets.push(staticResource.Audio.Bgm.Title);
-    assets.push(staticResource.Title.Bg);
-    console.log(assets);
+    assets.push(Resource.Title.Bg);
+    //console.log(assets);
     return assets;
   }
 
@@ -33,7 +32,7 @@ export default class TitleScene extends Scene {
     const renderer = GameManager.instance.game.renderer;
 
     //背景
-    const sprite = new PIXI.Sprite(resources[Resource.Static.Title.Bg].texture);
+    const sprite = new PIXI.Sprite(resources[Resource.Title.Bg].texture);
     sprite.width = renderer.width;
     sprite.height = renderer.height;
     this.addChild(sprite);

@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import Scene from "./Scene";
 import SoundManager from "./SoundManager";
+import DataManager from "./DataManager";
 
 export default class GameManager {
   public static instance: GameManager;
@@ -8,6 +9,7 @@ export default class GameManager {
   private sceneTransitionOutFinished: boolean = true;
   private currentScene?: Scene;
   private sceneResourceLoaded: boolean = true;
+  public data: DataManager = new DataManager();
 
   constructor(app: PIXI.Application) {
     if (GameManager.instance) {
@@ -41,25 +43,6 @@ export default class GameManager {
       }
     });
     SoundManager.init();
-
-    //国情報をロード
-    const req = new XMLHttpRequest();
-    req.open("GET", "countries.json");
-    req.send(null);
-    req.addEventListener("load", () => {
-      //console.log("json loaded");
-      const json = JSON.parse(req.responseText);
-      for (const key in json) {
-        if (json.hasOwnProperty(key)) {
-          const country = json[key];
-          console.log([key, country]);
-          const id = parseInt(key);
-          //this.instance.countries.set(id, new Country(id, country));
-        }
-      }
-      //console.log(GameManager.instance.countries);
-    });
-    req.addEventListener("error", () => console.log("json error"));
   }
 
   //可能であれば新しいシーンへのトランジションを開始する

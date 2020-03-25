@@ -1,0 +1,15 @@
+{
+  "Countries": {
+    "UPR": {
+      "Color": "FF0000"
+    }
+  },
+  "Provinces": {
+    "AA76FF": {
+      "Owner": "UPR"
+    },
+    "2960C0": {
+      "Owner": "UPR"
+    }
+  }
+}

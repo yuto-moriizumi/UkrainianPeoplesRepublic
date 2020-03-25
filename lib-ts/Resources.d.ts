@@ -1,25 +1,8 @@
 declare const Resource: Readonly<{
-    Static: {
-        Title: {
-            Bg: string;
-        };
-        Magic: string;
-        Mushimegane: string;
-        BattleBgFores: string[];
-        BattleBgMiddles: string[];
-        BattleBgBacks: string[];
-        Audio: {
-            Bgm: {
-                Title: string;
-                CombineScene: string;
-            };
-            SE: {
-                onCircle: string;
-                onCombine: string;
-                onClear: string;
-            };
-        };
+    Title: {
+        Bg: string;
     };
+    Map: string;
     FontFamily: {
         Default: string;
     };
