@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "lib": ["esnext", "dom"],
+    "baseUrl": "./src",
+    "outDir": "./lib-ts",
+    "declaration": true,
+    "sourceMap": true,
+    "allowJs": false,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": false,
+    "moduleResolution": "node",
+    "strict": false,
+    "alwaysStrict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": false,
+    "noUnusedLocals": false, //未使用変数でエラーを出さない
+    "noUnusedParameters": false,
+    "preserveConstEnums": false
+  },
+  "compileOnSave": true,
+  "include": ["src/**/*"],
+  "exclude": [".git", "node_modules", "lib"],
+  "typedocOptions": {
+    "name": "PixiGame",
+    "mode": "file",
+    "out": "./docs"
+  }
+}
