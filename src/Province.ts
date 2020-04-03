@@ -6,8 +6,8 @@ export default class Province {
   public owner: Country;
   constructor(id: string, obj: any) {
     this.id = parseInt(id, 16);
-    this.owner = GameManager.instance.data.countries.get(obj.Owner);
-    console.log("try", obj.Owner, this.owner);
+    this.owner = GameManager.instance.data.countries.get(obj.owner);
+    //console.log("try", obj.Owner, this.owner);
   }
 
   public toJson(): string {

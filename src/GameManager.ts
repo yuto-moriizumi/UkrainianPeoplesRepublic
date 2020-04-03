@@ -54,6 +54,7 @@ export default class GameManager {
     );
 
     SoundManager.init();
+    this.instance.data.load();
   }
 
   //可能であれば新しいシーンへのトランジションを開始する

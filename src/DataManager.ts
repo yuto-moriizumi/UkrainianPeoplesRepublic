@@ -28,10 +28,12 @@ export default class DataManager {
 
   public download() {
     let json = '{"Countries":{';
-    this.countries.forEach(country => (json += country.toJson()));
-    json += '},"Provinces":{';
-    this.provinces.forEach(province => (json += province.toJson()));
-    json += "}}";
+    let countriesString = [];
+    this.countries.forEach(country => countriesString.push(country.toJson()));
+    json += countriesString.join(",") + '},"Provinces":{';
+    let provincesString = [];
+    this.provinces.forEach(province => provincesString.push(province.toJson()));
+    json += provincesString.join(",") + "}}";
     const blob = new Blob([json], {
       type: "application/json"
     });

@@ -7,8 +7,12 @@ import Resource from "./Resources";
 
 import MyMap from "./MyMap";
 import Country from "./Country";
+import Flag from "./Flag";
 
 export default class SelectScene extends Scene {
+  private myFlag: Flag;
+  private static readonly myFlagSize = 150;
+
   constructor() {
     super();
     this.transitionIn = new Fade(1.0, 0.0, -0.02);
@@ -19,10 +23,12 @@ export default class SelectScene extends Scene {
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = super.createInitialResourceList();
     assets.push(Resource.Map);
+    //jsonデータをロードし、終わったら
     GameManager.instance.data.countries.forEach(country => {
+      console.log("hi", country);
       assets.push(country.flagSrc); //全ての国旗をロード
     });
-    console.log(assets);
+    console.log("loadedAssets:" + assets);
     return assets;
   }
 
@@ -30,20 +36,19 @@ export default class SelectScene extends Scene {
   protected onResourceLoaded(): void {
     super.onResourceLoaded();
     const resources = GameManager.instance.game.loader.resources;
-    GameManager.instance.data.load(() => {
-      //地図の更新
-      const map = new MyMap(resources[Resource.Map].texture);
-      map.setScene(this);
-      let replacements = [];
-      GameManager.instance.data.provinces.forEach(province => {
-        console.log("replace", [province.id, province.owner.color]);
-        replacements.push([province.id, province.owner.color]);
-      });
-      map.setReplacements(replacements);
-      map.position.set(renderer.width * 0.1, renderer.height * 0.1);
-      this.addChild(map);
-    });
     const renderer = GameManager.instance.game.renderer;
+
+    //地図の更新
+    const map = new MyMap(resources[Resource.Map].texture);
+    map.setScene(this);
+    let replacements = [];
+    GameManager.instance.data.provinces.forEach(province => {
+      //console.log("replace", [province.id, province.owner.color]);
+      replacements.push([province.id, province.owner.color]);
+    });
+    map.setReplacements(replacements);
+    map.position.set(renderer.width * 0.1, renderer.height * 0.1);
+    this.addChild(map);
 
     //ダウンロードボタン（暫定）
     const button = new PIXI.Sprite(resources[Resource.Title.Bg].texture);
@@ -57,8 +62,13 @@ export default class SelectScene extends Scene {
     this.addChild(button);
   }
 
-  public select(country: Country) {
-    console.log(country);
+  public select(country?: Country) {
+    if (country === null || country === undefined)
+      country = GameManager.instance.data.countries["Rebels"];
+    if (this.myFlag) this.myFlag.destroy();
+    this.myFlag = new Flag(country);
+    this.myFlag.scale.set(SelectScene.myFlagSize / this.myFlag.width);
+    this.addChild(this.myFlag);
   }
 
   public update(dt: number) {
