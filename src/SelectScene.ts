@@ -20,7 +20,7 @@ export default class SelectScene extends Scene {
     let assets = super.createInitialResourceList();
     assets.push(Resource.Map);
     GameManager.instance.data.countries.forEach(country => {
-      assets.push(country.flagSrc);
+      assets.push(country.flagSrc); //全ての国旗をロード
     });
     console.log(assets);
     return assets;
@@ -29,23 +29,23 @@ export default class SelectScene extends Scene {
   //リソースがロードされたときのコールバック
   protected onResourceLoaded(): void {
     super.onResourceLoaded();
+    const resources = GameManager.instance.game.loader.resources;
     GameManager.instance.data.load(() => {
-      const resources = GameManager.instance.game.loader.resources;
-      //地図
+      //地図の更新
       const map = new MyMap(resources[Resource.Map].texture);
+      map.setScene(this);
       let replacements = [];
       GameManager.instance.data.provinces.forEach(province => {
         console.log("replace", [province.id, province.owner.color]);
-
         replacements.push([province.id, province.owner.color]);
       });
-      map.update(replacements);
+      map.setReplacements(replacements);
       map.position.set(renderer.width * 0.1, renderer.height * 0.1);
       this.addChild(map);
     });
-    const resources = GameManager.instance.game.loader.resources;
     const renderer = GameManager.instance.game.renderer;
 
+    //ダウンロードボタン（暫定）
     const button = new PIXI.Sprite(resources[Resource.Title.Bg].texture);
     button.position.set(renderer.width * 0.8, renderer.height * 0.8);
     button.scale.set(0.2, 0.2);
@@ -57,7 +57,9 @@ export default class SelectScene extends Scene {
     this.addChild(button);
   }
 
-  public select(country: Country) {}
+  public select(country: Country) {
+    console.log(country);
+  }
 
   public update(dt: number) {
     super.update(dt);

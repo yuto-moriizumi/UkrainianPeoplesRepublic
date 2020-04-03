@@ -8,7 +8,7 @@ export default class DataManager {
 
   public load(callback?: Function) {
     const req = new XMLHttpRequest();
-    req.open("GET", "data.json");
+    req.open("GET", "data.json?r=" + new Date().getTime());
     req.send(null);
     req.addEventListener("load", () => {
       const json = JSON.parse(req.responseText);
