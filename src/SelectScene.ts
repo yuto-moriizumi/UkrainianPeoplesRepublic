@@ -10,8 +10,10 @@ import Country from "./Country";
 import Flag from "./Flag";
 import Button from "./Button";
 import Province from "./Province";
+import MainScene from "./MainScene";
+import { Selectable } from "./Selectable";
 
-export default class SelectScene extends Scene {
+export default class SelectScene extends Scene implements Selectable {
   private myFlag: Flag;
   private static readonly myFlagSize = 150;
   private target: Country;
@@ -33,7 +35,7 @@ export default class SelectScene extends Scene {
     let assets = super.createInitialResourceList();
     assets.push(Resource.Map);
     //jsonデータをロードし、終わったら
-    GameManager.instance.data.countries.forEach(country => {
+    GameManager.instance.data.countries.forEach((country) => {
       console.log("hi", country);
       assets.push(country.flagSrc); //全ての国旗をロード
     });
@@ -48,10 +50,8 @@ export default class SelectScene extends Scene {
     const renderer = GameManager.instance.game.renderer;
 
     //地図の更新
-    this.map = new MyMap(resources[Resource.Map].texture);
-    this.map.setScene(this);
+    this.map = new MyMap(this, resources[Resource.Map].texture);
     this.map.update();
-    this.map.position.set(renderer.width * 0.1, renderer.height * 0.1);
     this.addChild(this.map);
 
     //ダウンロードボタン（暫定）
@@ -65,20 +65,20 @@ export default class SelectScene extends Scene {
     });
     this.addChild(button);
 
-    //選択ボタン
+    //選択ボタン（デバッグ用）
     this.selectButton = new Button("選択する");
     this.selectButton.position.set(0, 150);
     this.selectButton.on("click", () => {
       this.selectAsMyCountry();
     });
-    this.addChild(this.selectButton);
+    //this.addChild(this.selectButton);
 
     //配列化国に追加
-    GameManager.instance.data.countries.forEach(country => {
+    GameManager.instance.data.countries.forEach((country) => {
       this.countries.push(country);
     });
 
-    //切り替えボタン
+    //切り替えボタン（デバッグ用）
     const changeButton = new Button("切り替え");
     changeButton.position.set(
       0,
@@ -89,7 +89,15 @@ export default class SelectScene extends Scene {
         this.countries[++this.changeCountryIndex % this.countries.length]
       );
     });
-    this.addChild(changeButton);
+    //this.addChild(changeButton);
+
+    //選択ボタン（本番用）
+    const selectButton = new Button("選択する", 200, 100);
+    selectButton.position.set(0, 150);
+    selectButton.on("click", () => {
+      this.confirm();
+    });
+    this.addChild(selectButton);
   }
 
   private selectAsMyCountry(country?: Country) {
@@ -135,7 +143,12 @@ export default class SelectScene extends Scene {
     this.addChild(this.countryName);
   }
 
+  private confirm() {
+    GameManager.loadScene(new MainScene(this.target));
+  }
+
   public update(dt: number) {
     super.update(dt);
+    if (this.map) this.map.move();
   }
 }

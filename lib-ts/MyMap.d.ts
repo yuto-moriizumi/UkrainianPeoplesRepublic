@@ -1,12 +1,14 @@
 import * as PIXI from "pixi.js";
-import SelectScene from "./SelectScene";
+import { Selectable } from "./Selectable";
 export default class MyMap extends PIXI.Sprite {
     private provinceMap;
     private scene;
     private replacements;
-    constructor(texture?: PIXI.Texture);
-    setScene(scene: SelectScene): void;
+    private defaultWidth;
+    private pressKeys;
+    constructor(scene: Selectable, texture?: PIXI.Texture);
     setReplacements(replacements: Array<any>): void;
     pushReplacement(replacement: Array<any>): void;
+    move(): void;
     update(): void;
 }

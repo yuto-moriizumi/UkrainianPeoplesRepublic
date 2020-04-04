@@ -10,12 +10,12 @@ WebFont.load({
   //カスタムフォントをダウンロードしておく
   custom: {
     families: [Resources.FontFamily.Default],
-    urls: ["base.css"]
+    urls: ["base.css"],
   },
   active: () => {
     fontLoaded = true;
     if (windowLoaded) initGame();
-  }
+  },
 });
 
 window.onload = () => {
@@ -25,9 +25,9 @@ window.onload = () => {
 
 function initGame() {
   GameManager.start({
-    glWidth: 1136,
-    glHeight: 640,
-    backgroundColor: 0x222222
+    glWidth: document.body.offsetWidth * 0.95,
+    glHeight: document.body.offsetHeight * 0.95,
+    backgroundColor: 0x222222,
   });
   GameManager.loadScene(new TitleScene());
 }

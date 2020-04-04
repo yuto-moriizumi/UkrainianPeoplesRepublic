@@ -1,7 +1,8 @@
 import Scene from "./Scene";
 import LoaderAddParam from "./LoaderAddParam";
 import Province from "./Province";
-export default class SelectScene extends Scene {
+import { Selectable } from "./Selectable";
+export default class SelectScene extends Scene implements Selectable {
     private myFlag;
     private static readonly myFlagSize;
     private target;
@@ -18,5 +19,6 @@ export default class SelectScene extends Scene {
     private deselectMyCountry;
     selectProvince(province: Province): void;
     private selectAsTarget;
+    private confirm;
     update(dt: number): void;
 }
