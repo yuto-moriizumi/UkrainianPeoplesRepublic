@@ -3,8 +3,6 @@ export default class Button extends PIXI.Graphics {
   private static readonly color1 = 0x10bf40;
   private static readonly color2 = 0x10ffbf;
   private text: PIXI.Text;
-  private defaultWidth;
-  private defaultHeight;
 
   constructor(text: string, width?, height?) {
     super();

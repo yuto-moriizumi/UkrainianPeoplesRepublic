@@ -8,8 +8,10 @@ import GameManager from "./GameManager";
 import Resource from "./Resources";
 import { Selectable } from "./Selectable";
 import Province from "./Province";
+import Flag from "./Flag";
 
 export default class MainScene extends Scene implements Selectable {
+  private static readonly myFlagHeight = 150;
   private playCountry: Country;
   private map: MyMap;
 
@@ -34,11 +36,16 @@ export default class MainScene extends Scene implements Selectable {
     );
     this.map.update();
     this.addChild(this.map);
+
+    const myFlag = new Flag(this.playCountry);
+    myFlag.scale.set(MainScene.myFlagHeight / myFlag.height);
+    this.addChild(myFlag);
   }
 
   public selectProvince(province: Province) {}
 
   public update(dt: number) {
     super.update(dt);
+    if (this.map) this.map.move();
   }
 }

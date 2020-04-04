@@ -39,9 +39,11 @@ export default class MyMap extends PIXI.Sprite {
 
     document.body.addEventListener("keydown", (e) => {
       this.pressKeys.add(e.key);
+      console.log(e.key);
     });
     document.body.addEventListener("keyup", (e) => {
       this.pressKeys.delete(e.key);
+      console.log(e.key);
     });
 
     this.on("click", (e: PIXI.interaction.InteractionEvent) => {
