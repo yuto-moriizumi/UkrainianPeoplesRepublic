@@ -4,7 +4,7 @@ const Resource = Object.freeze({
   Title: {
     Bg: "Ukraine.png"
   },
-  Map: "provinces.bmp",
+  Map: "provinces.png",
   FontFamily: {
     Default: "MisakiGothic"
   }
