@@ -27,4 +27,8 @@ export default class Button extends PIXI.Graphics {
       this.drawRect(0, 0, this.text.width, this.text.height);
     });
   }
+
+  public setText(text: string) {
+    this.text.text = text;
+  }
 }

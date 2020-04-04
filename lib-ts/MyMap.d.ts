@@ -7,5 +7,6 @@ export default class MyMap extends PIXI.Sprite {
     constructor(texture?: PIXI.Texture);
     setScene(scene: SelectScene): void;
     setReplacements(replacements: Array<any>): void;
-    private update;
+    pushReplacement(replacement: Array<any>): void;
+    update(): void;
 }

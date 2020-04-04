@@ -8,6 +8,7 @@ export default class MyMap extends PIXI.Sprite {
   private provinceMap: Uint8Array;
   private scene: SelectScene;
   private replacements: Array<any> = [];
+
   constructor(texture?: PIXI.Texture) {
     super(texture);
     //this.canvas =texture
@@ -38,10 +39,9 @@ export default class MyMap extends PIXI.Sprite {
         data.provinces.set(provinceId, province);
         this.replacements.push([province.id, province.owner.color]);
         this.update();
-      } else {
-        //国を選択
-        this.scene.select(province.owner);
       }
+      //プロヴィンスを選択
+      this.scene.selectProvince(province);
     });
   }
 
@@ -54,7 +54,17 @@ export default class MyMap extends PIXI.Sprite {
     this.update();
   }
 
-  private update() {
+  public pushReplacement(replacement: Array<any>) {
+    this.replacements.push(replacement);
+    this.update();
+  }
+
+  public update() {
+    this.replacements = [];
+    GameManager.instance.data.provinces.forEach(province => {
+      //console.log("replace", [province.id, province.owner.color]);
+      this.replacements.push([province.id, province.owner.color]);
+    });
     const filter = new Filters.MultiColorReplaceFilter(
       this.replacements,
       0.005

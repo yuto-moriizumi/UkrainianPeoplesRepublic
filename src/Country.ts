@@ -12,12 +12,11 @@ export default class Country {
 
   public toJson(): string {
     return (
-      this.id +
-      ":{" +
+      `"${this.id}":{` +
       [
-        "name" + this.name,
-        "color:" + this.color.toString(16),
-        "flag:" + this.flagSrc
+        `"name":"${this.name}"`,
+        `"color":"${this.color.toString(16)}"`,
+        `"flag":"${this.flagSrc}"`
       ].join(",") +
       "}"
     );

@@ -15,6 +15,6 @@ export default class Province {
   }
 
   public toJson(): string {
-    return `"${this.id.toString(16)}":{"Owner":"${this.owner.id}"},`;
+    return `"${this.id.toString(16)}":{"owner":"${this.owner.id}"}`;
   }
 }
