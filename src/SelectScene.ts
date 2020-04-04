@@ -8,6 +8,7 @@ import Resource from "./Resources";
 import MyMap from "./MyMap";
 import Country from "./Country";
 import Flag from "./Flag";
+import Button from "./Button";
 
 export default class SelectScene extends Scene {
   private myFlag: Flag;
@@ -60,6 +61,11 @@ export default class SelectScene extends Scene {
       GameManager.instance.data.download();
     });
     this.addChild(button);
+
+    //選択ボタン
+    const selectButton = new Button("選択");
+    this.addChild(selectButton);
+    selectButton.position.set(0, 100);
   }
 
   public select(country?: Country) {

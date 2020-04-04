@@ -10,6 +10,10 @@ export default class Province {
     //console.log("try", obj.Owner, this.owner);
   }
 
+  public setOwner(owner: Country) {
+    this.owner = owner;
+  }
+
   public toJson(): string {
     return `"${this.id.toString(16)}":{"Owner":"${this.owner.id}"},`;
   }

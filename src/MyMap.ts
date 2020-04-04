@@ -33,7 +33,8 @@ export default class MyMap extends PIXI.Sprite {
       console.log("provinceId:", provinceId);
       if (!province) {
         //プロビンスデータが無かったら新規作成
-        province = new Province(provinceId, { Owner: "Rebels" });
+        province = new Province(provinceId, {});
+        province.setOwner(GameManager.instance.data.countries.get("Rebels"));
         data.provinces.set(provinceId, province);
         this.replacements.push([province.id, province.owner.color]);
         this.update();
