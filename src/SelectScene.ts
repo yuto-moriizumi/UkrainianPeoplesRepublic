@@ -20,6 +20,7 @@ export default class SelectScene extends Scene {
   private map: MyMap;
   private changeCountryIndex = 0;
   private countries: Array<Country> = new Array<Country>();
+  private countryName: PIXI.Text;
 
   constructor() {
     super();
@@ -66,7 +67,7 @@ export default class SelectScene extends Scene {
 
     //選択ボタン
     this.selectButton = new Button("選択する");
-    this.selectButton.position.set(0, 100);
+    this.selectButton.position.set(0, 150);
     this.selectButton.on("click", () => {
       this.selectAsMyCountry();
     });
@@ -79,7 +80,10 @@ export default class SelectScene extends Scene {
 
     //切り替えボタン
     const changeButton = new Button("切り替え");
-    changeButton.position.set(0, 100 + this.selectButton.height);
+    changeButton.position.set(
+      0,
+      this.selectButton.y + this.selectButton.height
+    );
     changeButton.on("click", () => {
       this.selectAsTarget(
         this.countries[++this.changeCountryIndex % this.countries.length]
@@ -125,6 +129,10 @@ export default class SelectScene extends Scene {
     this.myFlag.scale.set(SelectScene.myFlagSize / this.myFlag.width);
     this.addChild(this.myFlag);
     this.target = country;
+
+    if (this.countryName) this.countryName.destroy();
+    this.countryName = new PIXI.Text(country.name);
+    this.addChild(this.countryName);
   }
 
   public update(dt: number) {

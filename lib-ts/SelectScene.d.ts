@@ -10,6 +10,7 @@ export default class SelectScene extends Scene {
     private map;
     private changeCountryIndex;
     private countries;
+    private countryName;
     constructor();
     protected createInitialResourceList(): (LoaderAddParam | string)[];
     protected onResourceLoaded(): void;
