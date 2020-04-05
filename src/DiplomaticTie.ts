@@ -10,5 +10,13 @@ export default abstract class DiplomaticTie {
     target.addDiplomaticRelation(this);
   }
 
+  public getRoot(): Country {
+    return this.root;
+  }
+
+  public getTarget(): Country {
+    return this.target;
+  }
+
   public abstract toJson(): string;
 }

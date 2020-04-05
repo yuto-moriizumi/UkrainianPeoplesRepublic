@@ -1,6 +1,7 @@
 import Country from "./Country";
 import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTie";
+import War from "./War";
 
 export default class DataManager {
   public countries: Map<String, Country> = new Map<String, Country>();
@@ -30,7 +31,15 @@ export default class DataManager {
       for (const tie in json["Diplomacy"]) {
         switch (tie["type"]) {
           case "war":
-            this.diplomacy.push(new War(tie["root"]));
+            this.diplomacy.push(
+              new War(
+                this.countries.get(tie["root"]),
+                this.countries.get(tie["target"])
+              )
+            );
+            break;
+          default:
+            console.log("Diplomacy load error:", tie);
         }
       }
       console.log("provinces loaded:", this.provinces);

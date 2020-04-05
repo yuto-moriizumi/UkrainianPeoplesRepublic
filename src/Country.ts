@@ -5,7 +5,7 @@ export default class Country {
   public color: number;
   public name: string;
   public flagSrc: string;
-  private diplomaticTies: Array<DiplomaticTie>;
+  private diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   constructor(id: string, obj: any) {
     this.id = id;
     this.color = parseInt(obj.color, 16);
@@ -15,6 +15,10 @@ export default class Country {
 
   public addDiplomaticRelation(tie: DiplomaticTie) {
     this.diplomaticTies.push(tie);
+  }
+
+  public getDiplomacy() {
+    return this.diplomaticTies;
   }
 
   public toJson(): string {

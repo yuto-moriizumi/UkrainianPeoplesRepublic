@@ -7,5 +7,6 @@ declare const Resource: Readonly<{
         Default: string;
     };
     Cancel: string;
+    war: string;
 }>;
 export default Resource;

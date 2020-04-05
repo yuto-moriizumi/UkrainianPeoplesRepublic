@@ -11,5 +11,7 @@ export default class MainScene extends Scene implements Selectable {
     protected createInitialResourceList(): (LoaderAddParam | string)[];
     protected onResourceLoaded(): void;
     selectProvince(province: Province): void;
+    openDiplomacySidebar(country: Country): void;
     update(dt: number): void;
+    getMyCountry(): Country;
 }

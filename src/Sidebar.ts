@@ -6,7 +6,7 @@ import * as PIXI from "pixi.js";
 
 export default class Sidebar extends PIXI.Graphics {
   private static readonly COLOR = 0x3e3e36;
-  private static readonly DEFAULT_WIDTH = 250;
+  private static readonly DEFAULT_WIDTH = 400;
   private static readonly HEADER_MARGIN = 5;
   protected contentHeight;
   constructor(text: string) {

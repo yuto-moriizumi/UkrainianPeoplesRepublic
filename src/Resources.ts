@@ -9,6 +9,7 @@ const Resource = Object.freeze({
     Default: "MisakiGothic",
   },
   Cancel: "x.png",
+  war: "war.png",
 });
 
 export default Resource;

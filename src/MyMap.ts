@@ -136,7 +136,7 @@ export default class MyMap extends PIXI.Sprite {
      */
     const filter = new Filters.MultiColorReplaceFilter(
       this.replacements,
-      0.005
+      0.001
     );
     this.filters = [filter];
     //console.log("Map updated:", this.replacements);

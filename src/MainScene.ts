@@ -28,6 +28,7 @@ export default class MainScene extends Scene implements Selectable {
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = [];
     assets.push(Resource.Cancel);
+    assets.push(Resource.war);
     console.log(assets);
     return assets;
   }
@@ -47,13 +48,21 @@ export default class MainScene extends Scene implements Selectable {
   }
 
   public selectProvince(province: Province) {
+    this.openDiplomacySidebar(province.owner);
+  }
+
+  public openDiplomacySidebar(country: Country) {
     if (this.sidebar && this.sidebar.parent) this.sidebar.destroy();
-    this.sidebar = new DiplomaticSidebar(province.owner);
+    this.sidebar = new DiplomaticSidebar(this, country);
     this.addChild(this.sidebar);
   }
 
   public update(dt: number) {
     super.update(dt);
     if (this.map) this.map.move();
+  }
+
+  public getMyCountry() {
+    return this.playCountry;
   }
 }
