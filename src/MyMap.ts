@@ -47,37 +47,10 @@ export default class MyMap extends PIXI.Sprite {
     });
 
     this.on("click", (e: PIXI.interaction.InteractionEvent) => {
-      //Uinit8Array上でのインデックスを算出
-      const position = e.data.getLocalPosition(this);
-      console.log(position);
-
-      const idx =
-        (Math.floor(position.y) * this.defaultWidth + Math.floor(position.x)) *
-        4;
-
-      //プロヴィンスIDに変換
-      const data = GameManager.instance.data;
-      console.log(this.provinceMap[idx + 0]);
-
-      const provinceId =
-        ("00" + this.provinceMap[idx + 0].toString(16)).slice(-2) +
-        ("00" + this.provinceMap[idx + 1].toString(16)).slice(-2) +
-        ("00" + this.provinceMap[idx + 2].toString(16)).slice(-2);
-
-      if (provinceId === "000000") return; //境界線を選択した場合は何もしない
-
-      let province = data.provinces.get(provinceId);
-      console.log("provinceId:", provinceId);
-      if (!province) {
-        //プロビンスデータが無かったら新規作成
-        province = new Province(provinceId, {});
-        province.setOwner(GameManager.instance.data.countries.get("Rebels"));
-        data.provinces.set(provinceId, province);
-        this.replacements.push([province.id, province.owner.color]);
-        this.update();
-      }
-      //プロヴィンスを選択
-      this.scene.selectProvince(province);
+      this.selectClickedProvince(e);
+    });
+    this.on("rightclick", (e: PIXI.interaction.InteractionEvent) => {
+      this.selectClickedProvince(e);
     });
   }
 
@@ -91,7 +64,49 @@ export default class MyMap extends PIXI.Sprite {
     this.update();
   }
 
+  private getProvinceIdFromPoint(position: PIXI.Point): string {
+    console.log(position);
+
+    const idx =
+      (Math.floor(position.y) * this.defaultWidth + Math.floor(position.x)) * 4;
+
+    //プロヴィンスIDに変換
+    console.log(this.provinceMap[idx + 0]);
+
+    const provinceId =
+      ("00" + this.provinceMap[idx + 0].toString(16)).slice(-2) +
+      ("00" + this.provinceMap[idx + 1].toString(16)).slice(-2) +
+      ("00" + this.provinceMap[idx + 2].toString(16)).slice(-2);
+
+    if (provinceId === "000000") return null; //境界線を選択した場合は何もしない
+
+    return provinceId;
+  }
+
+  private selectClickedProvince(e: PIXI.interaction.InteractionEvent) {
+    //Uinit8Array上でのインデックスを算出
+    const position = e.data.getLocalPosition(this);
+    const provinceId = this.getProvinceIdFromPoint(position);
+    const data = GameManager.instance.data;
+
+    if (!provinceId) return; //provinceIdがnullの時は何もしない
+
+    let province = data.provinces.get(provinceId);
+    console.log("provinceId:", provinceId);
+    if (!province) {
+      //プロビンスデータが無かったら新規作成
+      province = new Province(provinceId, {});
+      province.setOwner(GameManager.instance.data.countries.get("Rebels"));
+      data.provinces.set(provinceId, province);
+      this.replacements.push([province.id, province.owner.color]);
+      this.update();
+    }
+    //プロヴィンスを選択
+    this.scene.selectProvince(province);
+  }
+
   public move() {
+    //シーン側から定期的に呼び出すこと
     this.pressKeys.forEach((key) => {
       switch (key) {
         case "a":

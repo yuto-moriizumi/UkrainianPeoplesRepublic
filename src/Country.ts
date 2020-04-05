@@ -1,13 +1,20 @@
+import DiplomaticTie from "./DiplomaticTie";
+
 export default class Country {
   public id: string;
   public color: number;
   public name: string;
   public flagSrc: string;
+  private diplomaticTies: Array<DiplomaticTie>;
   constructor(id: string, obj: any) {
     this.id = id;
     this.color = parseInt(obj.color, 16);
     this.name = obj.name;
     this.flagSrc = obj.flag;
+  }
+
+  public addDiplomaticRelation(tie: DiplomaticTie) {
+    this.diplomaticTies.push(tie);
   }
 
   public toJson(): string {
@@ -16,7 +23,7 @@ export default class Country {
       [
         `"name":"${this.name}"`,
         `"color":"${this.color.toString(16)}"`,
-        `"flag":"${this.flagSrc}"`
+        `"flag":"${this.flagSrc}"`,
       ].join(",") +
       "}"
     );

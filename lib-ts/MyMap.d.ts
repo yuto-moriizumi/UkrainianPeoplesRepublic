@@ -9,6 +9,8 @@ export default class MyMap extends PIXI.Sprite {
     constructor(scene: Selectable, texture?: PIXI.Texture);
     setReplacements(replacements: Array<any>): void;
     pushReplacement(replacement: Array<any>): void;
+    private getProvinceIdFromPoint;
+    private selectClickedProvince;
     move(): void;
     update(): void;
 }

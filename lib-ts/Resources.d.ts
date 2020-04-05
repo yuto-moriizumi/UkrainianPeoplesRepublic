@@ -6,5 +6,6 @@ declare const Resource: Readonly<{
     FontFamily: {
         Default: string;
     };
+    Cancel: string;
 }>;
 export default Resource;

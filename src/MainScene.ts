@@ -8,12 +8,14 @@ import GameManager from "./GameManager";
 import Resource from "./Resources";
 import { Selectable } from "./Selectable";
 import Province from "./Province";
-import Flag from "./Flag";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import DiplomaticSidebar from "./DiplomaticSidebar";
 
 export default class MainScene extends Scene implements Selectable {
-  private static readonly myFlagHeight = 150;
   private playCountry: Country;
   private map: MyMap;
+  private sidebar: Sidebar;
 
   constructor(playCountry: Country) {
     super();
@@ -24,7 +26,10 @@ export default class MainScene extends Scene implements Selectable {
 
   //リソースリストを作成し返却する
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
-    return [];
+    let assets = [];
+    assets.push(Resource.Cancel);
+    console.log(assets);
+    return assets;
   }
 
   //リソースがロードされたときのコールバック
@@ -37,12 +42,15 @@ export default class MainScene extends Scene implements Selectable {
     this.map.update();
     this.addChild(this.map);
 
-    const myFlag = new Flag(this.playCountry);
-    myFlag.scale.set(MainScene.myFlagHeight / myFlag.height);
-    this.addChild(myFlag);
+    const header = new Header(this.playCountry);
+    this.addChild(header);
   }
 
-  public selectProvince(province: Province) {}
+  public selectProvince(province: Province) {
+    if (this.sidebar && this.sidebar.parent) this.sidebar.destroy();
+    this.sidebar = new DiplomaticSidebar(province.owner);
+    this.addChild(this.sidebar);
+  }
 
   public update(dt: number) {
     super.update(dt);

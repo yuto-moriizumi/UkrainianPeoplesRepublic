@@ -4,9 +4,9 @@ import LoaderAddParam from "./LoaderAddParam";
 import { Selectable } from "./Selectable";
 import Province from "./Province";
 export default class MainScene extends Scene implements Selectable {
-    private static readonly myFlagHeight;
     private playCountry;
     private map;
+    private sidebar;
     constructor(playCountry: Country);
     protected createInitialResourceList(): (LoaderAddParam | string)[];
     protected onResourceLoaded(): void;
