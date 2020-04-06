@@ -60,35 +60,6 @@ export default class DataManager {
       if (key === "id" && typeof value === "number") return value.toString(16);
       return value;
     });
-    /*
-    //国データ出力
-    let json = "{";
-    json += '"Countries": {';
-    let countriesString = [];
-    this.countries.forEach((country) => countriesString.push(country.toJson()));
-    json += countriesString.join(",") + "}";
-
-    //プロヴィンスデータ出力
-    json += ', "Provinces": {';
-    let provincesString = [];
-    this.provinces.forEach((province) =>
-      provincesString.push(province.toJson())
-    );
-    json += provincesString.join(",") + "}";
-
-    //外交データ出力
-    json += ', "Diplomacy": [';
-    let diplomacyString = [];
-    this.diplomacy.forEach((tie) => diplomacyString.push(tie.toJson()));
-    json += diplomacyString.join(",") + "]";
-
-    //イベントデータ出力
-    json += ', "Events": {';
-    let eventsString = [];
-    this.events.forEach((event) => eventsString.push(event.toJson()));
-    json += eventsString.join(",") + "}";
-
-    json += "}";*/
 
     const blob = new Blob([json], {
       type: "application/json",
