@@ -2,17 +2,23 @@ import Option from "./Option";
 import Condition from "./Conditions/Condition";
 import MainScene from "../MainScene";
 import GameManager from "../GameManager";
+import * as PIXI from "pixi.js";
+import DateCondition from "./Conditions/DateCondition";
 
-export default abstract class MyEvent extends PIXI.Graphics {
+export default class Event extends PIXI.Graphics {
   private id: string;
   private title: string;
   private desc: string;
-  private pictureSrc: string;
+  private picture: string;
+  private fired: boolean = false;
+  private _condition: Condition;
   private options: Array<Option> = new Array<Option>();
-  private condition: Condition;
 
   public dispatch(scene: MainScene, date: Date) {
-    if (!this.condition.isValid()) return;
+    console.log("dispatchOK?", this.title);
+
+    if (this.fired) return;
+    if (!this._condition.isValid(date)) return;
 
     this.beginFill(0x2f2f2f);
     const renderer = GameManager.instance.game.renderer;
@@ -69,6 +75,17 @@ export default abstract class MyEvent extends PIXI.Graphics {
     scene.addChild(this);
   }
 
+  set condition(condition: any) {
+    if (condition instanceof Condition) this._condition = condition;
+    switch (condition.type) {
+      case "DateCondition":
+        this._condition = Object.assign(new DateCondition(), condition);
+        break;
+      default:
+        throw new Error("一致する条件クラスが見つかりませんでした:");
+    }
+  }
+
   public toJson(): string {
     let optionsJson = "[";
     const optionsJsonArray = new Array<string>();
@@ -82,7 +99,7 @@ export default abstract class MyEvent extends PIXI.Graphics {
         '"id":' + this.id,
         '"title":' + this.title,
         '"desc":' + this.desc,
-        '"pictureSrc":' + this.pictureSrc,
+        '"pictureSrc":' + this.picture,
         '"options":' + optionsJson,
       ].join(",") +
       "}"

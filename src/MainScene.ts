@@ -60,9 +60,6 @@ export default class MainScene extends Scene implements Selectable {
       header.height * 0.5 - this.timer.height * 0.5
     );
     header.addChild(this.timer);
-
-    //debug
-    console.log(JSON.stringify(this));
   }
 
   public selectProvince(province: Province) {
@@ -81,7 +78,9 @@ export default class MainScene extends Scene implements Selectable {
     if (this.timer) this.timer.update(this.elapsedFrameCount);
 
     //イベント発火処理
-    this.eventDispatcher.dispatch(this.timer.getDate());
+    GameManager.instance.data.events.forEach((event: Event) => {
+      event.dispatch(this.scene, date);
+    });
   }
 
   public getMyCountry() {

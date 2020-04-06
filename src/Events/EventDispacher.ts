@@ -1,16 +1,16 @@
 import MainScene from "../MainScene";
-import MyEvent from "./MyEvent";
+import Event from "./Event";
+import GameManager from "../GameManager";
 
 export default class EventDispatcher {
   private scene: MainScene;
-  private events: Array<MyEvent> = new Array<MyEvent>();
 
   constructor(scene: MainScene) {
     this.scene = scene;
   }
 
   public dispatch(date: Date) {
-    this.events.forEach((event: MyEvent) => {
+    GameManager.instance.data.events.forEach((event: Event) => {
       event.dispatch(this.scene, date);
     });
   }

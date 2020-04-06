@@ -1,7 +1,7 @@
 import Country from "./Country";
 import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTie";
-import MyEvent from "./Events/MyEvent";
+import MyEvent from "./Events/Event";
 export default class DataManager {
     countries: Map<String, Country>;
     provinces: Map<String, Province>;

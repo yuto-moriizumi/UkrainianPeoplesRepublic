@@ -1,3 +1,3 @@
 export default abstract class Condition {
-  public abstract isValid(): boolean;
+  public abstract isValid(date: Date): boolean;
 }

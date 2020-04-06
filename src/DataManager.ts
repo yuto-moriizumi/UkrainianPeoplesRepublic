@@ -2,7 +2,8 @@ import Country from "./Country";
 import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTie";
 import War from "./War";
-import MyEvent from "./Events/MyEvent";
+import MyEvent from "./Events/Event";
+import Event from "./Events/Event";
 
 export default class DataManager {
   public countries: Map<String, Country> = new Map<String, Country>();
@@ -39,7 +40,16 @@ export default class DataManager {
           console.log("diplomacy load error:", tie);
       }
     }
-    console.log("provinces loaded:", this.provinces);
+    console.log("diplomacy loaded:", this.diplomacy);
+
+    //イベント読込
+    this.events = json["events"].map((eventObject: Object) => {
+      const event = new Event();
+      Object.assign(event, eventObject);
+      return event;
+    });
+
+    console.log("events loaded:", this.events);
   }
 
   public download() {

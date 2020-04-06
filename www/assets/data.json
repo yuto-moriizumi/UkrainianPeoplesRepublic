@@ -32,7 +32,7 @@
       "diplomaticTies": [],
       "id": "USSR",
       "color": "ff0000",
-      "name": "ソヴィエト",
+      "name": "ロシア＝ソヴィエト連邦社会主義共和国",
       "flag": "USSR.png"
     },
     "AHE": {
@@ -580,5 +580,16 @@
     "a0d0a0": { "id": "a0d0a0", "owner": "GRE" }
   },
   "diplomacy": [],
-  "events": []
+  "events": [
+    {
+      "id": "russian_civilwar_begins",
+      "title": "ロシア内戦",
+      "desc": "1918年1月のロシアでは、憲法制定議会が招集されたが、ボリシェヴィキはそこでは多数を占めることができなかった。議会制民主主義をブルジョワ権力の擬制であるとしたレーニンは実力で憲法制定議会を解散させ、ソヴィエトを最高機関とする労働者・兵士の政権を樹立し、ボリシェヴィキ以外の党派をほぼ追放し、ボリシェヴィキ独裁体制を作り上げた。それに対し、ロシア各地で反革命軍が蜂起。ロシア内戦が始まった。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": {
+        "type": "DateCondition",
+        "when": "1918/01/25"
+      }
+    }
+  ]
 }
