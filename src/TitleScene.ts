@@ -21,6 +21,7 @@ export default class TitleScene extends Scene {
     let assets = super.createInitialResourceList();
     //assets.push(staticResource.Audio.Bgm.Title);
     assets.push(Resource.Title.Bg);
+    assets.push(Resource.savedata);
     //console.log(assets);
     return assets;
   }
@@ -44,7 +45,7 @@ export default class TitleScene extends Scene {
         fontSize: 80,
         fill: 0xffffff,
         padding: 12,
-        dropShadow: true
+        dropShadow: true,
       })
     );
     text.anchor.set(0.5, 0.5);
@@ -57,7 +58,7 @@ export default class TitleScene extends Scene {
         fontFamily: "MisakiGothic",
         fontSize: 64,
         fill: 0xffffff,
-        padding: 12
+        padding: 12,
       })
     );
     this.text.anchor.set(0.5, 0.5);
@@ -66,6 +67,9 @@ export default class TitleScene extends Scene {
     this.interactive = true;
     this.buttonMode = true;
     this.on("pointerdown", () => this.onPointerDown());
+
+    //セーブデータ読み込み
+    GameManager.instance.data.load(resources[Resource.savedata].data);
   }
 
   private onPointerDown() {

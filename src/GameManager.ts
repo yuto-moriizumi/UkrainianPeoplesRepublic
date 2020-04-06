@@ -31,7 +31,7 @@ export default class GameManager {
     const game = new PIXI.Application({
       width: params.glWidth,
       height: params.glHeight,
-      backgroundColor: params.backgroundColor
+      backgroundColor: params.backgroundColor,
     });
     //PIXI.ApplicationインスタンスのloaderプロパティにbaseUrlを設定
     game.loader.baseUrl = "assets/";
@@ -46,7 +46,7 @@ export default class GameManager {
     //右クリックのデフォ動作を力技で止める
     document.body.addEventListener(
       "contextmenu",
-      function(ev) {
+      function (ev) {
         ev.preventDefault();
         return false;
       },
@@ -54,7 +54,6 @@ export default class GameManager {
     );
 
     SoundManager.init();
-    this.instance.data.load();
   }
 
   //可能であれば新しいシーンへのトランジションを開始する

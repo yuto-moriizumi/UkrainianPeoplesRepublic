@@ -11,44 +11,35 @@ export default class DataManager {
   public events: Array<MyEvent> = new Array<MyEvent>();
   constructor() {}
 
-  public load(callback?: Function) {
-    const req = new XMLHttpRequest();
-    req.open("GET", "data.json?r=" + new Date().getTime());
-    req.send(null);
-    req.addEventListener("load", () => {
-      //国読み込み
-      const json = JSON.parse(req.responseText);
-      for (const id in json["countries"]) {
-        this.countries.set(id, new Country(id, json["countries"][id]));
-      }
-      console.log("countries loaded:", this.countries);
+  public load(json: Object) {
+    //国読み込み
+    for (const id in json["countries"]) {
+      this.countries.set(id, new Country(id, json["countries"][id]));
+    }
+    console.log("countries loaded:", this.countries);
 
-      //プロヴィンス読み込み
-      for (const id in json["provinces"]) {
-        this.provinces.set(id, new Province(id, json["provinces"][id]));
-      }
-      console.log("provinces loaded:", this.provinces);
+    //プロヴィンス読み込み
+    for (const id in json["provinces"]) {
+      this.provinces.set(id, new Province(id, json["provinces"][id]));
+    }
+    console.log("provinces loaded:", this.provinces);
 
-      //外交読込
-      for (const tie in json["diplomacy"]) {
-        switch (tie["type"]) {
-          case "war":
-            this.diplomacy.push(
-              new War(
-                this.countries.get(tie["root"]),
-                this.countries.get(tie["target"])
-              )
-            );
-            break;
-          default:
-            console.log("diplomacy load error:", tie);
-        }
+    //外交読込
+    for (const tie in json["diplomacy"]) {
+      switch (tie["type"]) {
+        case "war":
+          this.diplomacy.push(
+            new War(
+              this.countries.get(tie["root"]),
+              this.countries.get(tie["target"])
+            )
+          );
+          break;
+        default:
+          console.log("diplomacy load error:", tie);
       }
-      console.log("provinces loaded:", this.provinces);
-
-      if (callback) callback();
-    });
-    req.addEventListener("error", () => console.log("json error"));
+    }
+    console.log("provinces loaded:", this.provinces);
   }
 
   public download() {

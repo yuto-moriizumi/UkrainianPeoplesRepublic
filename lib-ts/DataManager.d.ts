@@ -8,6 +8,6 @@ export default class DataManager {
     diplomacy: Array<DiplomaticTie>;
     events: Array<MyEvent>;
     constructor();
-    load(callback?: Function): void;
+    load(json: Object): void;
     download(): void;
 }
