@@ -11,7 +11,7 @@ export default class EventDispatcher {
 
   public dispatch(date: Date) {
     this.events.forEach((event: MyEvent) => {
-      event.dispatch(date);
+      event.dispatch(this.scene, date);
     });
   }
 }

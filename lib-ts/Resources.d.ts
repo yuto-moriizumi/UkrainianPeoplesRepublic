@@ -10,5 +10,6 @@ declare const Resource: Readonly<{
     war: string;
     plus: string;
     minus: string;
+    savedata: string;
 }>;
 export default Resource;
