@@ -8,5 +8,7 @@ declare const Resource: Readonly<{
     };
     Cancel: string;
     war: string;
+    plus: string;
+    minus: string;
 }>;
 export default Resource;

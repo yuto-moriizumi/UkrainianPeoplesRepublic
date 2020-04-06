@@ -11,11 +11,13 @@ import Province from "./Province";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import DiplomaticSidebar from "./DiplomaticSidebar";
+import Timer from "./Timer";
 
 export default class MainScene extends Scene implements Selectable {
   private playCountry: Country;
   private map: MyMap;
   private sidebar: Sidebar;
+  private timer: Timer;
 
   constructor(playCountry: Country) {
     super();
@@ -29,6 +31,8 @@ export default class MainScene extends Scene implements Selectable {
     let assets = [];
     assets.push(Resource.Cancel);
     assets.push(Resource.war);
+    assets.push(Resource.plus);
+    assets.push(Resource.minus);
     console.log(assets);
     return assets;
   }
@@ -45,6 +49,14 @@ export default class MainScene extends Scene implements Selectable {
 
     const header = new Header(this.playCountry);
     this.addChild(header);
+
+    //時間コントローラ
+    this.timer = new Timer();
+    this.timer.position.set(
+      this.width - this.timer.width - 15,
+      header.height * 0.5 - this.timer.height * 0.5
+    );
+    header.addChild(this.timer);
   }
 
   public selectProvince(province: Province) {
@@ -60,6 +72,7 @@ export default class MainScene extends Scene implements Selectable {
   public update(dt: number) {
     super.update(dt);
     if (this.map) this.map.move();
+    if (this.timer) this.timer.update(this.elapsedFrameCount);
   }
 
   public getMyCountry() {

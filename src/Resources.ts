@@ -10,6 +10,8 @@ const Resource = Object.freeze({
   },
   Cancel: "x.png",
   war: "war.png",
+  plus: "+.png",
+  minus: "-.png",
 });
 
 export default Resource;
