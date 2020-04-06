@@ -12,5 +12,6 @@ export default class Timer extends PIXI.Container {
     update(elapsedFrameCount: number): void;
     faster(): void;
     slower(): void;
+    getDate(): Date;
     private drawProgress;
 }

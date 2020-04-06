@@ -30,7 +30,7 @@ export default class Timer extends PIXI.Container {
     });
     this.addChild(display);
 
-    this.date = new Date(1917, 10, 6);
+    this.date = new Date(1918, 0, 23);
     this.text = new PIXI.Text(
       this.date.toLocaleDateString(),
       new PIXI.TextStyle({ fill: 0xffffff })
@@ -78,6 +78,10 @@ export default class Timer extends PIXI.Container {
     if (this.updateDuration >= 512) return;
     this.updateDuration *= 2;
     this.drawProgress();
+  }
+
+  public getDate(): Date {
+    return this.date;
   }
 
   private drawProgress() {

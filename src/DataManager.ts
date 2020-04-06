@@ -2,11 +2,13 @@ import Country from "./Country";
 import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTie";
 import War from "./War";
+import MyEvent from "./Events/MyEvent";
 
 export default class DataManager {
   public countries: Map<String, Country> = new Map<String, Country>();
   public provinces: Map<String, Province> = new Map<String, Province>();
   public diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
+  public events: Array<MyEvent> = new Array<MyEvent>();
   constructor() {}
 
   public load(callback?: Function) {
@@ -70,6 +72,12 @@ export default class DataManager {
     let diplomacyString = [];
     this.diplomacy.forEach((tie) => diplomacyString.push(tie.toJson()));
     json += diplomacyString.join(",") + "]";
+
+    //イベントデータ出力
+    json += ', "Events": {';
+    let eventsString = [];
+    this.events.forEach((event) => eventsString.push(event.toJson()));
+    json += eventsString.join(",") + "}";
 
     json += "}";
 

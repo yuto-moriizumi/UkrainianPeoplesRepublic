@@ -8,6 +8,7 @@ export default class MainScene extends Scene implements Selectable {
     private map;
     private sidebar;
     private timer;
+    private eventDispatcher;
     constructor(playCountry: Country);
     protected createInitialResourceList(): (LoaderAddParam | string)[];
     protected onResourceLoaded(): void;

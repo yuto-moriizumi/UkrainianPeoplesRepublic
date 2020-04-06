@@ -12,18 +12,21 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import DiplomaticSidebar from "./DiplomaticSidebar";
 import Timer from "./Timer";
+import EventDispatcher from "./Events/EventDispacher";
 
 export default class MainScene extends Scene implements Selectable {
   private playCountry: Country;
   private map: MyMap;
   private sidebar: Sidebar;
   private timer: Timer;
+  private eventDispatcher: EventDispatcher;
 
   constructor(playCountry: Country) {
     super();
     this.transitionIn = new Fade(1.0, 0.0, -0.02);
     this.transitionOut = new Fade(0.0, 1.0, 0.02);
     this.playCountry = playCountry;
+    this.eventDispatcher = new EventDispatcher(this);
   }
 
   //リソースリストを作成し返却する
@@ -57,6 +60,9 @@ export default class MainScene extends Scene implements Selectable {
       header.height * 0.5 - this.timer.height * 0.5
     );
     header.addChild(this.timer);
+
+    //debug
+    console.log(JSON.stringify(this));
   }
 
   public selectProvince(province: Province) {
@@ -73,6 +79,9 @@ export default class MainScene extends Scene implements Selectable {
     super.update(dt);
     if (this.map) this.map.move();
     if (this.timer) this.timer.update(this.elapsedFrameCount);
+
+    //イベント発火処理
+    this.eventDispatcher.dispatch(this.timer.getDate());
   }
 
   public getMyCountry() {
