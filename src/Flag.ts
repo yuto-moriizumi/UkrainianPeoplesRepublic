@@ -4,7 +4,7 @@ import GameManager from "./GameManager";
 export default class Flag extends PIXI.Sprite {
   private country: Country;
   constructor(country: Country) {
-    super(GameManager.instance.game.loader.resources[country.flagSrc].texture);
+    super(GameManager.instance.game.loader.resources[country.flag].texture);
     this.country = country;
     this.interactive = true;
     this.buttonMode = true;
