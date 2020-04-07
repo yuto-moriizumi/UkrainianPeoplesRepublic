@@ -2,14 +2,13 @@ import Country from "./Country";
 import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTie";
 import War from "./War";
-import MyEvent from "./Events/Event";
 import Event from "./Events/Event";
 
 export default class DataManager {
-  public countries: Map<String, Country> = new Map<String, Country>();
-  public provinces: Map<String, Province> = new Map<String, Province>();
+  public countries: Map<string, Country> = new Map<string, Country>();
+  public provinces: Map<string, Province> = new Map<string, Province>();
   public diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
-  public events: Array<MyEvent> = new Array<MyEvent>();
+  public events: Array<Event> = new Array<Event>();
   constructor() {}
 
   public load(json: Object) {
@@ -55,10 +54,10 @@ export default class DataManager {
   public download() {
     console.log(Object.entries(this));
     const json = JSON.stringify(this, (key, value) => {
-      if (value instanceof Map) return Object.fromEntries(value);
       if (key === "owner") return value.id;
       if (key === "color") return value.toString(16);
       if (key === "id" && typeof value === "number") return value.toString(16);
+      if (value instanceof Map) return Object.fromEntries(value);
       return value;
     });
 

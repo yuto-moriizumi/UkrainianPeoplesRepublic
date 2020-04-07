@@ -5,7 +5,7 @@ import GameManager from "../GameManager";
 import * as PIXI from "pixi.js";
 import DateCondition from "./Conditions/DateCondition";
 
-export default class Event extends PIXI.Graphics {
+export default class Event {
   private id: string;
   private title: string;
   private desc: string;
@@ -20,7 +20,8 @@ export default class Event extends PIXI.Graphics {
     if (this.fired) return;
     if (!this._condition.isValid(date)) return;
 
-    this.beginFill(0x2f2f2f);
+    const dialog = new PIXI.Graphics();
+    dialog.beginFill(0x2f2f2f);
     const renderer = GameManager.instance.game.renderer;
 
     //内容テキスト
@@ -29,35 +30,41 @@ export default class Event extends PIXI.Graphics {
       new PIXI.TextStyle({
         fill: 0xffffff,
         fontSize: 20,
+        breakWords: true,
         wordWrap: true,
         wordWrapWidth: renderer.width * 0.4,
       })
     );
-    this.addChild(message);
-
-    //サイズ決め
-    const width = message.width + 20;
-    const height = Math.max(message.height, renderer.height * 0.2);
-    this.position.set(
-      renderer.width * 0.5 - width * 0.5,
-      renderer.height * 0.5 - height * 0.5
-    );
-    this.drawRect(0, 0, width, height);
+    dialog.addChild(message);
 
     //タイトルテキスト
     const title = new PIXI.Text(
       this.title,
       new PIXI.TextStyle({ fill: 0xffffff })
     );
+
+    //サイズ決め
+    const width = message.width + 20;
+    const height = Math.max(
+      message.height + title.height + 10 + 10,
+      renderer.height * 0.2
+    );
+    dialog.position.set(
+      renderer.width * 0.5 - width * 0.5,
+      renderer.height * 0.5 - height * 0.5
+    );
+    dialog.drawRect(0, 0, width, height);
+
+    //タイトルテキスト設定
     title.anchor.set(0.5, 0);
     title.position.set(width / 2, 5);
 
     //ヘッダ
     const header = new PIXI.Graphics();
     header.beginFill(0x3f3f3f);
-    header.drawRect(0, 0, this.width, title.height + 10);
+    header.drawRect(0, 0, dialog.width, title.height + 10);
     header.addChild(title);
-    this.addChild(header);
+    dialog.addChild(header);
 
     //内容テキスト位置決め
     message.anchor.set(0.5, 0);
@@ -72,7 +79,7 @@ export default class Event extends PIXI.Graphics {
     ok.on("click", () => this.destroy());
     this.addChild(ok);*/
 
-    scene.addChild(this);
+    scene.addChild(dialog);
   }
 
   set condition(condition: any) {
@@ -86,23 +93,12 @@ export default class Event extends PIXI.Graphics {
     }
   }
 
-  public toJson(): string {
-    let optionsJson = "[";
-    const optionsJsonArray = new Array<string>();
-    this.options.forEach((option) => {
-      optionsJsonArray.push(option.toJson());
-    });
-    optionsJson += optionsJsonArray.join(",") + "]";
-    return (
-      "{" +
-      [
-        '"id":' + this.id,
-        '"title":' + this.title,
-        '"desc":' + this.desc,
-        '"pictureSrc":' + this.picture,
-        '"options":' + optionsJson,
-      ].join(",") +
-      "}"
+  public toJSON(): object {
+    return Object.fromEntries(
+      Object.entries(this).map(([key, value]) => {
+        if (key.startsWith("_")) return [key.substr(1), value];
+        return [key, value];
+      })
     );
   }
 }

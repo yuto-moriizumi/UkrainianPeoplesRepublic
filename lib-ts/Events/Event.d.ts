@@ -1,6 +1,5 @@
 import MainScene from "../MainScene";
-import * as PIXI from "pixi.js";
-export default class Event extends PIXI.Graphics {
+export default class Event {
     private id;
     private title;
     private desc;
@@ -10,5 +9,5 @@ export default class Event extends PIXI.Graphics {
     private options;
     dispatch(scene: MainScene, date: Date): void;
     set condition(condition: any);
-    toJson(): string;
+    toJSON(): object;
 }

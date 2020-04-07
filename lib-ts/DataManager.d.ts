@@ -1,12 +1,12 @@
 import Country from "./Country";
 import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTie";
-import MyEvent from "./Events/Event";
+import Event from "./Events/Event";
 export default class DataManager {
-    countries: Map<String, Country>;
-    provinces: Map<String, Province>;
+    countries: Map<string, Country>;
+    provinces: Map<string, Province>;
     diplomacy: Array<DiplomaticTie>;
-    events: Array<MyEvent>;
+    events: Array<Event>;
     constructor();
     load(json: Object): void;
     download(): void;

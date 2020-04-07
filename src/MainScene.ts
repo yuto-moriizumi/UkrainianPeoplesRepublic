@@ -13,6 +13,7 @@ import Sidebar from "./Sidebar";
 import DiplomaticSidebar from "./DiplomaticSidebar";
 import Timer from "./Timer";
 import EventDispatcher from "./Events/EventDispacher";
+import Event from "./Events/Event";
 
 export default class MainScene extends Scene implements Selectable {
   private playCountry: Country;
@@ -79,7 +80,7 @@ export default class MainScene extends Scene implements Selectable {
 
     //イベント発火処理
     GameManager.instance.data.events.forEach((event: Event) => {
-      event.dispatch(this.scene, date);
+      event.dispatch(this, this.timer.getDate());
     });
   }
 

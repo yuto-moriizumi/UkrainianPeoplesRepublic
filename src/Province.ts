@@ -4,6 +4,7 @@ import GameManager from "./GameManager";
 export default class Province {
   public id: number;
   public owner: Country;
+  
   constructor(id: string, obj: any) {
     this.id = parseInt(id, 16);
     this.owner = GameManager.instance.data.countries.get(obj.owner);
