@@ -6,8 +6,10 @@ export default class Event {
     private picture;
     private fired;
     private _condition;
-    private options;
+    private _options;
     dispatch(scene: MainScene, date: Date): void;
     set condition(condition: any);
+    set options(options: Array<any>);
+    get options(): Array<any>;
     toJSON(): object;
 }

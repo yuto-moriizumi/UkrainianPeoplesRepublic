@@ -1,12 +1,14 @@
 import DiplomaticTie from "./DiplomaticTie";
-export default class Country {
+import JsonObject from "./JsonObject";
+export default class Country extends JsonObject {
     id: string;
-    color: number;
+    private _color;
     name: string;
     flag: string;
     private diplomaticTies;
-    constructor(id: string, obj: any);
     addDiplomaticRelation(tie: DiplomaticTie): void;
     getDiplomacy(): DiplomaticTie[];
-    toJson(): string;
+    set color(color: string);
+    getColor(): number;
+    createEntries(): any[][];
 }

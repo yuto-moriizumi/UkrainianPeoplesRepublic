@@ -4,6 +4,7 @@ import MainScene from "../MainScene";
 import GameManager from "../GameManager";
 import * as PIXI from "pixi.js";
 import DateCondition from "./Conditions/DateCondition";
+import Button from "../Button";
 
 export default class Event {
   private id: string;
@@ -12,13 +13,15 @@ export default class Event {
   private picture: string;
   private fired: boolean = false;
   private _condition: Condition;
-  private options: Array<Option> = new Array<Option>();
+  private _options: Array<Option> = new Array<Option>();
 
   public dispatch(scene: MainScene, date: Date) {
-    console.log("dispatchOK?", this.title);
+    //console.log("dispatchOK?", this.title);
 
     if (this.fired) return;
     if (!this._condition.isValid(date)) return;
+
+    this.fired = true;
 
     const dialog = new PIXI.Graphics();
     dialog.beginFill(0x2f2f2f);
@@ -46,7 +49,12 @@ export default class Event {
     //サイズ決め
     const width = message.width + 20;
     const height = Math.max(
-      message.height + title.height + 10 + 10,
+      message.height +
+        title.height +
+        10 +
+        10 +
+        10 +
+        (title.height + 5) * this.options.length,
       renderer.height * 0.2
     );
     dialog.position.set(
@@ -79,6 +87,19 @@ export default class Event {
     ok.on("click", () => this.destroy());
     this.addChild(ok);*/
 
+    //オプションボタン
+    this.options.forEach((option: Option, index: number) => {
+      const button = new Button(option.getTitle(), dialog.width * 0.8);
+      button.position.set(
+        dialog.width * 0.1,
+        message.height + title.height + 10 + 10 + 5 + (title.height + 5) * index
+      );
+      button.on("click", () => {
+        dialog.destroy();
+      });
+      dialog.addChild(button);
+    });
+
     scene.addChild(dialog);
   }
 
@@ -91,6 +112,16 @@ export default class Event {
       default:
         throw new Error("一致する条件クラスが見つかりませんでした:");
     }
+  }
+
+  set options(options: Array<any>) {
+    this._options = options.map((option) =>
+      Object.assign(new Option(), option)
+    );
+  }
+
+  get options() {
+    return this._options;
   }
 
   public toJSON(): object {

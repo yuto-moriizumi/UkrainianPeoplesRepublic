@@ -1,6 +1,7 @@
-import Button from "../Button";
-export default class Option extends Button {
+export default class Option {
     private title;
-    private effects;
+    private _effects;
+    set effects(effects: Array<any>);
+    getTitle(): string;
     toJson(): string;
 }

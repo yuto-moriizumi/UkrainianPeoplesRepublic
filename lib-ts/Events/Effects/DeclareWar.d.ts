@@ -1,10 +1,9 @@
 import Effect from "./Effect";
-import Country from "../../Country";
 export default class DeclareWar extends Effect {
-    private root;
-    private target;
-    constructor(root: Country, target: Country);
+    private type;
+    private _root;
+    private _target;
     activate(): void;
-    static parseJson(string: string): DeclareWar;
-    toJson(): string;
+    set root(country: object);
+    set target(country: object);
 }

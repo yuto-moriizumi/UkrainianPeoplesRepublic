@@ -98,7 +98,7 @@ export default class MyMap extends PIXI.Sprite {
       province = new Province(provinceId, {});
       province.setOwner(GameManager.instance.data.countries.get("Rebels"));
       data.provinces.set(provinceId, province);
-      this.replacements.push([province.id, province.owner.color]);
+      this.replacements.push([province.id, province.owner.getColor()]);
       this.update();
     }
     //プロヴィンスを選択
@@ -129,7 +129,7 @@ export default class MyMap extends PIXI.Sprite {
     this.replacements = [];
     GameManager.instance.data.provinces.forEach((province) => {
       //console.log("replace", [province.id, province.owner.color]);
-      this.replacements.push([province.id, province.owner.color]);
+      this.replacements.push([province.id, province.owner.getColor()]);
     });
     /*
      * 注意 - どういうわけか、replacementsの長さが1以下だと正しく動作しなくなる

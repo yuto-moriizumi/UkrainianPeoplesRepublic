@@ -1,17 +1,13 @@
 import DiplomaticTie from "./DiplomaticTie";
+import JsonObject from "./JsonObject";
+import * as PIXI from "pixi.js";
 
-export default class Country {
+export default class Country extends JsonObject {
   public id: string;
-  public color: number;
+  private _color: number;
   public name: string;
   public flag: string;
   private diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
-  constructor(id: string, obj: any) {
-    this.id = id;
-    this.color = parseInt(obj.color, 16);
-    this.name = obj.name;
-    this.flag = obj.flag;
-  }
 
   public addDiplomaticRelation(tie: DiplomaticTie) {
     this.diplomaticTies.push(tie);
@@ -21,15 +17,18 @@ export default class Country {
     return this.diplomaticTies;
   }
 
-  public toJson(): string {
-    return (
-      `"${this.id}":{` +
-      [
-        `"name":"${this.name}"`,
-        `"color":"${this.color.toString(16)}"`,
-        `"flag":"${this.flag}"`,
-      ].join(",") +
-      "}"
-    );
+  public set color(color: string) {
+    this._color = parseInt(color, 16);
+  }
+
+  public getColor() {
+    return this._color;
+  }
+
+  public createEntries() {
+    return super.createEntries().map(([key, value]) => {
+      if (key === "color") return [key, value.toString(16)];
+      return [key, value];
+    });
   }
 }

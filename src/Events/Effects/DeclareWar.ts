@@ -1,21 +1,19 @@
 import Effect from "./Effect";
 import Country from "../../Country";
-import War from "War";
+import War from "../../War";
 import GameManager from "../../GameManager";
 
 export default class DeclareWar extends Effect {
-  private root: Country;
-  private target: Country;
-  constructor(root: Country, target: Country) {
-    super();
-    this.root = root;
-    this.target = target;
-  }
+  private type = this.constructor.name;
+  private _root: Country;
+  private _target: Country;
+
   public activate() {
-    const war = new War(this.root, this.target);
+    const war = new War(this._root, this._target);
     war.activate();
   }
 
+  /*
   public static parseJson(string: string): DeclareWar {
     const json = JSON.parse(string);
     const countries = GameManager.instance.data.countries;
@@ -23,8 +21,17 @@ export default class DeclareWar extends Effect {
       countries.get(json["root"]),
       countries.get(json["target"])
     );
+  }*/
+
+  set root(country: object) {
+    this._root = Object.assign(new Country(), country);
   }
 
+  set target(country: object) {
+    this._target = Object.assign(new Country(), country);
+  }
+
+  /*
   public toJson(): string {
     return (
       "{" +
@@ -35,5 +42,5 @@ export default class DeclareWar extends Effect {
       ].join(",") +
       "}"
     );
-  }
+  }*/
 }

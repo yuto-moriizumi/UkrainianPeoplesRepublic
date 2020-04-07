@@ -14,7 +14,10 @@ export default class DataManager {
   public load(json: Object) {
     //国読み込み
     for (const id in json["countries"]) {
-      this.countries.set(id, new Country(id, json["countries"][id]));
+      this.countries.set(
+        id,
+        Object.assign(new Country(), json["countries"][id])
+      );
     }
     console.log("countries loaded:", this.countries);
 
