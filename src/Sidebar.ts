@@ -46,5 +46,8 @@ export default class Sidebar extends PIXI.Graphics {
     );
     xButton.width = xButton.height = xButtonSize;
     header.addChild(xButton);
+
+    //クリック判定が貫通しないようにする
+    this.interactive = true;
   }
 }

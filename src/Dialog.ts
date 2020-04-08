@@ -55,5 +55,8 @@ export default class Dialog extends PIXI.Graphics {
     ok.buttonMode = true;
     ok.on("click", () => this.destroy());
     this.addChild(ok);
+
+    //クリック判定が貫通しないようにする
+    this.interactive = true;
   }
 }

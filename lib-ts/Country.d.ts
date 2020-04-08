@@ -10,5 +10,6 @@ export default class Country extends JsonObject {
     getDiplomacy(): DiplomaticTie[];
     set color(color: string);
     getColor(): number;
+    hasWarWith(country: Country): boolean;
     createEntries(): any[][];
 }

@@ -1,10 +1,10 @@
 import Effect from "./Effect";
-export default class DeclareWar extends Effect {
+export default class SetOwner extends Effect {
     private type;
     private _root;
-    private _target;
+    private _provinces;
     activate(): void;
     set root(countryId: string);
-    set target(countryId: string);
+    set provinces(provinceIds: Array<string>);
     createEntries(): any[][];
 }

@@ -13,34 +13,18 @@ export default class DeclareWar extends Effect {
     war.activate();
   }
 
-  /*
-  public static parseJson(string: string): DeclareWar {
-    const json = JSON.parse(string);
-    const countries = GameManager.instance.data.countries;
-    return new DeclareWar(
-      countries.get(json["root"]),
-      countries.get(json["target"])
-    );
-  }*/
-
-  set root(country: object) {
-    this._root = Object.assign(new Country(), country);
+  set root(countryId: string) {
+    this._root = GameManager.instance.data.countries.get(countryId);
   }
 
-  set target(country: object) {
-    this._target = Object.assign(new Country(), country);
+  set target(countryId: string) {
+    this._target = GameManager.instance.data.countries.get(countryId);
   }
 
-  /*
-  public toJson(): string {
-    return (
-      "{" +
-      [
-        '"type":' + this.constructor.name,
-        '"root":' + this.root.id,
-        '"target":' + this.target.id,
-      ].join(",") +
-      "}"
-    );
-  }*/
+  public createEntries() {
+    return super.createEntries().map(([key, value]) => {
+      if (value instanceof Country) return [key, value.id];
+      return [key, value];
+    });
+  }
 }

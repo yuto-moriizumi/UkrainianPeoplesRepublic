@@ -18,5 +18,8 @@ export default class Header extends PIXI.Graphics {
     const myFlag = new Flag(this.myCountry);
     myFlag.scale.set(Header.DEFAULT_HEIGHT / myFlag.height);
     this.addChild(myFlag);
+
+    //クリック判定が貫通しないようにする
+    this.interactive = true;
   }
 }

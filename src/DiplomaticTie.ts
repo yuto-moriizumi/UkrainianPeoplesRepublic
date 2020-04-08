@@ -17,12 +17,14 @@ export default abstract class DiplomaticTie {
     return this.target;
   }
 
+  public getOpponent(country: Country) {
+    return this.getRoot() === country ? this.getTarget() : this.getRoot();
+  }
+
   public activate() {
     if (this.active) return;
     this.active = true;
     this.root.addDiplomaticRelation(this);
     this.target.addDiplomaticRelation(this);
   }
-
-  public abstract toJson(): string;
 }

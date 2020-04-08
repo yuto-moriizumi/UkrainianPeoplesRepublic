@@ -86,13 +86,11 @@ export default class DiplomaticSidebar extends Sidebar {
         );
         return;
       }
-      this.scene.addChild(
-        new Dialog("宣戦布告！", target.name + "に宣戦布告しました！")
-      );
-      GameManager.instance.data.diplomacy.push(
-        new War(this.scene.getMyCountry(), target)
-      );
+      if (this.scene.getMyCountry().hasWarWith(target)) return;
+      const war = new War(this.scene.getMyCountry(), target);
+      GameManager.instance.data.diplomacy.push(war);
       this.scene.openDiplomacySidebar(target);
+      war.activate();
     });
     actionBox.addChild(declareWar);
   }

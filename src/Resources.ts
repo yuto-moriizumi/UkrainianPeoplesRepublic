@@ -13,6 +13,10 @@ const Resource = Object.freeze({
   plus: "+.png",
   minus: "-.png",
   savedata: "data.json",
+  se: {
+    news: "world_news.mp3",
+    click_ok: "click_ok.mp3",
+  },
 });
 
 export default Resource;

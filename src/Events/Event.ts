@@ -5,6 +5,8 @@ import GameManager from "../GameManager";
 import * as PIXI from "pixi.js";
 import DateCondition from "./Conditions/DateCondition";
 import Button from "../Button";
+import Sound from "../Sound";
+import Resource from "../Resources";
 
 export default class Event {
   private id: string;
@@ -66,6 +68,7 @@ export default class Event {
     //タイトルテキスト設定
     title.anchor.set(0.5, 0);
     title.position.set(width / 2, 5);
+    title.width = Math.min(dialog.width - 10, title.width);
 
     //ヘッダ
     const header = new PIXI.Graphics();
@@ -95,12 +98,34 @@ export default class Event {
         message.height + title.height + 10 + 10 + 5 + (title.height + 5) * index
       );
       button.on("click", () => {
+        option.takeEffects();
         dialog.destroy();
+
+        //SE再生
+        const sound = new Sound(
+          (GameManager.instance.game.loader.resources[
+            Resource.se.click_ok
+          ] as any).buffer
+        );
+        sound.volume = 0.5;
+        sound.play(false);
       });
       dialog.addChild(button);
     });
 
     scene.addChild(dialog);
+
+    //クリック判定が貫通しないようにする
+    dialog.interactive = true;
+
+    //SE再生
+    const sound = new Sound(
+      (GameManager.instance.game.loader.resources[
+        Resource.se.news
+      ] as any).buffer
+    );
+    sound.volume = 0.5;
+    sound.play(false);
   }
 
   set condition(condition: any) {

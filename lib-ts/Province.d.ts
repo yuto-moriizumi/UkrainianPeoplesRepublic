@@ -1,8 +1,9 @@
 import Country from "./Country";
-export default class Province {
+import JsonObject from "./JsonObject";
+export default class Province extends JsonObject {
     id: number;
     owner: Country;
     constructor(id: string, obj: any);
     setOwner(owner: Country): void;
-    toJson(): string;
+    createEntries(): any[][];
 }

@@ -1,6 +1,7 @@
 import DiplomaticTie from "./DiplomaticTie";
 import JsonObject from "./JsonObject";
 import * as PIXI from "pixi.js";
+import War from "./War";
 
 export default class Country extends JsonObject {
   public id: string;
@@ -23,6 +24,17 @@ export default class Country extends JsonObject {
 
   public getColor() {
     return this._color;
+  }
+
+  public hasWarWith(country: Country): boolean {
+    return (
+      this.diplomaticTies.find((tie: DiplomaticTie) => {
+        if (!(tie instanceof War)) return false;
+        const opponent = tie.getOpponent(this);
+        if (opponent === country) return true;
+        return false;
+      }) !== undefined
+    );
   }
 
   public createEntries() {

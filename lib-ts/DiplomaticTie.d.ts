@@ -6,6 +6,6 @@ export default abstract class DiplomaticTie {
     constructor(root: Country, target: Country);
     getRoot(): Country;
     getTarget(): Country;
+    getOpponent(country: Country): Country;
     activate(): void;
-    abstract toJson(): string;
 }

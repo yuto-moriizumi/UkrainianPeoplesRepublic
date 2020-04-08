@@ -1,7 +1,13 @@
-export default class Option {
+import JsonObject from "../JsonObject";
+export default class Option extends JsonObject {
     private title;
     private _effects;
-    set effects(effects: Array<any>);
+    /**
+     * Object.assignで使用するためのセッタ
+     * @private
+     * @memberof Option
+     */
+    private set effects(value);
+    takeEffects(): void;
     getTitle(): string;
-    toJson(): string;
 }

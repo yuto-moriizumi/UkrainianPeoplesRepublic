@@ -11,5 +11,9 @@ declare const Resource: Readonly<{
     plus: string;
     minus: string;
     savedata: string;
+    se: {
+        news: string;
+        click_ok: string;
+    };
 }>;
 export default Resource;

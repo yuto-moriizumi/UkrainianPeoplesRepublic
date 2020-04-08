@@ -3,15 +3,16 @@ import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTie";
 import War from "./War";
 import Event from "./Events/Event";
+import JsonObject from "./JsonObject";
+import * as PIXI from "pixi.js";
 
-export default class DataManager {
+export default class DataManager extends JsonObject {
   public countries: Map<string, Country> = new Map<string, Country>();
   public provinces: Map<string, Province> = new Map<string, Province>();
   public diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   public events: Array<Event> = new Array<Event>();
-  constructor() {}
 
-  public load(json: Object) {
+  public load(json: object) {
     //国読み込み
     for (const id in json["countries"]) {
       this.countries.set(
@@ -56,13 +57,7 @@ export default class DataManager {
 
   public download() {
     console.log(Object.entries(this));
-    const json = JSON.stringify(this, (key, value) => {
-      if (key === "owner") return value.id;
-      if (key === "color") return value.toString(16);
-      if (key === "id" && typeof value === "number") return value.toString(16);
-      if (value instanceof Map) return Object.fromEntries(value);
-      return value;
-    });
+    const json = JSON.stringify(this);
 
     const blob = new Blob([json], {
       type: "application/json",
@@ -71,5 +66,12 @@ export default class DataManager {
     a.href = URL.createObjectURL(blob);
     a.download = "data.json";
     a.click();
+  }
+
+  public createEntries() {
+    return super.createEntries().map(([key, value]) => {
+      if (value instanceof Map) return [key, Object.fromEntries(value)];
+      return [key, value];
+    });
   }
 }

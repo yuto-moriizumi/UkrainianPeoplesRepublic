@@ -71,7 +71,7 @@ export default class SelectScene extends Scene implements Selectable {
     this.selectButton.on("click", () => {
       this.selectAsMyCountry();
     });
-    //this.addChild(this.selectButton);
+    this.addChild(this.selectButton);
 
     //配列化国に追加
     GameManager.instance.data.countries.forEach((country) => {
@@ -89,11 +89,11 @@ export default class SelectScene extends Scene implements Selectable {
         this.countries[++this.changeCountryIndex % this.countries.length]
       );
     });
-    //this.addChild(changeButton);
+    this.addChild(changeButton);
 
     //選択ボタン（本番用）
     const selectButton = new Button("選択する", 200, 100);
-    selectButton.position.set(0, 150);
+    selectButton.position.set(0, 300);
     selectButton.on("click", () => {
       this.confirm();
     });

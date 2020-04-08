@@ -16,6 +16,7 @@ import EventDispatcher from "./Events/EventDispacher";
 import Event from "./Events/Event";
 
 export default class MainScene extends Scene implements Selectable {
+  public static instance: MainScene;
   private playCountry: Country;
   private map: MyMap;
   private sidebar: Sidebar;
@@ -24,10 +25,14 @@ export default class MainScene extends Scene implements Selectable {
 
   constructor(playCountry: Country) {
     super();
+    if (MainScene.instance) {
+      throw new Error("MainScene can be instantiate only once");
+    }
     this.transitionIn = new Fade(1.0, 0.0, -0.02);
     this.transitionOut = new Fade(0.0, 1.0, 0.02);
     this.playCountry = playCountry;
     this.eventDispatcher = new EventDispatcher(this);
+    MainScene.instance = this;
   }
 
   //リソースリストを作成し返却する
@@ -37,6 +42,8 @@ export default class MainScene extends Scene implements Selectable {
     assets.push(Resource.war);
     assets.push(Resource.plus);
     assets.push(Resource.minus);
+    assets.push(Resource.se.news);
+    assets.push(Resource.se.click_ok);
     console.log(assets);
     return assets;
   }
@@ -71,6 +78,10 @@ export default class MainScene extends Scene implements Selectable {
     if (this.sidebar && this.sidebar.parent) this.sidebar.destroy();
     this.sidebar = new DiplomaticSidebar(this, country);
     this.addChild(this.sidebar);
+  }
+
+  public getMap() {
+    return this.map;
   }
 
   public update(dt: number) {
