@@ -18,16 +18,6 @@ export default class SetOwner extends Effect {
     MainScene.instance.getMap().update();
   }
 
-  /*
-  public static parseJson(string: string): DeclareWar {
-    const json = JSON.parse(string);
-    const countries = GameManager.instance.data.countries;
-    return new DeclareWar(
-      countries.get(json["root"]),
-      countries.get(json["target"])
-    );
-  }*/
-
   set root(countryId: string) {
     this._root = GameManager.instance.data.countries.get(countryId);
   }

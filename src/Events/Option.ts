@@ -3,6 +3,7 @@ import Button from "../Button";
 import DeclareWar from "./Effects/DeclareWar";
 import JsonObject from "../JsonObject";
 import SetOwner from "./Effects/SetOwner";
+import Annex from "./Effects/Annex";
 
 export default class Option extends JsonObject {
   private title: string;
@@ -20,6 +21,8 @@ export default class Option extends JsonObject {
           return Object.assign(new DeclareWar(), effect);
         case "SetOwner":
           return Object.assign(new SetOwner(), effect);
+        case "Annex":
+          return Object.assign(new Annex(), effect);
         default:
           throw new Error("一致する効果クラスが見つかりませんでした:");
       }

@@ -112,9 +112,11 @@ export default class SelectScene extends Scene implements Selectable {
       }
       moddingButton.setText("選択ツールをONに");
       console.log(
-        this.moddingProvinces.map(([value1, value2]) => {
-          return PIXI.utils.hex2string(value1.id).substr(1);
-        })
+        this.moddingProvinces
+          .map(([value1, value2]) => {
+            return `"${PIXI.utils.hex2string(value1.id).substr(1)}"`;
+          })
+          .join(",")
       );
       this.moddingProvinces.forEach(([province, owner]) => {
         province.owner = owner;

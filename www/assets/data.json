@@ -174,6 +174,69 @@
       "color": "3287af",
       "name": "エストニア共和国",
       "flag": "EST.png"
+    },
+    "DCS": {
+      "diplomaticTies": [],
+      "id": "DCS",
+      "color": "ffbfbf",
+      "name": "クールラント・ゼムガレン公国",
+      "flag": "DCS.png"
+    },
+    "UBD": {
+      "diplomaticTies": [],
+      "id": "UBD",
+      "color": "bfff",
+      "name": "バルト連合公国",
+      "flag": "UBD.png"
+    },
+    "TSR": {
+      "diplomaticTies": [],
+      "id": "TSR",
+      "color": "ff7f7f",
+      "name": "タヴリダ・ソビエト社会主義共和国",
+      "flag": "Red.png"
+    },
+    "KSR": {
+      "diplomaticTies": [],
+      "id": "KSR",
+      "color": "961e62",
+      "name": "クバーニ・ソビエト共和国",
+      "flag": "Red.png"
+    },
+    "DON": {
+      "diplomaticTies": [],
+      "id": "DON",
+      "color": "1f1fbf",
+      "name": "ドン共和国",
+      "flag": "DON.png"
+    },
+    "GEO": {
+      "diplomaticTies": [],
+      "id": "GEO",
+      "color": "ff3f1f",
+      "name": "グルジア民主共和国",
+      "flag": "GEO.png"
+    },
+    "AZR": {
+      "diplomaticTies": [],
+      "id": "AZR",
+      "color": "ff7f1f",
+      "name": "アゼルバイジャン民主共和国",
+      "flag": "AZR.png"
+    },
+    "ARM": {
+      "diplomaticTies": [],
+      "id": "ARM",
+      "color": "ffff1f",
+      "name": "アルメニア共和国",
+      "flag": "ARM.png"
+    },
+    "MRC": {
+      "diplomaticTies": [],
+      "id": "MRC",
+      "color": "1fff1f",
+      "name": "北カフカース山岳共和国",
+      "flag": "MRC.png"
     }
   },
   "provinces": {
@@ -205,13 +268,13 @@
     "626998": { "owner": "AHE" },
     "702020": { "owner": "BUL" },
     "704020": { "owner": "Rebels" },
-    "706060": { "owner": "CPR" },
+    "706060": { "owner": "USSR" },
     "707040": { "owner": "AHE" },
     "712161": { "owner": "MDR" },
     "716121": { "owner": "OSR" },
     "716141": { "owner": "AHE" },
     "716180": { "owner": "AHE" },
-    "726291": { "owner": "UPR" },
+    "726291": { "owner": "UPRS" },
     "785460": { "owner": "Rebels" },
     "785849": { "owner": "TUR" },
     "795368": { "owner": "GER" },
@@ -244,8 +307,8 @@
     "015080": { "owner": "USSR" },
     "016161": { "owner": "USSR" },
     "019041": { "owner": "RPG" },
-    "31e0e0": { "owner": "CPR" },
-    "b0dfdf": { "owner": "CPR" },
+    "31e0e0": { "owner": "USSR" },
+    "b0dfdf": { "owner": "USSR" },
     "9021a0": { "owner": "AHE" },
     "b06161": { "owner": "AHE" },
     "d0e061": { "owner": "AHE" },
@@ -290,21 +353,21 @@
     "10dfdf": { "owner": "AHE" },
     "9061e0": { "owner": "AHE" },
     "1161e0": { "owner": "AHE" },
-    "7141e0": { "owner": "UPR" },
-    "f061e0": { "owner": "UPR" },
+    "7141e0": { "owner": "UPRS" },
+    "f061e0": { "owner": "UPRS" },
     "40dfdf": { "owner": "UPRS" },
     "b0e0a0": { "owner": "MDR" },
     "8aca9b": { "owner": "MDR" },
     "b02161": { "owner": "OSR" },
     "71e021": { "owner": "OSR" },
     "f0e0a0": { "owner": "OSR" },
-    "ef6020": { "owner": "CPR" },
-    "f06161": { "owner": "CPR" },
-    "71e061": { "owner": "UPR" },
-    "71e0e0": { "owner": "UPR" },
-    "7020df": { "owner": "CPR" },
-    "f0e061": { "owner": "CPR" },
-    "7161e0": { "owner": "UPR" },
+    "ef6020": { "owner": "USSR" },
+    "f06161": { "owner": "USSR" },
+    "71e061": { "owner": "UPRS" },
+    "71e0e0": { "owner": "UPRS" },
+    "7020df": { "owner": "USSR" },
+    "f0e061": { "owner": "USSR" },
+    "7161e0": { "owner": "UPRS" },
     "80d080": { "owner": "RPG" },
     "c05001": { "owner": "RPG" },
     "c0d001": { "owner": "USSR" },
@@ -317,21 +380,21 @@
     "41a0e0": { "owner": "USSR" },
     "80dfdf": { "owner": "USSR" },
     "8061e0": { "owner": "USSR" },
-    "bc0441": { "owner": "UPR" },
+    "bc0441": { "owner": "UPRS" },
     "02e061": { "owner": "USSR" },
     "c0a060": { "owner": "USSR" },
     "c0df60": { "owner": "USSR" },
     "bfdf20": { "owner": "GER" },
-    "f061a0": { "owner": "UPR" },
-    "02e0e0": { "owner": "UPR" },
-    "1121a0": { "owner": "UPR" },
-    "e08061": { "owner": "UPR" },
+    "f061a0": { "owner": "UPRS" },
+    "02e0e0": { "owner": "UPRS" },
+    "1121a0": { "owner": "UPRS" },
+    "e08061": { "owner": "UPRS" },
     "e001e0": { "owner": "UPR" },
     "71e0a0": { "owner": "UPR" },
-    "7161a0": { "owner": "UPR" },
-    "f0e021": { "owner": "UPR" },
+    "7161a0": { "owner": "UPRS" },
+    "f0e021": { "owner": "UPRS" },
     "c0e0e0": { "owner": "UPRS" },
-    "a0a0a0": { "owner": "UPRS" },
+    "a0a0a0": { "owner": "USSR" },
     "21a0a0": { "owner": "USSR" },
     "a020a0": { "owner": "USSR" },
     "c020e0": { "owner": "USSR" },
@@ -664,7 +727,8 @@
       "options": [
         {
           "effects": [
-            { "type": "SetOwner", "provinces": ["405000"], "root": "KPR" }
+            { "type": "SetOwner", "provinces": ["405000"], "root": "KPR" },
+            { "type": "DeclareWar", "root": "USSR", "target": "KPR" }
           ],
           "title": "OK"
         }
@@ -734,11 +798,11 @@
                 "008fbf",
                 "8090bf",
                 "bfd159",
-                "c01040",
-                "41d080"
+                "c01040"
               ],
               "root": "TCF"
-            }
+            },
+            { "type": "DeclareWar", "root": "TUR", "target": "TCF" }
           ],
           "title": "OK"
         }
@@ -768,6 +832,259 @@
       "desc": "タリン市長とエストニア・ボリシェビキの権力闘争の後、ドイツ軍の支援もあってエストニア共和国が独立した。しかし、国土の南半分はドイツが樹立した別の国家に占領されたままだ。",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-02-26 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": ["0121a0", "bf6060", "8021a0", "00a0a0", "bf2060"],
+              "root": "UBD"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "udb_independence",
+      "title": "バルト連合公国が独立",
+      "desc": "ドイツ軍の進撃を受けて、バルト・ドイツ人貴族と亡命ロシア貴族が中心となってバルト連合公国が成立した。ドイツ軍の勢力圏は益々拡大する一方だ。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-03-08 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": ["4a8e5d", "806121", "02e021"],
+              "root": "DCS"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "dcs_independence",
+      "title": "クールラント・ゼムガレン公国が独立",
+      "desc": "ドイツ軍の進撃を受けて、バルト・ドイツ人貴族が中心となってクールラント公国が成立した。公位はヴィルヘルム2世が有している。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-03-08 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [{ "type": "DeclareWar", "root": "GER", "target": "OSR" }],
+          "title": "OK"
+        }
+      ],
+      "id": "ger_invasion_osr",
+      "title": "ドイツ軍がオデッサへ侵攻",
+      "desc": "ドイツ軍は東部への拡大を続けている。ウクライナ南部に駐留するドイツ軍部隊は、さらに南東のオデッサへ侵攻することを決定した。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-03-12 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": ["31e0e0", "b0dfdf", "ef6020", "f06161", "706060"],
+              "root": "TSR"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "tsr_independence",
+      "title": "タヴリダ共和国が成立",
+      "desc": "シンフェロポリにおけるボリシェビキの会談で、旧クリミア人民共和国の領域にタヴリダソビエト社会主義共和国が設置されることが決まった。しかし、北部の領域は他のソビエト共和国と被っている。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-03-21 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            { "type": "DeclareWar", "root": "UPRS", "target": "UPR" },
+            { "type": "DeclareWar", "root": "GER", "target": "UPRS" }
+          ],
+          "title": "国土を取り戻そう！"
+        }
+      ],
+      "id": "ukr_civil_war",
+      "title": "1918年のウクライナ",
+      "desc": "ウクライナ人民共和国は国土の大半を失った。大半の領土はソビエト派が掌握しており、いまや風前の灯火である。しかしながら、恐れることは無い。ドイツ軍が東部への進軍を決定したのだ！",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-01-23 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": [
+                "bfdf20",
+                "416161",
+                "e06176",
+                "80e0a0",
+                "806161",
+                "0161e0",
+                "80e061",
+                "80dfdf",
+                "41a0e0",
+                "016161",
+                "c0a0e0",
+                "02e061",
+                "8061e0"
+              ],
+              "root": "BPR"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "bpr_independence",
+      "title": "ベラルーシ人民共和国が成立",
+      "desc": "第一次世界大戦中の1918年3月25日、ベラルーシがドイツ軍に占領されている時にブレスト＝リトフスク条約によって独立が宣言された。ブレスト＝リトフスク条約の第3条でその領土が規定されている。ベラルーシ人が人口の大半を占めている地域をその領土としたが、リトアニア人やポーランド人、ユダヤ人なども多く居住していた。一部のユダヤ人はロシア語を母語とし、それ以外のユダヤ人はイディッシュ語を話した。 ",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-03-25 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [{ "type": "Annex", "root": "ROM", "target": "MDR" }],
+          "title": "OK"
+        }
+      ],
+      "id": "rom_annex_mdr",
+      "title": "ルーマニア王国がモルダヴィア民主共和国を統合",
+      "desc": "元々ルーマニア系民族で構成されるモルダヴィアであったが、ロシアからの離脱が決定してからというもの、国民はルーマニアとの連合を強く望むようになった。これに促され、1918年4月9日、スファトゥル・ツァーリーはルーマニアとの連合の票決を行い86人の賛成、3人の反対、36人の棄権で連合を行うことが決定された。地方自治、ベッサラビア議会の継続、地方議会と行政体としての権限を条件にルーマニアと交渉を行い、スファトゥル・ツァーリーは法的にモルダヴィア民主共和国を終焉させ、ベッサラビアとルーマニア王国の連合を宣言した。 ",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-04-09 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": [
+                "30e0a0",
+                "31e021",
+                "2164e0",
+                "b0e020",
+                "e0a321",
+                "e02121",
+                "51e021",
+                "d9e021",
+                "b06121"
+              ],
+              "root": "ROM"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "bucharest_peace",
+      "title": "ブカレスト講和条約",
+      "desc": "1918年5月7日、ロシアが革命で戦争を離脱すると、後ろ盾を失ったルーマニア軍と政府は同盟軍に降伏した。直ちにブカレスト講和条約が締結され、ルーマニアは同盟軍の占領地として総督府が設置された。ルーマニア降伏は膨大な穀物と石油を同盟軍に与え、連合軍にとって不利な状態を与えた。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-05-07 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": ["405000", "80d080", "c05001"],
+              "root": "KSR"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "ksr_form",
+      "title": "クバーニ・ソビエト共和国の成立",
+      "desc": "1918年4月13日にクバーニ人民共和国に反して誕生した。クバン全土が含まれていた。クバーニ人民共和国はタタールの政権であったために、農民はソビエト側に付いた。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-04-13 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": ["00d080", "c05180", "015080", "e06020", "805180"],
+              "root": "DON"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "don_independence",
+      "title": "ドン共和国が独立",
+      "desc": "1918年5月18日、クルークと呼ばれたドン・コサックの会議に独立が宣言された。この出来事の後、ドン・ソビエト共和国はドン軍管州から一掃された。ドン共和国はドン地域を領土とし、ノヴォチェルカースクを首都とすることを宣言した。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-05-18 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            { "type": "Annex", "root": "TUR", "target": "TCF" },
+            {
+              "type": "SetOwner",
+              "provinces": [
+                "40d001",
+                "801000",
+                "011141",
+                "f0e0df",
+                "c0cf80",
+                "809001",
+                "9bc69b"
+              ],
+              "root": "GEO"
+            },
+            {
+              "type": "SetOwner",
+              "provinces": ["008fbf", "007060", "809040", "8090bf", "80d041"],
+              "root": "AZR"
+            },
+            {
+              "type": "SetOwner",
+              "provinces": ["005000", "805000", "30df60"],
+              "root": "ARM"
+            },
+            {
+              "type": "SetOwner",
+              "provinces": ["c01040", "bfd159"],
+              "root": "MRC"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "kafkas_collapce",
+      "title": "カフカース連邦が崩壊",
+      "desc": "ザカフカース議会は軍事力を持たなかったため、バトゥーミにおいてドイツ・トルコ軍司令部と交渉に入った。交渉中、3民族の意見の相違（アルメニアとグルジアは親独、アゼルバイジャンは親土など）が明らかになったため、3民族の国民会議は独立国家の建国に賛成した。また、ドイツ・トルコ側も連邦共和国の廃止に賛成した。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-05-26 00:00" }
     }
   ]
 }
