@@ -14,6 +14,7 @@ declare const Resource: Readonly<{
     se: {
         news: string;
         click_ok: string;
+        declare_war: string;
     };
 }>;
 export default Resource;

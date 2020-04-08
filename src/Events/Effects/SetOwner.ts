@@ -4,6 +4,7 @@ import War from "../../War";
 import GameManager from "../../GameManager";
 import Province from "../../Province";
 import MainScene from "../../MainScene";
+import * as PIXI from "pixi.js";
 
 export default class SetOwner extends Effect {
   private type = this.constructor.name;

@@ -153,6 +153,27 @@
       "color": "3971e4",
       "name": "フランス共和国",
       "flag": "FRA.png"
+    },
+    "LIT": {
+      "diplomaticTies": [],
+      "id": "LIT",
+      "color": "dbdb77",
+      "name": "リトアニア王国",
+      "flag": "LIT.png"
+    },
+    "TCF": {
+      "diplomaticTies": [],
+      "id": "TCF",
+      "color": "fbdb77",
+      "name": "ザカフカース民主連邦共和国",
+      "flag": "TCF.png"
+    },
+    "EST": {
+      "diplomaticTies": [],
+      "id": "EST",
+      "color": "3287af",
+      "name": "エストニア共和国",
+      "flag": "EST.png"
     }
   },
   "provinces": {
@@ -170,9 +191,9 @@
     "401080": { "owner": "TUR" },
     "405000": { "owner": "RPG" },
     "405080": { "owner": "RPG" },
-    "406020": { "owner": "BPR" },
+    "406020": { "owner": "GER" },
     "409000": { "owner": "TUR" },
-    "416161": { "owner": "BPR" },
+    "416161": { "owner": "GER" },
     "506020": { "owner": "GRE" },
     "516161": { "owner": "AHE" },
     "554866": { "owner": "Sea" },
@@ -196,16 +217,16 @@
     "795368": { "owner": "GER" },
     "801000": { "owner": "RPG" },
     "801040": { "owner": "USSR" },
-    "801080": { "owner": "TUR" },
+    "801080": { "owner": "RPG" },
     "802161": { "owner": "POL" },
-    "805000": { "owner": "TUR" },
+    "805000": { "owner": "RPG" },
     "805140": { "owner": "USSR" },
     "805180": { "owner": "USSR" },
     "806121": { "owner": "GER" },
-    "806161": { "owner": "BPR" },
+    "806161": { "owner": "GER" },
     "809000": { "owner": "TUR" },
     "809001": { "owner": "RPG" },
-    "809040": { "owner": "TUR" },
+    "809040": { "owner": "RPG" },
     "809080": { "owner": "TUR" },
     "835452": { "owner": "RPG" },
     "846165": { "owner": "AHE" },
@@ -213,15 +234,15 @@
     "906060": { "owner": "POL" },
     "906121": { "owner": "AHE" },
     "945000": { "owner": "GER" },
-    "001080": { "owner": "TUR" },
-    "005000": { "owner": "TUR" },
-    "007060": { "owner": "TUR" },
-    "009000": { "owner": "TUR" },
+    "001080": { "owner": "RPG" },
+    "005000": { "owner": "RPG" },
+    "007060": { "owner": "RPG" },
+    "009000": { "owner": "RPG" },
     "009080": { "owner": "TUR" },
     "011141": { "owner": "RPG" },
     "015040": { "owner": "USSR" },
     "015080": { "owner": "USSR" },
-    "016161": { "owner": "BPR" },
+    "016161": { "owner": "USSR" },
     "019041": { "owner": "RPG" },
     "31e0e0": { "owner": "CPR" },
     "b0dfdf": { "owner": "CPR" },
@@ -288,19 +309,19 @@
     "c05001": { "owner": "RPG" },
     "c0d001": { "owner": "USSR" },
     "c05180": { "owner": "USSR" },
-    "80e0a0": { "owner": "BPR" },
-    "e06176": { "owner": "BPR" },
-    "80e061": { "owner": "BPR" },
-    "0161e0": { "owner": "BPR" },
-    "c0a0e0": { "owner": "BPR" },
-    "41a0e0": { "owner": "BPR" },
-    "80dfdf": { "owner": "BPR" },
-    "8061e0": { "owner": "BPR" },
+    "80e0a0": { "owner": "GER" },
+    "e06176": { "owner": "GER" },
+    "80e061": { "owner": "USSR" },
+    "0161e0": { "owner": "USSR" },
+    "c0a0e0": { "owner": "USSR" },
+    "41a0e0": { "owner": "USSR" },
+    "80dfdf": { "owner": "USSR" },
+    "8061e0": { "owner": "USSR" },
     "bc0441": { "owner": "UPR" },
-    "02e061": { "owner": "BPR" },
-    "c0a060": { "owner": "BPR" },
-    "c0df60": { "owner": "BPR" },
-    "bfdf20": { "owner": "BPR" },
+    "02e061": { "owner": "USSR" },
+    "c0a060": { "owner": "USSR" },
+    "c0df60": { "owner": "USSR" },
+    "bfdf20": { "owner": "GER" },
     "f061a0": { "owner": "UPR" },
     "02e0e0": { "owner": "UPR" },
     "1121a0": { "owner": "UPR" },
@@ -413,33 +434,33 @@
     "2073f0": { "owner": "TUR" },
     "70a020": { "owner": "TUR" },
     "40d001": { "owner": "RPG" },
-    "c09080": { "owner": "TUR" },
-    "00d000": { "owner": "TUR" },
+    "c09080": { "owner": "RPG" },
+    "00d000": { "owner": "RPG" },
     "c0cf80": { "owner": "RPG" },
-    "9bc69b": { "owner": "TUR" },
-    "80d041": { "owner": "TUR" },
-    "30df60": { "owner": "TUR" },
-    "008fbf": { "owner": "TUR" },
+    "9bc69b": { "owner": "RPG" },
+    "80d041": { "owner": "RPG" },
+    "30df60": { "owner": "RPG" },
+    "008fbf": { "owner": "RPG" },
     "8090bf": { "owner": "RPG" },
     "f0e0df": { "owner": "RPG" },
     "f02020": { "owner": "TUR" },
-    "30e0a0": { "owner": "ROM" },
+    "30e0a0": { "owner": "AHE" },
     "b0a0e0": { "owner": "ROM" },
     "f40045": { "owner": "ROM" },
     "ef2060": { "owner": "ROM" },
-    "2164e0": { "owner": "ROM" },
-    "31e021": { "owner": "ROM" },
-    "e0a321": { "owner": "ROM" },
-    "b0e020": { "owner": "ROM" },
-    "51e021": { "owner": "ROM" },
-    "e02121": { "owner": "ROM" },
-    "d9e021": { "owner": "ROM" },
+    "2164e0": { "owner": "AHE" },
+    "31e021": { "owner": "AHE" },
+    "e0a321": { "owner": "AHE" },
+    "b0e020": { "owner": "AHE" },
+    "51e021": { "owner": "AHE" },
+    "e02121": { "owner": "AHE" },
+    "d9e021": { "owner": "BUL" },
     "51a0e0": { "owner": "POL" },
     "6000df": { "owner": "POL" },
     "d0a0e0": { "owner": "POL" },
     "40df20": { "owner": "POL" },
     "4161a0": { "owner": "POL" },
-    "c06121": { "owner": "POL" },
+    "c06121": { "owner": "GER" },
     "809f60": { "owner": "GER" },
     "01e0a0": { "owner": "GER" },
     "0161a0": { "owner": "GER" },
@@ -450,13 +471,13 @@
     "4a8e5d": { "owner": "GER" },
     "02e021": { "owner": "GER" },
     "00a0a0": { "owner": "GER" },
-    "8021a0": { "owner": "GER" },
-    "bf2060": { "owner": "GER" },
-    "bf6060": { "owner": "GER" },
-    "0121a0": { "owner": "GER" },
-    "80a021": { "owner": "GER" },
-    "01a021": { "owner": "GER" },
-    "6040e0": { "owner": "GER" },
+    "8021a0": { "owner": "USSR" },
+    "bf2060": { "owner": "USSR" },
+    "bf6060": { "owner": "USSR" },
+    "0121a0": { "owner": "USSR" },
+    "80a021": { "owner": "USSR" },
+    "01a021": { "owner": "USSR" },
+    "6040e0": { "owner": "USSR" },
     "c020a0": { "owner": "GER" },
     "4121a0": { "owner": "GER" },
     "40a0a0": { "owner": "GER" },
@@ -581,14 +602,14 @@
     "02c8c8": { "owner": "Sea" },
     "02dec8": { "owner": "Sea" },
     "02c8fa": { "owner": "Sea" },
-    "9061a0": { "owner": "SER" },
-    "90a061": { "owner": "SER" },
-    "10a060": { "owner": "SER" },
-    "edba20": { "owner": "SER" },
-    "d021e0": { "owner": "SER" },
-    "d02161": { "owner": "SER" },
-    "9dffaf": { "owner": "SER" },
-    "a5d3a9": { "owner": "SER" },
+    "9061a0": { "owner": "BUL" },
+    "90a061": { "owner": "AHE" },
+    "10a060": { "owner": "AHE" },
+    "edba20": { "owner": "AHE" },
+    "d021e0": { "owner": "BUL" },
+    "d02161": { "owner": "AHE" },
+    "9dffaf": { "owner": "AHE" },
+    "a5d3a9": { "owner": "AHE" },
     "d2619e": { "owner": "GRE" },
     "02d060": { "owner": "GRE" },
     "90e0a0": { "owner": "GRE" },
@@ -625,18 +646,128 @@
           "effects": [
             {
               "type": "SetOwner",
-              "root": "DKR",
-              "provinces": ["71e061", "71e0e0", "f061e0", "7161e0"]
+              "provinces": ["71e061", "71e0e0", "f061e0", "7161e0"],
+              "root": "DKR"
             }
           ],
           "title": "裏切り者め！"
         }
       ],
-      "id": "Donets leaves Ukraine",
+      "id": "donets_leaves_ukraine",
       "title": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国が独立",
       "desc": "ウクライナ南東部の支配権をボリシェビキが奪取、ソビエト共和国が成立した。今のところロシア＝ソビエトとは連携していないようだ。",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-02-12 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            { "type": "SetOwner", "provinces": ["405000"], "root": "KPR" }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "kuban_independence",
+      "title": "クバーニ人民共和国が独立",
+      "desc": "クバーニはロシア帝国時代から歴史的に高度な自治権を保ってきた。10月革命後、クバーニ・ラーダはロシア民主共和国の自治国家としてクバーニ人民共和国の樹立を宣言したが、今のロシアに国土を統べる力はなかった。ラーダは改めて、完全な独立国を宣言した。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-02-16 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": [
+                "8060a0",
+                "c0a0a0",
+                "a8ff51",
+                "01e0a0",
+                "809f60",
+                "0161a0",
+                "c06121",
+                "406020",
+                "41e061"
+              ],
+              "root": "LIT"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "lithuania_independence",
+      "title": "リトアニア王国が独立",
+      "desc": "ドイツ帝国軍占領下のリトアニアにおいて、リトアニア王国が建国された。ドイツはヴィルヘルム2世をリトアニア王に据えることを企んでいるが、リトアニアはそれを受け入れていない。王位はまだ未確定だ。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-02-16 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": [
+                "801080",
+                "001080",
+                "009000",
+                "809001",
+                "011141",
+                "40d001",
+                "801000",
+                "f0e0df",
+                "c0cf80",
+                "9bc69b",
+                "80d041",
+                "005000",
+                "805000",
+                "c09080",
+                "00d000",
+                "30df60",
+                "809040",
+                "007060",
+                "008fbf",
+                "8090bf",
+                "bfd159",
+                "c01040",
+                "41d080"
+              ],
+              "root": "TCF"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "kafkas_independence",
+      "title": "ザカフカース民主連邦共和国が独立",
+      "desc": "ボリシェビキの権力奪取によって、南ロシアは権力の空白地帯となった。さらに、オスマン帝国とソビエトの講和によって南ロシアが放棄されたことにより、オスマン帝国軍が進軍を開始した。これに対応するため、アルメニア、グルジア、アゼルバイジャンを初めとする民族主義系政党は連合して、ロシアからの離脱を宣言した。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-02-26 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": ["01a021", "80a021", "6040e0"],
+              "root": "EST"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "estonia_independence",
+      "title": "エストニア共和国が独立",
+      "desc": "タリン市長とエストニア・ボリシェビキの権力闘争の後、ドイツ軍の支援もあってエストニア共和国が独立した。しかし、国土の南半分はドイツが樹立した別の国家に占領されたままだ。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-02-26 00:00" }
     }
   ]
 }

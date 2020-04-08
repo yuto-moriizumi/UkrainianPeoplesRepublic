@@ -12,6 +12,8 @@ export default class SelectScene extends Scene implements Selectable {
     private changeCountryIndex;
     private countries;
     private countryName;
+    private moddingMode;
+    private moddingProvinces;
     constructor();
     protected createInitialResourceList(): (LoaderAddParam | string)[];
     protected onResourceLoaded(): void;

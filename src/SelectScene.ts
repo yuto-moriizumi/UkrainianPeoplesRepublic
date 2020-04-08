@@ -23,6 +23,8 @@ export default class SelectScene extends Scene implements Selectable {
   private changeCountryIndex = 0;
   private countries: Array<Country> = new Array<Country>();
   private countryName: PIXI.Text;
+  private moddingMode = false;
+  private moddingProvinces = Array<any>();
 
   constructor() {
     super();
@@ -98,6 +100,29 @@ export default class SelectScene extends Scene implements Selectable {
       this.confirm();
     });
     this.addChild(selectButton);
+
+    //モディング用プロヴィンス選択ツールボタン
+    const moddingButton = new Button("選択ツールをONに");
+    moddingButton.position.set(0, 450);
+    moddingButton.on("click", () => {
+      this.moddingMode = !this.moddingMode;
+      if (this.moddingMode) {
+        moddingButton.setText("選択ツールをOFFに");
+        return;
+      }
+      moddingButton.setText("選択ツールをONに");
+      console.log(
+        this.moddingProvinces.map(([value1, value2]) => {
+          return PIXI.utils.hex2string(value1.id).substr(1);
+        })
+      );
+      this.moddingProvinces.forEach(([province, owner]) => {
+        province.owner = owner;
+      });
+      this.moddingProvinces = [];
+      this.map.update();
+    });
+    this.addChild(moddingButton);
   }
 
   private selectAsMyCountry(country?: Country) {
@@ -120,6 +145,10 @@ export default class SelectScene extends Scene implements Selectable {
   }
 
   public selectProvince(province: Province) {
+    if (this.moddingMode) {
+      //Moddingモードが有効ならば
+      this.moddingProvinces.push([province, province.owner]);
+    }
     if (this.myCountry) {
       //自国選択済みならば、その州の領有国を自国に変更する
       province.owner = this.myCountry;

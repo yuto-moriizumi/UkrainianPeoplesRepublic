@@ -16,6 +16,7 @@ const Resource = Object.freeze({
   se: {
     news: "world_news.mp3",
     click_ok: "click_ok.mp3",
+    declare_war: "declare_war.mp3",
   },
 });
 

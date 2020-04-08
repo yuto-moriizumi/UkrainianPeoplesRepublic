@@ -39,11 +39,11 @@ export default class MyMap extends PIXI.Sprite {
 
     document.body.addEventListener("keydown", (e) => {
       this.pressKeys.add(e.key);
-      console.log(e.key);
+      //console.log(e.key);
     });
     document.body.addEventListener("keyup", (e) => {
       this.pressKeys.delete(e.key);
-      console.log(e.key);
+      //console.log(e.key);
     });
 
     this.on("click", (e: PIXI.interaction.InteractionEvent) => {
@@ -65,13 +65,13 @@ export default class MyMap extends PIXI.Sprite {
   }
 
   private getProvinceIdFromPoint(position: PIXI.Point): string {
-    console.log(position);
+    //console.log(position);
 
     const idx =
       (Math.floor(position.y) * this.defaultWidth + Math.floor(position.x)) * 4;
 
     //プロヴィンスIDに変換
-    console.log(this.provinceMap[idx + 0]);
+    //console.log(this.provinceMap[idx + 0]);
 
     const provinceId =
       ("00" + this.provinceMap[idx + 0].toString(16)).slice(-2) +
@@ -92,7 +92,7 @@ export default class MyMap extends PIXI.Sprite {
     if (!provinceId) return; //provinceIdがnullの時は何もしない
 
     let province = data.provinces.get(provinceId);
-    console.log("provinceId:", provinceId);
+    console.log(provinceId);
     if (!province) {
       //プロビンスデータが無かったら新規作成
       province = new Province(provinceId, {});

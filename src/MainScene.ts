@@ -44,6 +44,7 @@ export default class MainScene extends Scene implements Selectable {
     assets.push(Resource.minus);
     assets.push(Resource.se.news);
     assets.push(Resource.se.click_ok);
+    assets.push(Resource.se.declare_war);
     console.log(assets);
     return assets;
   }

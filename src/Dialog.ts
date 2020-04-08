@@ -1,6 +1,8 @@
 import * as PIXI from "pixi.js";
 import GameManager from "./GameManager";
 import Button from "./Button";
+import Sound from "./Sound";
+import Resource from "./Resources";
 
 export default class Dialog extends PIXI.Graphics {
   constructor(titleStr: string, desc: string) {
@@ -53,7 +55,17 @@ export default class Dialog extends PIXI.Graphics {
     ok.position.set(width * 0.5 - ok.width * 0.5, height - ok.height - 5);
     ok.interactive = true;
     ok.buttonMode = true;
-    ok.on("click", () => this.destroy());
+    ok.on("click", () => {
+      this.destroy();
+      // SE再生
+      const sound = new Sound(
+        (GameManager.instance.game.loader.resources[
+          Resource.se.click_ok
+        ] as any).buffer
+      );
+      sound.volume = 0.5;
+      sound.play(false);
+    });
     this.addChild(ok);
 
     //クリック判定が貫通しないようにする
