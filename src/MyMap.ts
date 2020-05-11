@@ -10,6 +10,7 @@ export default class MyMap extends PIXI.Sprite {
   private scene: Selectable;
   private replacements: Array<any> = [];
   private defaultWidth: number;
+  private defaultHeight: number;
   private pressKeys: Set<string> = new Set<string>();
 
   constructor(scene: Selectable, texture?: PIXI.Texture) {
@@ -23,6 +24,7 @@ export default class MyMap extends PIXI.Sprite {
     this.buttonMode = true;
 
     this.defaultWidth = this.width;
+    this.defaultHeight = this.height;
     const renderer = GameManager.instance.game.renderer;
 
     this.position.set(
@@ -72,11 +74,24 @@ export default class MyMap extends PIXI.Sprite {
 
     //プロヴィンスIDに変換
     //console.log(this.provinceMap[idx + 0]);
-
-    const provinceId =
-      ("00" + this.provinceMap[idx + 0].toString(16)).slice(-2) +
-      ("00" + this.provinceMap[idx + 1].toString(16)).slice(-2) +
-      ("00" + this.provinceMap[idx + 2].toString(16)).slice(-2);
+    let provinceId;
+    try {
+      provinceId =
+        ("00" + this.provinceMap[idx + 0].toString(16)).slice(-2) +
+        ("00" + this.provinceMap[idx + 1].toString(16)).slice(-2) +
+        ("00" + this.provinceMap[idx + 2].toString(16)).slice(-2);
+    } catch (error) {
+      console.log(error);
+      console.log(
+        position.x,
+        position.y,
+        idx,
+        this.provinceMap.length,
+        this.defaultWidth,
+        this.defaultHeight
+      );
+      throw new Error("停止");
+    }
 
     if (provinceId === "000000") return null; //境界線を選択した場合は何もしない
 
@@ -86,23 +101,11 @@ export default class MyMap extends PIXI.Sprite {
   private selectClickedProvince(e: PIXI.interaction.InteractionEvent) {
     //Uinit8Array上でのインデックスを算出
     const position = e.data.getLocalPosition(this);
-    const provinceId = this.getProvinceIdFromPoint(position);
-    const data = GameManager.instance.data;
-
-    if (!provinceId) return; //provinceIdがnullの時は何もしない
-
-    let province = data.provinces.get(provinceId);
-    console.log(provinceId);
-    if (!province) {
-      //プロビンスデータが無かったら新規作成
-      province = new Province(provinceId, {});
-      province.setOwner(GameManager.instance.data.countries.get("Rebels"));
-      data.provinces.set(provinceId, province);
-      this.replacements.push([province.id, province.owner.getColor()]);
-      this.update();
-    }
+    const province = this.getProvince(position);
+    if (!province) return; //プロヴィンスが存在しなければ何もしない
     //プロヴィンスを選択
     this.scene.selectProvince(province);
+    console.log(province);
   }
 
   public move() {
@@ -123,6 +126,93 @@ export default class MyMap extends PIXI.Sprite {
           break;
       }
     });
+  }
+
+  /**
+   * 指定した座標を含むプロヴィンスの重心座標を返します
+   *
+   * @private
+   * @param {PIXI.Point} point
+   * @returns
+   * @memberof MyMap
+   */
+  private getBarycenter(point: PIXI.Point) {
+    const provinceId = this.getProvinceIdFromPoint(point);
+    if (!provinceId) return null; //provinceIdがnullの時は何もしない
+    const data = GameManager.instance.data;
+    let province = data.provinces.get(provinceId);
+    if (!province) return null; //provinceがnullの時は何もしない
+
+    //BFSで探索
+    let x = 0;
+    let y = 0;
+    let count = 0;
+    const candidates = new Array<PIXI.Point>();
+    const already = new Set<number>();
+    candidates.push(point);
+    while (candidates.length > 0) {
+      const searchPoint = candidates.shift();
+      const idx =
+        (Math.floor(searchPoint.y) * this.defaultWidth +
+          Math.floor(searchPoint.x)) *
+        4;
+      if (already.has(idx)) {
+        //すでに探索済みだったら何もしない
+        continue;
+      }
+      already.add(idx);
+      const provinceId2 = this.getProvinceIdFromPoint(searchPoint);
+      if (provinceId !== provinceId2) continue; //provinceIdが異なる（=色が異なる）場合は何もしない
+
+      x += searchPoint.x;
+      y += searchPoint.y;
+      count += 1;
+
+      if (0 < searchPoint.x)
+        candidates.push(new PIXI.Point(searchPoint.x - 1, searchPoint.y));
+      if (searchPoint.x < this.defaultWidth - 1)
+        candidates.push(new PIXI.Point(searchPoint.x + 1, searchPoint.y));
+      if (0 < searchPoint.y)
+        candidates.push(new PIXI.Point(searchPoint.x, searchPoint.y - 1));
+      if (searchPoint.y < this.defaultHeight - 1)
+        candidates.push(new PIXI.Point(searchPoint.x, searchPoint.y + 1));
+    }
+
+    return new PIXI.Point(Math.floor(x / count), Math.floor(y / count));
+  }
+
+  public calculateBarycenterOfAll() {
+    //全てのピクセルを走査し、重心座標を設定します
+    for (let i = 0; i < this.defaultHeight; i++) {
+      for (let j = 0; j < this.defaultWidth; j++) {
+        this.getProvince(new PIXI.Point(j, i));
+      }
+    }
+    console.log("重心走査終了");
+  }
+
+  private getProvince(position: PIXI.Point): Province {
+    const provinceId = this.getProvinceIdFromPoint(position);
+    const data = GameManager.instance.data;
+
+    if (!provinceId) return null; //provinceIdがnullの時は何もしない
+
+    let province = data.provinces.get(provinceId);
+    if (!province) {
+      //プロビンスデータが無かったら新規作成
+      province = new Province(provinceId, {});
+      province.setOwner(GameManager.instance.data.countries.get("Rebels"));
+      data.provinces.set(provinceId, province);
+      province.setCoord(this.getBarycenter(position));
+      this.replacements.push([province.id, province.owner.getColor()]);
+      this.update();
+    } else {
+      //もし選択したプロヴィンスに座標情報が用意されていなかったら追加する
+      const point = province.getCoord();
+      if (point.x == 0 && point.y == 0)
+        province.setCoord(this.getBarycenter(position));
+    }
+    return province;
   }
 
   public update() {

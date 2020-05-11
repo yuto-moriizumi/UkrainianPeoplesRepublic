@@ -21,6 +21,7 @@ export default class SelectScene extends Scene implements Selectable {
     private deselectMyCountry;
     selectProvince(province: Province): void;
     private selectAsTarget;
+    private integrity;
     private confirm;
     update(dt: number): void;
 }

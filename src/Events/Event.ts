@@ -124,7 +124,7 @@ export default class Event {
         Resource.se.news
       ] as any).buffer
     );
-    sound.volume = 0.5;
+    sound.volume = 0.25;
     sound.play(false);
   }
 

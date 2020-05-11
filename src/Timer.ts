@@ -4,6 +4,7 @@ import GameManager from "./GameManager";
 import Resource from "./Resources";
 import SpriteButton from "./SpriteButton";
 import EventDispatcher from "./Events/EventDispacher";
+import Sound from "./Sound";
 export default class Timer extends PIXI.Container {
   private text: PIXI.Text;
   private date: Date;
@@ -71,14 +72,33 @@ export default class Timer extends PIXI.Container {
 
   public faster() {
     if (this.updateDuration <= 32) return;
+
+    //SE再生
+    this.playSE();
+
     this.updateDuration *= 0.5;
     this.drawProgress();
   }
 
   public slower() {
     if (this.updateDuration >= 512) return;
+
+    //SE再生
+    this.playSE();
+
     this.updateDuration *= 2;
     this.drawProgress();
+  }
+
+  private playSE() {
+    // SE再生
+    const sound = new Sound(
+      (GameManager.instance.game.loader.resources[
+        Resource.se.click_ok
+      ] as any).buffer
+    );
+    sound.volume = 0.5;
+    sound.play(false);
   }
 
   public getDate(): Date {

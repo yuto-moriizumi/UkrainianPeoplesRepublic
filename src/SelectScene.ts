@@ -125,6 +125,14 @@ export default class SelectScene extends Scene implements Selectable {
       this.map.update();
     });
     this.addChild(moddingButton);
+
+    //データ整合性ボタン
+    const integrityButton = new Button("整合性保証");
+    integrityButton.position.set(0, 500);
+    integrityButton.on("click", () => {
+      this.integrity();
+    });
+    this.addChild(integrityButton);
   }
 
   private selectAsMyCountry(country?: Country) {
@@ -172,6 +180,13 @@ export default class SelectScene extends Scene implements Selectable {
     if (this.countryName) this.countryName.destroy();
     this.countryName = new PIXI.Text(country.name);
     this.addChild(this.countryName);
+  }
+
+  private integrity() {
+    //バージョンアップなどでjsonファイルに必要なデータが足りないなど整合性が失われている時にそれを修正します
+    console.log("整合性保証を開始");
+    this.map.calculateBarycenterOfAll();
+    console.log("整合性保証完了");
   }
 
   private confirm() {
