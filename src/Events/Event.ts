@@ -1,10 +1,10 @@
 import Option from "./Option";
 import Condition from "./Conditions/Condition";
-import MainScene from "../MainScene";
+import MainScene from "../Scenes/MainScene";
 import GameManager from "../GameManager";
 import * as PIXI from "pixi.js";
 import DateCondition from "./Conditions/DateCondition";
-import Button from "../Button";
+import Button from "../UI/Button";
 import Sound from "../Sound";
 import Resource from "../Resources";
 

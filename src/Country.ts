@@ -1,7 +1,8 @@
-import DiplomaticTie from "./DiplomaticTie";
+import DiplomaticTie from "./DiplomaticTie/DiplomaticTie";
 import JsonObject from "./JsonObject";
 import * as PIXI from "pixi.js";
 import War from "./War";
+import DivisionTemplate from "./DivisionTemplate";
 
 export default class Country extends JsonObject {
   public id: string;
@@ -9,6 +10,7 @@ export default class Country extends JsonObject {
   public name: string;
   public flag: string;
   private diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
+  private divisions: Array<DivisionTemplate> = new Array<DivisionTemplate>();
 
   public addDiplomaticRelation(tie: DiplomaticTie) {
     this.diplomaticTies.push(tie);

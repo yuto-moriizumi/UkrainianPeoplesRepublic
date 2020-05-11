@@ -1,5 +1,3 @@
-import Scene from "./Scene";
-
 const Resource = Object.freeze({
   Title: {
     Bg: "Ukraine.png",
@@ -13,6 +11,7 @@ const Resource = Object.freeze({
   plus: "+.png",
   minus: "-.png",
   savedata: "data.json",
+  conscription: "tank.jpg",
   se: {
     news: "world_news.mp3",
     click_ok: "click_ok.mp3",

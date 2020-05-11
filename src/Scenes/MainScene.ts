@@ -1,19 +1,22 @@
 import * as PIXI from "pixi.js";
 import Scene from "./Scene";
-import Country from "./Country";
+import Country from "../Country";
 import Fade from "./Fade";
-import LoaderAddParam from "./LoaderAddParam";
-import MyMap from "./MyMap";
-import GameManager from "./GameManager";
-import Resource from "./Resources";
+import LoaderAddParam from "../LoaderAddParam";
+import MyMap from "../MyMap";
+import GameManager from "../GameManager";
+import Resource from "../Resources";
 import { Selectable } from "./Selectable";
-import Province from "./Province";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-import DiplomaticSidebar from "./DiplomaticSidebar";
-import Timer from "./Timer";
-import EventDispatcher from "./Events/EventDispacher";
-import Event from "./Events/Event";
+import Province from "../Province";
+import Header from "../UI/Header";
+import Sidebar from "../UI/Sidebar";
+import DiplomaticSidebar from "../UI/DiplomaticSidebar";
+import Timer from "../UI/Timer";
+import EventDispatcher from "../Events/EventDispacher";
+import Event from "../Events/Event";
+import Button from "../UI/Button";
+import Conscription from "../UI/Conscription";
+import SpriteButton from "../UI/SpriteButton";
 
 export default class MainScene extends Scene implements Selectable {
   public static instance: MainScene;
@@ -33,6 +36,15 @@ export default class MainScene extends Scene implements Selectable {
     this.playCountry = playCountry;
     this.eventDispatcher = new EventDispatcher(this);
     MainScene.instance = this;
+
+    //ダウンロードボタン（暫定）
+    const renderer = GameManager.instance.game.renderer;
+    const button = new Button("JSON");
+    button.position.set(renderer.width * 0.8, renderer.height * 0.8);
+    button.on("mousedown", () => {
+      GameManager.instance.data.download();
+    });
+    this.addChild(button);
   }
 
   //リソースリストを作成し返却する
@@ -45,6 +57,7 @@ export default class MainScene extends Scene implements Selectable {
     assets.push(Resource.se.news);
     assets.push(Resource.se.click_ok);
     assets.push(Resource.se.declare_war);
+    assets.push(Resource.conscription);
     console.log(assets);
     return assets;
   }
@@ -52,10 +65,8 @@ export default class MainScene extends Scene implements Selectable {
   //リソースがロードされたときのコールバック
   protected onResourceLoaded(): void {
     super.onResourceLoaded();
-    this.map = new MyMap(
-      this,
-      GameManager.instance.game.loader.resources[Resource.Map].texture
-    );
+    const resources = GameManager.instance.game.loader.resources;
+    this.map = new MyMap(this, resources[Resource.Map].texture);
     this.map.update();
     this.addChild(this.map);
 
@@ -69,6 +80,15 @@ export default class MainScene extends Scene implements Selectable {
       header.height * 0.5 - this.timer.height * 0.5
     );
     header.addChild(this.timer);
+
+    //徴兵ボタン
+    const conscription = new SpriteButton(
+      resources[Resource.conscription].texture
+    );
+    conscription.on("click", () => {
+      this.openConscription();
+    });
+    this.addChild(conscription);
   }
 
   public selectProvince(province: Province) {
@@ -78,6 +98,12 @@ export default class MainScene extends Scene implements Selectable {
   public openDiplomacySidebar(country: Country) {
     if (this.sidebar && this.sidebar.parent) this.sidebar.destroy();
     this.sidebar = new DiplomaticSidebar(this, country);
+    this.addChild(this.sidebar);
+  }
+
+  private openConscription() {
+    if (this.sidebar && this.sidebar.parent) this.sidebar.destroy();
+    this.sidebar = new Conscription(this);
     this.addChild(this.sidebar);
   }
 

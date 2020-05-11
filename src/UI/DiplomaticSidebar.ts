@@ -1,13 +1,13 @@
 import Sidebar from "./Sidebar";
-import Country from "./Country";
-import Flag from "./Flag";
+import Country from "../Country";
+import Flag from "../Flag";
 import * as PIXI from "pixi.js";
 import Button from "./Button";
-import MainScene from "./MainScene";
+import MainScene from "../Scenes/MainScene";
 import Dialog from "./Dialog";
-import War from "./War";
-import GameManager from "./GameManager";
-import Resource from "./Resources";
+import War from "../DiplomaticTies/War";
+import GameManager from "../GameManager";
+import Resource from "../Resources";
 
 export default class DiplomaticSidebar extends Sidebar {
   private readonly FLAG_HEIGHT: number = 80;

@@ -1,4 +1,4 @@
-import MainScene from "../MainScene";
+import MainScene from "../Scenes/MainScene";
 import Event from "./Event";
 import GameManager from "../GameManager";
 

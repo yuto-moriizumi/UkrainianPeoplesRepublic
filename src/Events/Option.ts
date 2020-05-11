@@ -1,5 +1,5 @@
 import Effect from "./Effects/Effect";
-import Button from "../Button";
+import Button from "../UI/Button";
 import DeclareWar from "./Effects/DeclareWar";
 import JsonObject from "../JsonObject";
 import SetOwner from "./Effects/SetOwner";

@@ -1,6 +1,6 @@
-import GameManager from "./GameManager";
+import GameManager from "../GameManager";
 import Header from "./Header";
-import Resources from "./Resources";
+import Resources from "../Resources";
 import SpriteButton from "./SpriteButton";
 import * as PIXI from "pixi.js";
 

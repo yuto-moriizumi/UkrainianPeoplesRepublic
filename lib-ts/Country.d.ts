@@ -6,6 +6,7 @@ export default class Country extends JsonObject {
     name: string;
     flag: string;
     private diplomaticTies;
+    private divisions;
     addDiplomaticRelation(tie: DiplomaticTie): void;
     getDiplomacy(): DiplomaticTie[];
     set color(color: string);

@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
-import Country from "./Country";
-import Flag from "./Flag";
-import GameManager from "./GameManager";
+import Country from "../Country";
+import Flag from "../Flag";
+import GameManager from "../GameManager";
 export default class Header extends PIXI.Graphics {
   private static readonly BG_COLOR = 0x2c2a2b;
   public static readonly DEFAULT_HEIGHT = 100;

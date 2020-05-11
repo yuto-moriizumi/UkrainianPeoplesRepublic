@@ -1,9 +1,9 @@
 import DiplomaticTie from "./DiplomaticTie";
-import MainScene from "./MainScene";
-import Dialog from "./Dialog";
-import Sound from "./Sound";
-import GameManager from "./GameManager";
-import Resource from "./Resources";
+import MainScene from "../Scenes/MainScene";
+import Dialog from "../UI/Dialog";
+import Sound from "../Sound";
+import GameManager from "../GameManager";
+import Resource from "../Resources";
 
 export default class War extends DiplomaticTie {
   public activate() {

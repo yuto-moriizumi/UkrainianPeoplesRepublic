@@ -1,15 +1,15 @@
 import * as PIXI from "pixi.js";
 import Scene from "./Scene";
 import Fade from "./Fade";
-import GameManager from "./GameManager";
-import LoaderAddParam from "./LoaderAddParam";
-import Resource from "./Resources";
+import GameManager from "../GameManager";
+import LoaderAddParam from "../LoaderAddParam";
+import Resource from "../Resources";
 
-import MyMap from "./MyMap";
-import Country from "./Country";
-import Flag from "./Flag";
-import Button from "./Button";
-import Province from "./Province";
+import MyMap from "../MyMap";
+import Country from "../Country";
+import Flag from "../Flag";
+import Button from "../UI/Button";
+import Province from "../Province";
 import MainScene from "./MainScene";
 import { Selectable } from "./Selectable";
 
@@ -57,11 +57,8 @@ export default class SelectScene extends Scene implements Selectable {
     this.addChild(this.map);
 
     //ダウンロードボタン（暫定）
-    const button = new PIXI.Sprite(resources[Resource.Title.Bg].texture);
+    const button = new Button("JSON");
     button.position.set(renderer.width * 0.8, renderer.height * 0.8);
-    button.scale.set(0.2, 0.2);
-    button.interactive = true;
-    button.buttonMode = true;
     button.on("mousedown", () => {
       GameManager.instance.data.download();
     });

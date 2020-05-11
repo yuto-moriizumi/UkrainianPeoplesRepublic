@@ -1,8 +1,8 @@
 import * as PIXI from "pixi.js";
-import GameManager from "./GameManager";
+import GameManager from "../GameManager";
 import Button from "./Button";
-import Sound from "./Sound";
-import Resource from "./Resources";
+import Sound from "../Sound";
+import Resource from "../Resources";
 
 export default class Dialog extends PIXI.Graphics {
   constructor(titleStr: string, desc: string) {
