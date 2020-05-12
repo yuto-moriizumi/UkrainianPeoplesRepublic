@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import * as Filters from "pixi-filters";
 export default class Button extends PIXI.Graphics {
   private static readonly color1 = 0x10bf40;
   private static readonly color2 = 0x10ffbf;
@@ -22,12 +23,14 @@ export default class Button extends PIXI.Graphics {
     this.interactive = true;
     this.buttonMode = true;
     this.on("mouseover", () => {
-      this.beginFill(Button.color2);
-      this.drawRect(0, 0, this.width, this.height);
+      //PIXI.fil
+      //new PIXI.filters.BlurFilter();
+      //new PIXI.filters.AdjustmentFilter()
+      this.filters = [new Filters.AdjustmentFilter({ gamma: 3 })];
+      //{        gamma: 3,      }
     });
     this.on("mouseout", () => {
-      this.beginFill(Button.color1);
-      this.drawRect(0, 0, this.width, this.height);
+      this.filters = [];
     });
   }
 

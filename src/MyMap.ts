@@ -70,7 +70,9 @@ export default class MyMap extends PIXI.Sprite {
     //console.log(position);
 
     const idx =
-      (Math.floor(position.y) * this.defaultWidth + Math.floor(position.x)) * 4;
+      (Math.floor(Math.max(0, position.y)) * this.defaultWidth +
+        Math.floor(Math.max(0, position.x))) *
+      4;
 
     //プロヴィンスIDに変換
     //console.log(this.provinceMap[idx + 0]);
@@ -184,7 +186,10 @@ export default class MyMap extends PIXI.Sprite {
   public spawnDivison(sprite: DivisionSprite) {
     this.addChild(sprite);
     const point = sprite.getInfo().getPosition().getCoord();
-    sprite.position.set(point.x, point.y);
+    sprite.position.set(
+      point.x - sprite.width / 2,
+      point.y - sprite.height / 2
+    );
   }
 
   public calculateBarycenterOfAll() {
@@ -206,11 +211,11 @@ export default class MyMap extends PIXI.Sprite {
     let province = data.provinces.get(provinceId);
     if (!province) {
       //プロビンスデータが無かったら新規作成
-      province = new Province(provinceId, {});
+      province = new Province(provinceId);
       province.setOwner(GameManager.instance.data.countries.get("Rebels"));
       data.provinces.set(provinceId, province);
       province.setCoord(this.getBarycenter(position));
-      this.replacements.push([province.id, province.owner.getColor()]);
+      this.replacements.push([province.id, province.getOwner().getColor()]);
       this.update();
     } else {
       //もし選択したプロヴィンスに座標情報が用意されていなかったら追加する
@@ -224,8 +229,8 @@ export default class MyMap extends PIXI.Sprite {
   public update() {
     this.replacements = [];
     GameManager.instance.data.provinces.forEach((province) => {
-      //console.log("replace", [province.id, province.owner.color]);
-      this.replacements.push([province.id, province.owner.getColor()]);
+      //console.log("replace", [province.id, province.getOwner().color]);
+      this.replacements.push([province.id, province.getOwner().getColor()]);
     });
     /*
      * 注意 - どういうわけか、replacementsの長さが1以下だと正しく動作しなくなる

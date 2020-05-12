@@ -6,6 +6,7 @@ import HorizontalBox from "./HorizontalBox";
 import SpriteButton from "./SpriteButton";
 import Resource from "../Resources";
 import MainScene from "../Scenes/MainScene";
+import Button from "./Button";
 export default class Header extends HorizontalBox {
   public static readonly DEFAULT_HEIGHT = 100;
   private myCountry: Country;
@@ -27,5 +28,15 @@ export default class Header extends HorizontalBox {
       MainScene.instance.openConscription();
     });
     this.addPart(conscription);
+
+    //デバッグボタン
+    const debugButton = new Button("デ");
+    debugButton.on("click", () => {
+      GameManager.instance.data.provinces.forEach((province) => {
+        const coord = province.getCoord();
+        if (coord.x == 0 && coord.y == 0) console.log(province);
+      });
+    });
+    this.addPart(debugButton);
   }
 }

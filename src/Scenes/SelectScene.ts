@@ -116,7 +116,7 @@ export default class SelectScene extends Scene implements Selectable {
           .join(",")
       );
       this.moddingProvinces.forEach(([province, owner]) => {
-        province.owner = owner;
+        province.setOwner(owner);
       });
       this.moddingProvinces = [];
       this.map.update();
@@ -154,14 +154,14 @@ export default class SelectScene extends Scene implements Selectable {
   public selectProvince(province: Province) {
     if (this.moddingMode) {
       //Moddingモードが有効ならば
-      this.moddingProvinces.push([province, province.owner]);
+      this.moddingProvinces.push([province, province.getOwner()]);
     }
     if (this.myCountry) {
       //自国選択済みならば、その州の領有国を自国に変更する
-      province.owner = this.myCountry;
+      province.setOwner(this.myCountry);
       this.map.update();
     } else {
-      this.selectAsTarget(province.owner);
+      this.selectAsTarget(province.getOwner());
     }
   }
 

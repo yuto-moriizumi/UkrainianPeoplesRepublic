@@ -23,7 +23,9 @@ export default class DataManager extends JsonObject {
 
     //プロヴィンス読み込み
     for (const id in json["provinces"]) {
-      this.provinces.set(id, new Province(id, json["provinces"][id]));
+      const province = new Province(id);
+      Object.assign(province, json["provinces"][id]);
+      this.provinces.set(id, province);
     }
     console.log("provinces loaded:", this.provinces);
 

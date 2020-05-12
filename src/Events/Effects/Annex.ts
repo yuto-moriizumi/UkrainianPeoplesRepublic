@@ -10,7 +10,7 @@ export default class Annex extends Effect {
 
   public activate() {
     GameManager.instance.data.provinces.forEach((province) => {
-      if (province.owner !== this._target) return;
+      if (province.getOwner() !== this._target) return;
       province.setOwner(this._root);
     });
     MainScene.instance.getMap().update();

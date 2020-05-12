@@ -3,10 +3,12 @@ import JsonObject from "./JsonObject";
 import * as PIXI from "pixi.js";
 export default class Province extends JsonObject {
     id: number;
-    owner: Country;
+    private _owner;
     private x;
     private y;
-    constructor(id: string, obj: any);
+    constructor(id: string);
+    private set owner(value);
+    getOwner(): Country;
     setOwner(owner: Country): void;
     setCoord(point: PIXI.Point): void;
     getCoord(): PIXI.Point;

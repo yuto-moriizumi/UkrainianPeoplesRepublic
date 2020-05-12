@@ -43,9 +43,13 @@ export default class Country extends JsonObject {
   public getRandomOwnProvince() {
     const provinces = [];
     GameManager.instance.data.provinces.forEach((province) => {
-      if (province.owner == this) provinces.push(province);
+      if (province.getOwner() == this) provinces.push(province);
     });
-    return provinces[Math.floor(Math.random() * provinces.length)];
+    console.log("own:", provinces.length);
+    const province = provinces[Math.floor(Math.random() * provinces.length)];
+    console.log("elect", province);
+
+    return province;
   }
 
   public hasWarWith(country: Country): boolean {

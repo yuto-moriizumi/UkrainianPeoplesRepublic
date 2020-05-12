@@ -9,7 +9,7 @@ export default class DivisionSprite extends VerticalBox {
   private static readonly;
 
   constructor(info: DivisionInfo) {
-    super(20, 22, 1, 0x216639);
+    super(15, 12, 0.8, 0x216639);
     this.info = info;
     //this.country = country;
 

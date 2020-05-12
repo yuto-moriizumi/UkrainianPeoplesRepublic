@@ -86,7 +86,7 @@ export default class MainScene extends Scene implements Selectable {
   }
 
   public selectProvince(province: Province) {
-    this.openDiplomacySidebar(province.owner);
+    this.openDiplomacySidebar(province.getOwner());
   }
 
   public openDiplomacySidebar(country: Country) {

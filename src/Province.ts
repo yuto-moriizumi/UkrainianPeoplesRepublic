@@ -5,19 +5,27 @@ import * as PIXI from "pixi.js";
 
 export default class Province extends JsonObject {
   public id: number;
-  public owner: Country;
+  private _owner: Country;
   private x: number = 0;
   private y: number = 0;
 
-  constructor(id: string, obj: any) {
+  constructor(id: string) {
     super();
     this.id = parseInt(id, 16);
-    this.owner = GameManager.instance.data.countries.get(obj.owner);
+    //
     //console.log("try", obj.Owner, this.owner);
   }
 
+  private set owner(countryId: string) {
+    this._owner = GameManager.instance.data.countries.get(countryId);
+  }
+
+  public getOwner() {
+    return this._owner;
+  }
+
   public setOwner(owner: Country) {
-    this.owner = owner;
+    this._owner = owner;
   }
 
   public setCoord(point: PIXI.Point) {
