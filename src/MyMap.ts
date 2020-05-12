@@ -3,6 +3,7 @@ import * as Filters from "pixi-filters";
 import GameManager from "./GameManager";
 import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
+import DivisionSprite from "DivisionSprite";
 
 export default class MyMap extends PIXI.Sprite {
   private provinceMap: Uint8Array;
@@ -112,16 +113,16 @@ export default class MyMap extends PIXI.Sprite {
     this.pressKeys.forEach((key) => {
       switch (key) {
         case "a":
-          this.x -= 2;
-          break;
-        case "d":
           this.x += 2;
           break;
+        case "d":
+          this.x -= 2;
+          break;
         case "w":
-          this.y -= 2;
+          this.y += 2;
           break;
         case "s":
-          this.y += 2;
+          this.y -= 2;
           break;
       }
     });
@@ -178,6 +179,12 @@ export default class MyMap extends PIXI.Sprite {
     }
 
     return new PIXI.Point(Math.floor(x / count), Math.floor(y / count));
+  }
+
+  public spawnDivison(sprite: DivisionSprite) {
+    this.addChild(sprite);
+    const point = sprite.getInfo().getPosition().getCoord();
+    sprite.position.set(point.x, point.y);
   }
 
   public calculateBarycenterOfAll() {

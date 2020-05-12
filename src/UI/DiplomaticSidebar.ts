@@ -8,6 +8,8 @@ import Dialog from "./Dialog";
 import War from "../DiplomaticTies/War";
 import GameManager from "../GameManager";
 import Resource from "../Resources";
+import HorizontalBox from "./HorizontalBox";
+import VerticalBox from "./VerticalBox";
 
 export default class DiplomaticSidebar extends Sidebar {
   private readonly FLAG_HEIGHT: number = 80;
@@ -19,38 +21,45 @@ export default class DiplomaticSidebar extends Sidebar {
 
     this.scene = scene;
 
-    let uiHeight = this.contentHeight;
+    //let uiHeight = this.contentHeight;
 
     //相手国の国旗を表示
     const flag = new Flag(target);
-    flag.scale.set(this.FLAG_HEIGHT / flag.height);
-    flag.anchor.set(0.5, 0.5);
-    flag.position.set(this.width / 2, uiHeight + flag.height / 2);
-    this.addChild(flag);
-    uiHeight += flag.height;
+    this.addPart(flag);
+    //flag.scale.set(this.FLAG_HEIGHT / flag.height);
+    //flag.anchor.set(0.5, 0.5);
+    //flag.position.set(this.width / 2, uiHeight + flag.height / 2);
+    //this.addChild(flag);
+    //uiHeight += flag.height;
 
     //国名
     const text = new PIXI.Text(
       target.name,
       new PIXI.TextStyle({ fill: 0xffffff })
     );
-    text.anchor.set(0.5, 0);
-    text.position.set(this.width / 2, uiHeight + 10);
-    text.width = Math.min(text.width, this.width - 10);
-    this.addChild(text);
-    uiHeight += text.height + 20;
+    //text.anchor.set(0.5, 0);
+    //text.position.set(this.width / 2, uiHeight + 10);
+    //text.width = Math.min(text.width, this.width - 10);
+    //this.addChild(text);
+    this.addPart(text);
+    //uiHeight += text.height + 20;
 
+    //横に並べるbox
+    const alignBox = new HorizontalBox(this.width, this.height - this.uiHeight);
+    this.addPart(alignBox);
     //外交関係ボックス
-    const relationsBox = new PIXI.Graphics();
-    relationsBox.beginFill(0x1f1f1f);
-    relationsBox.position.set(5, uiHeight);
-    relationsBox.drawRect(
-      0,
-      0,
-      this.width / 2 - 10,
-      this.height - uiHeight - 5
-    );
-    this.addChild(relationsBox);
+    const relationsBox = new VerticalBox(alignBox.width / 2, alignBox.height);
+    alignBox.addPart(relationsBox);
+    //const relationsBox = new PIXI.Graphics();
+    //relationsBox.beginFill(0x1f1f1f);
+    //relationsBox.position.set(5, uiHeight);
+    //relationsBox.drawRect(
+    //  0,
+    //  0,
+    //  this.width / 2 - 10,
+    //  this.height - uiHeight - 5
+    //);
+    //this.addChild(relationsBox);
 
     //外交関係を表示
     for (const tie of target.getDiplomacy()) {
@@ -71,11 +80,14 @@ export default class DiplomaticSidebar extends Sidebar {
     }
 
     //アクションボックス
+    /*
     const actionBox = new PIXI.Graphics();
     actionBox.beginFill(0x1f1f1f);
     actionBox.position.set(relationsBox.width + 10, uiHeight);
     actionBox.drawRect(0, 0, this.width / 2 - 5, this.height - uiHeight - 5);
-    this.addChild(actionBox);
+    this.addChild(actionBox);*/
+    const actionBox = new VerticalBox(alignBox.width / 2, alignBox.height);
+    alignBox.addPart(actionBox);
 
     //外交アクション追加
     const declareWar = new Button("宣戦布告", actionBox.width);

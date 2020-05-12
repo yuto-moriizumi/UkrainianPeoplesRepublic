@@ -12,6 +12,7 @@ declare const Resource: Readonly<{
     minus: string;
     savedata: string;
     conscription: string;
+    infantaly: string;
     se: {
         news: string;
         click_ok: string;

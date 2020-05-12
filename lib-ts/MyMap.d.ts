@@ -1,5 +1,6 @@
 import * as PIXI from "pixi.js";
 import { Selectable } from "./Scenes/Selectable";
+import DivisionSprite from "DivisionSprite";
 export default class MyMap extends PIXI.Sprite {
     private provinceMap;
     private scene;
@@ -22,6 +23,7 @@ export default class MyMap extends PIXI.Sprite {
      * @memberof MyMap
      */
     private getBarycenter;
+    spawnDivison(sprite: DivisionSprite): void;
     calculateBarycenterOfAll(): void;
     private getProvince;
     update(): void;

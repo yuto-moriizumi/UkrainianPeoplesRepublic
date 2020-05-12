@@ -17,6 +17,7 @@ import Event from "../Events/Event";
 import Button from "../UI/Button";
 import Conscription from "../UI/Conscription";
 import SpriteButton from "../UI/SpriteButton";
+import DivisionSprite from "../DivisionSprite";
 
 export default class MainScene extends Scene implements Selectable {
   public static instance: MainScene;
@@ -25,6 +26,7 @@ export default class MainScene extends Scene implements Selectable {
   private sidebar: Sidebar;
   private timer: Timer;
   private eventDispatcher: EventDispatcher;
+  public selectingDivison: DivisionSprite;
 
   constructor(playCountry: Country) {
     super();
@@ -58,6 +60,7 @@ export default class MainScene extends Scene implements Selectable {
     assets.push(Resource.se.click_ok);
     assets.push(Resource.se.declare_war);
     assets.push(Resource.conscription);
+    assets.push(Resource.infantaly);
     console.log(assets);
     return assets;
   }

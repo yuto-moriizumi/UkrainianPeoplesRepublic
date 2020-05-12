@@ -2,6 +2,7 @@ import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import JsonObject from "./JsonObject";
 import War from "./DiplomaticTies/War";
 import DivisionTemplate from "./DivisionTemplate";
+import GameManager from "./GameManager";
 
 export default class Country extends JsonObject {
   public id: string;
@@ -25,6 +26,26 @@ export default class Country extends JsonObject {
 
   public getColor() {
     return this._color;
+  }
+
+  public addDivisionTemplate(template: DivisionTemplate) {
+    this.divisions.push(template);
+  }
+
+  public getDivisionTemplates() {
+    return this.divisions;
+  }
+
+  public hasAnyDivisionTemplate() {
+    return this.divisions.length > 0;
+  }
+
+  public getRandomOwnProvince() {
+    const provinces = [];
+    GameManager.instance.data.provinces.forEach((province) => {
+      if (province.owner == this) provinces.push(province);
+    });
+    return provinces[Math.floor(Math.random() * provinces.length)];
   }
 
   public hasWarWith(country: Country): boolean {
