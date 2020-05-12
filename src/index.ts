@@ -1,5 +1,5 @@
 import GameManager from "./GameManager";
-import TitleScene from "./TitleScene";
+import TitleScene from "./Scenes/TitleScene";
 import * as WebFont from "webfontloader";
 import Resources from "./Resources";
 

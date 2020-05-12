@@ -13,7 +13,7 @@ export default class Conscription extends Sidebar {
   private scene: MainScene;
 
   constructor(scene: MainScene) {
-    super("外交");
+    super("徴兵");
     this.scene = scene;
   }
 }

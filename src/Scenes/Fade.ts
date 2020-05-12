@@ -1,6 +1,6 @@
 import Transition from "./Transition";
 import * as PIXI from "pixi.js";
-import GameManager from "./GameManager";
+import GameManager from "../GameManager";
 
 export default class Fade implements Transition {
   private onTransitionFinished: () => void = () => {}; //トランジション終了時コールバック

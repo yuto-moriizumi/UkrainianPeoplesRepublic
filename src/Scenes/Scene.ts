@@ -1,9 +1,9 @@
-import UpdateObject from "./UpdateObject";
+import UpdateObject from "../UpdateObject";
 import * as PIXI from "pixi.js";
 import Transition from "./Transition";
 import Immediate from "./Immediate";
-import LoaderAddParam from "./LoaderAddParam";
-import GameManager from "./GameManager";
+import LoaderAddParam from "../LoaderAddParam";
+import GameManager from "../GameManager";
 
 export default abstract class Scene extends PIXI.Container {
   protected transitionIn: Transition = new Immediate();
@@ -73,11 +73,11 @@ export default abstract class Scene extends PIXI.Container {
 
   public beginLoadResource(onLoaded: () => void): Promise<void> {
     //リソースダウンロードのフローを実行する
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.loadInitialResource(() => resolve());
     })
       .then(() => {
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
           const additionalAssets = this.onInitialResourceLoaded();
           this.loadAdditionalResource(additionalAssets, () => resolve());
         });

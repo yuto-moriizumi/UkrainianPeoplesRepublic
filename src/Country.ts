@@ -1,7 +1,6 @@
-import DiplomaticTie from "./DiplomaticTie/DiplomaticTie";
+import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import JsonObject from "./JsonObject";
-import * as PIXI from "pixi.js";
-import War from "./War";
+import War from "./DiplomaticTies/War";
 import DivisionTemplate from "./DivisionTemplate";
 
 export default class Country extends JsonObject {

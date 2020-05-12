@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import { Selectable } from "./Selectable";
+import { Selectable } from "./Scenes/Selectable";
 export default class MyMap extends PIXI.Sprite {
     private provinceMap;
     private scene;

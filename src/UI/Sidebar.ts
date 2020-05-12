@@ -3,35 +3,36 @@ import Header from "./Header";
 import Resources from "../Resources";
 import SpriteButton from "./SpriteButton";
 import * as PIXI from "pixi.js";
+import VerticalBox from "./VerticalBox";
+import HorizontalBox from "./HorizontalBox";
 
-export default class Sidebar extends PIXI.Graphics {
+export default class Sidebar extends VerticalBox {
   private static readonly COLOR = 0x3e3e36;
   private static readonly DEFAULT_WIDTH = 400;
   private static readonly HEADER_MARGIN = 5;
+  private static readonly HEADER_HEIGHT = 100;
   protected contentHeight;
+
   constructor(text: string) {
-    super();
     const renderer = GameManager.instance.game.renderer;
-    this.beginFill(Sidebar.COLOR);
-    this.drawRect(
-      0,
-      0,
+    super(
       Sidebar.DEFAULT_WIDTH,
-      renderer.height - Header.DEFAULT_HEIGHT
+      renderer.height - Header.DEFAULT_HEIGHT,
+      5,
+      Sidebar.COLOR
     );
     this.position.set(0, Header.DEFAULT_HEIGHT);
+
+    //ヘッダー
+    //this.contentHeight = Sidebar.HEADER_MARGIN * 2 + title.height;
+    const header = new HorizontalBox(this.width, 50, 5, 0x4f4c47);
+    this.addPart(header);
+    //this.addChild(header);
 
     //サイドバータイトル
     const title = new PIXI.Text(text, new PIXI.TextStyle({ fill: 0xffffff }));
     title.position.set(Sidebar.HEADER_MARGIN);
-
-    //ヘッダー
-    this.contentHeight = Sidebar.HEADER_MARGIN * 2 + title.height;
-    const header = new PIXI.Graphics();
-    header.beginFill(0x4f4c47);
-    header.drawRect(0, 0, this.width, this.contentHeight);
     header.addChild(title);
-    this.addChild(header);
 
     //×ボタン
     const xButton = new SpriteButton(

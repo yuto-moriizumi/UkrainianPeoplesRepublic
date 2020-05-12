@@ -1,9 +1,8 @@
 import Effect from "./Effect";
 import Country from "../../Country";
-import War from "../../War";
 import GameManager from "../../GameManager";
 import Province from "../../Province";
-import MainScene from "../../MainScene";
+import MainScene from "../../Scenes/MainScene";
 import * as PIXI from "pixi.js";
 
 export default class SetOwner extends Effect {

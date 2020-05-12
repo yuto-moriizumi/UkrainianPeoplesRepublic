@@ -25,6 +25,7 @@
     "gown": "^0.1.6",
     "pixi-filters": "^3.1.1",
     "pixi.js": "^5.2.1",
+    "puxi.js": "0.0.5",
     "webfontloader": "^1.6.28"
   }
 }

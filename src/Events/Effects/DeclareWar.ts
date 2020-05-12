@@ -1,6 +1,6 @@
 import Effect from "./Effect";
 import Country from "../../Country";
-import War from "../../War";
+import War from "../../DiplomaticTies/War";
 import GameManager from "../../GameManager";
 
 export default class DeclareWar extends Effect {

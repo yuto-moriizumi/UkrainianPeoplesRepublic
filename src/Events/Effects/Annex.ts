@@ -1,8 +1,7 @@
 import Effect from "./Effect";
 import Country from "../../Country";
-import War from "../../War";
 import GameManager from "../../GameManager";
-import MainScene from "../../MainScene";
+import MainScene from "../../Scenes/MainScene";
 
 export default class Annex extends Effect {
   private type = this.constructor.name;

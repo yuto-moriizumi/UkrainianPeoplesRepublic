@@ -1,4 +1,4 @@
-import MainScene from "../MainScene";
+import MainScene from "../Scenes/MainScene";
 export default class Event {
     private id;
     private title;

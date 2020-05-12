@@ -1,9 +1,7 @@
 import * as PIXI from "pixi.js";
-import MainScene from "../MainScene";
 import GameManager from "../GameManager";
 import Resource from "../Resources";
 import SpriteButton from "./SpriteButton";
-import EventDispatcher from "../Events/EventDispacher";
 import Sound from "../Sound";
 export default class Timer extends PIXI.Container {
   private text: PIXI.Text;

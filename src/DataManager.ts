@@ -1,10 +1,9 @@
 import Country from "./Country";
 import Province from "./Province";
-import DiplomaticTie from "./DiplomaticTie/DiplomaticTie";
-import War from "./War";
+import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
+import War from "./DiplomaticTies/War";
 import Event from "./Events/Event";
 import JsonObject from "./JsonObject";
-import * as PIXI from "pixi.js";
 
 export default class DataManager extends JsonObject {
   public countries: Map<string, Country> = new Map<string, Country>();

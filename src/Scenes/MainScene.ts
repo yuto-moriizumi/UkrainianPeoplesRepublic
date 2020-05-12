@@ -80,15 +80,6 @@ export default class MainScene extends Scene implements Selectable {
       header.height * 0.5 - this.timer.height * 0.5
     );
     header.addChild(this.timer);
-
-    //徴兵ボタン
-    const conscription = new SpriteButton(
-      resources[Resource.conscription].texture
-    );
-    conscription.on("click", () => {
-      this.openConscription();
-    });
-    this.addChild(conscription);
   }
 
   public selectProvince(province: Province) {
@@ -101,7 +92,7 @@ export default class MainScene extends Scene implements Selectable {
     this.addChild(this.sidebar);
   }
 
-  private openConscription() {
+  public openConscription() {
     if (this.sidebar && this.sidebar.parent) this.sidebar.destroy();
     this.sidebar = new Conscription(this);
     this.addChild(this.sidebar);

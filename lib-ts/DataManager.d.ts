@@ -1,6 +1,6 @@
 import Country from "./Country";
 import Province from "./Province";
-import DiplomaticTie from "./DiplomaticTie";
+import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import Event from "./Events/Event";
 import JsonObject from "./JsonObject";
 export default class DataManager extends JsonObject {

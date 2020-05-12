@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import Scene from "./Scene";
+import Scene from "./Scenes/Scene";
 import SoundManager from "./SoundManager";
 import DataManager from "./DataManager";
 

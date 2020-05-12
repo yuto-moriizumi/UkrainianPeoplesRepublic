@@ -1,4 +1,4 @@
-import DiplomaticTie from "./DiplomaticTie";
+import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import JsonObject from "./JsonObject";
 export default class Country extends JsonObject {
     id: string;

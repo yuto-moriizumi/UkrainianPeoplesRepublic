@@ -1,4 +1,4 @@
-import Transition from "Transition";
+import Transition from "./Transition";
 import * as PIXI from "pixi.js";
 
 export default class Immediate implements Transition {

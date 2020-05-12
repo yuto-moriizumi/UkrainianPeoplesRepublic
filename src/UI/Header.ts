@@ -2,24 +2,30 @@ import * as PIXI from "pixi.js";
 import Country from "../Country";
 import Flag from "../Flag";
 import GameManager from "../GameManager";
-export default class Header extends PIXI.Graphics {
-  private static readonly BG_COLOR = 0x2c2a2b;
+import HorizontalBox from "./HorizontalBox";
+import SpriteButton from "./SpriteButton";
+import Resource from "../Resources";
+import MainScene from "../Scenes/MainScene";
+export default class Header extends HorizontalBox {
   public static readonly DEFAULT_HEIGHT = 100;
   private myCountry: Country;
 
   constructor(myCountry: Country) {
-    super();
-    this.myCountry = myCountry;
-
     const renderer = GameManager.instance.game.renderer;
-    this.beginFill(Header.BG_COLOR);
-    this.drawRect(0, 0, renderer.width, Header.DEFAULT_HEIGHT);
+    super(renderer.width, Header.DEFAULT_HEIGHT, 0);
 
+    this.myCountry = myCountry;
     const myFlag = new Flag(this.myCountry);
-    myFlag.scale.set(Header.DEFAULT_HEIGHT / myFlag.height);
-    this.addChild(myFlag);
+    this.addPart(myFlag);
 
-    //クリック判定が貫通しないようにする
-    this.interactive = true;
+    const resources = GameManager.instance.game.loader.resources;
+    //徴兵ボタン
+    const conscription = new SpriteButton(
+      resources[Resource.conscription].texture
+    );
+    conscription.on("click", () => {
+      MainScene.instance.openConscription();
+    });
+    this.addPart(conscription);
   }
 }

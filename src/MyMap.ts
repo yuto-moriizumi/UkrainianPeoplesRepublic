@@ -1,9 +1,8 @@
 import * as PIXI from "pixi.js";
 import * as Filters from "pixi-filters";
 import GameManager from "./GameManager";
-import SelectScene from "./SelectScene";
 import Province from "./Province";
-import { Selectable } from "./Selectable";
+import { Selectable } from "./Scenes/Selectable";
 
 export default class MyMap extends PIXI.Sprite {
   private provinceMap: Uint8Array;
