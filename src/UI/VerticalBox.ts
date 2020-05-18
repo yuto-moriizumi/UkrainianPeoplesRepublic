@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import UIBox from "./UIBox";
 export default class VerticalBox extends UIBox {
-  uiHeight = 0;
+  private uiHeight = 0;
 
   constructor(
     width: number,
@@ -15,10 +15,24 @@ export default class VerticalBox extends UIBox {
     this.padding = padding;
   }
 
+  /**
+   * 子要素が
+   * @param {PIXI.Container} part
+   * @memberof VerticalBox
+   */
   public addPart(part: PIXI.Container) {
-    part.position.set(this.padding, Math.max(this.uiHeight, this.padding));
-    part.scale.set((this.width - this.padding * 2) / part.width);
+    part.scale.set(
+      Math.min(part.scale.x, (this.width - this.padding * 2) / part.width)
+    );
+    part.position.set(
+      (this.width - part.width) / 2,
+      Math.max(this.uiHeight, this.padding)
+    );
     this.addChild(part);
     this.uiHeight = part.y + part.height;
+  }
+
+  public getUiHeight(): number {
+    return this.uiHeight;
   }
 }

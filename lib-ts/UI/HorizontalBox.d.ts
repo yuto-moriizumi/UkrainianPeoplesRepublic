@@ -3,5 +3,5 @@ import UIBox from "./UIBox";
 export default class HorizontalBox extends UIBox {
     private uiWidth;
     constructor(width: number, height: number, padding?: number, color?: number);
-    addPart(part: PIXI.Container): void;
+    addPart(part: PIXI.Container, align?: number): void;
 }

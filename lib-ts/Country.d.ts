@@ -15,6 +15,12 @@ export default class Country extends JsonObject {
     addDivisionTemplate(template: DivisionTemplate): void;
     getDivisionTemplates(): DivisionTemplate[];
     hasAnyDivisionTemplate(): boolean;
+    /**
+     * 所有しているプロヴィンスのうち、ランダムに1つを選ぶ
+     *
+     * @returns
+     * @memberof Country
+     */
     getRandomOwnProvince(): any;
     hasWarWith(country: Country): boolean;
     createEntries(): any[][];

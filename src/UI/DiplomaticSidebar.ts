@@ -12,7 +12,6 @@ import HorizontalBox from "./HorizontalBox";
 import VerticalBox from "./VerticalBox";
 
 export default class DiplomaticSidebar extends Sidebar {
-  private readonly FLAG_HEIGHT: number = 80;
   private scene: MainScene;
   private readonly DIPLOMACY_HEIGHT: number = 40;
 
@@ -21,45 +20,33 @@ export default class DiplomaticSidebar extends Sidebar {
 
     this.scene = scene;
 
-    //let uiHeight = this.contentHeight;
-
     //相手国の国旗を表示
     const flag = new Flag(target);
+    console.log(flag.width);
+
+    flag.scale.set(170 / flag.height);
+    console.log(flag.width);
+
     this.addPart(flag);
-    //flag.scale.set(this.FLAG_HEIGHT / flag.height);
-    //flag.anchor.set(0.5, 0.5);
-    //flag.position.set(this.width / 2, uiHeight + flag.height / 2);
-    //this.addChild(flag);
-    //uiHeight += flag.height;
+    console.log(flag.height);
 
     //国名
     const text = new PIXI.Text(
       target.name,
       new PIXI.TextStyle({ fill: 0xffffff })
     );
-    //text.anchor.set(0.5, 0);
-    //text.position.set(this.width / 2, uiHeight + 10);
-    //text.width = Math.min(text.width, this.width - 10);
-    //this.addChild(text);
     this.addPart(text);
-    //uiHeight += text.height + 20;
 
     //横に並べるbox
-    const alignBox = new HorizontalBox(this.width, this.height - this.uiHeight);
+    const alignBox = new HorizontalBox(
+      this.width,
+      this.height - this.getUiHeight()
+    );
     this.addPart(alignBox);
+
     //外交関係ボックス
     const relationsBox = new VerticalBox(alignBox.width / 2, alignBox.height);
     alignBox.addPart(relationsBox);
-    //const relationsBox = new PIXI.Graphics();
-    //relationsBox.beginFill(0x1f1f1f);
-    //relationsBox.position.set(5, uiHeight);
-    //relationsBox.drawRect(
-    //  0,
-    //  0,
-    //  this.width / 2 - 10,
-    //  this.height - uiHeight - 5
-    //);
-    //this.addChild(relationsBox);
 
     //外交関係を表示
     for (const tie of target.getDiplomacy()) {
