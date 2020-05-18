@@ -40,6 +40,12 @@ export default class Country extends JsonObject {
     return this.divisions.length > 0;
   }
 
+  /**
+   * 所有しているプロヴィンスのうち、ランダムに1つを選ぶ
+   *
+   * @returns
+   * @memberof Country
+   */
   public getRandomOwnProvince() {
     const provinces = [];
     GameManager.instance.data.provinces.forEach((province) => {
