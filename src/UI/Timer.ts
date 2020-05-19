@@ -60,12 +60,14 @@ export default class Timer extends PIXI.Container {
     this.drawProgress();
   }
 
-  public update(elapsedFrameCount: number) {
-    if (!this.isActive) return;
+  public update(elapsedFrameCount: number): boolean {
+    if (!this.isActive) return false;
     if (elapsedFrameCount % this.updateDuration == 0) {
       this.date.setDate(this.date.getDate() + 1);
       this.text.text = this.date.toLocaleDateString();
+      return true;
     }
+    return false;
   }
 
   public faster() {

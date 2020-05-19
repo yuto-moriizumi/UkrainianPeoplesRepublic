@@ -108,7 +108,12 @@ export default class MainScene extends Scene implements Selectable {
   public update(dt: number) {
     super.update(dt);
     if (this.map) this.map.move();
-    if (this.timer) this.timer.update(this.elapsedFrameCount);
+    let timeElapced = false;
+    if (this.timer) timeElapced = this.timer.update(this.elapsedFrameCount);
+    if (timeElapced)
+      GameManager.instance.data.countries.forEach((country) =>
+        country.update()
+      );
 
     //イベント発火処理
     GameManager.instance.data.events.forEach((event: Event) => {

@@ -9,7 +9,7 @@ export default class Timer extends PIXI.Container {
     private readonly WIDTH;
     private readonly PROGRESS_HEIGHT;
     constructor();
-    update(elapsedFrameCount: number): void;
+    update(elapsedFrameCount: number): boolean;
     faster(): void;
     slower(): void;
     private playSE;

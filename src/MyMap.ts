@@ -3,7 +3,8 @@ import * as Filters from "pixi-filters";
 import GameManager from "./GameManager";
 import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
-import DivisionSprite from "DivisionSprite";
+import DivisionSprite from "./DivisionSprite";
+import DivisionInfo from "./DivisionInfo";
 
 export default class MyMap extends PIXI.Sprite {
   private provinceMap: Uint8Array;
@@ -12,6 +13,7 @@ export default class MyMap extends PIXI.Sprite {
   private defaultWidth: number;
   private defaultHeight: number;
   private pressKeys: Set<string> = new Set<string>();
+  private selectingDivisions: Set<DivisionInfo> = new Set<DivisionInfo>();
 
   constructor(scene: Selectable, texture?: PIXI.Texture) {
     super(texture);
@@ -49,10 +51,10 @@ export default class MyMap extends PIXI.Sprite {
     });
 
     this.on("click", (e: PIXI.interaction.InteractionEvent) => {
-      this.selectClickedProvince(e);
+      this.scene.selectProvince(this.getClickedProvince(e));
     });
     this.on("rightclick", (e: PIXI.interaction.InteractionEvent) => {
-      this.selectClickedProvince(e);
+      this.moveDivisionsTo(this.getClickedProvince(e));
     });
   }
 
@@ -100,14 +102,12 @@ export default class MyMap extends PIXI.Sprite {
     return provinceId;
   }
 
-  private selectClickedProvince(e: PIXI.interaction.InteractionEvent) {
+  private getClickedProvince(e: PIXI.interaction.InteractionEvent): Province {
     //Uinit8Array上でのインデックスを算出
     const position = e.data.getLocalPosition(this);
     const province = this.getProvince(position);
-    if (!province) return; //プロヴィンスが存在しなければ何もしない
-    //プロヴィンスを選択
-    this.scene.selectProvince(province);
-    console.log(province);
+    if (!province) return null; //プロヴィンスが存在しなければ何もしない
+    return province;
   }
 
   public move() {
@@ -183,13 +183,14 @@ export default class MyMap extends PIXI.Sprite {
     return new PIXI.Point(Math.floor(x / count), Math.floor(y / count));
   }
 
-  public spawnDivison(sprite: DivisionSprite) {
-    this.addChild(sprite);
+  public setDivisonPosition(sprite: DivisionSprite) {
+    if (!sprite.getOnMap()) this.addChild(sprite);
     const point = sprite.getInfo().getPosition().getCoord();
     sprite.position.set(
       point.x - sprite.width / 2,
       point.y - sprite.height / 2
     );
+    sprite.setOnMap(true);
   }
 
   public calculateBarycenterOfAll() {
@@ -241,5 +242,20 @@ export default class MyMap extends PIXI.Sprite {
     );
     this.filters = [filter];
     //console.log("Map updated:", this.replacements);
+  }
+
+  public addSelectingDivision(division: DivisionSprite) {
+    this.selectingDivisions.add(division.getInfo());
+  }
+
+  public removeSelectingDivision(division: DivisionSprite) {
+    this.selectingDivisions.delete(division.getInfo());
+  }
+
+  private moveDivisionsTo(province: Province) {
+    console.log("moveDivisionsTo", province);
+    this.selectingDivisions.forEach((division) => {
+      division.moveTo(province);
+    });
   }
 }

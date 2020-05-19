@@ -75,4 +75,8 @@ export default class Country extends JsonObject {
       return [key, value];
     });
   }
+
+  public update() {
+    this.divisions.forEach((division) => division.update());
+  }
 }

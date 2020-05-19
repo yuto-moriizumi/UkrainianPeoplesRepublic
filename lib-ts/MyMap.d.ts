@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 import { Selectable } from "./Scenes/Selectable";
-import DivisionSprite from "DivisionSprite";
+import DivisionSprite from "./DivisionSprite";
 export default class MyMap extends PIXI.Sprite {
     private provinceMap;
     private scene;
@@ -8,11 +8,12 @@ export default class MyMap extends PIXI.Sprite {
     private defaultWidth;
     private defaultHeight;
     private pressKeys;
+    private selectingDivisions;
     constructor(scene: Selectable, texture?: PIXI.Texture);
     setReplacements(replacements: Array<any>): void;
     pushReplacement(replacement: Array<any>): void;
     private getProvinceIdFromPoint;
-    private selectClickedProvince;
+    private getClickedProvince;
     move(): void;
     /**
      * 指定した座標を含むプロヴィンスの重心座標を返します
@@ -23,8 +24,11 @@ export default class MyMap extends PIXI.Sprite {
      * @memberof MyMap
      */
     private getBarycenter;
-    spawnDivison(sprite: DivisionSprite): void;
+    setDivisonPosition(sprite: DivisionSprite): void;
     calculateBarycenterOfAll(): void;
     private getProvince;
     update(): void;
+    addSelectingDivision(division: DivisionSprite): void;
+    removeSelectingDivision(division: DivisionSprite): void;
+    private moveDivisionsTo;
 }

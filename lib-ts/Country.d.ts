@@ -24,4 +24,5 @@ export default class Country extends JsonObject {
     getRandomOwnProvince(): any;
     hasWarWith(country: Country): boolean;
     createEntries(): any[][];
+    update(): void;
 }

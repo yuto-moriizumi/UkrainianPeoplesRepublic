@@ -9,6 +9,7 @@ export default class DivisionTemplate extends JsonObject {
   private __owner: Country;
   private organization: number = 100;
   private attack: number = 10;
+  private speed: number = 10;
   private divisions: Array<DivisionInfo> = [];
 
   constructor(owner: Country) {
@@ -20,7 +21,15 @@ export default class DivisionTemplate extends JsonObject {
     return this.__owner;
   }
 
+  public getSpeed() {
+    return this.speed;
+  }
+
   public addDivision(division: DivisionInfo) {
     this.divisions.push(division);
+  }
+
+  public update() {
+    this.divisions.forEach((division) => division.update());
   }
 }
