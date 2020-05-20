@@ -91,6 +91,12 @@ export default class DiplomaticSidebar extends Sidebar {
       this.scene.openDiplomacySidebar(target);
       war.activate();
     });
-    actionBox.addChild(declareWar);
+    actionBox.addPart(declareWar);
+
+    const select = new Button("この国に切替");
+    select.on("click", () => {
+      this.scene.setPlayCountry(target);
+    });
+    actionBox.addPart(select);
   }
 }

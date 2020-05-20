@@ -2,6 +2,7 @@ import GameManager from "./GameManager";
 import TitleScene from "./Scenes/TitleScene";
 import * as WebFont from "webfontloader";
 import Resources from "./Resources";
+import Command from "./Command";
 
 let fontLoaded = false;
 let windowLoaded = false;
@@ -30,4 +31,9 @@ function initGame() {
     backgroundColor: 0x222222,
   });
   GameManager.loadScene(new TitleScene());
+}
+
+new Command();
+function d(arg: string) {
+  Command.instance.execute(arg);
 }

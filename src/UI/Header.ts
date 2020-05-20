@@ -7,17 +7,20 @@ import SpriteButton from "./SpriteButton";
 import Resource from "../Resources";
 import MainScene from "../Scenes/MainScene";
 import Button from "./Button";
+import Timer from "./Timer";
 export default class Header extends HorizontalBox {
   public static readonly DEFAULT_HEIGHT = 100;
   private myCountry: Country;
+  private timer: Timer;
+  private myFlag: Flag;
 
   constructor(myCountry: Country) {
     const renderer = GameManager.instance.game.renderer;
     super(renderer.width, Header.DEFAULT_HEIGHT, 0);
 
     this.myCountry = myCountry;
-    const myFlag = new Flag(this.myCountry);
-    this.addPart(myFlag);
+    this.myFlag = new Flag(this.myCountry);
+    this.addPart(this.myFlag);
 
     const resources = GameManager.instance.game.loader.resources;
     //徴兵ボタン
@@ -32,11 +35,27 @@ export default class Header extends HorizontalBox {
     //デバッグボタン
     const debugButton = new Button("デ");
     debugButton.on("click", () => {
-      GameManager.instance.data.provinces.forEach((province) => {
-        const coord = province.getCoord();
-        if (coord.x == 0 && coord.y == 0) console.log(province);
-      });
+      MainScene.instance.openDebug();
     });
     this.addPart(debugButton);
+
+    //時間コントローラ
+    this.timer = new Timer();
+    this.timer.position.set(
+      this.width - this.timer.width - 15,
+      this.height * 0.5 - this.timer.height * 0.5
+    );
+    this.addChild(this.timer);
+  }
+
+  public getTimer(): Timer {
+    return this.timer;
+  }
+
+  public setPlayCountry(country: Country) {
+    this.myCountry = country;
+    const newFlag = new Flag(country);
+    this.replacePart(this.myFlag, newFlag);
+    this.myFlag = newFlag;
   }
 }

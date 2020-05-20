@@ -18,21 +18,25 @@ import Button from "../UI/Button";
 import Conscription from "../UI/Conscription";
 import SpriteButton from "../UI/SpriteButton";
 import DivisionSprite from "../DivisionSprite";
+import DebugSidebar from "../UI/DebugSidebar";
 
 export default class MainScene extends Scene implements Selectable {
   public static instance: MainScene;
   private playCountry: Country;
   private map: MyMap;
+  private header: Header;
   private sidebar: Sidebar;
-  private timer: Timer;
   private eventDispatcher: EventDispatcher;
   public selectingDivison: DivisionSprite;
 
   constructor(playCountry: Country) {
     super();
     if (MainScene.instance) {
-      throw new Error("MainScene can be instantiate only once");
+      MainScene.instance.destroy();
     }
+    //if (MainScene.instance) {
+    //  throw new Error("MainScene can be instantiate only once");
+    //}
     this.transitionIn = new Fade(1.0, 0.0, -0.02);
     this.transitionOut = new Fade(0.0, 1.0, 0.02);
     this.playCountry = playCountry;
@@ -73,16 +77,8 @@ export default class MainScene extends Scene implements Selectable {
     this.map.update();
     this.addChild(this.map);
 
-    const header = new Header(this.playCountry);
-    this.addChild(header);
-
-    //時間コントローラ
-    this.timer = new Timer();
-    this.timer.position.set(
-      this.width - this.timer.width - 15,
-      header.height * 0.5 - this.timer.height * 0.5
-    );
-    header.addChild(this.timer);
+    this.header = new Header(this.playCountry);
+    this.addChild(this.header);
   }
 
   public selectProvince(province: Province) {
@@ -101,6 +97,12 @@ export default class MainScene extends Scene implements Selectable {
     this.addChild(this.sidebar);
   }
 
+  public openDebug() {
+    if (this.sidebar && this.sidebar.parent) this.sidebar.destroy();
+    this.sidebar = new DebugSidebar(this);
+    this.addChild(this.sidebar);
+  }
+
   public getMap() {
     return this.map;
   }
@@ -109,7 +111,8 @@ export default class MainScene extends Scene implements Selectable {
     super.update(dt);
     if (this.map) this.map.move();
     let timeElapced = false;
-    if (this.timer) timeElapced = this.timer.update(this.elapsedFrameCount);
+    if (this.header)
+      timeElapced = this.header.getTimer().update(this.elapsedFrameCount);
     if (timeElapced)
       GameManager.instance.data.countries.forEach((country) =>
         country.update()
@@ -117,11 +120,16 @@ export default class MainScene extends Scene implements Selectable {
 
     //イベント発火処理
     GameManager.instance.data.events.forEach((event: Event) => {
-      event.dispatch(this, this.timer.getDate());
+      event.dispatch(this, this.header.getTimer().getDate());
     });
   }
 
   public getMyCountry() {
     return this.playCountry;
+  }
+
+  public setPlayCountry(country: Country) {
+    this.playCountry = country;
+    this.header.setPlayCountry(country);
   }
 }

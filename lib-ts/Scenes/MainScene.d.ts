@@ -9,8 +9,8 @@ export default class MainScene extends Scene implements Selectable {
     static instance: MainScene;
     private playCountry;
     private map;
+    private header;
     private sidebar;
-    private timer;
     private eventDispatcher;
     selectingDivison: DivisionSprite;
     constructor(playCountry: Country);
@@ -19,7 +19,9 @@ export default class MainScene extends Scene implements Selectable {
     selectProvince(province: Province): void;
     openDiplomacySidebar(country: Country): void;
     openConscription(): void;
+    openDebug(): void;
     getMap(): MyMap;
     update(dt: number): void;
     getMyCountry(): Country;
+    setPlayCountry(country: Country): void;
 }

@@ -39,4 +39,13 @@ export default class HorizontalBox extends UIBox {
     this.addChild(part);
     this.uiWidth = part.x + part.width;
   }
+
+  public replacePart(before: PIXI.Container, after: PIXI.Container) {
+    after.scale.set(
+      Math.min(after.scale.y, (this.height - this.padding * 2) / after.height)
+    );
+    after.position.set(before.x, before.y);
+    before.destroy();
+    this.addChild(after);
+  }
 }
