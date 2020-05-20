@@ -9,6 +9,7 @@ export default class DivisionInfo extends JsonObject {
     private __sprite;
     private _destination;
     private movingProgress;
+    private __progressBar;
     constructor(template: DivisionTemplate);
     set position(provinceId: string);
     set destination(provinceId: string);

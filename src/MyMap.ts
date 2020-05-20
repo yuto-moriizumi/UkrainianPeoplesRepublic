@@ -5,6 +5,8 @@ import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
 import DivisionSprite from "./DivisionSprite";
 import DivisionInfo from "./DivisionInfo";
+import Arrow from "./Arrow";
+import ArrowProgress from "./ArrowProgress";
 
 export default class MyMap extends PIXI.Sprite {
   private provinceMap: Uint8Array;
