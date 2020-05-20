@@ -6,9 +6,10 @@ import VerticalBox from "./UI/VerticalBox";
 import Resource from "./Resources";
 import * as Filters from "pixi-filters";
 import MainScene from "./Scenes/MainScene";
+import Province from "Province";
 export default class DivisionSprite extends VerticalBox {
+  private static selects = new Set<DivisionSprite>();
   private info: DivisionInfo;
-  private static readonly;
   private selected = false; //JSONに保存する必要が無いのでこのクラスのメンバにしてる
   private onMap = false;
 
@@ -40,21 +41,43 @@ export default class DivisionSprite extends VerticalBox {
     return this.onMap;
   }
 
+  public select() {
+    this.selected = true;
+    this.filters = [
+      new Filters.GlowFilter({
+        outerStrength: 8,
+        color: 0xffff00,
+        quality: 1,
+      }),
+    ];
+
+    //他の師団の選択を解除
+    DivisionSprite.selects.forEach((division) => {
+      division.deselect();
+    });
+    DivisionSprite.selects.add(this);
+  }
+
+  public deselect() {
+    this.selected = false;
+    this.filters = [];
+    DivisionSprite.selects.delete(this);
+  }
+
   private onClick(e: PIXI.interaction.InteractionEvent) {
     e.stopPropagation();
     this.selected = !this.selected;
     if (this.selected) {
-      this.filters = [
-        new Filters.GlowFilter({
-          outerStrength: 8,
-          color: 0xffff00,
-          quality: 1,
-        }),
-      ];
-      MainScene.instance.getMap().addSelectingDivision(this);
+      //選択されていないならば選択
+      this.select();
     } else {
-      this.filters = [];
-      MainScene.instance.getMap().removeSelectingDivision(this);
+      this.deselect();
     }
+  }
+
+  public static moveSelectingDivisionsTo(province: Province) {
+    DivisionSprite.selects.forEach((division) => {
+      division.getInfo().moveTo(province);
+    });
   }
 }

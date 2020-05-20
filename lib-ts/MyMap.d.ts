@@ -8,7 +8,6 @@ export default class MyMap extends PIXI.Sprite {
     private defaultWidth;
     private defaultHeight;
     private pressKeys;
-    private selectingDivisions;
     constructor(scene: Selectable, texture?: PIXI.Texture);
     setReplacements(replacements: Array<any>): void;
     pushReplacement(replacement: Array<any>): void;
@@ -28,7 +27,5 @@ export default class MyMap extends PIXI.Sprite {
     calculateBarycenterOfAll(): void;
     private getProvince;
     update(): void;
-    addSelectingDivision(division: DivisionSprite): void;
-    removeSelectingDivision(division: DivisionSprite): void;
     private moveDivisionsTo;
 }

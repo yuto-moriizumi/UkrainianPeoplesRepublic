@@ -2,6 +2,7 @@ import Country from "./Country";
 import JsonObject from "./JsonObject";
 import Province from "./Province";
 import DivisionTemplate from "./DivisionTemplate";
+import DivisionSprite from "./DivisionSprite";
 export default class DivisionInfo extends JsonObject {
     private __template;
     private _position;
@@ -16,6 +17,7 @@ export default class DivisionInfo extends JsonObject {
     setPosition(province: Province): void;
     getPosition(): Province;
     get owner(): Country;
+    get sprite(): DivisionSprite;
     moveTo(destination: Province): void;
     update(): void;
 }

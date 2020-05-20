@@ -15,7 +15,6 @@ export default class MyMap extends PIXI.Sprite {
   private defaultWidth: number;
   private defaultHeight: number;
   private pressKeys: Set<string> = new Set<string>();
-  private selectingDivisions: Set<DivisionInfo> = new Set<DivisionInfo>();
 
   constructor(scene: Selectable, texture?: PIXI.Texture) {
     super(texture);
@@ -246,18 +245,7 @@ export default class MyMap extends PIXI.Sprite {
     //console.log("Map updated:", this.replacements);
   }
 
-  public addSelectingDivision(division: DivisionSprite) {
-    this.selectingDivisions.add(division.getInfo());
-  }
-
-  public removeSelectingDivision(division: DivisionSprite) {
-    this.selectingDivisions.delete(division.getInfo());
-  }
-
   private moveDivisionsTo(province: Province) {
-    console.log("moveDivisionsTo", province);
-    this.selectingDivisions.forEach((division) => {
-      division.moveTo(province);
-    });
+    DivisionSprite.moveSelectingDivisionsTo(province);
   }
 }

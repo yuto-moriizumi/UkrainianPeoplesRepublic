@@ -52,6 +52,10 @@ export default class DivisionInfo extends JsonObject {
     return this.__template.owner;
   }
 
+  public get sprite() {
+    return this.__sprite;
+  }
+
   public moveTo(destination: Province) {
     if (this._destination == destination) return;
     if (this.__progressBar) {
