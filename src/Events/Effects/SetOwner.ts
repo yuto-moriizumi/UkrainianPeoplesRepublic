@@ -23,20 +23,25 @@ export default class SetOwner extends Effect {
 
   set provinces(provinceIds: Array<string>) {
     this._provinces = provinceIds.map((provinceId) => {
-      return GameManager.instance.data.provinces.get(provinceId);
+      if (provinceId.substr(0, 1) != "#") provinceId = "#" + provinceId; //#ついてないやつにつける data.json更新後削除
+      const province = GameManager.instance.data.provinces.get(provinceId);
+      //console.log(province);
+      return province;
     });
+    console.log(this._provinces);
   }
 
   public createEntries() {
     return super.createEntries().map(([key, value]) => {
       if (value instanceof Country) return [key, value.id];
-      if (value instanceof Array)
+      if (value instanceof Array) {
         return [
           key,
           value.map((province: Province) => {
-            return PIXI.utils.hex2string(province.id).substr(1);
+            return province.getId();
           }),
         ];
+      }
       return [key, value];
     });
   }

@@ -6,24 +6,24 @@ import MainScene from "./Scenes/MainScene";
 import MyMap from "MyMap";
 
 export default class Province extends JsonObject {
-  public id: number;
+  private id: string;
   private _owner: Country;
   private x: number = 0;
   private y: number = 0;
 
   constructor(id: string) {
     super();
-    this.id = parseInt(id, 16);
-    //
-    //console.log("try", obj.Owner, this.owner);
+    if (id.substr(0, 1) != "#") this.id = "#" + id;
+    //#ついてないやつにつける data.json更新後削除
+    else this.id = id;
   }
 
   private set owner(countryId: string) {
     this._owner = GameManager.instance.data.countries.get(countryId);
   }
 
-  private get owner(): string {
-    return "test";
+  public getId(): string {
+    return this.id;
   }
 
   public getOwner() {

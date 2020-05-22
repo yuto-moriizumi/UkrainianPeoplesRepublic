@@ -38,7 +38,6 @@ export default class SelectScene extends Scene implements Selectable {
     assets.push(Resource.Map);
     //jsonデータをロードし、終わったら
     GameManager.instance.data.countries.forEach((country) => {
-      console.log("hi", country);
       assets.push(country.flag); //全ての国旗をロード
     });
     console.log("loadedAssets:" + assets);

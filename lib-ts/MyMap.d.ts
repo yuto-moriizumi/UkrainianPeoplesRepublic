@@ -3,6 +3,7 @@ import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
 import DivisionSprite from "./DivisionSprite";
 export default class MyMap extends PIXI.Sprite {
+    private static readonly BORDER_COLOR;
     private provinceMap;
     private scene;
     private replacements;

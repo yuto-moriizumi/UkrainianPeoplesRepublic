@@ -9,6 +9,7 @@ import Arrow from "./Arrow";
 import ArrowProgress from "./ArrowProgress";
 
 export default class MyMap extends PIXI.Sprite {
+  private static readonly BORDER_COLOR = "#000000"; //プロヴィンス境界の色
   private provinceMap: Uint8Array;
   private scene: Selectable;
   private replacements: Array<any> = [];
@@ -81,10 +82,13 @@ export default class MyMap extends PIXI.Sprite {
     //console.log(this.provinceMap[idx + 0]);
     let provinceId;
     try {
-      provinceId =
-        ("00" + this.provinceMap[idx + 0].toString(16)).slice(-2) +
-        ("00" + this.provinceMap[idx + 1].toString(16)).slice(-2) +
-        ("00" + this.provinceMap[idx + 2].toString(16)).slice(-2);
+      provinceId = PIXI.utils.hex2string(
+        PIXI.utils.rgb2hex([
+          this.provinceMap[idx + 0] / 255,
+          this.provinceMap[idx + 1] / 255,
+          this.provinceMap[idx + 2] / 255,
+        ])
+      );
     } catch (error) {
       console.log(error);
       console.log(
@@ -97,9 +101,6 @@ export default class MyMap extends PIXI.Sprite {
       );
       throw new Error("停止");
     }
-
-    if (provinceId === "000000") return "000000"; //境界線を選択した場合は何もしない
-
     return provinceId;
   }
 
@@ -207,9 +208,10 @@ export default class MyMap extends PIXI.Sprite {
   private getProvince(position: PIXI.Point): Province {
     const provinceId = this.getProvinceIdFromPoint(position);
     const data = GameManager.instance.data;
+    console.log(provinceId);
 
     if (!provinceId) return null; //provinceIdがnullの時は何もしない
-    if (provinceId == "000000") return null; //境界線の時は何もしない
+    if (provinceId == MyMap.BORDER_COLOR) return null; //境界線の時は何もしない
 
     let province = data.provinces.get(provinceId);
     if (!province) {
@@ -218,7 +220,10 @@ export default class MyMap extends PIXI.Sprite {
       province.setOwner(GameManager.instance.data.countries.get("Rebels"));
       data.provinces.set(provinceId, province);
       province.setCoord(this.getBarycenter(position));
-      this.replacements.push([province.id, province.getOwner().getColor()]);
+      this.replacements.push([
+        province.getId(),
+        province.getOwner().getColor(),
+      ]);
       this.update();
     } else {
       //もし選択したプロヴィンスに座標情報が用意されていなかったら追加する
@@ -233,7 +238,10 @@ export default class MyMap extends PIXI.Sprite {
     this.replacements = [];
     GameManager.instance.data.provinces.forEach((province) => {
       //console.log("replace", [province.id, province.getOwner().color]);
-      this.replacements.push([province.id, province.getOwner().getColor()]);
+      this.replacements.push([
+        PIXI.utils.string2hex(province.getId()),
+        province.getOwner().getColor(),
+      ]);
     });
     /*
      * 注意 - どういうわけか、replacementsの長さが1以下だと正しく動作しなくなる
@@ -282,14 +290,12 @@ export default class MyMap extends PIXI.Sprite {
         searchPoint["over"]
       );
       */
-      if (provinceId2 == PIXI.utils.hex2string(province2.id).substr(1))
-        return true; //目的のプロヴィンスである
+      if (provinceId2 == province2.getId()) return true; //目的のプロヴィンスである
 
-      if (provinceId2 == "000000") {
+      if (provinceId2 == MyMap.BORDER_COLOR) {
         //境界線であるならば
         over++; //境界線であるのでoverをカウント
-      } else if (provinceId2 != PIXI.utils.hex2string(province1.id).substr(1))
-        continue; //探索開始プロヴィンスと異なり、境界線でないならば探索しない
+      } else if (provinceId2 != province1.getId()) continue; //探索開始プロヴィンスと異なり、境界線でないならば探索しない
       if (over > 4) continue; //3ピクセル以上超えていれば境界線を辿っていると判断してcontinue
 
       if (0 < searchPoint["x"])
