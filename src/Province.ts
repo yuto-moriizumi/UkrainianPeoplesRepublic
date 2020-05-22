@@ -3,6 +3,7 @@ import GameManager from "./GameManager";
 import JsonObject from "./JsonObject";
 import * as PIXI from "pixi.js";
 import MainScene from "./Scenes/MainScene";
+import MyMap from "MyMap";
 
 export default class Province extends JsonObject {
   public id: number;
@@ -19,6 +20,10 @@ export default class Province extends JsonObject {
 
   private set owner(countryId: string) {
     this._owner = GameManager.instance.data.countries.get(countryId);
+  }
+
+  private get owner(): string {
+    return "test";
   }
 
   public getOwner() {
@@ -45,5 +50,11 @@ export default class Province extends JsonObject {
       if (key === "id") return [];
       return [key, value];
     });
+  }
+
+  public isNextTo(province: Province): boolean {
+    const ans = MainScene.instance.getMap().isNextTo(this, province);
+    //console.log(this, province, ans);
+    return ans;
   }
 }

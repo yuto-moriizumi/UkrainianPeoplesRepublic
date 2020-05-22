@@ -8,9 +8,11 @@ export default class Province extends JsonObject {
     private y;
     constructor(id: string);
     private set owner(value);
+    private get owner();
     getOwner(): Country;
     setOwner(owner: Country): void;
     setCoord(point: PIXI.Point): void;
     getCoord(): PIXI.Point;
     createEntries(): any[][];
+    isNextTo(province: Province): boolean;
 }

@@ -98,7 +98,7 @@ export default class MyMap extends PIXI.Sprite {
       throw new Error("停止");
     }
 
-    if (provinceId === "000000") return null; //境界線を選択した場合は何もしない
+    if (provinceId === "000000") return "000000"; //境界線を選択した場合は何もしない
 
     return provinceId;
   }
@@ -156,8 +156,8 @@ export default class MyMap extends PIXI.Sprite {
     while (candidates.length > 0) {
       const searchPoint = candidates.shift();
       const idx =
-        (Math.floor(searchPoint.y) * this.defaultWidth +
-          Math.floor(searchPoint.x)) *
+        (Math.floor(searchPoint["y"]) * this.defaultWidth +
+          Math.floor(searchPoint["x"])) *
         4;
       if (already.has(idx)) {
         //すでに探索済みだったら何もしない
@@ -167,18 +167,18 @@ export default class MyMap extends PIXI.Sprite {
       const provinceId2 = this.getProvinceIdFromPoint(searchPoint);
       if (provinceId !== provinceId2) continue; //provinceIdが異なる（=色が異なる）場合は何もしない
 
-      x += searchPoint.x;
-      y += searchPoint.y;
+      x += searchPoint["x"];
+      y += searchPoint["y"];
       count += 1;
 
-      if (0 < searchPoint.x)
-        candidates.push(new PIXI.Point(searchPoint.x - 1, searchPoint.y));
-      if (searchPoint.x < this.defaultWidth - 1)
-        candidates.push(new PIXI.Point(searchPoint.x + 1, searchPoint.y));
-      if (0 < searchPoint.y)
-        candidates.push(new PIXI.Point(searchPoint.x, searchPoint.y - 1));
-      if (searchPoint.y < this.defaultHeight - 1)
-        candidates.push(new PIXI.Point(searchPoint.x, searchPoint.y + 1));
+      if (0 < searchPoint["x"])
+        candidates.push(new PIXI.Point(searchPoint["x"] - 1, searchPoint["y"]));
+      if (searchPoint["x"] < this.defaultWidth - 1)
+        candidates.push(new PIXI.Point(searchPoint["x"] + 1, searchPoint["y"]));
+      if (0 < searchPoint["y"])
+        candidates.push(new PIXI.Point(searchPoint["x"], searchPoint["y"] - 1));
+      if (searchPoint["y"] < this.defaultHeight - 1)
+        candidates.push(new PIXI.Point(searchPoint["x"], searchPoint["y"] + 1));
     }
 
     return new PIXI.Point(Math.floor(x / count), Math.floor(y / count));
@@ -209,6 +209,7 @@ export default class MyMap extends PIXI.Sprite {
     const data = GameManager.instance.data;
 
     if (!provinceId) return null; //provinceIdがnullの時は何もしない
+    if (provinceId == "000000") return null; //境界線の時は何もしない
 
     let province = data.provinces.get(provinceId);
     if (!province) {
@@ -247,5 +248,76 @@ export default class MyMap extends PIXI.Sprite {
 
   private moveDivisionsTo(province: Province) {
     DivisionSprite.moveSelectingDivisionsTo(province);
+  }
+
+  public isNextTo(province1: Province, province2: Province): boolean {
+    if (province1 == province2) return true;
+    const province1Point = province1.getCoord();
+
+    //BFSで探索
+    const candidates = new Array<object>();
+    //{x:number,y:number,over:number(黒線を超えた回数)}
+    const already = new Set<number>();
+    candidates.push({ x: province1Point.x, y: province1Point.y, over: 0 });
+    while (candidates.length > 0) {
+      const searchPoint = candidates.shift();
+      const idx =
+        (Math.floor(searchPoint["y"]) * this.defaultWidth +
+          Math.floor(searchPoint["x"])) *
+        4;
+      if (already.has(idx)) {
+        //すでに探索済みだったら何もしない
+        continue;
+      }
+      already.add(idx);
+      const provinceId2 = this.getProvinceIdFromPoint(
+        new PIXI.Point(searchPoint["x"], searchPoint["y"])
+      );
+      let over = searchPoint["over"];
+      /*
+      console.log(
+        "start:",
+        PIXI.utils.hex2string(province1.id),
+        provinceId2,
+        searchPoint["over"]
+      );
+      */
+      if (provinceId2 == PIXI.utils.hex2string(province2.id).substr(1))
+        return true; //目的のプロヴィンスである
+
+      if (provinceId2 == "000000") {
+        //境界線であるならば
+        over++; //境界線であるのでoverをカウント
+      } else if (provinceId2 != PIXI.utils.hex2string(province1.id).substr(1))
+        continue; //探索開始プロヴィンスと異なり、境界線でないならば探索しない
+      if (over > 4) continue; //3ピクセル以上超えていれば境界線を辿っていると判断してcontinue
+
+      if (0 < searchPoint["x"])
+        candidates.push({
+          x: searchPoint["x"] - 1,
+          y: searchPoint["y"],
+          over: over,
+        });
+      if (searchPoint["x"] < this.defaultWidth - 1)
+        candidates.push({
+          x: searchPoint["x"] + 1,
+          y: searchPoint["y"],
+          over: over,
+        });
+      if (0 < searchPoint["y"])
+        candidates.push({
+          x: searchPoint["x"],
+          y: searchPoint["y"] - 1,
+          over: over,
+        });
+      if (searchPoint["y"] < this.defaultHeight - 1)
+        candidates.push({
+          x: searchPoint["x"],
+          y: searchPoint["y"] + 1,
+          over: over,
+        });
+    }
+
+    return false;
   }
 }

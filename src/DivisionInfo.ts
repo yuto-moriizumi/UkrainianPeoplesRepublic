@@ -57,7 +57,11 @@ export default class DivisionInfo extends JsonObject {
   }
 
   public moveTo(destination: Province) {
+    //移動先が変更なければ何もしない
     if (this._destination == destination) return;
+    //移動可能かチェック（隣接しているプロヴィンスのみ）
+    if (!this._position.isNextTo(destination)) return;
+
     if (this.__progressBar) {
       this.__progressBar.destroy();
       this.__progressBar = null;

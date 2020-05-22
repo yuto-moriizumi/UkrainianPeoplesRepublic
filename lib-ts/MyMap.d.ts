@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
 import DivisionSprite from "./DivisionSprite";
 export default class MyMap extends PIXI.Sprite {
@@ -28,4 +29,5 @@ export default class MyMap extends PIXI.Sprite {
     private getProvince;
     update(): void;
     private moveDivisionsTo;
+    isNextTo(province1: Province, province2: Province): boolean;
 }
