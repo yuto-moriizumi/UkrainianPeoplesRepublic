@@ -9,7 +9,7 @@ export default class Annex extends Effect {
   private _target: Country;
 
   public activate() {
-    GameManager.instance.data.provinces.forEach((province) => {
+    GameManager.instance.data.getProvinces().forEach((province) => {
       if (province.getOwner() !== this._target) return;
       province.setOwner(this._root);
     });
@@ -17,11 +17,11 @@ export default class Annex extends Effect {
   }
 
   set root(countryId: string) {
-    this._root = GameManager.instance.data.countries.get(countryId);
+    this._root = GameManager.instance.data.getCountry(countryId);
   }
 
   set target(countryId: string) {
-    this._target = GameManager.instance.data.countries.get(countryId);
+    this._target = GameManager.instance.data.getCountry(countryId);
   }
 
   public createEntries() {

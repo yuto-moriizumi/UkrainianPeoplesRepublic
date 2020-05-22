@@ -10,6 +10,7 @@ import ArrowProgress from "./ArrowProgress";
 
 export default class MyMap extends PIXI.Sprite {
   private static readonly BORDER_COLOR = "#000000"; //プロヴィンス境界の色
+  private static readonly BORDER_WIDTH = 5; //境界線のだいたいの太さ
   private provinceMap: Uint8Array;
   private scene: Selectable;
   private replacements: Array<any> = [];
@@ -144,7 +145,7 @@ export default class MyMap extends PIXI.Sprite {
     const provinceId = this.getProvinceIdFromPoint(point);
     if (!provinceId) return null; //provinceIdがnullの時は何もしない
     const data = GameManager.instance.data;
-    let province = data.provinces.get(provinceId);
+    let province = data.getProvince(provinceId);
     if (!province) return null; //provinceがnullの時は何もしない
 
     //BFSで探索
@@ -213,12 +214,12 @@ export default class MyMap extends PIXI.Sprite {
     if (!provinceId) return null; //provinceIdがnullの時は何もしない
     if (provinceId == MyMap.BORDER_COLOR) return null; //境界線の時は何もしない
 
-    let province = data.provinces.get(provinceId);
+    let province = data.getProvince(provinceId);
     if (!province) {
       //プロビンスデータが無かったら新規作成
       province = new Province(provinceId);
-      province.setOwner(GameManager.instance.data.countries.get("Rebels"));
-      data.provinces.set(provinceId, province);
+      province.setOwner(GameManager.instance.data.getCountry("Rebels"));
+      data.setProvince(provinceId, province);
       province.setCoord(this.getBarycenter(position));
       this.replacements.push([
         province.getId(),
@@ -236,7 +237,7 @@ export default class MyMap extends PIXI.Sprite {
 
   public update() {
     this.replacements = [];
-    GameManager.instance.data.provinces.forEach((province) => {
+    GameManager.instance.data.getProvinces().forEach((province) => {
       //console.log("replace", [province.id, province.getOwner().color]);
       this.replacements.push([
         PIXI.utils.string2hex(province.getId()),
@@ -296,7 +297,7 @@ export default class MyMap extends PIXI.Sprite {
         //境界線であるならば
         over++; //境界線であるのでoverをカウント
       } else if (provinceId2 != province1.getId()) continue; //探索開始プロヴィンスと異なり、境界線でないならば探索しない
-      if (over > 4) continue; //3ピクセル以上超えていれば境界線を辿っていると判断してcontinue
+      if (over > MyMap.BORDER_WIDTH) continue; //3ピクセル以上超えていれば境界線を辿っていると判断してcontinue
 
       if (0 < searchPoint["x"])
         candidates.push({

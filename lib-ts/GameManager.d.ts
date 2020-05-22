@@ -1,13 +1,13 @@
 import * as PIXI from "pixi.js";
 import Scene from "./Scenes/Scene";
-import DataManager from "./DataManager";
+import Savedata from "./Savedata";
 export default class GameManager {
     static instance: GameManager;
     game: PIXI.Application;
     private sceneTransitionOutFinished;
     private currentScene?;
     private sceneResourceLoaded;
-    data: DataManager;
+    data: Savedata;
     constructor(app: PIXI.Application);
     static start(params: {
         glWidth: number;

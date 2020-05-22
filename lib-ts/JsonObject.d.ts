@@ -13,7 +13,7 @@ export default class JsonObject {
      * @returns [オブジェクトの変数名,値]の配列
      * @memberof JsonObject
      */
-    createEntries(): any[][];
+    createEntries(): any[];
     /**
      * JSON文字列のベースになるobjectを生成します
      * Json.stringify()で利用します

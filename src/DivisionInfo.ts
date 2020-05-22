@@ -24,11 +24,11 @@ export default class DivisionInfo extends JsonObject {
   }
 
   public set position(provinceId: string) {
-    this._position = GameManager.instance.data.provinces.get(provinceId);
+    this._position = GameManager.instance.data.getProvince(provinceId);
   }
 
   public set destination(provinceId: string) {
-    this._destination = GameManager.instance.data.provinces.get(provinceId);
+    this._destination = GameManager.instance.data.getProvince(provinceId);
   }
 
   public setPosition(province: Province) {

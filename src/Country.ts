@@ -48,7 +48,7 @@ export default class Country extends JsonObject {
    */
   public getRandomOwnProvince() {
     const provinces = [];
-    GameManager.instance.data.provinces.forEach((province) => {
+    GameManager.instance.data.getProvinces().forEach((province) => {
       if (province.getOwner() == this) provinces.push(province);
     });
     console.log("own:", provinces.length);

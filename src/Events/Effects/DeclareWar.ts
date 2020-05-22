@@ -14,11 +14,11 @@ export default class DeclareWar extends Effect {
   }
 
   set root(countryId: string) {
-    this._root = GameManager.instance.data.countries.get(countryId);
+    this._root = GameManager.instance.data.getCountry(countryId);
   }
 
   set target(countryId: string) {
-    this._target = GameManager.instance.data.countries.get(countryId);
+    this._target = GameManager.instance.data.getCountry(countryId);
   }
 
   public createEntries() {

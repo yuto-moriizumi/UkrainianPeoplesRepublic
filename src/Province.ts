@@ -19,7 +19,7 @@ export default class Province extends JsonObject {
   }
 
   private set owner(countryId: string) {
-    this._owner = GameManager.instance.data.countries.get(countryId);
+    this._owner = GameManager.instance.data.getCountry(countryId);
   }
 
   public getId(): string {

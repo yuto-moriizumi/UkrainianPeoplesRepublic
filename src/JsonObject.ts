@@ -16,7 +16,8 @@ export default class JsonObject {
   public createEntries() {
     return Object.entries(this).map(([key, value]) => {
       if (key.startsWith("__")) return null;
-      if (key.startsWith("_")) return [key.substr(1), value];
+      if (key.startsWith("_")) key = key.substr(1);
+      if (value instanceof Map) return (value = Object.fromEntries(value));
       return [key, value];
     });
   }

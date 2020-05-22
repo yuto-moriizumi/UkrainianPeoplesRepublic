@@ -37,7 +37,7 @@ export default class SelectScene extends Scene implements Selectable {
     let assets = super.createInitialResourceList();
     assets.push(Resource.Map);
     //jsonデータをロードし、終わったら
-    GameManager.instance.data.countries.forEach((country) => {
+    GameManager.instance.data.getCountries().forEach((country) => {
       assets.push(country.flag); //全ての国旗をロード
     });
     console.log("loadedAssets:" + assets);
@@ -72,7 +72,7 @@ export default class SelectScene extends Scene implements Selectable {
     this.addChild(this.selectButton);
 
     //配列化国に追加
-    GameManager.instance.data.countries.forEach((country) => {
+    GameManager.instance.data.getCountries().forEach((country) => {
       this.countries.push(country);
     });
 
@@ -166,7 +166,7 @@ export default class SelectScene extends Scene implements Selectable {
 
   private selectAsTarget(country: Country) {
     if (country === null || country === undefined)
-      country = GameManager.instance.data.countries["Rebels"];
+      country = GameManager.instance.data.getCountry("Rebels");
     if (this.myFlag) this.myFlag.destroy();
     this.myFlag = new Flag(country);
     this.myFlag.scale.set(SelectScene.myFlagSize / this.myFlag.width);

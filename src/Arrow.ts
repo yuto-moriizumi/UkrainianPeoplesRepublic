@@ -11,8 +11,11 @@ export default class Arrow extends PIXI.Graphics {
     super();
     const point1 = from.getCoord();
     const point2 = to.getCoord();
-    this.length =
-      ((point2.x - point1.x) ** 2 + (point2.y - point1.y) ** 2) ** 0.5;
+    this.length = Math.max(
+      1,
+      ((point2.x - point1.x) ** 2 + (point2.y - point1.y) ** 2) ** 0.5 -
+        Arrow.TRIANGLE_HEIGHT
+    );
     const triangle = this.createTriangle();
     triangle.angle = -90;
     this.addChild(triangle);

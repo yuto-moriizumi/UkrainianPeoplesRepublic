@@ -10,7 +10,7 @@ export default class EventDispatcher {
   }
 
   public dispatch(date: Date) {
-    GameManager.instance.data.events.forEach((event: Event) => {
+    GameManager.instance.data.getEvents().forEach((event: Event) => {
       event.dispatch(this.scene, date);
     });
   }

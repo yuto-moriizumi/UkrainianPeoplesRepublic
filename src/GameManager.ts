@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import Scene from "./Scenes/Scene";
 import SoundManager from "./SoundManager";
-import DataManager from "./DataManager";
+import Savedata from "./Savedata";
 
 export default class GameManager {
   public static instance: GameManager;
@@ -9,7 +9,7 @@ export default class GameManager {
   private sceneTransitionOutFinished: boolean = true;
   private currentScene?: Scene;
   private sceneResourceLoaded: boolean = true;
-  public data: DataManager = new DataManager();
+  public data: Savedata = new Savedata();
 
   constructor(app: PIXI.Application) {
     if (GameManager.instance) {

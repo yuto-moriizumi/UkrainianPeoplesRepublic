@@ -115,12 +115,12 @@ export default class MainScene extends Scene implements Selectable {
     if (this.header)
       timeElapced = this.header.getTimer().update(this.elapsedFrameCount);
     if (timeElapced)
-      GameManager.instance.data.countries.forEach((country) =>
-        country.update()
-      );
+      GameManager.instance.data
+        .getCountries()
+        .forEach((country) => country.update());
 
     //イベント発火処理
-    GameManager.instance.data.events.forEach((event: Event) => {
+    GameManager.instance.data.getEvents().forEach((event: Event) => {
       event.dispatch(this, this.header.getTimer().getDate());
     });
   }
