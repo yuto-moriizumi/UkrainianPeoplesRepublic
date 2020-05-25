@@ -271,6 +271,30 @@
       "color": "1fff1f",
       "name": "北カフカース山岳共和国",
       "flag": "MRC.png"
+    },
+    "SCS": {
+      "diplomaticTies": [],
+      "divisions": [],
+      "id": "SCS",
+      "color": "8b1765",
+      "name": "スロベニア人・クロアチア人・セルビア人国",
+      "flag": "SCS.png"
+    },
+    "CZE": {
+      "diplomaticTies": [],
+      "divisions": [],
+      "id": "CZE",
+      "color": "D9B700",
+      "name": "チェコスロバキア共和国",
+      "flag": "CZE.png"
+    },
+    "WUPR": {
+      "diplomaticTies": [],
+      "divisions": [],
+      "id": "WUPR",
+      "color": "004172",
+      "name": "西ウクライナ人民共和国",
+      "flag": "WUPR.png"
     }
   },
   "provinces": {
@@ -591,7 +615,7 @@
     "#41a021": { "x": 103, "y": 200, "owner": "GER" },
     "#bf9f20": { "x": 135, "y": 187, "owner": "GER" },
     "#5e9091": { "x": 99, "y": 263, "owner": "GER" },
-    "#f0e080": { "x": 82, "y": 266, "owner": "GER" },
+    "#f0e080": { "x": 82, "y": 266, "owner": "AHE" },
     "#60bf20": { "x": 45, "y": 216, "owner": "GER" },
     "#a0c020": { "x": 55, "y": 190, "owner": "GER" },
     "#8001a0": { "x": 72, "y": 176, "owner": "GER" },
@@ -1155,6 +1179,146 @@
       "desc": "ザカフカース議会は軍事力を持たなかったため、バトゥーミにおいてドイツ・トルコ軍司令部と交渉に入った。交渉中、3民族の意見の相違（アルメニアとグルジアは親独、アゼルバイジャンは親土など）が明らかになったため、3民族の国民会議は独立国家の建国に賛成した。また、ドイツ・トルコ側も連邦共和国の廃止に賛成した。",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-05-26 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [{ "type": "DeclareWar", "root": "GRE", "target": "BUL" }],
+          "title": "OK"
+        }
+      ],
+      "id": "greece_attack_bulgaria",
+      "title": "ギリシャ軍の侵攻",
+      "desc": "ギリシャとブルガリアが戦うマケドニア戦線は長い間膠着状態にあったが、ついにギリシャ側が突破を開始した。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-09-23 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": ["#6181d2", "#f021a0", "#f0a0e0"],
+              "root": "GBR"
+            },
+            { "type": "DeclareWar", "root": "GBR", "target": "BUL" }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "britain_landing_bulgaria",
+      "title": "イギリス軍が南ブルガリアに上陸",
+      "desc": "ギリシャ軍の攻勢を支援するため、イギリス軍が南ブルガリアに上陸した",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-09-30 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": [
+                "#51a0a0",
+                "#1121e0",
+                "#d0a0a0",
+                "#50209f",
+                "#f06101",
+                "#71a0c0",
+                "#d0a021",
+                "#70df00",
+                "#71a041",
+                "#f021c0",
+                "#106020",
+                "#d021a0",
+                "#9021e0",
+                "#124d73",
+                "#51a021",
+                "#906121",
+                "#80cf00",
+                "#efa0c0",
+                "#11a0e0",
+                "#902161"
+              ],
+              "root": "SCS"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "scs_independence",
+      "title": "クロアチア・ボスニアがオーストリアを離脱",
+      "desc": "有力政治家で構成される国民評議会が、「スロベニア人・クロアチア人・セルビア人国」の独立を宣言した。もはやクロアチアはオーストリアにとどまっていない。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [{ "type": "Annex", "root": "UBD", "target": "DCS" }],
+          "title": "OK"
+        }
+      ],
+      "id": "ubd_integrate_dcs",
+      "title": "クールラント公国がバルト連合公国に統合",
+      "desc": "クールラント公国成立の後に構想されたバルト連合公国は、クールラントよりも大きな支持を得ており、結果的にこの国は統合されることとなった。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-09-22 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": ["#71e041", "#ef6080", "#9080a0", "#71e080"],
+              "root": "CZE"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "cze_independence",
+      "title": "チェコスロバキア共和国がオーストリアを離脱",
+      "desc": "チェコスロバキア国内の国民委員会が独立宣言を行い、プラハの政庁を占拠。新政府は熱心な独立運動家であるトマーシュ・マサリクに率いられている。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-18 00:00" }
+    },
+    {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": [
+                "#90e060",
+                "#11a021",
+                "#8f9f20",
+                "#b021a0",
+                "#7edd9e",
+                "#31a0a0",
+                "#00a7f4",
+                "#11e061",
+                "#1161e0"
+              ],
+              "root": "WUPR"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "wupr_independence",
+      "title": "西ウクライナ人民共和国がオーストリアを離脱",
+      "desc": "20世紀初頭、ガリツィア地方の住民はウクライナ人が6割を占めていたが、彼らの大半は農村部に住んでおり、都市部は主にポーランド人やユダヤ人によって支配されていた。とりわけ本国の首都とされるリヴィウには多くのポーランド人が住んでおり、ポーランドにとって最も重要な都市の一つと見なされている。この国の政情は不安定だ。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-20 00:00" }
     }
   ]
 }
