@@ -93,6 +93,11 @@ export default class DivisionInfo extends JsonObject {
     if (this._destination == destination) return;
     //移動可能かチェック（隣接しているプロヴィンスのみ）
     if (!this._position.isNextTo(destination)) return;
+    if (
+      destination.getOwner() != this.owner && //移動先の領有国が自国ではなく、
+      !destination.getOwner().hasWarWith(this.owner) //かつ戦争中でない場合
+    )
+      return;
 
     if (this.__progressBar) {
       this.__progressBar.destroy();
