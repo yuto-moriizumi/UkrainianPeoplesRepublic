@@ -13,5 +13,6 @@ export default class DivisionTemplate extends JsonObject {
     getAttack(): number;
     getOrganization(): number;
     addDivision(division: DivisionInfo): void;
+    removeDivision(division: DivisionInfo): void;
     update(): void;
 }

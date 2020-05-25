@@ -94,9 +94,13 @@ export default class Savedata extends JsonObject {
     this._combats.push(combat);
   }
   public removeCombat(combat: Combat) {
-    this._combats.filter((combat2) => {
+    this._combats = this._combats.filter((combat2) => {
       return combat !== combat2;
     });
+  }
+
+  public getCombats(): Combat[] {
+    return this._combats;
   }
 
   public load(json: object) {

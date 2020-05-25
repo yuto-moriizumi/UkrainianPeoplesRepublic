@@ -24,7 +24,7 @@ export default class Timer extends PIXI.Container {
     display.interactive = true;
     display.buttonMode = true;
     display.on("click", () => {
-      console.log("timer change", this.isActive);
+      //console.log("timer change", this.isActive);
 
       this.isActive = !this.isActive;
     });

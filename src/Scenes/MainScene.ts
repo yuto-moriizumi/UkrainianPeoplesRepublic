@@ -114,13 +114,18 @@ export default class MainScene extends Scene implements Selectable {
     let timeElapced = false;
     if (this.header)
       timeElapced = this.header.getTimer().update(this.elapsedFrameCount);
-    if (timeElapced)
-      GameManager.instance.data
-        .getCountries()
-        .forEach((country) => country.update());
+    if (!timeElapced) return; //時間が経過していないならreturn
+    const data = GameManager.instance.data;
+    //国アップデート
+    data.getCountries().forEach((country) => country.update());
+
+    //戦闘アップデート
+    data.getCombats().forEach((combat) => {
+      combat.combat();
+    });
 
     //イベント発火処理
-    GameManager.instance.data.getEvents().forEach((event: Event) => {
+    data.getEvents().forEach((event: Event) => {
       event.dispatch(this, this.header.getTimer().getDate());
     });
   }

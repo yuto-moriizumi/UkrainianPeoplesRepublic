@@ -4,12 +4,14 @@ import JsonObject from "./JsonObject";
 import * as PIXI from "pixi.js";
 import MainScene from "./Scenes/MainScene";
 import MyMap from "./MyMap";
+import DivisionInfo from "./DivisionInfo";
 
 export default class Province extends JsonObject {
   private id: string;
   private _owner: Country;
   private x: number = 0;
   private y: number = 0;
+  private __divisions: Array<DivisionInfo> = new Array<DivisionInfo>();
 
   constructor(id: string) {
     super();
@@ -42,6 +44,20 @@ export default class Province extends JsonObject {
 
   public getCoord(): PIXI.Point {
     return new PIXI.Point(this.x, this.y);
+  }
+
+  public addDivision(division: DivisionInfo) {
+    this.__divisions.push(division);
+  }
+
+  public removeDivision(division: DivisionInfo) {
+    this.__divisions = this.__divisions.filter((division2) => {
+      return division != division2;
+    });
+  }
+
+  public getDivisons() {
+    return this.__divisions;
   }
 
   public createEntries() {

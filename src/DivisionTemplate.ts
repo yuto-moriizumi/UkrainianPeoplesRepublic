@@ -8,7 +8,7 @@ import DivisionInfo from "./DivisionInfo";
 export default class DivisionTemplate extends JsonObject {
   private __owner: Country;
   private organization: number = 100;
-  private attack: number = 10;
+  private attack: number = 20;
   private speed: number = 10;
   private divisions: Array<DivisionInfo> = [];
 
@@ -35,6 +35,12 @@ export default class DivisionTemplate extends JsonObject {
 
   public addDivision(division: DivisionInfo) {
     this.divisions.push(division);
+  }
+
+  public removeDivision(division: DivisionInfo) {
+    this.divisions = this.divisions.filter((d) => {
+      return d != division;
+    });
   }
 
   public update() {

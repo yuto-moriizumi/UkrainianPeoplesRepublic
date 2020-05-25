@@ -24,6 +24,7 @@ export default class Savedata extends JsonObject {
     private set combats(value);
     addCombat(combat: Combat): void;
     removeCombat(combat: Combat): void;
+    getCombats(): Combat[];
     load(json: object): void;
     download(): void;
 }
