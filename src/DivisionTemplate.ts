@@ -25,6 +25,14 @@ export default class DivisionTemplate extends JsonObject {
     return this.speed;
   }
 
+  public getAttack() {
+    return this.attack;
+  }
+
+  public getOrganization() {
+    return this.organization;
+  }
+
   public addDivision(division: DivisionInfo) {
     this.divisions.push(division);
   }

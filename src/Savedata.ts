@@ -4,12 +4,14 @@ import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import War from "./DiplomaticTies/War";
 import Event from "./Events/Event";
 import JsonObject from "./JsonObject";
+import Combat from "./Combat";
 
 export default class Savedata extends JsonObject {
   private _countries: Map<string, Country> = new Map<string, Country>();
   private _provinces: Map<string, Province> = new Map<string, Province>();
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _events: Array<Event> = new Array<Event>();
+  private _combats: Array<Combat> = new Array<Combat>();
 
   private set countries(countries: object) {
     for (const id in countries) {
@@ -80,6 +82,21 @@ export default class Savedata extends JsonObject {
 
   public getEvents() {
     return this._events;
+  }
+
+  private set combats(combats: Array<object>) {
+    this._combats = combats.map((combat) =>
+      Object.assign(new Combat(), combat)
+    );
+  }
+
+  public addCombat(combat: Combat) {
+    this._combats.push(combat);
+  }
+  public removeCombat(combat: Combat) {
+    this._combats.filter((combat2) => {
+      return combat !== combat2;
+    });
   }
 
   public load(json: object) {

@@ -3,7 +3,7 @@ import GameManager from "./GameManager";
 import JsonObject from "./JsonObject";
 import * as PIXI from "pixi.js";
 import MainScene from "./Scenes/MainScene";
-import MyMap from "MyMap";
+import MyMap from "./MyMap";
 
 export default class Province extends JsonObject {
   private id: string;
@@ -32,7 +32,7 @@ export default class Province extends JsonObject {
 
   public setOwner(owner: Country) {
     this._owner = owner;
-    MainScene.instance.getMap().update();
+    MyMap.instance.update();
   }
 
   public setCoord(point: PIXI.Point) {

@@ -11,7 +11,7 @@ import ArrowProgress from "./ArrowProgress";
 export default class DivisionInfo extends JsonObject {
   private __template: DivisionTemplate;
   private _position: Province;
-  private organization: number;
+  private _organization: number;
   private __sprite: DivisionSprite;
   private _destination: Province;
   private movingProgress: number; //整数値で扱う 100で最大値
@@ -54,6 +54,26 @@ export default class DivisionInfo extends JsonObject {
 
   public get sprite() {
     return this.__sprite;
+  }
+
+  public attack(target: DivisionInfo) {
+    target.organization -= this.__template.getAttack();
+    this.organization -= target.__template.getAttack();
+  }
+
+  public get organization() {
+    return this._organization;
+  }
+
+  public set organization(organization: number) {
+    this._organization = Math.min(
+      Math.max(0, organization),
+      this.__template.getOrganization()
+    );
+  }
+
+  public getTemplate() {
+    return this.__template;
   }
 
   public moveTo(destination: Province) {

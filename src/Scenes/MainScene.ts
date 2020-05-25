@@ -41,7 +41,6 @@ export default class MainScene extends Scene implements Selectable {
     this.transitionOut = new Fade(0.0, 1.0, 0.02);
     this.playCountry = playCountry;
     this.eventDispatcher = new EventDispatcher(this);
-    MainScene.instance = this;
 
     //ダウンロードボタン（暫定）
     const renderer = GameManager.instance.game.renderer;
@@ -51,6 +50,7 @@ export default class MainScene extends Scene implements Selectable {
       GameManager.instance.data.download();
     });
     this.addChild(button);
+    MainScene.instance = this;
   }
 
   //リソースリストを作成し返却する

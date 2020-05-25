@@ -6,7 +6,7 @@ import DivisionSprite from "./DivisionSprite";
 export default class DivisionInfo extends JsonObject {
     private __template;
     private _position;
-    private organization;
+    private _organization;
     private __sprite;
     private _destination;
     private movingProgress;
@@ -18,6 +18,10 @@ export default class DivisionInfo extends JsonObject {
     getPosition(): Province;
     get owner(): Country;
     get sprite(): DivisionSprite;
+    attack(target: DivisionInfo): void;
+    get organization(): number;
+    set organization(organization: number);
+    getTemplate(): DivisionTemplate;
     moveTo(destination: Province): void;
     update(): void;
 }

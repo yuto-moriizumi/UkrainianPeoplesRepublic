@@ -9,6 +9,7 @@ import Arrow from "./Arrow";
 import ArrowProgress from "./ArrowProgress";
 
 export default class MyMap extends PIXI.Sprite {
+  public static instance: MyMap;
   private static readonly BORDER_COLOR = "#000000"; //プロヴィンス境界の色
   private static readonly BORDER_WIDTH = 5; //境界線のだいたいの太さ
   private provinceMap: Uint8Array;
@@ -20,6 +21,7 @@ export default class MyMap extends PIXI.Sprite {
 
   constructor(scene: Selectable, texture?: PIXI.Texture) {
     super(texture);
+    MyMap.instance = this;
     this.scene = scene;
     //this.canvas =texture
     this.provinceMap = GameManager.instance.game.renderer.plugins.extract.pixels(
@@ -90,6 +92,12 @@ export default class MyMap extends PIXI.Sprite {
           this.provinceMap[idx + 2] / 255,
         ])
       );
+      /*
+      console.log(
+        this.provinceMap[idx + 0],
+        this.provinceMap[idx + 1],
+        this.provinceMap[idx + 2]
+      );*/
     } catch (error) {
       console.log(error);
       console.log(
@@ -215,6 +223,8 @@ export default class MyMap extends PIXI.Sprite {
     if (provinceId == MyMap.BORDER_COLOR) return null; //境界線の時は何もしない
 
     let province = data.getProvince(provinceId);
+    console.log(provinceId, province);
+
     if (!province) {
       //プロビンスデータが無かったら新規作成
       province = new Province(provinceId);
@@ -237,8 +247,19 @@ export default class MyMap extends PIXI.Sprite {
 
   public update() {
     this.replacements = [];
+    /*
+    console.log(
+      GameManager.instance.data,
+      GameManager.instance.data.getProvinces().size
+    );*/
+
     GameManager.instance.data.getProvinces().forEach((province) => {
-      //console.log("replace", [province.id, province.getOwner().color]);
+      /*
+      console.log("replace", [
+        PIXI.utils.string2hex(province.getId()),
+        province.getOwner().getColor(),
+      ]);
+      */
       this.replacements.push([
         PIXI.utils.string2hex(province.getId()),
         province.getOwner().getColor(),
@@ -247,11 +268,12 @@ export default class MyMap extends PIXI.Sprite {
     /*
      * 注意 - どういうわけか、replacementsの長さが1以下だと正しく動作しなくなる
      */
+    /*
     const filter = new Filters.MultiColorReplaceFilter(
       this.replacements,
       0.001
     );
-    this.filters = [filter];
+    this.filters = [filter];*/
     //console.log("Map updated:", this.replacements);
   }
 
