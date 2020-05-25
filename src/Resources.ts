@@ -2,6 +2,10 @@ const Resource = Object.freeze({
   Title: {
     Bg: "Ukraine.png",
   },
+  //重要な情報
+  //プロヴィンスの画像はピクセルの色が非常に重要です。
+  //プロヴィンスカラーは必ず一意にしてください
+  //画像ファイルにカラープロファイルを設定しないでください
   Map: "provinces.png",
   FontFamily: {
     Default: "MisakiGothic",

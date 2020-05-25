@@ -21,6 +21,7 @@ export default class MyMap extends PIXI.Sprite {
 
   constructor(scene: Selectable, texture?: PIXI.Texture) {
     super(texture);
+    this.roundPixels = true;
     MyMap.instance = this;
     this.scene = scene;
     //this.canvas =texture
@@ -268,12 +269,12 @@ export default class MyMap extends PIXI.Sprite {
     /*
      * 注意 - どういうわけか、replacementsの長さが1以下だと正しく動作しなくなる
      */
-    /*
+
     const filter = new Filters.MultiColorReplaceFilter(
       this.replacements,
       0.001
     );
-    this.filters = [filter];*/
+    this.filters = [filter];
     //console.log("Map updated:", this.replacements);
   }
 
