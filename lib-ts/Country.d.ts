@@ -1,20 +1,25 @@
 import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import JsonObject from "./JsonObject";
+import War from "./DiplomaticTies/War";
 import DivisionTemplate from "./DivisionTemplate";
 export default class Country extends JsonObject {
-    id: string;
+    private __id;
     private _color;
     name: string;
     flag: string;
     private diplomaticTies;
     private divisions;
+    constructor(id: string);
     addDiplomaticRelation(tie: DiplomaticTie): void;
+    removeDiplomaticRelation(tie: DiplomaticTie): void;
     getDiplomacy(): DiplomaticTie[];
     set color(color: string);
+    set id(id: string);
     getColor(): number;
     addDivisionTemplate(template: DivisionTemplate): void;
     getDivisionTemplates(): DivisionTemplate[];
     hasAnyDivisionTemplate(): boolean;
+    get id(): string;
     /**
      * 所有しているプロヴィンスのうち、ランダムに1つを選ぶ
      *
@@ -22,7 +27,7 @@ export default class Country extends JsonObject {
      * @memberof Country
      */
     getRandomOwnProvince(): any;
-    hasWarWith(country: Country): boolean;
+    getWarInfoWith(country: Country): War;
     createEntries(): any[][];
     update(): void;
 }

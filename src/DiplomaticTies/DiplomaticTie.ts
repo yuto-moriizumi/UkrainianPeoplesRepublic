@@ -27,4 +27,12 @@ export default abstract class DiplomaticTie {
     this.root.addDiplomaticRelation(this);
     this.target.addDiplomaticRelation(this);
   }
+
+  public deactivate() {
+    if (!this.active) return;
+    this.active = false;
+    this.root.removeDiplomaticRelation(this);
+    this.target.removeDiplomaticRelation(this);
+    console.log(this.root);
+  }
 }

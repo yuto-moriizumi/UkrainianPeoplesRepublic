@@ -20,4 +20,22 @@ export default class War extends DiplomaticTie {
     sound.volume = 0.5;
     sound.play(false);
   }
+
+  public deactivate() {
+    super.deactivate();
+    MainScene.instance.addChild(
+      new Dialog(
+        "終戦",
+        `${this.root.name}と${this.target.name}との戦争は終結した`
+      )
+    );
+    //SE再生
+    const sound = new Sound(
+      (GameManager.instance.game.loader.resources[
+        Resource.se.declare_war
+      ] as any).buffer
+    );
+    sound.volume = 0.5;
+    sound.play(false);
+  }
 }

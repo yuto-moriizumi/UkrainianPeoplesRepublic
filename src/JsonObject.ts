@@ -13,11 +13,11 @@ export default class JsonObject {
    * @returns [オブジェクトの変数名,値]の配列
    * @memberof JsonObject
    */
-  public createEntries() {
+  createEntries() {
     return Object.entries(this).map(([key, value]) => {
-      if (key.startsWith("__")) return null;
+      if (key.startsWith("__")) return [];
       if (key.startsWith("_")) key = key.substr(1);
-      if (value instanceof Map) return (value = Object.fromEntries(value));
+      if (value instanceof Map) value = Object.fromEntries(value);
       return [key, value];
     });
   }

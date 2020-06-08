@@ -85,7 +85,7 @@ export default class DiplomaticSidebar extends Sidebar {
         );
         return;
       }
-      if (this.scene.getMyCountry().hasWarWith(target)) return;
+      if (this.scene.getMyCountry().getWarInfoWith(target)) return;
       const war = new War(this.scene.getMyCountry(), target);
       GameManager.instance.data.addDiplomacy(war);
       this.scene.openDiplomacySidebar(target);

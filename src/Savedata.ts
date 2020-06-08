@@ -15,7 +15,7 @@ export default class Savedata extends JsonObject {
 
   private set countries(countries: object) {
     for (const id in countries) {
-      this._countries.set(id, Object.assign(new Country(), countries[id]));
+      this._countries.set(id, Object.assign(new Country(id), countries[id]));
     }
     console.log("countries loaded:", this._countries);
   }
@@ -108,7 +108,7 @@ export default class Savedata extends JsonObject {
   }
 
   public download() {
-    console.log(Object.entries(this));
+    //console.log(Object.entries(this));
     const json = JSON.stringify(this);
 
     const blob = new Blob([json], {

@@ -5,15 +5,26 @@ import DivisionTemplate from "./DivisionTemplate";
 import GameManager from "./GameManager";
 
 export default class Country extends JsonObject {
-  public id: string;
+  private __id: string;
   private _color: number;
   public name: string;
   public flag: string;
   private diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private divisions: Array<DivisionTemplate> = new Array<DivisionTemplate>();
 
+  constructor(id: string) {
+    super();
+    this.__id = id;
+  }
+
   public addDiplomaticRelation(tie: DiplomaticTie) {
     this.diplomaticTies.push(tie);
+  }
+
+  public removeDiplomaticRelation(tie: DiplomaticTie) {
+    this.diplomaticTies = this.diplomaticTies.filter((tie2) => {
+      return tie !== tie2;
+    });
   }
 
   public getDiplomacy() {
@@ -40,6 +51,10 @@ export default class Country extends JsonObject {
     return this.divisions.length > 0;
   }
 
+  public get id() {
+    return this.__id;
+  }
+
   /**
    * 所有しているプロヴィンスのうち、ランダムに1つを選ぶ
    *
@@ -58,15 +73,13 @@ export default class Country extends JsonObject {
     return province;
   }
 
-  public hasWarWith(country: Country): boolean {
-    return (
-      this.diplomaticTies.find((tie: DiplomaticTie) => {
-        if (!(tie instanceof War)) return false;
-        const opponent = tie.getOpponent(this);
-        if (opponent === country) return true;
-        return false;
-      }) !== undefined
-    );
+  public getWarInfoWith(country: Country): War {
+    return this.diplomaticTies.find((tie: DiplomaticTie) => {
+      if (!(tie instanceof War)) return false;
+      const opponent = tie.getOpponent(this);
+      if (opponent === country) return true;
+      return false;
+    });
   }
 
   public createEntries() {

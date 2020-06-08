@@ -33,8 +33,21 @@ export default class Province extends JsonObject {
   }
 
   public setOwner(owner: Country) {
+    const previousOwner = this._owner;
     this._owner = owner;
     MyMap.instance.update();
+
+    //降伏判定
+    const provinces = [];
+    GameManager.instance.data.getProvinces().forEach((province) => {
+      if (province.getOwner() == previousOwner) provinces.push(province);
+    });
+    if (provinces.length == 0) {
+      //降伏
+      previousOwner.getDiplomacy().forEach((diplomacy) => {
+        diplomacy.deactivate();
+      });
+    }
   }
 
   public setCoord(point: PIXI.Point) {

@@ -8,4 +8,5 @@ export default abstract class DiplomaticTie {
     getTarget(): Country;
     getOpponent(country: Country): Country;
     activate(): void;
+    deactivate(): void;
 }

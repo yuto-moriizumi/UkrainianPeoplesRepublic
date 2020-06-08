@@ -46,7 +46,7 @@ export default class DivisionInfo extends JsonObject {
     console.log(owner, this.__template.owner);
 
     if (owner == this.__template.owner) return;
-    if (owner.hasWarWith(this.__template.owner))
+    if (owner.getWarInfoWith(this.__template.owner))
       province.setOwner(this.__template.owner);
   }
 
@@ -95,7 +95,7 @@ export default class DivisionInfo extends JsonObject {
     if (!this._position.isNextTo(destination)) return;
     if (
       destination.getOwner() != this.owner && //移動先の領有国が自国ではなく、
-      !destination.getOwner().hasWarWith(this.owner) //かつ戦争中でない場合
+      !destination.getOwner().getWarInfoWith(this.owner) //かつ戦争中でない場合
     )
       return;
 
@@ -159,7 +159,7 @@ export default class DivisionInfo extends JsonObject {
       console.log("division is destination", this._destination.getDivisons());
 
       this._destination.getDivisons().forEach((division) => {
-        if (!division.owner.hasWarWith(this.owner)) return; //戦争していないなら関係ない
+        if (!division.owner.getWarInfoWith(this.owner)) return; //戦争していないなら関係ない
         if (this.hasCombatWith(division)) return; //すでに戦闘が発生しているならreturn
         console.log("combat create", this, division);
 
