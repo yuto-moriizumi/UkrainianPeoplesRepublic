@@ -14,7 +14,6 @@ export default class Country extends JsonObject {
     removeDiplomaticRelation(tie: DiplomaticTie): void;
     getDiplomacy(): DiplomaticTie[];
     set color(color: string);
-    set id(id: string);
     getColor(): number;
     addDivisionTemplate(template: DivisionTemplate): void;
     getDivisionTemplates(): DivisionTemplate[];
