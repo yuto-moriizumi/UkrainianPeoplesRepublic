@@ -11,23 +11,24 @@ import Combat from "./Combat";
 import JsonConverter from "./JsonConverter";
 import Jsonable from "./Jsonable";
 export default class Division extends VerticalBox implements Jsonable {
-  private static __selects = new Set<Division>();
-  private __selected = false;
-  private __onMap = false;
-  private __template: DivisionTemplate;
-  private __province: Province;
-  private _organization: number;
-  private __destination: Province;
-  private movingProgress: number; //整数値で扱う 100で最大値
-  private __progressBar: ArrowProgress;
-  private __combats: Array<Combat> = new Array<Combat>();
-  private __dead: boolean = false;
+  private static selects = new Set<Division>();
+  private selected = false;
+  private onMap = false;
+  private template: DivisionTemplate;
+  private $province: Province;
+  private $organization: number;
+  private $destination: Province;
+  private $movingProgress: number; //整数値で扱う 100で最大値
+  private progressBar: ArrowProgress;
+  private combats: Array<Combat> = new Array<Combat>();
+  private dead: boolean = false;
 
   constructor(template: DivisionTemplate) {
     super(15, 12, 0.8, 0x216639);
 
-    this.__template = template;
+    this.template = template;
     this.setOrganization(template.getOrganization());
+    template.addDivision(this);
     //this.country = country;
 
     const sprite = new PIXI.Sprite(
@@ -42,15 +43,15 @@ export default class Division extends VerticalBox implements Jsonable {
   }
 
   public setOnMap(flag: boolean) {
-    this.__onMap = flag;
+    this.onMap = flag;
   }
 
   public getOnMap() {
-    return this.__onMap;
+    return this.onMap;
   }
 
   public select() {
-    this.__selected = true;
+    this.selected = true;
     this.filters = [
       new Filters.GlowFilter({
         outerStrength: 8,
@@ -60,22 +61,22 @@ export default class Division extends VerticalBox implements Jsonable {
     ];
 
     //他の師団の選択を解除
-    Division.__selects.forEach((division) => {
+    Division.selects.forEach((division) => {
       division.deselect();
     });
-    Division.__selects.add(this);
+    Division.selects.add(this);
   }
 
   public deselect() {
-    this.__selected = false;
+    this.selected = false;
     this.filters = [];
-    Division.__selects.delete(this);
+    Division.selects.delete(this);
   }
 
   private onClick(e: PIXI.interaction.InteractionEvent) {
     e.stopPropagation();
-    this.__selected = !this.__selected;
-    if (this.__selected) {
+    this.selected = !this.selected;
+    if (this.selected) {
       //選択されていないならば選択
       this.select();
     } else {
@@ -84,40 +85,40 @@ export default class Division extends VerticalBox implements Jsonable {
   }
 
   public static moveSelectingDivisionsTo(province: Province) {
-    Division.__selects.forEach((division) => {
+    Division.selects.forEach((division) => {
       division.move(province);
     });
   }
 
-  public set at(provinceId: string) {
+  public set province(provinceId: string) {
     this.setPosition(GameManager.instance.data.getProvince(provinceId));
   }
 
   public set destination(provinceId: string) {
-    this.__destination = GameManager.instance.data.getProvince(provinceId);
+    this.$destination = GameManager.instance.data.getProvince(provinceId);
   }
 
   public setPosition(province: Province) {
-    if (this.__province) this.__province.removeDivision(this);
-    this.__province = province;
+    if (this.$province) this.$province.removeDivision(this);
+    this.$province = province;
     province.addDivision(this);
     MainScene.instance.getMap().setDivisonPosition(this);
 
     //占領処理
     const owner = province.getOwner();
-    console.log(owner, this.__template.owner);
+    console.log(owner, this.template.owner);
 
-    if (owner == this.__template.owner) return;
-    if (owner.getWarInfoWith(this.__template.owner))
-      province.setOwner(this.__template.owner);
+    if (owner == this.template.owner) return;
+    if (owner.getWarInfoWith(this.template.owner))
+      province.setOwner(this.template.owner);
   }
 
   public getPosition() {
-    return this.__province;
+    return this.$province;
   }
 
   public get owner() {
-    return this.__template.owner;
+    return this.template.owner;
   }
 
   public get sprite() {
@@ -126,54 +127,53 @@ export default class Division extends VerticalBox implements Jsonable {
 
   public attack(target: Division) {
     target.setOrganization(
-      target.getOrganization() -
-        this.__template.getAttack() / this.__combats.length //攻撃に参加している数だけ弱くなる
+      target.getOrganization() - this.template.getAttack() / this.combats.length //攻撃に参加している数だけ弱くなる
     );
     this.setOrganization(
       this.getOrganization() -
-        target.__template.getAttack() / target.__combats.length //攻撃に参加している数だけ弱くなる
+        target.template.getAttack() / target.combats.length //攻撃に参加している数だけ弱くなる
     );
   }
 
   public getOrganization() {
-    return this._organization;
+    return this.$organization;
   }
 
   public setOrganization(organization: number) {
-    this._organization = Math.min(
+    this.$organization = Math.min(
       Math.max(0, organization),
-      this.__template.getOrganization()
+      this.template.getOrganization()
     );
   }
 
   public getTemplate() {
-    return this.__template;
+    return this.template;
   }
 
   public move(destination: Province) {
     //移動先が変更なければ何もしない
-    if (this.__destination == destination) return;
+    if (this.$destination == destination) return;
     //移動可能かチェック（隣接しているプロヴィンスのみ）
-    if (!this.__province.isNextTo(destination)) return;
+    if (!this.$province.isNextTo(destination)) return;
     if (
       destination.getOwner() != this.owner && //移動先の領有国が自国ではなく、
       !destination.getOwner().getWarInfoWith(this.owner) //かつ戦争中でない場合
     )
       return;
 
-    if (this.__progressBar) {
-      this.__progressBar.destroy();
-      this.__progressBar = null;
+    if (this.progressBar) {
+      this.progressBar.destroy();
+      this.progressBar = null;
     }
     if (destination == this.getPosition()) {
-      this.__destination = null;
-      this.movingProgress = 0;
+      this.$destination = null;
+      this.$movingProgress = 0;
       return;
     }
-    this.__destination = destination;
-    this.movingProgress = 0;
-    this.__progressBar = new ArrowProgress(this.getPosition(), destination);
-    MainScene.instance.getMap().addChild(this.__progressBar);
+    this.$destination = destination;
+    this.$movingProgress = 0;
+    this.progressBar = new ArrowProgress(this.getPosition(), destination);
+    MainScene.instance.getMap().addChild(this.progressBar);
   }
 
   private hasCombatWith(target: Division) {
@@ -183,43 +183,43 @@ export default class Division extends VerticalBox implements Jsonable {
   }
 
   public addCombat(combat: Combat) {
-    this.__combats.push(combat);
+    this.combats.push(combat);
   }
 
   public removeCombat(combat: Combat) {
-    this.__combats = this.__combats.filter((combat2) => {
+    this.combats = this.combats.filter((combat2) => {
       return combat != combat2;
     });
   }
 
   public destroy() {
-    if (this.__dead) return; //すでに死亡ならなにもしない
-    this.__dead = true;
-    if (this.__progressBar) this.__progressBar.destroy();
-    this.__province.removeDivision(this);
+    if (this.dead) return; //すでに死亡ならなにもしない
+    this.dead = true;
+    if (this.progressBar) this.progressBar.destroy();
+    this.$province.removeDivision(this);
     this.destroy();
-    this.__template.removeDivision(this);
+    this.template.removeDivision(this);
   }
 
   public stopMove() {
-    this.movingProgress = 0;
-    if (this.__progressBar) this.__progressBar.destroy();
-    this.__progressBar = null;
-    this.__destination = null;
+    this.$movingProgress = 0;
+    if (this.progressBar) this.progressBar.destroy();
+    this.progressBar = null;
+    this.$destination = null;
   }
 
   public update() {
-    if (this.__destination) {
-      this.movingProgress = Math.min(
+    if (this.$destination) {
+      this.$movingProgress = Math.min(
         100,
-        this.movingProgress + this.__template.getSpeed()
+        this.$movingProgress + this.template.getSpeed()
       );
-      this.__progressBar.setProgress(this.movingProgress);
+      this.progressBar.setProgress(this.$movingProgress);
 
       //戦闘判定
-      console.log("division is destination", this.__destination.getDivisons());
+      console.log("division is destination", this.$destination.getDivisons());
 
-      this.__destination.getDivisons().forEach((division) => {
+      this.$destination.getDivisons().forEach((division) => {
         if (!division.owner.getWarInfoWith(this.owner)) return; //戦争していないなら関係ない
         if (this.hasCombatWith(division)) return; //すでに戦闘が発生しているならreturn
         console.log("combat create", this, division);
@@ -227,11 +227,11 @@ export default class Division extends VerticalBox implements Jsonable {
         Combat.create(this, division);
       });
 
-      if (this.movingProgress >= 100 && this.__combats.length == 0) {
+      if (this.$movingProgress >= 100 && this.combats.length == 0) {
         //移動終了判定
         console.log("move completed");
 
-        this.setPosition(this.__destination);
+        this.setPosition(this.$destination);
         this.stopMove();
       } else {
       }
@@ -239,10 +239,13 @@ export default class Division extends VerticalBox implements Jsonable {
   }
 
   toJSON() {
-    return JsonConverter.toJSON(this, (key, value) => {
-      if (!Division.hasOwnProperty(key)) return []; //上位クラス（描画系）の持つプロパティはJSON対象外
-      if (value instanceof Province) return [key, value.getId()];
-      return [key, value];
-    });
+    return Object.fromEntries(
+      Object.entries(this).map(([key, value]) => {
+        if (!key.startsWith("$")) return [];
+        key = key.substr(1);
+        if (value instanceof Province) value = value.getId();
+        return [key, value];
+      })
+    );
   }
 }
