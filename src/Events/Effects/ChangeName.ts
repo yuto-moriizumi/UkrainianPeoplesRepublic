@@ -9,7 +9,7 @@ export default class ChangeName extends Effect {
   private name: string;
 
   public activate() {
-    this._country.name = name;
+    this._country.name = this.name;
   }
 
   set country(countryId: string) {
