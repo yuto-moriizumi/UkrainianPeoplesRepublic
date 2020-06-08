@@ -2,9 +2,9 @@ import Country from "./Country";
 import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import Event from "./Events/Event";
-import JsonObject from "./JsonObject";
 import Combat from "./Combat";
-export default class Savedata extends JsonObject {
+import Jsonable from "./Jsonable";
+export default class Savedata implements Jsonable {
     private _countries;
     private _provinces;
     private _diplomacy;
@@ -26,5 +26,6 @@ export default class Savedata extends JsonObject {
     removeCombat(combat: Combat): void;
     getCombats(): Combat[];
     load(json: object): void;
+    toJSON(): any;
     download(): void;
 }

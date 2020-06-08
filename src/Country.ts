@@ -3,8 +3,10 @@ import JsonObject from "./JsonObject";
 import War from "./DiplomaticTies/War";
 import DivisionTemplate from "./DivisionTemplate";
 import GameManager from "./GameManager";
+import Jsonable from "./Jsonable";
+import JsonConverter from "./JsonConverter";
 
-export default class Country extends JsonObject {
+export default class Country implements Jsonable {
   private __id: string;
   private _color: number;
   public name: string;
@@ -13,7 +15,6 @@ export default class Country extends JsonObject {
   private divisions: Array<DivisionTemplate> = new Array<DivisionTemplate>();
 
   constructor(id: string) {
-    super();
     this.__id = id;
   }
 
@@ -82,14 +83,14 @@ export default class Country extends JsonObject {
     });
   }
 
-  public createEntries() {
-    return super.createEntries().map(([key, value]) => {
+  public update() {
+    this.divisions.forEach((division) => division.update());
+  }
+
+  toJSON() {
+    return JsonConverter.toJSON(this, (key, value) => {
       if (key === "color") return [key, value.toString(16)];
       return [key, value];
     });
-  }
-
-  public update() {
-    this.divisions.forEach((division) => division.update());
   }
 }

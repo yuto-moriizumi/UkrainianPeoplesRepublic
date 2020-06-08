@@ -1,8 +1,8 @@
 import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
-import JsonObject from "./JsonObject";
 import War from "./DiplomaticTies/War";
 import DivisionTemplate from "./DivisionTemplate";
-export default class Country extends JsonObject {
+import Jsonable from "./Jsonable";
+export default class Country implements Jsonable {
     private __id;
     private _color;
     name: string;
@@ -27,6 +27,6 @@ export default class Country extends JsonObject {
      */
     getRandomOwnProvince(): any;
     getWarInfoWith(country: Country): War;
-    createEntries(): any[][];
     update(): void;
+    toJSON(): any;
 }

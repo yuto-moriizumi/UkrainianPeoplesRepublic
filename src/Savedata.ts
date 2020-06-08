@@ -5,8 +5,10 @@ import War from "./DiplomaticTies/War";
 import Event from "./Events/Event";
 import JsonObject from "./JsonObject";
 import Combat from "./Combat";
+import Jsonable from "./Jsonable";
+import JsonConverter from "./JsonConverter";
 
-export default class Savedata extends JsonObject {
+export default class Savedata implements Jsonable {
   private _countries: Map<string, Country> = new Map<string, Country>();
   private _provinces: Map<string, Province> = new Map<string, Province>();
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
@@ -105,6 +107,10 @@ export default class Savedata extends JsonObject {
 
   public load(json: object) {
     Object.assign(this, json);
+  }
+
+  toJSON() {
+    return JsonConverter.toJSON(this);
   }
 
   public download() {
