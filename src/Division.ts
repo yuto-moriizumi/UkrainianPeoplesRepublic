@@ -1,23 +1,23 @@
 import * as PIXI from "pixi.js";
-import Country from "./Country";
 import GameManager from "./GameManager";
 import VerticalBox from "./UI/VerticalBox";
 import Resource from "./Resources";
 import * as Filters from "pixi-filters";
 import MainScene from "./Scenes/MainScene";
-import Province from "Province";
+import Province from "./Province";
 import DivisionTemplate from "./DivisionTemplate";
 import ArrowProgress from "./ArrowProgress";
 import Combat from "./Combat";
 import JsonConverter from "./JsonConverter";
-export default class Division extends VerticalBox {
-  private static selects = new Set<Division>();
-  private selected = false; //JSONに保存する必要が無いのでこのクラスのメンバにしてる
-  private onMap = false;
+import Jsonable from "./Jsonable";
+export default class Division extends VerticalBox implements Jsonable {
+  private static __selects = new Set<Division>();
+  private __selected = false;
+  private __onMap = false;
   private __template: DivisionTemplate;
-  private _province: Province;
+  private __province: Province;
   private _organization: number;
-  private _destination: Province;
+  private __destination: Province;
   private movingProgress: number; //整数値で扱う 100で最大値
   private __progressBar: ArrowProgress;
   private __combats: Array<Combat> = new Array<Combat>();
@@ -42,15 +42,15 @@ export default class Division extends VerticalBox {
   }
 
   public setOnMap(flag: boolean) {
-    this.onMap = flag;
+    this.__onMap = flag;
   }
 
   public getOnMap() {
-    return this.onMap;
+    return this.__onMap;
   }
 
   public select() {
-    this.selected = true;
+    this.__selected = true;
     this.filters = [
       new Filters.GlowFilter({
         outerStrength: 8,
@@ -60,22 +60,22 @@ export default class Division extends VerticalBox {
     ];
 
     //他の師団の選択を解除
-    Division.selects.forEach((division) => {
+    Division.__selects.forEach((division) => {
       division.deselect();
     });
-    Division.selects.add(this);
+    Division.__selects.add(this);
   }
 
   public deselect() {
-    this.selected = false;
+    this.__selected = false;
     this.filters = [];
-    Division.selects.delete(this);
+    Division.__selects.delete(this);
   }
 
   private onClick(e: PIXI.interaction.InteractionEvent) {
     e.stopPropagation();
-    this.selected = !this.selected;
-    if (this.selected) {
+    this.__selected = !this.__selected;
+    if (this.__selected) {
       //選択されていないならば選択
       this.select();
     } else {
@@ -84,7 +84,7 @@ export default class Division extends VerticalBox {
   }
 
   public static moveSelectingDivisionsTo(province: Province) {
-    Division.selects.forEach((division) => {
+    Division.__selects.forEach((division) => {
       division.move(province);
     });
   }
@@ -94,12 +94,12 @@ export default class Division extends VerticalBox {
   }
 
   public set destination(provinceId: string) {
-    this._destination = GameManager.instance.data.getProvince(provinceId);
+    this.__destination = GameManager.instance.data.getProvince(provinceId);
   }
 
   public setPosition(province: Province) {
-    if (this._province) this._province.removeDivision(this);
-    this._province = province;
+    if (this.__province) this.__province.removeDivision(this);
+    this.__province = province;
     province.addDivision(this);
     MainScene.instance.getMap().setDivisonPosition(this);
 
@@ -113,7 +113,7 @@ export default class Division extends VerticalBox {
   }
 
   public getPosition() {
-    return this._province;
+    return this.__province;
   }
 
   public get owner() {
@@ -152,9 +152,9 @@ export default class Division extends VerticalBox {
 
   public move(destination: Province) {
     //移動先が変更なければ何もしない
-    if (this._destination == destination) return;
+    if (this.__destination == destination) return;
     //移動可能かチェック（隣接しているプロヴィンスのみ）
-    if (!this._province.isNextTo(destination)) return;
+    if (!this.__province.isNextTo(destination)) return;
     if (
       destination.getOwner() != this.owner && //移動先の領有国が自国ではなく、
       !destination.getOwner().getWarInfoWith(this.owner) //かつ戦争中でない場合
@@ -166,11 +166,11 @@ export default class Division extends VerticalBox {
       this.__progressBar = null;
     }
     if (destination == this.getPosition()) {
-      this._destination = null;
+      this.__destination = null;
       this.movingProgress = 0;
       return;
     }
-    this._destination = destination;
+    this.__destination = destination;
     this.movingProgress = 0;
     this.__progressBar = new ArrowProgress(this.getPosition(), destination);
     MainScene.instance.getMap().addChild(this.__progressBar);
@@ -196,7 +196,7 @@ export default class Division extends VerticalBox {
     if (this.__dead) return; //すでに死亡ならなにもしない
     this.__dead = true;
     if (this.__progressBar) this.__progressBar.destroy();
-    this._province.removeDivision(this);
+    this.__province.removeDivision(this);
     this.destroy();
     this.__template.removeDivision(this);
   }
@@ -205,11 +205,11 @@ export default class Division extends VerticalBox {
     this.movingProgress = 0;
     if (this.__progressBar) this.__progressBar.destroy();
     this.__progressBar = null;
-    this._destination = null;
+    this.__destination = null;
   }
 
   public update() {
-    if (this._destination) {
+    if (this.__destination) {
       this.movingProgress = Math.min(
         100,
         this.movingProgress + this.__template.getSpeed()
@@ -217,9 +217,9 @@ export default class Division extends VerticalBox {
       this.__progressBar.setProgress(this.movingProgress);
 
       //戦闘判定
-      console.log("division is destination", this._destination.getDivisons());
+      console.log("division is destination", this.__destination.getDivisons());
 
-      this._destination.getDivisons().forEach((division) => {
+      this.__destination.getDivisons().forEach((division) => {
         if (!division.owner.getWarInfoWith(this.owner)) return; //戦争していないなら関係ない
         if (this.hasCombatWith(division)) return; //すでに戦闘が発生しているならreturn
         console.log("combat create", this, division);
@@ -231,7 +231,7 @@ export default class Division extends VerticalBox {
         //移動終了判定
         console.log("move completed");
 
-        this.setPosition(this._destination);
+        this.setPosition(this.__destination);
         this.stopMove();
       } else {
       }
@@ -239,6 +239,10 @@ export default class Division extends VerticalBox {
   }
 
   toJSON() {
-    return JsonConverter.toJSON(this);
+    return JsonConverter.toJSON(this, (key, value) => {
+      if (!Division.hasOwnProperty(key)) return []; //上位クラス（描画系）の持つプロパティはJSON対象外
+      if (value instanceof Province) return [key, value.getId()];
+      return [key, value];
+    });
   }
 }

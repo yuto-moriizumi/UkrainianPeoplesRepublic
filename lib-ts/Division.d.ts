@@ -1,16 +1,16 @@
-import Country from "./Country";
 import VerticalBox from "./UI/VerticalBox";
-import Province from "Province";
+import Province from "./Province";
 import DivisionTemplate from "./DivisionTemplate";
 import Combat from "./Combat";
-export default class Division extends VerticalBox {
-    private static selects;
-    private selected;
-    private onMap;
+import Jsonable from "./Jsonable";
+export default class Division extends VerticalBox implements Jsonable {
+    private static __selects;
+    private __selected;
+    private __onMap;
     private __template;
-    private _province;
+    private __province;
     private _organization;
-    private _destination;
+    private __destination;
     private movingProgress;
     private __progressBar;
     private __combats;
@@ -26,7 +26,7 @@ export default class Division extends VerticalBox {
     set destination(provinceId: string);
     setPosition(province: Province): void;
     getPosition(): Province;
-    get owner(): Country;
+    get owner(): import("./Country").default;
     get sprite(): this;
     attack(target: Division): void;
     getOrganization(): number;
