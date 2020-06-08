@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
-import DivisionSprite from "./DivisionSprite";
+import DivisionSprite from "./Division";
 export default class MyMap extends PIXI.Sprite {
     static instance: MyMap;
     private static readonly BORDER_COLOR;

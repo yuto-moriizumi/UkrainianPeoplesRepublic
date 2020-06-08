@@ -1,7 +1,7 @@
 import DivisionInfo from "./DivisionInfo";
 import VerticalBox from "./UI/VerticalBox";
 import Province from "Province";
-export default class DivisionSprite extends VerticalBox {
+export default class Division extends VerticalBox {
     private static selects;
     private info;
     private selected;

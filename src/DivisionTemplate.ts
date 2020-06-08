@@ -3,17 +3,18 @@ import Country from "./Country";
 import GameManager from "./GameManager";
 import JsonObject from "./JsonObject";
 import Province from "./Province";
-import DivisionInfo from "./DivisionInfo";
+import Jsonable from "./Jsonable";
+import JsonConverter from "./JsonConverter";
+import Division from "Division";
 
-export default class DivisionTemplate extends JsonObject {
+export default class DivisionTemplate implements Jsonable {
   private __owner: Country;
   private organization: number = 100;
   private attack: number = 20;
   private speed: number = 10;
-  private divisions: Array<DivisionInfo> = [];
+  private divisions: Array<Division> = [];
 
   constructor(owner: Country) {
-    super();
     this.__owner = owner;
   }
 
@@ -33,11 +34,11 @@ export default class DivisionTemplate extends JsonObject {
     return this.organization;
   }
 
-  public addDivision(division: DivisionInfo) {
+  public addDivision(division: Division) {
     this.divisions.push(division);
   }
 
-  public removeDivision(division: DivisionInfo) {
+  public removeDivision(division: Division) {
     this.divisions = this.divisions.filter((d) => {
       return d != division;
     });
@@ -45,5 +46,9 @@ export default class DivisionTemplate extends JsonObject {
 
   public update() {
     this.divisions.forEach((division) => division.update());
+  }
+
+  toJSON() {
+    return JsonConverter.toJSON(this);
   }
 }

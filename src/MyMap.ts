@@ -3,8 +3,7 @@ import * as Filters from "pixi-filters";
 import GameManager from "./GameManager";
 import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
-import DivisionSprite from "./DivisionSprite";
-import DivisionInfo from "./DivisionInfo";
+import DivisionSprite from "./Division";
 import Arrow from "./Arrow";
 import ArrowProgress from "./ArrowProgress";
 
@@ -197,7 +196,7 @@ export default class MyMap extends PIXI.Sprite {
 
   public setDivisonPosition(sprite: DivisionSprite) {
     if (!sprite.getOnMap()) this.addChild(sprite);
-    const point = sprite.getInfo().getPosition().getCoord();
+    const point = sprite.getPosition().getCoord();
     sprite.position.set(
       point.x - sprite.width / 2,
       point.y - sprite.height / 2

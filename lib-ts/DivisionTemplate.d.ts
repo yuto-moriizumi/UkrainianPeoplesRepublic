@@ -1,7 +1,7 @@
 import Country from "./Country";
-import JsonObject from "./JsonObject";
-import DivisionInfo from "./DivisionInfo";
-export default class DivisionTemplate extends JsonObject {
+import Jsonable from "./Jsonable";
+import Division from "Division";
+export default class DivisionTemplate implements Jsonable {
     private __owner;
     private organization;
     private attack;
@@ -12,7 +12,8 @@ export default class DivisionTemplate extends JsonObject {
     getSpeed(): number;
     getAttack(): number;
     getOrganization(): number;
-    addDivision(division: DivisionInfo): void;
-    removeDivision(division: DivisionInfo): void;
+    addDivision(division: Division): void;
+    removeDivision(division: Division): void;
     update(): void;
+    toJSON(): any;
 }

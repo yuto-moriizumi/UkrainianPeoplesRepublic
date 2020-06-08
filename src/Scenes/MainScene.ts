@@ -17,7 +17,7 @@ import Event from "../Events/Event";
 import Button from "../UI/Button";
 import Conscription from "../UI/Conscription";
 import SpriteButton from "../UI/SpriteButton";
-import DivisionSprite from "../DivisionSprite";
+import DivisionSprite from "../Division";
 import DebugSidebar from "../UI/DebugSidebar";
 
 export default class MainScene extends Scene implements Selectable {

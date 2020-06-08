@@ -1,19 +1,22 @@
 import * as PIXI from "pixi.js";
 import Country from "./Country";
 import GameManager from "./GameManager";
-import JsonObject from "./JsonObject";
-import Province from "./Province";
-import DivisionTemplate from "./DivisionTemplate";
-import DivisionSprite from "./DivisionSprite";
+import VerticalBox from "./UI/VerticalBox";
+import Resource from "./Resources";
+import * as Filters from "pixi-filters";
 import MainScene from "./Scenes/MainScene";
+import Province from "Province";
+import DivisionTemplate from "./DivisionTemplate";
 import ArrowProgress from "./ArrowProgress";
 import Combat from "./Combat";
-
-export default class DivisionInfo extends JsonObject {
+import JsonConverter from "./JsonConverter";
+export default class Division extends VerticalBox {
+  private static selects = new Set<Division>();
+  private selected = false; //JSONに保存する必要が無いのでこのクラスのメンバにしてる
+  private onMap = false;
   private __template: DivisionTemplate;
-  private _position: Province;
+  private _province: Province;
   private _organization: number;
-  private __sprite: DivisionSprite;
   private _destination: Province;
   private movingProgress: number; //整数値で扱う 100で最大値
   private __progressBar: ArrowProgress;
@@ -21,13 +24,72 @@ export default class DivisionInfo extends JsonObject {
   private __dead: boolean = false;
 
   constructor(template: DivisionTemplate) {
-    super();
+    super(15, 12, 0.8, 0x216639);
+
     this.__template = template;
     this.setOrganization(template.getOrganization());
-    this.__sprite = new DivisionSprite(this);
+    //this.country = country;
+
+    const sprite = new PIXI.Sprite(
+      GameManager.instance.game.loader.resources[Resource.infantaly].texture
+    );
+    this.addPart(sprite);
+    //info.owner.flag
+
+    this.interactive = true;
+    this.buttonMode = true;
+    this.on("click", (e: PIXI.interaction.InteractionEvent) => this.onClick(e));
   }
 
-  public set position(provinceId: string) {
+  public setOnMap(flag: boolean) {
+    this.onMap = flag;
+  }
+
+  public getOnMap() {
+    return this.onMap;
+  }
+
+  public select() {
+    this.selected = true;
+    this.filters = [
+      new Filters.GlowFilter({
+        outerStrength: 8,
+        color: 0xffff00,
+        quality: 1,
+      }),
+    ];
+
+    //他の師団の選択を解除
+    Division.selects.forEach((division) => {
+      division.deselect();
+    });
+    Division.selects.add(this);
+  }
+
+  public deselect() {
+    this.selected = false;
+    this.filters = [];
+    Division.selects.delete(this);
+  }
+
+  private onClick(e: PIXI.interaction.InteractionEvent) {
+    e.stopPropagation();
+    this.selected = !this.selected;
+    if (this.selected) {
+      //選択されていないならば選択
+      this.select();
+    } else {
+      this.deselect();
+    }
+  }
+
+  public static moveSelectingDivisionsTo(province: Province) {
+    Division.selects.forEach((division) => {
+      division.move(province);
+    });
+  }
+
+  public set at(provinceId: string) {
     this.setPosition(GameManager.instance.data.getProvince(provinceId));
   }
 
@@ -36,10 +98,10 @@ export default class DivisionInfo extends JsonObject {
   }
 
   public setPosition(province: Province) {
-    if (this._position) this._position.removeDivision(this);
-    this._position = province;
+    if (this._province) this._province.removeDivision(this);
+    this._province = province;
     province.addDivision(this);
-    MainScene.instance.getMap().setDivisonPosition(this.__sprite);
+    MainScene.instance.getMap().setDivisonPosition(this);
 
     //占領処理
     const owner = province.getOwner();
@@ -51,7 +113,7 @@ export default class DivisionInfo extends JsonObject {
   }
 
   public getPosition() {
-    return this._position;
+    return this._province;
   }
 
   public get owner() {
@@ -59,10 +121,10 @@ export default class DivisionInfo extends JsonObject {
   }
 
   public get sprite() {
-    return this.__sprite;
+    return this;
   }
 
-  public attack(target: DivisionInfo) {
+  public attack(target: Division) {
     target.setOrganization(
       target.getOrganization() -
         this.__template.getAttack() / this.__combats.length //攻撃に参加している数だけ弱くなる
@@ -88,11 +150,11 @@ export default class DivisionInfo extends JsonObject {
     return this.__template;
   }
 
-  public moveTo(destination: Province) {
+  public move(destination: Province) {
     //移動先が変更なければ何もしない
     if (this._destination == destination) return;
     //移動可能かチェック（隣接しているプロヴィンスのみ）
-    if (!this._position.isNextTo(destination)) return;
+    if (!this._province.isNextTo(destination)) return;
     if (
       destination.getOwner() != this.owner && //移動先の領有国が自国ではなく、
       !destination.getOwner().getWarInfoWith(this.owner) //かつ戦争中でない場合
@@ -114,7 +176,7 @@ export default class DivisionInfo extends JsonObject {
     MainScene.instance.getMap().addChild(this.__progressBar);
   }
 
-  private hasCombatWith(target: DivisionInfo) {
+  private hasCombatWith(target: Division) {
     return GameManager.instance.data.getCombats().find((combat) => {
       return combat.getOpponent(this) == target;
     });
@@ -134,9 +196,8 @@ export default class DivisionInfo extends JsonObject {
     if (this.__dead) return; //すでに死亡ならなにもしない
     this.__dead = true;
     if (this.__progressBar) this.__progressBar.destroy();
-    console.log("sprite destroy", this.__sprite);
-    this._position.removeDivision(this);
-    this.__sprite.destroy();
+    this._province.removeDivision(this);
+    this.destroy();
     this.__template.removeDivision(this);
   }
 
@@ -175,5 +236,9 @@ export default class DivisionInfo extends JsonObject {
       } else {
       }
     }
+  }
+
+  toJSON() {
+    return JsonConverter.toJSON(this);
   }
 }
