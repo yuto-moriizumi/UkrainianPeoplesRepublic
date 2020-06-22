@@ -8,7 +8,7 @@ export default class Country implements Jsonable {
     name: string;
     flag: string;
     private diplomaticTies;
-    private divisions;
+    private _divisions;
     constructor(id: string);
     addDiplomaticRelation(tie: DiplomaticTie): void;
     removeDiplomaticRelation(tie: DiplomaticTie): void;
@@ -28,5 +28,6 @@ export default class Country implements Jsonable {
     getRandomOwnProvince(): any;
     getWarInfoWith(country: Country): War;
     update(): void;
+    private set divisions(value);
     toJSON(): any;
 }

@@ -31,15 +31,31 @@ export default class Division extends VerticalBox implements Jsonable {
     template.addDivision(this);
     //this.country = country;
 
-    const sprite = new PIXI.Sprite(
-      GameManager.instance.game.loader.resources[Resource.infantaly].texture
-    );
-    this.addPart(sprite);
+    //if (MainScene.instance) {
+    //MainScene.resouceLoadCallbacks.push(this.onResourceLoaded);
+    this.onResourceLoaded();
+    //}
     //info.owner.flag
 
     this.interactive = true;
     this.buttonMode = true;
     this.on("click", (e: PIXI.interaction.InteractionEvent) => this.onClick(e));
+  }
+
+  public onResourceLoaded() {
+    //シーン側でロード完了次第呼び出す
+    const sprite = new PIXI.Sprite(
+      GameManager.instance.game.loader.resources[Resource.infantaly].texture
+    );
+    this.addPart(this.sprite);
+  }
+
+  private set organization(organization: number) {
+    this.$organization = organization;
+  }
+
+  private set movingProgress(movingProgress: number) {
+    this.$movingProgress = movingProgress;
   }
 
   public setOnMap(flag: boolean) {
@@ -168,6 +184,12 @@ export default class Division extends VerticalBox implements Jsonable {
     if (destination == this.getPosition()) {
       this.$destination = null;
       this.$movingProgress = 0;
+      return;
+    }
+    if (MainScene.instance.moveCheat) {
+      //移動チートONなら
+      this.setPosition(destination);
+      this.stopMove();
       return;
     }
     this.$destination = destination;

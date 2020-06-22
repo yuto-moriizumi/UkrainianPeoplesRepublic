@@ -13,6 +13,8 @@ export default class MainScene extends Scene implements Selectable {
     private sidebar;
     private eventDispatcher;
     selectingDivison: DivisionSprite;
+    moveCheat: boolean;
+    static resouceLoadCallbacks: Array<any>;
     constructor(playCountry: Country);
     protected createInitialResourceList(): (LoaderAddParam | string)[];
     protected onResourceLoaded(): void;

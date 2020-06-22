@@ -16,6 +16,9 @@ export default class Division extends VerticalBox implements Jsonable {
     private combats;
     private dead;
     constructor(template: DivisionTemplate);
+    onResourceLoaded(): void;
+    private set organization(value);
+    private set movingProgress(value);
     setOnMap(flag: boolean): void;
     getOnMap(): boolean;
     select(): void;

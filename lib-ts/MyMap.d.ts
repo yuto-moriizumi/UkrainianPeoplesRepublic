@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
-import DivisionSprite from "./Division";
+import Division from "./Division";
 export default class MyMap extends PIXI.Sprite {
     static instance: MyMap;
     private static readonly BORDER_COLOR;
@@ -27,7 +27,7 @@ export default class MyMap extends PIXI.Sprite {
      * @memberof MyMap
      */
     private getBarycenter;
-    setDivisonPosition(sprite: DivisionSprite): void;
+    setDivisonPosition(sprite: Division): void;
     calculateBarycenterOfAll(): void;
     private getProvince;
     update(): void;
