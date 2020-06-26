@@ -8,8 +8,18 @@
           "attack": 20,
           "speed": 10,
           "divisions": [
+<<<<<<< HEAD
             { "organization": 100, "position": "#e001e0" },
             { "organization": 100, "position": "#71e0a0" }
+=======
+            {
+              "organization": 100,
+              "province": "#e001e0",
+              "movingProgress": 0,
+              "destination": null
+            },
+            { "organization": 100, "province": "#71e0a0" }
+>>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
           ]
         }
       ],
@@ -33,28 +43,139 @@
     },
     "RPG": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "province": "#8090bf" },
+            { "organization": 100, "province": "#c05001" },
+            { "organization": 100, "province": "#00d000" },
+            { "organization": 100, "province": "#206020" },
+            { "organization": 100, "province": "#405080" },
+            { "organization": 100, "province": "#009000" },
+            { "organization": 100, "province": "#61c0e0" },
+            { "organization": 100, "province": "#00d000" },
+            { "organization": 100, "province": "#a060a0" },
+            { "organization": 100, "province": "#c01040" },
+            { "organization": 100, "province": "#40c040" },
+            { "organization": 100, "province": "#206020" },
+            { "organization": 100, "province": "#809040" },
+            { "organization": 100, "province": "#61c0e0" },
+            { "organization": 100, "province": "#61c0e0" },
+            { "organization": 100, "province": "#0a78c3" },
+            { "organization": 100, "province": "#214180" },
+            { "organization": 100, "province": "#30df60" },
+            { "organization": 100, "province": "#40c040" },
+            { "organization": 100, "province": "#f0e0df" },
+            { "organization": 100, "province": "#a000c0" },
+            { "organization": 100, "province": "#5aae42" },
+            { "organization": 100, "province": "#80d041" }
+          ]
+        }
+      ],
       "color": "ac77c5",
       "name": "ロシア共和国",
       "flag": "RPG.png"
     },
     "USSR": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "province": "#f06161" },
+            { "organization": 100, "province": "#e0c080" },
+            { "organization": 100, "province": "#015080" },
+            { "organization": 100, "province": "#e0a021" },
+            { "organization": 100, "province": "#706060" },
+            { "organization": 100, "province": "#20a020" },
+            { "organization": 100, "province": "#c0a060" },
+            { "organization": 100, "province": "#c0a060" },
+            { "organization": 100, "province": "#c0d001" },
+            { "organization": 100, "province": "#8061e0" },
+            { "organization": 100, "province": "#6161a0" },
+            { "organization": 100, "province": "#e0c080" },
+            { "organization": 100, "province": "#80e061" },
+            { "organization": 100, "province": "#604180" },
+            { "organization": 100, "province": "#e9c671" },
+            { "organization": 100, "province": "#805180" },
+            { "organization": 100, "province": "#a0a021" },
+            { "organization": 100, "province": "#4020df" },
+            { "organization": 100, "province": "#c0a060" },
+            { "organization": 100, "province": "#8021a0" },
+            { "organization": 100, "province": "#31e0e0" },
+            { "organization": 100, "province": "#015040" },
+            { "organization": 100, "province": "#e9c671" },
+            { "organization": 100, "province": "#8f79e9" },
+            { "organization": 100, "province": "#a0a0a0" },
+            { "organization": 100, "province": "#a080a0" },
+            { "organization": 100, "province": "#c0df60" },
+            { "organization": 100, "province": "#805180" },
+            { "organization": 100, "province": "#df20a0" }
+          ]
+        }
+      ],
       "color": "ff0000",
       "name": "ロシア＝ソヴィエト連邦社会主義共和国",
       "flag": "USSR.png"
     },
     "AHE": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            {
+              "organization": 100,
+              "province": "#9dffaf",
+              "movingProgress": 0,
+              "destination": null
+            },
+            { "organization": 100, "province": "#2164e0" },
+            { "organization": 100, "province": "#ef6080" },
+            { "organization": 100, "province": "#b06161" },
+            { "organization": 100, "province": "#af609f" },
+            { "organization": 100, "province": "#b06141" },
+            { "organization": 100, "province": "#846165" },
+            { "organization": 100, "province": "#b061c0" },
+            { "organization": 100, "province": "#50209f" },
+            { "organization": 100, "province": "#e0a321" },
+            {
+              "organization": 100,
+              "province": "#1180a0",
+              "movingProgress": 0,
+              "destination": null
+            },
+            {
+              "organization": 100,
+              "province": "#11a021",
+              "movingProgress": 0,
+              "destination": null
+            },
+            { "organization": 100, "province": "#846165" }
+          ]
+        }
+      ],
       "color": "ff31be",
       "name": "オーストリア＝ハンガリー帝国",
       "flag": "AHE.png"
     },
     "MDR": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [{ "organization": 100, "province": "#8aca9b" }]
+        }
+      ],
       "color": "ae7b00",
       "name": "モルダヴィア民主共和国",
       "flag": "MDR.png"
@@ -67,8 +188,24 @@
           "attack": 20,
           "speed": 10,
           "divisions": [
+<<<<<<< HEAD
             { "organization": 100, "position": "#bc0441" },
             { "organization": 100, "position": "#726291" }
+=======
+            { "organization": 100, "province": "#71e061" },
+            {
+              "organization": 100,
+              "province": "#c0e0e0",
+              "movingProgress": 0,
+              "destination": null
+            },
+            {
+              "organization": 100,
+              "province": "#f061a0",
+              "movingProgress": 0,
+              "destination": null
+            }
+>>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
           ]
         }
       ],
@@ -78,7 +215,14 @@
     },
     "OSR": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [{ "organization": 100, "province": "#71e021" }]
+        }
+      ],
       "color": "563b18",
       "name": "オデッサ・ソビエト共和国",
       "flag": "Red.png"
@@ -106,28 +250,129 @@
     },
     "TUR": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "province": "#809000" },
+            { "organization": 100, "province": "#b020e0" },
+            { "organization": 100, "province": "#009080" },
+            { "organization": 100, "province": "#3020e0" },
+            { "organization": 100, "province": "#c01000" },
+            { "organization": 100, "province": "#f0a020" },
+            { "organization": 100, "province": "#c01000" },
+            { "organization": 100, "province": "#809080" },
+            { "organization": 100, "province": "#f0a020" },
+            { "organization": 100, "province": "#f040e0" }
+          ]
+        }
+      ],
       "color": "80a100",
       "name": "オスマン帝国",
       "flag": "TUR.png"
     },
     "ROM": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "province": "#f40045" },
+            {
+              "organization": 100,
+              "province": "#ef2060",
+              "movingProgress": 0,
+              "destination": null
+            },
+            {
+              "organization": 100,
+              "province": "#b0a0e0",
+              "movingProgress": 0,
+              "destination": null
+            }
+          ]
+        }
+      ],
       "color": "7c2900",
       "name": "ルーマニア王国",
       "flag": "ROM.png"
     },
     "GER": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "province": "#6e617f" },
+            { "organization": 100, "province": "#c020a0" },
+            { "organization": 100, "province": "#41e0a0" },
+            { "organization": 100, "province": "#c00121" },
+            { "organization": 100, "province": "#2141a0" },
+            { "organization": 100, "province": "#41e061" },
+            { "organization": 100, "province": "#c02121" },
+            { "organization": 100, "province": "#4a8e5d" },
+            { "organization": 100, "province": "#c020a0" },
+            { "organization": 100, "province": "#567452" },
+            { "organization": 100, "province": "#806161" },
+            { "organization": 100, "province": "#945000" },
+            { "organization": 100, "province": "#b08021" },
+            { "organization": 100, "province": "#795368" },
+            { "organization": 100, "province": "#00e0a0" },
+            { "organization": 100, "province": "#cf5d8e" },
+            { "organization": 100, "province": "#c020a0" },
+            { "organization": 100, "province": "#19ae19" },
+            { "organization": 100, "province": "#4a8e5d" },
+            { "organization": 100, "province": "#3101a0" },
+            { "organization": 100, "province": "#af9f20" },
+            { "organization": 100, "province": "#c06121" },
+            { "organization": 100, "province": "#8001a0" },
+            { "organization": 100, "province": "#80e0a0" }
+          ]
+        }
+      ],
       "color": "a81500",
       "name": "ドイツ帝国",
       "flag": "GER.png"
     },
     "BUL": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "province": "#6181d2" },
+            { "organization": 100, "province": "#e8d59c" },
+            { "organization": 100, "province": "#7121a0" },
+            {
+              "organization": 100,
+              "province": "#71a0a0",
+              "movingProgress": 0,
+              "destination": null
+            },
+            {
+              "organization": 100,
+              "province": "#9061a0",
+              "movingProgress": 0,
+              "destination": null
+            },
+            {
+              "organization": 100,
+              "province": "#11e0a0",
+              "movingProgress": 0,
+              "destination": null
+            },
+            { "organization": 100, "province": "#7121a0" }
+          ]
+        }
+      ],
       "color": "966e",
       "name": "大ブルガリア公国",
       "flag": "BUL.png"
@@ -148,14 +393,52 @@
     },
     "GRE": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "province": "#a0d0a0" },
+            { "organization": 100, "province": "#d2619e" },
+            { "organization": 100, "province": "#e6e868" }
+          ]
+        }
+      ],
       "color": "935f00",
       "name": "ギリシャ王国",
       "flag": "GRE.png"
     },
     "POL": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            {
+              "organization": 100,
+              "province": "#51a0e0",
+              "movingProgress": 0,
+              "destination": null
+            },
+            {
+              "organization": 100,
+              "province": "#009f60",
+              "movingProgress": 0,
+              "destination": null
+            },
+            { "organization": 100, "province": "#d0a0e0" },
+            {
+              "organization": 100,
+              "province": "#577ee4",
+              "movingProgress": 0,
+              "destination": null
+            }
+          ]
+        }
+      ],
       "color": "c55c6a",
       "name": "ポーランド摂政王国",
       "flag": "POL.png"
@@ -295,14 +578,45 @@
     },
     "ITA": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "province": "#b001a0" },
+            { "organization": 100, "province": "#31c0a0" },
+            { "organization": 100, "province": "#c050e0" },
+            { "organization": 100, "province": "#b02040" },
+            { "organization": 100, "province": "#b080a0" },
+            { "organization": 100, "province": "#785460" },
+            { "organization": 100, "province": "#b02040" },
+            { "organization": 100, "province": "#704020" },
+            { "organization": 100, "province": "#30209f" },
+            { "organization": 100, "province": "#31c0a0" },
+            { "organization": 100, "province": "#704020" }
+          ]
+        }
+      ],
       "color": "80a303",
       "name": "イタリア王国",
       "flag": "ITA.png"
     },
     "SWE": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "province": "#61c061" },
+            { "organization": 100, "province": "#0101a0" },
+            { "organization": 100, "province": "#41c0c0" },
+            { "organization": 100, "province": "#c0c061" }
+          ]
+        }
+      ],
       "color": "2484f7",
       "name": "スウェーデン王国",
       "flag": "SWE.png"

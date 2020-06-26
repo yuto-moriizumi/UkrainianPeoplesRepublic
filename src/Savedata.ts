@@ -41,11 +41,15 @@ export default class Savedata implements Jsonable {
       this._provinces.set(newId, province);
     }
     console.log("provinces loaded:", this._provinces);
+<<<<<<< HEAD
     this.__isProvinceLoaded = true;
     while (this.__onProvinceLoaded.length > 0) {
       const func = this.__onProvinceLoaded.shift();
       func();
     }
+=======
+    this.__onProvinceLoaded.forEach((fnc) => fnc());
+>>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
   }
 
   public setProvince(id: string, province: Province) {

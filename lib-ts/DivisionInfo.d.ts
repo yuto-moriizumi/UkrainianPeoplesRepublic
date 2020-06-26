@@ -2,7 +2,6 @@ import Country from "./Country";
 import Province from "./Province";
 import DivisionTemplate from "./DivisionTemplate";
 import Combat from "./Combat";
-import DivisionSprite from "./DivisionSprite";
 export default class DivisionInfo {
     private __template;
     private _position;
@@ -20,7 +19,7 @@ export default class DivisionInfo {
     setPosition(province: Province): void;
     getPosition(): Province;
     get owner(): Country;
-    get sprite(): DivisionSprite;
+    get sprite(): any;
     attack(target: DivisionInfo): void;
     getOrganization(): number;
     setOrganization(organization: number): void;

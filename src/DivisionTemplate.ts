@@ -3,9 +3,12 @@ import Country from "./Country";
 import GameManager from "./GameManager";
 import JsonObject from "./JsonObject";
 import Province from "./Province";
-import DivisionInfo from "./DivisionInfo";
+import Jsonable from "./Jsonable";
+import JsonConverter from "./JsonConverter";
+import Division from "./Division";
+import MainScene from "./Scenes/MainScene";
 
-export default class DivisionTemplate extends JsonObject {
+export default class DivisionTemplate implements Jsonable {
   private __owner: Country;
   private organization: number = 100;
   private attack: number = 20;
@@ -13,12 +16,17 @@ export default class DivisionTemplate extends JsonObject {
   private _divisions: Array<DivisionInfo> = [];
 
   constructor(owner: Country) {
-    super();
     this.__owner = owner;
   }
 
   public get owner(): Country {
     return this.__owner;
+  }
+
+  set divisions(divisions: Array<any>) {
+    MainScene.resouceLoadCallbacks.push(() => {
+      divisions.map((division) => Object.assign(new Division(this), division));
+    });
   }
 
   public getSpeed() {
@@ -41,6 +49,10 @@ export default class DivisionTemplate extends JsonObject {
     this._divisions = this.divisions.filter((d) => {
       return d != division;
     });
+  }
+
+  public getDivisions(): Division[] {
+    return this._divisions;
   }
 
   public update() {
