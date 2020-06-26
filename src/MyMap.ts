@@ -6,10 +6,6 @@ import { Selectable } from "./Scenes/Selectable";
 import Division from "./Division";
 import Arrow from "./Arrow";
 import ArrowProgress from "./ArrowProgress";
-<<<<<<< HEAD
-=======
-import Savedata from "Savedata";
->>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
 import MainScene from "./Scenes/MainScene";
 
 export default class MyMap extends PIXI.Sprite {

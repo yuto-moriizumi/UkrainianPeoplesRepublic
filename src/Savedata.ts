@@ -15,10 +15,7 @@ export default class Savedata implements Jsonable {
   private _events: Array<Event> = new Array<Event>();
   private _combats: Array<Combat> = new Array<Combat>();
   public __onProvinceLoaded: Array<any> = new Array<any>();
-<<<<<<< HEAD
   public __isProvinceLoaded: boolean = false;
-=======
->>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
 
   private set countries(countries: object) {
     for (const id in countries) {

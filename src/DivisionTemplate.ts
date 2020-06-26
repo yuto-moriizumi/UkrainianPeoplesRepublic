@@ -13,11 +13,7 @@ export default class DivisionTemplate implements Jsonable {
   private organization: number = 100;
   private attack: number = 20;
   private speed: number = 10;
-<<<<<<< HEAD
   private _divisions: Array<DivisionInfo> = [];
-=======
-  private _divisions: Array<Division> = [];
->>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
 
   constructor(owner: Country) {
     this.__owner = owner;
@@ -45,21 +41,12 @@ export default class DivisionTemplate implements Jsonable {
     return this.organization;
   }
 
-<<<<<<< HEAD
   public addDivision(division: DivisionInfo) {
     this._divisions.push(division);
   }
 
   public removeDivision(division: DivisionInfo) {
     this._divisions = this.divisions.filter((d) => {
-=======
-  public addDivision(division: Division) {
-    this._divisions.push(division);
-  }
-
-  public removeDivision(division: Division) {
-    this._divisions = this._divisions.filter((d) => {
->>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
       return d != division;
     });
   }
@@ -72,7 +59,6 @@ export default class DivisionTemplate implements Jsonable {
     this._divisions.forEach((division) => division.update());
   }
 
-<<<<<<< HEAD
   public createDivisionsSprites() {
     //このテンプレートに所属する全ての師団に対し描画用オブジェクトを生成させる
     this._divisions.forEach((division) => {
@@ -85,9 +71,5 @@ export default class DivisionTemplate implements Jsonable {
     this._divisions = divisions.map((division) =>
       Object.assign(new DivisionInfo(this), division)
     );
-=======
-  toJSON() {
-    return JsonConverter.toJSON(this);
->>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
   }
 }
