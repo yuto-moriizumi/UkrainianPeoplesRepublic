@@ -11,7 +11,7 @@ import Resource from "../Resources";
 import HorizontalBox from "./HorizontalBox";
 import SpriteButton from "./SpriteButton";
 import DivisionTemplate from "../DivisionTemplate";
-import DivisionSprite from "../Division";
+import DivisionSprite from "../DivisionSprite";
 import SelectScene from "../Scenes/SelectScene";
 
 export default class DebugSidebar extends Sidebar {

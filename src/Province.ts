@@ -5,14 +5,14 @@ import MainScene from "./Scenes/MainScene";
 import MyMap from "./MyMap";
 import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
-import Division from "Division";
+import DivisionInfo from "DivisionInfo";
 
 export default class Province implements Jsonable {
   private __id: string;
   private _owner: Country;
   private x: number = 0;
   private y: number = 0;
-  private __divisions: Array<Division> = new Array<Division>();
+  private __divisions: Array<DivisionInfo> = new Array<DivisionInfo>();
 
   constructor(id: string) {
     if (id.substr(0, 1) != "#") this.__id = "#" + id;
@@ -59,11 +59,11 @@ export default class Province implements Jsonable {
     return new PIXI.Point(this.x, this.y);
   }
 
-  public addDivision(division: Division) {
+  public addDivision(division: DivisionInfo) {
     this.__divisions.push(division);
   }
 
-  public removeDivision(division: Division) {
+  public removeDivision(division: DivisionInfo) {
     this.__divisions = this.__divisions.filter((division2) => {
       return division != division2;
     });

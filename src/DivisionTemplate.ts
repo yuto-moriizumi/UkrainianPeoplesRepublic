@@ -5,10 +5,11 @@ import JsonObject from "./JsonObject";
 import Province from "./Province";
 import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
-import Division from "./Division";
+import Division from "./DivisionSprite";
 import MainScene from "./Scenes/MainScene";
+import DivisionInfo from "./DivisionInfo";
 
-export default class DivisionTemplate implements Jsonable {
+export default class DivisionTemplate {
   private __owner: Country;
   private organization: number = 100;
   private attack: number = 20;
@@ -21,12 +22,6 @@ export default class DivisionTemplate implements Jsonable {
 
   public get owner(): Country {
     return this.__owner;
-  }
-
-  set divisions(divisions: Array<any>) {
-    MainScene.resouceLoadCallbacks.push(() => {
-      divisions.map((division) => Object.assign(new Division(this), division));
-    });
   }
 
   public getSpeed() {
@@ -51,7 +46,7 @@ export default class DivisionTemplate implements Jsonable {
     });
   }
 
-  public getDivisions(): Division[] {
+  public getDivisions(): DivisionInfo[] {
     return this._divisions;
   }
 

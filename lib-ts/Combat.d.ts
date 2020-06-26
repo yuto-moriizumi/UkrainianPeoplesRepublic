@@ -1,12 +1,12 @@
 import JsonObject from "./JsonObject";
-import Division from "Division";
+import DivisionInfo from "DivisionInfo";
 export default class Combat extends JsonObject {
     private attacker;
     private defender;
-    static create(root: Division, target: Division): Combat;
+    static create(root: DivisionInfo, target: DivisionInfo): Combat;
     combat(): void;
     private endCombat;
-    getRoot(): Division;
-    getTarget(): Division;
-    getOpponent(division: Division): Division;
+    getRoot(): DivisionInfo;
+    getTarget(): DivisionInfo;
+    getOpponent(division: DivisionInfo): DivisionInfo;
 }

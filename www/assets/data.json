@@ -8,18 +8,8 @@
           "attack": 20,
           "speed": 10,
           "divisions": [
-<<<<<<< HEAD
             { "organization": 100, "position": "#e001e0" },
             { "organization": 100, "position": "#71e0a0" }
-=======
-            {
-              "organization": 100,
-              "province": "#e001e0",
-              "movingProgress": 0,
-              "destination": null
-            },
-            { "organization": 100, "province": "#71e0a0" }
->>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
           ]
         }
       ],
@@ -188,24 +178,8 @@
           "attack": 20,
           "speed": 10,
           "divisions": [
-<<<<<<< HEAD
             { "organization": 100, "position": "#bc0441" },
             { "organization": 100, "position": "#726291" }
-=======
-            { "organization": 100, "province": "#71e061" },
-            {
-              "organization": 100,
-              "province": "#c0e0e0",
-              "movingProgress": 0,
-              "destination": null
-            },
-            {
-              "organization": 100,
-              "province": "#f061a0",
-              "movingProgress": 0,
-              "destination": null
-            }
->>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
           ]
         }
       ],
