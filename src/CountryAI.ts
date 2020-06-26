@@ -18,13 +18,14 @@ export default class CountryAI {
       })[0]
       .getOpponent(this.country);
 
-    const targetProvince = targetCountry.getRandomOwnProvince();
-    const targetCoord = targetProvince.getCoord();
-
     this.country.getDivisionTemplates().forEach((template) => {
       template.getDivisions().forEach((division) => {
         if (division.isMoving() || division.isFighting()) return;
         //移動も戦闘もしていないならば、師団を動かす
+
+        const targetProvince = targetCountry.getRandomOwnProvince();
+        const targetCoord = targetProvince.getCoord();
+
         const position = division.getPosition();
         //一番近いプロヴィンスに突撃
         let minDistance = 10 ** 8;
