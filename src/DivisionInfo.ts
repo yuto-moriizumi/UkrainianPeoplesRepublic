@@ -166,6 +166,14 @@ export default class DivisionInfo {
     this._destination = null;
   }
 
+  public isMoving(): boolean {
+    return !(this._destination == null || this._destination == undefined);
+  }
+
+  public isFighting(): boolean {
+    return this.__combats.length > 0;
+  }
+
   public update() {
     if (this._destination) {
       this.movingProgress = Math.min(

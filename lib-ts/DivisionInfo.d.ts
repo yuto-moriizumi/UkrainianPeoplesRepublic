@@ -31,6 +31,8 @@ export default class DivisionInfo {
     removeCombat(combat: Combat): void;
     destroy(): void;
     stopMove(): void;
+    isMoving(): boolean;
+    isFighting(): boolean;
     update(): void;
     private toJSON;
 }

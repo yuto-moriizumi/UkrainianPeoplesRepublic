@@ -32,5 +32,6 @@ export default class MyMap extends PIXI.Sprite {
     private getProvince;
     update(): void;
     private moveDivisionsTo;
+    getNeighborProvinces(province: Province): Set<Province>;
     isNextTo(province1: Province, province2: Province): boolean;
 }

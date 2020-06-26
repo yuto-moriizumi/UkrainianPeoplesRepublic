@@ -32,7 +32,8 @@ export default class Timer extends PIXI.Container {
 
     //======開始年月日========
     //1918, 0, 23
-    this.date = new Date(1918, 9, 23);
+    //1918, 9, 23
+    this.date = new Date(1918, 0, 23);
     this.text = new PIXI.Text(
       this.date.toLocaleDateString(),
       new PIXI.TextStyle({ fill: 0xffffff })

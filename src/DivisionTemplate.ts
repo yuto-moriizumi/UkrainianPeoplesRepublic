@@ -38,9 +38,13 @@ export default class DivisionTemplate extends JsonObject {
   }
 
   public removeDivision(division: DivisionInfo) {
-    this._divisions = this.divisions.filter((d) => {
+    this._divisions = this._divisions.filter((d) => {
       return d != division;
     });
+  }
+
+  public getDivisions() {
+    return this._divisions;
   }
 
   public update() {

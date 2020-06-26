@@ -4,7 +4,6 @@ import GameManager from "./GameManager";
 import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
 import DivisionSprite from "./DivisionSprite";
-import DivisionInfo from "./DivisionInfo";
 import Arrow from "./Arrow";
 import ArrowProgress from "./ArrowProgress";
 import MainScene from "./Scenes/MainScene";
@@ -120,6 +119,13 @@ export default class MyMap extends PIXI.Sprite {
     const position = e.data.getLocalPosition(this);
     const province = this.getProvince(position);
     if (!province) return null; //プロヴィンスが存在しなければ何もしない
+    console.log(
+      "selected province id",
+      province.getId(),
+      "neighbours",
+      this.getNeighborProvinces(province)
+    );
+
     return province;
   }
 
@@ -281,6 +287,72 @@ export default class MyMap extends PIXI.Sprite {
 
   private moveDivisionsTo(province: Province) {
     DivisionSprite.moveSelectingDivisionsTo(province);
+  }
+
+  public getNeighborProvinces(province: Province) {
+    const provincePoint = province.getCoord();
+
+    //BFSで探索
+    const candidates = new Array<object>();
+    const answer = new Set<Province>();
+    //{x:number,y:number,over:number(黒線を超えた回数)}
+    const already = new Set<number>();
+    candidates.push({ x: provincePoint.x, y: provincePoint.y, over: 0 });
+    while (candidates.length > 0) {
+      const searchPoint = candidates.shift();
+      const idx =
+        (Math.floor(searchPoint["y"]) * this.defaultWidth +
+          Math.floor(searchPoint["x"])) *
+        4;
+      if (already.has(idx)) {
+        //すでに探索済みだったら何もしない
+        continue;
+      }
+      already.add(idx);
+      const provinceId2 = this.getProvinceIdFromPoint(
+        new PIXI.Point(searchPoint["x"], searchPoint["y"])
+      );
+      let over = searchPoint["over"];
+
+      if (
+        provinceId2 !== province.getId() &&
+        provinceId2 !== MyMap.BORDER_COLOR
+      )
+        //スタートのプロヴィンスでも境界線でもないなら
+        answer.add(GameManager.instance.data.getProvince(provinceId2));
+
+      if (provinceId2 == MyMap.BORDER_COLOR) {
+        //境界線であるならば
+        over++; //境界線であるのでoverをカウント
+      } else if (provinceId2 != province.getId()) continue; //探索開始プロヴィンスと異なり、境界線でないならば探索しない
+      if (over > MyMap.BORDER_WIDTH) continue; //3ピクセル以上超えていれば境界線を辿っていると判断してcontinue
+
+      if (0 < searchPoint["x"])
+        candidates.push({
+          x: searchPoint["x"] - 1,
+          y: searchPoint["y"],
+          over: over,
+        });
+      if (searchPoint["x"] < this.defaultWidth - 1)
+        candidates.push({
+          x: searchPoint["x"] + 1,
+          y: searchPoint["y"],
+          over: over,
+        });
+      if (0 < searchPoint["y"])
+        candidates.push({
+          x: searchPoint["x"],
+          y: searchPoint["y"] - 1,
+          over: over,
+        });
+      if (searchPoint["y"] < this.defaultHeight - 1)
+        candidates.push({
+          x: searchPoint["x"],
+          y: searchPoint["y"] + 1,
+          over: over,
+        });
+    }
+    return answer;
   }
 
   public isNextTo(province1: Province, province2: Province): boolean {

@@ -5,6 +5,8 @@ import DivisionTemplate from "./DivisionTemplate";
 import GameManager from "./GameManager";
 import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
+import CountryAI from "./CountryAI";
+import MainScene from "./Scenes/MainScene";
 
 export default class Country implements Jsonable {
   private __id: string;
@@ -13,9 +15,11 @@ export default class Country implements Jsonable {
   public flag: string;
   private diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _templates: Array<DivisionTemplate> = new Array<DivisionTemplate>();
+  private ai: CountryAI;
 
   constructor(id: string) {
     this.__id = id;
+    this.ai = new CountryAI(this);
   }
 
   public addDiplomaticRelation(tie: DiplomaticTie) {
@@ -89,8 +93,16 @@ export default class Country implements Jsonable {
     });
   }
 
+  public hasWar() {
+    return this.diplomaticTies.some((tie: DiplomaticTie) => {
+      if (tie instanceof War) return true;
+      return false;
+    });
+  }
+
   public update() {
     this._templates.forEach((division) => division.update());
+    if (MainScene.instance.getMyCountry() !== this) this.ai.update(); //自国以外ならAIを呼び出す
   }
 
   toJSON() {
