@@ -11,8 +11,8 @@ import Resource from "../Resources";
 import HorizontalBox from "./HorizontalBox";
 import SpriteButton from "./SpriteButton";
 import DivisionTemplate from "../DivisionTemplate";
-import DivisionSprite from "../Division";
-import Division from "../Division";
+import DivisionInfo from "../DivisionInfo";
+import DivisionSprite from "../DivisionSprite";
 
 export default class Conscription extends Sidebar {
   private scene: MainScene;
@@ -40,7 +40,8 @@ export default class Conscription extends Sidebar {
         resources[Resource.infantaly].texture
       );
       produceButton.on("click", () => {
-        const divisionInfo = new Division(template);
+        const divisionInfo = new DivisionInfo(template);
+        template.addDivision(divisionInfo);
         console.log("division add");
         divisionInfo.createSprite();
         divisionInfo.setPosition(myCountry.getRandomOwnProvince()); //ランダムなプロビヴィンスに出現させる
