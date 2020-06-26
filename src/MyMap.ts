@@ -3,10 +3,13 @@ import * as Filters from "pixi-filters";
 import GameManager from "./GameManager";
 import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
-import DivisionSprite from "./DivisionSprite";
-import DivisionInfo from "./DivisionInfo";
+import Division from "./Division";
 import Arrow from "./Arrow";
 import ArrowProgress from "./ArrowProgress";
+<<<<<<< HEAD
+=======
+import Savedata from "Savedata";
+>>>>>>> 6ff35435a4a1fe0bf5470358c2d91d797f9f8937
 import MainScene from "./Scenes/MainScene";
 
 export default class MyMap extends PIXI.Sprite {
@@ -63,6 +66,19 @@ export default class MyMap extends PIXI.Sprite {
     this.on("rightclick", (e: PIXI.interaction.InteractionEvent) => {
       this.moveDivisionsTo(this.getClickedProvince(e));
     });
+
+    //師団を表示する
+    if (this.scene instanceof MainScene) {
+      GameManager.instance.data.getCountries().forEach((country) => {
+        country.getDivisionTemplates().forEach((template) => {
+          console.log(template);
+
+          template.getDivisions().forEach((division) => {
+            this.setDivisonPosition(division);
+          });
+        });
+      });
+    }
   }
 
   public setReplacements(replacements: Array<any>) {
@@ -196,9 +212,9 @@ export default class MyMap extends PIXI.Sprite {
     return new PIXI.Point(Math.floor(x / count), Math.floor(y / count));
   }
 
-  public setDivisonPosition(sprite: DivisionSprite) {
+  public setDivisonPosition(sprite: Division) {
     if (!sprite.getOnMap()) this.addChild(sprite);
-    const point = sprite.getInfo().getPosition().getCoord();
+    const point = sprite.getPosition().getCoord();
     sprite.position.set(
       point.x - sprite.width / 2,
       point.y - sprite.height / 2
@@ -280,7 +296,7 @@ export default class MyMap extends PIXI.Sprite {
   }
 
   private moveDivisionsTo(province: Province) {
-    DivisionSprite.moveSelectingDivisionsTo(province);
+    Division.moveSelectingDivisionsTo(province);
   }
 
   public isNextTo(province1: Province, province2: Province): boolean {

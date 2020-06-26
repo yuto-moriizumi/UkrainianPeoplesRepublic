@@ -17,7 +17,7 @@ import Event from "../Events/Event";
 import Button from "../UI/Button";
 import Conscription from "../UI/Conscription";
 import SpriteButton from "../UI/SpriteButton";
-import DivisionSprite from "../DivisionSprite";
+import DivisionSprite from "../Division";
 import DebugSidebar from "../UI/DebugSidebar";
 
 export default class MainScene extends Scene implements Selectable {
@@ -28,6 +28,8 @@ export default class MainScene extends Scene implements Selectable {
   private sidebar: Sidebar;
   private eventDispatcher: EventDispatcher;
   public selectingDivison: DivisionSprite;
+  public moveCheat: boolean = false;
+  public static resouceLoadCallbacks: Array<any> = new Array<any>();
 
   constructor(playCountry: Country) {
     super();
@@ -87,6 +89,9 @@ export default class MainScene extends Scene implements Selectable {
 
     this.header = new Header(this.playCountry);
     this.addChild(this.header);
+
+    MainScene.resouceLoadCallbacks.forEach((callback) => callback());
+    MainScene.resouceLoadCallbacks = [];
   }
 
   public selectProvince(province: Province) {

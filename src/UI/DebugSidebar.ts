@@ -11,15 +11,20 @@ import Resource from "../Resources";
 import HorizontalBox from "./HorizontalBox";
 import SpriteButton from "./SpriteButton";
 import DivisionTemplate from "../DivisionTemplate";
-import DivisionInfo from "../DivisionInfo";
-import DivisionSprite from "../DivisionSprite";
+import DivisionSprite from "../Division";
 import SelectScene from "../Scenes/SelectScene";
 
 export default class DebugSidebar extends Sidebar {
   constructor(scene: MainScene) {
     super("デバッグ");
-    const button = new Button("NONE");
-    button.on("click", () => {});
+    const button = new Button("師団瞬間移動をON");
+    let buttonState = false;
+    button.on("click", () => {
+      if (buttonState) button.setText("師団瞬間移動をON");
+      button.setText("師団瞬間移動をOFF");
+      buttonState = !buttonState;
+      scene.moveCheat = buttonState;
+    });
     this.addPart(button);
   }
 }

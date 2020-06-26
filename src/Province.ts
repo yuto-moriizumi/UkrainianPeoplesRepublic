@@ -1,23 +1,23 @@
 import Country from "./Country";
 import GameManager from "./GameManager";
-import JsonObject from "./JsonObject";
 import * as PIXI from "pixi.js";
 import MainScene from "./Scenes/MainScene";
 import MyMap from "./MyMap";
-import DivisionInfo from "./DivisionInfo";
+import Jsonable from "./Jsonable";
+import JsonConverter from "./JsonConverter";
+import Division from "Division";
 
-export default class Province extends JsonObject {
-  private id: string;
+export default class Province implements Jsonable {
+  private __id: string;
   private _owner: Country;
   private x: number = 0;
   private y: number = 0;
-  private __divisions: Array<DivisionInfo> = new Array<DivisionInfo>();
+  private __divisions: Array<Division> = new Array<Division>();
 
   constructor(id: string) {
-    super();
-    if (id.substr(0, 1) != "#") this.id = "#" + id;
+    if (id.substr(0, 1) != "#") this.__id = "#" + id;
     //#ついてないやつにつける data.json更新後削除
-    else this.id = id;
+    else this.__id = id;
   }
 
   private set owner(countryId: string) {
@@ -25,7 +25,7 @@ export default class Province extends JsonObject {
   }
 
   public getId(): string {
-    return this.id;
+    return this.__id;
   }
 
   public getOwner() {
@@ -59,11 +59,11 @@ export default class Province extends JsonObject {
     return new PIXI.Point(this.x, this.y);
   }
 
-  public addDivision(division: DivisionInfo) {
+  public addDivision(division: Division) {
     this.__divisions.push(division);
   }
 
-  public removeDivision(division: DivisionInfo) {
+  public removeDivision(division: Division) {
     this.__divisions = this.__divisions.filter((division2) => {
       return division != division2;
     });
@@ -73,17 +73,16 @@ export default class Province extends JsonObject {
     return this.__divisions;
   }
 
-  public createEntries() {
-    return super.createEntries().map(([key, value]) => {
-      if (value instanceof Country) return [key, value.id];
-      if (key === "id") return [];
-      return [key, value];
-    });
-  }
-
   public isNextTo(province: Province): boolean {
     const ans = MainScene.instance.getMap().isNextTo(this, province);
     //console.log(this, province, ans);
     return ans;
+  }
+
+  toJSON() {
+    return JsonConverter.toJSON(this, (key, value) => {
+      if (value instanceof Country) return [key, value.id];
+      return [key, value];
+    });
   }
 }

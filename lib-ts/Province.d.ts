@@ -1,9 +1,9 @@
 import Country from "./Country";
-import JsonObject from "./JsonObject";
 import * as PIXI from "pixi.js";
-import DivisionInfo from "./DivisionInfo";
-export default class Province extends JsonObject {
-    private id;
+import Jsonable from "./Jsonable";
+import Division from "Division";
+export default class Province implements Jsonable {
+    private __id;
     private _owner;
     private x;
     private y;
@@ -15,9 +15,9 @@ export default class Province extends JsonObject {
     setOwner(owner: Country): void;
     setCoord(point: PIXI.Point): void;
     getCoord(): PIXI.Point;
-    addDivision(division: DivisionInfo): void;
-    removeDivision(division: DivisionInfo): void;
-    getDivisons(): DivisionInfo[];
-    createEntries(): any[][];
+    addDivision(division: Division): void;
+    removeDivision(division: Division): void;
+    getDivisons(): Division[];
     isNextTo(province: Province): boolean;
+    toJSON(): any;
 }

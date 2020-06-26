@@ -4,7 +4,7 @@ import LoaderAddParam from "../LoaderAddParam";
 import MyMap from "../MyMap";
 import { Selectable } from "./Selectable";
 import Province from "../Province";
-import DivisionSprite from "../DivisionSprite";
+import DivisionSprite from "../Division";
 export default class MainScene extends Scene implements Selectable {
     static instance: MainScene;
     private playCountry;
@@ -13,6 +13,8 @@ export default class MainScene extends Scene implements Selectable {
     private sidebar;
     private eventDispatcher;
     selectingDivison: DivisionSprite;
+    moveCheat: boolean;
+    static resouceLoadCallbacks: Array<any>;
     constructor(playCountry: Country);
     protected createInitialResourceList(): (LoaderAddParam | string)[];
     protected onResourceLoaded(): void;

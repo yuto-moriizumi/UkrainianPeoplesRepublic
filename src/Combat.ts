@@ -1,12 +1,12 @@
 import JsonObject from "./JsonObject";
-import DivisionInfo from "./DivisionInfo";
 import GameManager from "./GameManager";
+import Division from "Division";
 
 export default class Combat extends JsonObject {
-  private attacker: DivisionInfo;
-  private defender: DivisionInfo;
+  private attacker: Division;
+  private defender: Division;
 
-  public static create(root: DivisionInfo, target: DivisionInfo) {
+  public static create(root: Division, target: Division) {
     const combat = new Combat();
     combat.attacker = root;
     combat.defender = target;
@@ -55,15 +55,15 @@ export default class Combat extends JsonObject {
     this.defender.removeCombat(this);
   }
 
-  public getRoot(): DivisionInfo {
+  public getRoot(): Division {
     return this.attacker;
   }
 
-  public getTarget(): DivisionInfo {
+  public getTarget(): Division {
     return this.defender;
   }
 
-  public getOpponent(division: DivisionInfo) {
+  public getOpponent(division: Division) {
     return this.getRoot() === division ? this.getTarget() : this.getRoot();
   }
 }
