@@ -14,6 +14,7 @@ export default class DivisionTemplate extends JsonObject {
     getOrganization(): number;
     addDivision(division: DivisionInfo): void;
     removeDivision(division: DivisionInfo): void;
+    getDivisions(): DivisionInfo[];
     update(): void;
     createDivisionsSprites(): void;
     private set divisions(value);

@@ -62,7 +62,6 @@ export default class DivisionInfo {
 
     //占領処理
     const owner = province.getOwner();
-    console.log(owner, this.__template.owner);
 
     if (owner == this.__template.owner) return;
     if (owner.getWarInfoWith(this.__template.owner))
@@ -166,6 +165,14 @@ export default class DivisionInfo {
     this._destination = null;
   }
 
+  public isMoving(): boolean {
+    return !(this._destination == null || this._destination == undefined);
+  }
+
+  public isFighting(): boolean {
+    return this.__combats.length > 0;
+  }
+
   public update() {
     if (this._destination) {
       this.movingProgress = Math.min(
@@ -175,19 +182,16 @@ export default class DivisionInfo {
       this.__progressBar.setProgress(this.movingProgress);
 
       //戦闘判定
-      console.log("division is destination", this._destination.getDivisons());
 
       this._destination.getDivisons().forEach((division) => {
         if (!division.owner.getWarInfoWith(this.owner)) return; //戦争していないなら関係ない
         if (this.hasCombatWith(division)) return; //すでに戦闘が発生しているならreturn
-        console.log("combat create", this, division);
 
         Combat.create(this, division);
       });
 
       if (this.movingProgress >= 100 && this.__combats.length == 0) {
         //移動終了判定
-        console.log("move completed");
 
         this.setPosition(this._destination);
         this.stopMove();
