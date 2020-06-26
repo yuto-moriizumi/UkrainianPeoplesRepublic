@@ -59,15 +59,15 @@ export default class Division extends VerticalBox implements Jsonable {
   }
 
   public setOnMap(flag: boolean) {
-    this.onMap = flag;
+    this.__onMap = flag;
   }
 
   public getOnMap() {
-    return this.onMap;
+    return this.__onMap;
   }
 
   public select() {
-    this.selected = true;
+    this.__selected = true;
     this.filters = [
       new Filters.GlowFilter({
         outerStrength: 8,
@@ -77,22 +77,22 @@ export default class Division extends VerticalBox implements Jsonable {
     ];
 
     //他の師団の選択を解除
-    Division.selects.forEach((division) => {
+    Division.__selects.forEach((division) => {
       division.deselect();
     });
-    Division.selects.add(this);
+    Division.__selects.add(this);
   }
 
   public deselect() {
-    this.selected = false;
+    this.__selected = false;
     this.filters = [];
-    Division.selects.delete(this);
+    Division.__selects.delete(this);
   }
 
   private onClick(e: PIXI.interaction.InteractionEvent) {
     e.stopPropagation();
-    this.selected = !this.selected;
-    if (this.selected) {
+    this.__selected = !this.__selected;
+    if (this.__selected) {
       //選択されていないならば選択
       this.select();
     } else {
@@ -101,7 +101,7 @@ export default class Division extends VerticalBox implements Jsonable {
   }
 
   public static moveSelectingDivisionsTo(province: Province) {
-    Division.selects.forEach((division) => {
+    Division.__selects.forEach((division) => {
       division.move(province);
     });
   }

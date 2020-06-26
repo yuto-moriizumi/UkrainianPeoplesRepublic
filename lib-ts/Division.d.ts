@@ -20,7 +20,7 @@ export default class Division extends VerticalBox implements Jsonable {
     private set organization(value);
     private set movingProgress(value);
     setOnMap(flag: boolean): void;
-    getOnMap(): boolean;
+    getOnMap(): any;
     select(): void;
     deselect(): void;
     private onClick;
