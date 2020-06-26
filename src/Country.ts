@@ -77,9 +77,7 @@ export default class Country implements Jsonable {
     GameManager.instance.data.getProvinces().forEach((province) => {
       if (province.getOwner() == this) provinces.push(province);
     });
-    console.log("own:", provinces.length);
     const province = provinces[Math.floor(Math.random() * provinces.length)];
-    console.log("elect", province);
 
     return province;
   }
