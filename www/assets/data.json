@@ -2,7 +2,17 @@
   "countries": {
     "UPR": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "position": "#e001e0" },
+            { "organization": 100, "position": "#71e0a0" }
+          ]
+        }
+      ],
       "color": "5bbb",
       "name": "ウクライナ人民共和国",
       "flag": "Ukraine.png"
@@ -51,7 +61,17 @@
     },
     "UPRS": {
       "diplomaticTies": [],
-      "divisions": [],
+      "divisions": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "divisions": [
+            { "organization": 100, "position": "#bc0441" },
+            { "organization": 100, "position": "#726291" }
+          ]
+        }
+      ],
       "color": "ad328f",
       "name": "ウクライナ人民共和国（ソビエト派）",
       "flag": "UPRS.png"
@@ -290,7 +310,7 @@
     "LAT": {
       "diplomaticTies": [],
       "divisions": [],
-      "color": "8D131E",
+      "color": "8d131e",
       "name": "ラトビア共和国",
       "flag": "LAT.png"
     }

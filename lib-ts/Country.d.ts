@@ -8,7 +8,7 @@ export default class Country implements Jsonable {
     name: string;
     flag: string;
     private diplomaticTies;
-    private divisions;
+    private _divisions;
     constructor(id: string);
     addDiplomaticRelation(tie: DiplomaticTie): void;
     removeDiplomaticRelation(tie: DiplomaticTie): void;
@@ -19,6 +19,7 @@ export default class Country implements Jsonable {
     getDivisionTemplates(): DivisionTemplate[];
     hasAnyDivisionTemplate(): boolean;
     get id(): string;
+    private set divisions(value);
     /**
      * 所有しているプロヴィンスのうち、ランダムに1つを選ぶ
      *

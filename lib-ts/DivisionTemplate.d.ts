@@ -6,7 +6,7 @@ export default class DivisionTemplate extends JsonObject {
     private organization;
     private attack;
     private speed;
-    private divisions;
+    private _divisions;
     constructor(owner: Country);
     get owner(): Country;
     getSpeed(): number;
@@ -15,4 +15,5 @@ export default class DivisionTemplate extends JsonObject {
     addDivision(division: DivisionInfo): void;
     removeDivision(division: DivisionInfo): void;
     update(): void;
+    private set divisions(value);
 }

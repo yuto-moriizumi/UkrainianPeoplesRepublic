@@ -1,10 +1,9 @@
 import Country from "./Country";
-import JsonObject from "./JsonObject";
 import Province from "./Province";
 import DivisionTemplate from "./DivisionTemplate";
 import DivisionSprite from "./DivisionSprite";
 import Combat from "./Combat";
-export default class DivisionInfo extends JsonObject {
+export default class DivisionInfo {
     private __template;
     private _position;
     private _organization;
@@ -15,6 +14,7 @@ export default class DivisionInfo extends JsonObject {
     private __combats;
     private __dead;
     constructor(template: DivisionTemplate);
+    createSprite(): void;
     set position(provinceId: string);
     set destination(provinceId: string);
     setPosition(province: Province): void;
@@ -32,4 +32,5 @@ export default class DivisionInfo extends JsonObject {
     destroy(): void;
     stopMove(): void;
     update(): void;
+    private toJSON;
 }

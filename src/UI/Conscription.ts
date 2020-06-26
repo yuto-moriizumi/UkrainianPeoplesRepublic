@@ -43,6 +43,7 @@ export default class Conscription extends Sidebar {
         const divisionInfo = new DivisionInfo(template);
         template.addDivision(divisionInfo);
         console.log("division add");
+        divisionInfo.createSprite();
         divisionInfo.setPosition(myCountry.getRandomOwnProvince()); //ランダムなプロビヴィンスに出現させる
       });
       products.addPart(produceButton);

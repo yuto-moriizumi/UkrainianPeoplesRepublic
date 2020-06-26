@@ -8,8 +8,9 @@ import DivisionSprite from "./DivisionSprite";
 import MainScene from "./Scenes/MainScene";
 import ArrowProgress from "./ArrowProgress";
 import Combat from "./Combat";
+import JsonConverter from "./JsonConverter";
 
-export default class DivisionInfo extends JsonObject {
+export default class DivisionInfo {
   private __template: DivisionTemplate;
   private _position: Province;
   private _organization: number;
@@ -21,10 +22,14 @@ export default class DivisionInfo extends JsonObject {
   private __dead: boolean = false;
 
   constructor(template: DivisionTemplate) {
-    super();
     this.__template = template;
     this.setOrganization(template.getOrganization());
+  }
+
+  public createSprite() {
+    //描画用オブジェクトを生成し、位置を再設定する
     this.__sprite = new DivisionSprite(this);
+    this.setPosition(this._position);
   }
 
   public set position(provinceId: string) {
@@ -36,10 +41,12 @@ export default class DivisionInfo extends JsonObject {
   }
 
   public setPosition(province: Province) {
+    if (province == null) return;
     if (this._position) this._position.removeDivision(this);
     this._position = province;
     province.addDivision(this);
-    MainScene.instance.getMap().setDivisonPosition(this.__sprite);
+    if (this.__sprite)
+      MainScene.instance.getMap().setDivisonPosition(this.__sprite);
 
     //占領処理
     const owner = province.getOwner();
@@ -175,5 +182,12 @@ export default class DivisionInfo extends JsonObject {
       } else {
       }
     }
+  }
+
+  private toJSON() {
+    return JsonConverter.toJSON(this, (key, value) => {
+      if (value instanceof Province) return [key, value.getId()]; //プロヴィンスはIDにしておく
+      return [key, value];
+    });
   }
 }

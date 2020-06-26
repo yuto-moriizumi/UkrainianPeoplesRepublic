@@ -40,6 +40,8 @@ export default class MyMap extends PIXI.Sprite {
       renderer.height / 2 - this.height / 2
     );
 
+    //師団を表示する
+
     document.body.addEventListener("wheel", (e: WheelEvent) => {
       //拡大縮小
       e.preventDefault();
