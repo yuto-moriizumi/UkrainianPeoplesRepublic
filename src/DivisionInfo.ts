@@ -29,15 +29,22 @@ export default class DivisionInfo {
   public createSprite() {
     //描画用オブジェクトを生成し、位置を再設定する
     this.__sprite = new DivisionSprite(this);
-    console.log("division set position", this.owner, this._position);
-
     this.setPosition(this._position);
+    console.log("division set position", this.owner, this._position);
   }
 
   public set position(provinceId: string) {
     new Promise((resolve) => {
       //プロヴィンスオブジェクトが必要なので、ロード後に代入する
-      if (GameManager.instance.data.__isProvinceLoaded) resolve(); //既にロード済みなら直ちに代入する
+      console.log(
+        "is load ende?",
+        GameManager.instance.data.__isProvinceLoaded
+      );
+
+      if (GameManager.instance.data.__isProvinceLoaded) {
+        resolve();
+        console.log("division created and set position");
+      } //既にロード済みなら直ちに代入する
       GameManager.instance.data.__onProvinceLoaded.push(() => {
         resolve();
       });
