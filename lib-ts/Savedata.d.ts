@@ -10,6 +10,8 @@ export default class Savedata implements Jsonable {
     private _diplomacy;
     private _events;
     private _combats;
+    __onProvinceLoaded: Array<any>;
+    __isProvinceLoaded: boolean;
     private set countries(value);
     getCountries(): Map<string, Country>;
     getCountry(id: string): Country;

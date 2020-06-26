@@ -77,6 +77,14 @@ export default class MainScene extends Scene implements Selectable {
     this.map.update();
     this.addChild(this.map);
 
+    //師団を表示する
+    GameManager.instance.data.getCountries().forEach((country) => {
+      country.getDivisionTemplates().forEach((template) => {
+        console.log("hi");
+        template.createDivisionsSprites();
+      });
+    });
+
     this.header = new Header(this.playCountry);
     this.addChild(this.header);
   }

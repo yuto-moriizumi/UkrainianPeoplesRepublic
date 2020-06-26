@@ -14,6 +14,8 @@ export default class Savedata implements Jsonable {
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _events: Array<Event> = new Array<Event>();
   private _combats: Array<Combat> = new Array<Combat>();
+  public __onProvinceLoaded: Array<any> = new Array<any>();
+  public __isProvinceLoaded: boolean = false;
 
   private set countries(countries: object) {
     for (const id in countries) {
@@ -39,6 +41,11 @@ export default class Savedata implements Jsonable {
       this._provinces.set(newId, province);
     }
     console.log("provinces loaded:", this._provinces);
+    this.__isProvinceLoaded = true;
+    while (this.__onProvinceLoaded.length > 0) {
+      const func = this.__onProvinceLoaded.shift();
+      func();
+    }
   }
 
   public setProvince(id: string, province: Province) {

@@ -12,7 +12,7 @@ export default class Country implements Jsonable {
   public name: string;
   public flag: string;
   private diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
-  private _divisions: Array<DivisionTemplate> = new Array<DivisionTemplate>();
+  private _templates: Array<DivisionTemplate> = new Array<DivisionTemplate>();
 
   constructor(id: string) {
     this.__id = id;
@@ -41,15 +41,15 @@ export default class Country implements Jsonable {
   }
 
   public addDivisionTemplate(template: DivisionTemplate) {
-    this._divisions.push(template);
+    this._templates.push(template);
   }
 
   public getDivisionTemplates() {
-    return this._divisions;
+    return this._templates;
   }
 
   public hasAnyDivisionTemplate() {
-    return this._divisions.length > 0;
+    return this._templates.length > 0;
   }
 
   public get id() {
@@ -57,7 +57,7 @@ export default class Country implements Jsonable {
   }
 
   private set divisions(divisions) {
-    this._divisions = divisions.map((division) =>
+    this._templates = divisions.map((division) =>
       Object.assign(new DivisionTemplate(this), division)
     );
   }
@@ -90,7 +90,7 @@ export default class Country implements Jsonable {
   }
 
   public update() {
-    this.divisions.forEach((division) => division.update());
+    this._templates.forEach((division) => division.update());
   }
 
   toJSON() {

@@ -4,11 +4,11 @@ import GameManager from "./GameManager";
 import JsonObject from "./JsonObject";
 import Province from "./Province";
 import DivisionTemplate from "./DivisionTemplate";
-import DivisionSprite from "./DivisionSprite";
 import MainScene from "./Scenes/MainScene";
 import ArrowProgress from "./ArrowProgress";
 import Combat from "./Combat";
 import JsonConverter from "./JsonConverter";
+import DivisionSprite from "./DivisionSprite";
 
 export default class DivisionInfo {
   private __template: DivisionTemplate;
@@ -29,11 +29,22 @@ export default class DivisionInfo {
   public createSprite() {
     //描画用オブジェクトを生成し、位置を再設定する
     this.__sprite = new DivisionSprite(this);
+    console.log("division set position", this.owner, this._position);
+
     this.setPosition(this._position);
   }
 
   public set position(provinceId: string) {
-    this.setPosition(GameManager.instance.data.getProvince(provinceId));
+    new Promise((resolve) => {
+      //プロヴィンスオブジェクトが必要なので、ロード後に代入する
+      if (GameManager.instance.data.__isProvinceLoaded) resolve(); //既にロード済みなら直ちに代入する
+      GameManager.instance.data.__onProvinceLoaded.push(() => {
+        resolve();
+      });
+    }).then(() => {
+      this.setPosition(GameManager.instance.data.getProvince(provinceId));
+      console.log("division position set", this._position);
+    });
   }
 
   public set destination(provinceId: string) {
@@ -46,6 +57,7 @@ export default class DivisionInfo {
     this._position = province;
     province.addDivision(this);
     if (this.__sprite)
+      //スプライト生成済みかつマップ表示ずみならば
       MainScene.instance.getMap().setDivisonPosition(this.__sprite);
 
     //占領処理

@@ -7,6 +7,7 @@ import DivisionSprite from "./DivisionSprite";
 import DivisionInfo from "./DivisionInfo";
 import Arrow from "./Arrow";
 import ArrowProgress from "./ArrowProgress";
+import MainScene from "./Scenes/MainScene";
 
 export default class MyMap extends PIXI.Sprite {
   public static instance: MyMap;
@@ -39,8 +40,6 @@ export default class MyMap extends PIXI.Sprite {
       renderer.width / 2 - this.width / 2,
       renderer.height / 2 - this.height / 2
     );
-
-    //師団を表示する
 
     document.body.addEventListener("wheel", (e: WheelEvent) => {
       //拡大縮小

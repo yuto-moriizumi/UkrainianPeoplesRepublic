@@ -47,6 +47,14 @@ export default class DivisionTemplate extends JsonObject {
     this._divisions.forEach((division) => division.update());
   }
 
+  public createDivisionsSprites() {
+    //このテンプレートに所属する全ての師団に対し描画用オブジェクトを生成させる
+    this._divisions.forEach((division) => {
+      console.log("hi2");
+      division.createSprite();
+    });
+  }
+
   private set divisions(divisions: Array<any>) {
     this._divisions = divisions.map((division) =>
       Object.assign(new DivisionInfo(this), division)

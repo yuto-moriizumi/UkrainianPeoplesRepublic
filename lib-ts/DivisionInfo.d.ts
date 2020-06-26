@@ -1,8 +1,8 @@
 import Country from "./Country";
 import Province from "./Province";
 import DivisionTemplate from "./DivisionTemplate";
-import DivisionSprite from "./DivisionSprite";
 import Combat from "./Combat";
+import DivisionSprite from "./DivisionSprite";
 export default class DivisionInfo {
     private __template;
     private _position;
