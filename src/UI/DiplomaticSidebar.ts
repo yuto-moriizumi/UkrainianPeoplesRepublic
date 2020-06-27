@@ -10,6 +10,7 @@ import GameManager from "../GameManager";
 import Resource from "../Resources";
 import HorizontalBox from "./HorizontalBox";
 import VerticalBox from "./VerticalBox";
+import Access from "../DiplomaticTies/Access";
 
 export default class DiplomaticSidebar extends Sidebar {
   private scene: MainScene;
@@ -98,5 +99,12 @@ export default class DiplomaticSidebar extends Sidebar {
       this.scene.setPlayCountry(target);
     });
     actionBox.addPart(select);
+
+    const accessButton = new Button("軍事通行権を要求");
+    accessButton.on("click", () => {
+      const access = new Access(this.scene.getMyCountry(), target);
+      access.activate();
+    });
+    actionBox.addPart(accessButton);
   }
 }
