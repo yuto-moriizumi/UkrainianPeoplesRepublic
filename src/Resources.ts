@@ -17,6 +17,7 @@ const Resource = Object.freeze({
   savedata: "data.json",
   conscription: "tank.jpg",
   infantaly: "infantary.png",
+  money: "mark_yen_okaikei.png",
   se: {
     news: "world_news.mp3",
     click_ok: "click_ok.mp3",

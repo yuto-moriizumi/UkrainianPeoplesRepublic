@@ -65,6 +65,7 @@ export default class MainScene extends Scene implements Selectable {
     assets.push(Resource.se.declare_war);
     assets.push(Resource.conscription);
     assets.push(Resource.infantaly);
+    assets.push(Resource.money);
     console.log(assets);
     return assets;
   }
@@ -131,6 +132,9 @@ export default class MainScene extends Scene implements Selectable {
     data.getCombats().forEach((combat) => {
       combat.combat();
     });
+
+    //ヘッダ更新
+    this.header.update();
 
     //イベント発火処理
     data.getEvents().forEach((event: Event) => {
