@@ -1,6 +1,7 @@
 import Country from "../Country";
 import Jsonable from "../Jsonable";
 import JsonConverter from "../JsonConverter";
+import GameManager from "../GameManager";
 
 export default abstract class DiplomaticTie implements Jsonable {
   private type = this.constructor.name;
@@ -31,6 +32,7 @@ export default abstract class DiplomaticTie implements Jsonable {
     this.active = true;
     this.root.addDiplomaticRelation(this);
     this.target.addDiplomaticRelation(this);
+    GameManager.instance.data.addDiplomacy(this);
   }
 
   public deactivate() {
@@ -38,12 +40,13 @@ export default abstract class DiplomaticTie implements Jsonable {
     this.active = false;
     this.root.removeDiplomaticRelation(this);
     this.target.removeDiplomaticRelation(this);
-    console.log(this.root);
+    GameManager.instance.data.removeDiplomacy(this);
   }
 
   public toJSON() {
     return JsonConverter.toJSON(this, (key, value) => {
       if (value instanceof Country) return [key, value.id];
+      if (key == "active") return [key, false];
       return [key, value];
     });
   }

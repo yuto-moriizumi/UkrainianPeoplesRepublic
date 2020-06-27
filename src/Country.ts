@@ -8,6 +8,7 @@ import JsonConverter from "./JsonConverter";
 import CountryAI from "./CountryAI";
 import MainScene from "./Scenes/MainScene";
 import Money from "./Money";
+import Access from "./DiplomaticTies/Access";
 
 export default class Country implements Jsonable {
   private __id: string;
@@ -15,7 +16,7 @@ export default class Country implements Jsonable {
   private _color: number;
   public name: string;
   public flag: string;
-  private diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
+  private __diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _templates: Array<DivisionTemplate> = new Array<DivisionTemplate>();
   private __ai: CountryAI;
   public __money: Money = new Money();
@@ -27,17 +28,17 @@ export default class Country implements Jsonable {
   }
 
   public addDiplomaticRelation(tie: DiplomaticTie) {
-    this.diplomaticTies.push(tie);
+    this.__diplomaticTies.push(tie);
   }
 
   public removeDiplomaticRelation(tie: DiplomaticTie) {
-    this.diplomaticTies = this.diplomaticTies.filter((tie2) => {
+    this.__diplomaticTies = this.__diplomaticTies.filter((tie2) => {
       return tie !== tie2;
     });
   }
 
   public getDiplomacy() {
-    return this.diplomaticTies;
+    return this.__diplomaticTies;
   }
 
   public set color(color: string) {
@@ -87,7 +88,7 @@ export default class Country implements Jsonable {
   }
 
   public getWarInfoWith(country: Country): War {
-    return this.diplomaticTies.find((tie: DiplomaticTie) => {
+    return this.__diplomaticTies.find((tie: DiplomaticTie) => {
       if (!(tie instanceof War)) return false;
       const opponent = tie.getOpponent(this);
       if (opponent === country) return true;
@@ -96,7 +97,7 @@ export default class Country implements Jsonable {
   }
 
   public hasWar() {
-    return this.diplomaticTies.some((tie: DiplomaticTie) => {
+    return this.__diplomaticTies.some((tie: DiplomaticTie) => {
       if (tie instanceof War) return true;
       return false;
     });
@@ -137,14 +138,27 @@ export default class Country implements Jsonable {
    * @memberof Country
    */
   public destroy() {
-    this.diplomaticTies.forEach((diplomacy) => {
+    this.__diplomaticTies.forEach((diplomacy) => {
       //全ての外交関係を削除
       diplomacy.deactivate();
     });
     this._templates.forEach((template) => template.deleteChildren()); //全ての師団を削除
   }
 
-  toJSON() {
+  /**
+   * この国が指定の国に対して軍事通行権を有しているか
+   * @param {Country} country
+   * @memberof Country
+   */
+  public hasAccessTo(country: Country) {
+    return this.__diplomaticTies.some((d) => {
+      return (
+        d instanceof Access && d.getRoot() == this && d.getTarget() == country
+      );
+    });
+  }
+
+  public toJSON() {
     return JsonConverter.toJSON(this, (key, value) => {
       if (key === "color") return [key, value.toString(16)];
       return [key, value];

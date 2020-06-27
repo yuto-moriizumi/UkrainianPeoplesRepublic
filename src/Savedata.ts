@@ -7,6 +7,7 @@ import JsonObject from "./JsonObject";
 import Combat from "./Combat";
 import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
+import Access from "./DiplomaticTies/Access";
 
 export default class Savedata implements Jsonable {
   private _countries: Map<string, Country> = new Map<string, Country>();
@@ -64,10 +65,19 @@ export default class Savedata implements Jsonable {
     this._diplomacy = diplomacy.map((tie) => {
       switch (tie["type"]) {
         case "war":
-          return new War(
+          const war = new War(
             this._countries.get(tie["root"]),
             this._countries.get(tie["target"])
           );
+          war.activate();
+          return war;
+        case "access":
+          const access = new Access(
+            this._countries.get(tie["root"]),
+            this._countries.get(tie["target"])
+          );
+          access.activate();
+          return access;
         default:
           new Error("diplomacy load error:" + tie["type"]);
           return null;
@@ -78,6 +88,10 @@ export default class Savedata implements Jsonable {
 
   public addDiplomacy(diplomacy: DiplomaticTie) {
     this._diplomacy.push(diplomacy);
+  }
+
+  public removeDiplomacy(diplomacy: DiplomaticTie) {
+    this._diplomacy = this._diplomacy.filter((d) => d != diplomacy);
   }
 
   private set events(events: Array<object>) {
@@ -116,7 +130,7 @@ export default class Savedata implements Jsonable {
     Object.assign(this, json);
   }
 
-  toJSON() {
+  public toJSON() {
     return JsonConverter.toJSON(this);
   }
 

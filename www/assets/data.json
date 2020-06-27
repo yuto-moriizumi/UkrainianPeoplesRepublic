@@ -1,7 +1,6 @@
 {
   "countries": {
     "UPR": {
-      "diplomaticTies": [],
       "divisions": [
         {
           "organization": 100,
@@ -18,49 +17,42 @@
       "flag": "Ukraine.png"
     },
     "Rebels": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ffffff",
       "name": "Rebels(System)",
       "flag": "Rebels.png"
     },
     "CPR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ffbf",
       "name": "クリミア人民共和国",
       "flag": "CPR.png"
     },
     "RPG": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ac77c5",
       "name": "ロシア共和国",
       "flag": "RPG.png"
     },
     "USSR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ff0000",
       "name": "ロシア＝ソヴィエト連邦社会主義共和国",
       "flag": "USSR.png"
     },
     "AHE": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ff31be",
       "name": "オーストリア＝ハンガリー帝国",
       "flag": "AHE.png"
     },
     "MDR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ae7b00",
       "name": "モルダヴィア民主共和国",
       "flag": "MDR.png"
     },
     "UPRS": {
-      "diplomaticTies": [],
       "divisions": [
         {
           "organization": 100,
@@ -77,242 +69,204 @@
       "flag": "UPRS.png"
     },
     "OSR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "563b18",
       "name": "オデッサ・ソビエト共和国",
       "flag": "Red.png"
     },
     "DKR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "a92b3a",
       "name": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国",
       "flag": "Red.png"
     },
     "KPR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "961e62",
       "name": "クバーニ人民共和国",
       "flag": "KPR.png"
     },
     "BPR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "6818",
       "name": "ベラルーシ人民共和国",
       "flag": "BPR.png"
     },
     "TUR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "80a100",
       "name": "オスマン帝国",
       "flag": "TUR.png"
     },
     "ROM": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "7c2900",
       "name": "ルーマニア王国",
       "flag": "ROM.png"
     },
     "GER": {
-      "diplomaticTies": [
-        { "type": "Access", "active": true, "root": "GER", "target": "POL" }
-      ],
       "divisions": [],
       "color": "a81500",
       "name": "ドイツ帝国",
       "flag": "GER.png"
     },
     "BUL": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "966e",
       "name": "大ブルガリア公国",
       "flag": "BUL.png"
     },
     "Sea": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ff",
       "name": "海",
       "flag": "Rebels.png"
     },
     "SER": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "86b4",
       "name": "セルビア王国",
       "flag": "SER.png"
     },
     "GRE": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "935f00",
       "name": "ギリシャ王国",
       "flag": "GRE.png"
     },
     "POL": {
-      "diplomaticTies": [
-        { "type": "Access", "active": true, "root": "GER", "target": "POL" }
-      ],
       "divisions": [],
       "color": "c55c6a",
       "name": "ポーランド摂政王国",
       "flag": "POL.png"
     },
     "GBR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "c9385d",
       "name": "イギリス帝国",
       "flag": "GBR.png"
     },
     "FRA": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "3971e4",
       "name": "フランス共和国",
       "flag": "FRA.png"
     },
     "LIT": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "dbdb77",
       "name": "リトアニア王国",
       "flag": "LIT.png"
     },
     "TCF": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "fbdb77",
       "name": "ザカフカース民主連邦共和国",
       "flag": "TCF.png"
     },
     "EST": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "3287af",
       "name": "エストニア共和国",
       "flag": "EST.png"
     },
     "DCS": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ffbfbf",
       "name": "クールラント・ゼムガレン公国",
       "flag": "DCS.png"
     },
     "UBD": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "bfff",
       "name": "バルト連合公国",
       "flag": "UBD.png"
     },
     "TSR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ff7f7f",
       "name": "タヴリダ・ソビエト社会主義共和国",
       "flag": "Red.png"
     },
     "KSR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "961e62",
       "name": "クバーニ・ソビエト共和国",
       "flag": "Red.png"
     },
     "DON": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "1f1fbf",
       "name": "ドン共和国",
       "flag": "DON.png"
     },
     "GEO": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ff3f1f",
       "name": "グルジア民主共和国",
       "flag": "GEO.png"
     },
     "AZR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ff7f1f",
       "name": "アゼルバイジャン民主共和国",
       "flag": "AZR.png"
     },
     "ARM": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ffff1f",
       "name": "アルメニア共和国",
       "flag": "ARM.png"
     },
     "MRC": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "1fff1f",
       "name": "北カフカース山岳共和国",
       "flag": "MRC.png"
     },
     "SCS": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "8b1765",
       "name": "スロベニア人・クロアチア人・セルビア人国",
       "flag": "SCS.png"
     },
     "CZE": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "d9b700",
       "name": "チェコスロバキア共和国",
       "flag": "CZE.png"
     },
     "WUPR": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "4172",
       "name": "西ウクライナ人民共和国",
       "flag": "WUPR.png"
     },
     "AUS": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "ff31be",
       "name": "ドイツ=オーストリア共和国",
       "flag": "AUS.png"
     },
     "HUN": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "527601",
       "name": "ハンガリー民主共和国",
       "flag": "HUN.png"
     },
     "ITA": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "80a303",
       "name": "イタリア王国",
       "flag": "ITA.png"
     },
     "SWE": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "2484f7",
       "name": "スウェーデン王国",
       "flag": "SWE.png"
     },
     "LAT": {
-      "diplomaticTies": [],
       "divisions": [],
       "color": "8d131e",
       "name": "ラトビア共和国",
@@ -776,7 +730,9 @@
     "#4b79ca": { "x": 114, "y": 465, "owner": "Rebels" },
     "#3161e0": { "x": 509, "y": 467, "owner": "Rebels" }
   },
-  "diplomacy": [],
+  "diplomacy": [
+    { "type": "access", "active": false, "root": "GER", "target": "POL" }
+  ],
   "events": [
     {
       "fired": false,

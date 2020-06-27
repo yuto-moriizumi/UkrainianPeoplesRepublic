@@ -84,4 +84,14 @@ export default class Province extends JsonObject {
     //console.log(this, province, ans);
     return ans;
   }
+
+  /**
+   * このプロヴィンスに対して指定の国が通行権を有しているか
+   * @param {Country} country
+   * @returns
+   * @memberof Province
+   */
+  public hasAccess(country: Country) {
+    return this._owner == country || country.hasAccessTo(this._owner);
+  }
 }

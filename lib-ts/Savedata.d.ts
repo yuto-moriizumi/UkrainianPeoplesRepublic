@@ -21,6 +21,7 @@ export default class Savedata implements Jsonable {
     getProvince(id: string): Province;
     private set diplomacy(value);
     addDiplomacy(diplomacy: DiplomaticTie): void;
+    removeDiplomacy(diplomacy: DiplomaticTie): void;
     private set events(value);
     getEvents(): Event[];
     private set combats(value);
