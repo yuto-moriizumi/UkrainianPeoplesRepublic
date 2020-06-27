@@ -4,8 +4,13 @@ import Dialog from "../UI/Dialog";
 import Sound from "../Sound";
 import GameManager from "../GameManager";
 import Resource from "../Resources";
+import Country from "../Country";
 
 export default class War extends DiplomaticTie {
+  constructor(root: Country, target: Country) {
+    super(root, target);
+  }
+
   public activate() {
     super.activate();
     MainScene.instance.addChild(
