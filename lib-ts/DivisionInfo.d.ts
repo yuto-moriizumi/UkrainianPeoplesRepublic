@@ -25,6 +25,7 @@ export default class DivisionInfo {
     attack(target: DivisionInfo): void;
     getOrganization(): number;
     setOrganization(organization: number): void;
+    movableTo(province: Province): true | import("./DiplomaticTies/War").default;
     getTemplate(): DivisionTemplate;
     moveTo(destination: Province): void;
     private hasCombatWith;

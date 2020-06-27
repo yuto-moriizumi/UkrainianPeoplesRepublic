@@ -20,4 +20,11 @@ export default class Province extends JsonObject {
     getDivisons(): DivisionInfo[];
     createEntries(): any[][];
     isNextTo(province: Province): boolean;
+    /**
+     * このプロヴィンスに対して指定の国が通行権を有しているか
+     * @param {Country} country
+     * @returns
+     * @memberof Province
+     */
+    hasAccess(country: Country): boolean;
 }

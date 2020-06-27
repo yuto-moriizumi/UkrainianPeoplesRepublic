@@ -9,7 +9,7 @@ export default class Country implements Jsonable {
     private _color;
     name: string;
     flag: string;
-    private diplomaticTies;
+    private __diplomaticTies;
     private _templates;
     private __ai;
     __money: Money;
@@ -42,5 +42,11 @@ export default class Country implements Jsonable {
      * @memberof Country
      */
     destroy(): void;
+    /**
+     * この国が指定の国に対して軍事通行権を有しているか
+     * @param {Country} country
+     * @memberof Country
+     */
+    hasAccessTo(country: Country): boolean;
     toJSON(): any;
 }

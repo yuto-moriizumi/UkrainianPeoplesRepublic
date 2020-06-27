@@ -106,6 +106,13 @@ export default class DivisionInfo {
     );
   }
 
+  public movableTo(province: Province) {
+    return (
+      province.hasAccess(this.owner) ||
+      province.getOwner().getWarInfoWith(this.owner)
+    );
+  }
+
   public getTemplate() {
     return this.__template;
   }
@@ -114,11 +121,7 @@ export default class DivisionInfo {
     //移動先が変更なければ何もしない
     if (this._destination == destination) return;
     //移動可能かチェック（隣接しているプロヴィンスのみ）
-    if (!this._position.isNextTo(destination)) return;
-    if (
-      destination.getOwner() != this.owner && //移動先の領有国が自国ではなく、
-      !destination.getOwner().getWarInfoWith(this.owner) //かつ戦争中でない場合
-    )
+    if (!this._position.isNextTo(destination) || !this.movableTo(destination))
       return;
 
     if (this.__progressBar) {

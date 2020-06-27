@@ -63,11 +63,7 @@ export default class CountryAI {
         //最も近いプロヴィンスを求める
         MyMap.instance.getNeighborProvinces(position).forEach((province) => {
           //進入可能か確認
-          if (
-            province.getOwner() != this.country && //移動先の領有国が自国ではなく、
-            !province.getOwner().getWarInfoWith(this.country) //かつ戦争中でない場合
-          )
-            return;
+          if (!province.hasAccess(this.country)) return;
 
           //距離の最小値で更新
           const provinceCoord = province.getCoord();

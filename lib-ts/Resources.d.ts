@@ -14,6 +14,8 @@ declare const Resource: Readonly<{
     conscription: string;
     infantaly: string;
     money: string;
+    access_root: string;
+    access_target: string;
     se: {
         news: string;
         click_ok: string;

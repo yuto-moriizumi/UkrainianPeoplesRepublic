@@ -10,6 +10,7 @@ import GameManager from "../GameManager";
 import Resource from "../Resources";
 import HorizontalBox from "./HorizontalBox";
 import VerticalBox from "./VerticalBox";
+import Access from "../DiplomaticTies/Access";
 
 export default class DiplomaticSidebar extends Sidebar {
   private scene: MainScene;
@@ -49,22 +50,26 @@ export default class DiplomaticSidebar extends Sidebar {
     alignBox.addPart(relationsBox);
 
     //外交関係を表示
-    for (const tie of target.getDiplomacy()) {
-      if (tie instanceof War) {
-        const warIcon = new PIXI.Sprite(
-          GameManager.instance.game.loader.resources[Resource.war].texture
-        );
-        warIcon.scale.set(this.DIPLOMACY_HEIGHT / warIcon.height);
-        relationsBox.addChild(warIcon);
-        const warTarget =
-          tie.getTarget() === target ? tie.getRoot() : tie.getTarget();
-        const flag = new Flag(warTarget);
-        flag.scale.set(this.DIPLOMACY_HEIGHT / flag.height);
-        flag.position.set(relationsBox.width * 0.5, 0);
-        flag.on("click", () => this.scene.openDiplomacySidebar(warTarget));
-        relationsBox.addChild(flag);
-      }
-    }
+    target.getDiplomacy().forEach((tie) => {
+      const relationBox = new HorizontalBox(relationsBox.width, 100);
+
+      //外交関係のアイコンを表示
+      console.log("tie", tie);
+
+      const iconSrc = tie.getRoot() == target ? tie.root_icon : tie.target_icon;
+      const icon = new PIXI.Sprite(
+        GameManager.instance.game.loader.resources[iconSrc].texture
+      );
+      relationBox.addPart(icon);
+
+      //外交対象の国旗を表示
+      const opponent = tie.getOpponent(target);
+      const flag = new Flag(opponent);
+      flag.on("click", () => this.scene.openDiplomacySidebar(opponent));
+      relationBox.addPart(flag);
+
+      relationsBox.addPart(relationBox);
+    });
 
     //アクションボックス
     /*
@@ -98,5 +103,12 @@ export default class DiplomaticSidebar extends Sidebar {
       this.scene.setPlayCountry(target);
     });
     actionBox.addPart(select);
+
+    const accessButton = new Button("軍事通行権を要求");
+    accessButton.on("click", () => {
+      const access = new Access(this.scene.getMyCountry(), target);
+      access.activate();
+    });
+    actionBox.addPart(accessButton);
   }
 }
