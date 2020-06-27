@@ -23,7 +23,7 @@ export default class Country implements Jsonable {
     getDivisionTemplates(): DivisionTemplate[];
     hasAnyDivisionTemplate(): boolean;
     get id(): string;
-    private set divisions(value);
+    private set templates(value);
     /**
      * 所有しているプロヴィンスのうち、ランダムに1つを選ぶ
      *

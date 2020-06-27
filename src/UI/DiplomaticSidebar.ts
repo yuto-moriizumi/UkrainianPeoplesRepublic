@@ -51,7 +51,7 @@ export default class DiplomaticSidebar extends Sidebar {
 
     //外交関係を表示
     target.getDiplomacy().forEach((tie) => {
-      const relationBox = new HorizontalBox(relationsBox.width, 100);
+      const relationBox = new HorizontalBox(relationsBox.width, 50);
 
       //外交関係のアイコンを表示
       console.log("tie", tie);

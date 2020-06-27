@@ -1,11 +1,13 @@
 {
   "countries": {
     "UPR": {
-      "divisions": [
+      "templates": [
         {
           "organization": 100,
           "attack": 20,
           "speed": 10,
+          "cost": 50,
+          "maintenance": 1,
           "divisions": [
             { "organization": 100, "position": "#e001e0" },
             { "organization": 100, "position": "#71e0a0" }
@@ -17,47 +19,58 @@
       "flag": "Ukraine.png"
     },
     "Rebels": {
-      "divisions": [],
+      "templates": [],
       "color": "ffffff",
       "name": "Rebels(System)",
       "flag": "Rebels.png"
     },
     "CPR": {
-      "divisions": [],
+      "templates": [],
       "color": "ffbf",
       "name": "クリミア人民共和国",
       "flag": "CPR.png"
     },
     "RPG": {
-      "divisions": [],
+      "templates": [],
       "color": "ac77c5",
       "name": "ロシア共和国",
       "flag": "RPG.png"
     },
     "USSR": {
-      "divisions": [],
+      "templates": [],
       "color": "ff0000",
       "name": "ロシア＝ソヴィエト連邦社会主義共和国",
       "flag": "USSR.png"
     },
     "AHE": {
-      "divisions": [],
+      "templates": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "cost": 50,
+          "maintenance": 1,
+          "divisions": [{ "organization": 100, "position": "#9021a0" }]
+        }
+      ],
       "color": "ff31be",
       "name": "オーストリア＝ハンガリー帝国",
       "flag": "AHE.png"
     },
     "MDR": {
-      "divisions": [],
+      "templates": [],
       "color": "ae7b00",
       "name": "モルダヴィア民主共和国",
       "flag": "MDR.png"
     },
     "UPRS": {
-      "divisions": [
+      "templates": [
         {
           "organization": 100,
           "attack": 20,
           "speed": 10,
+          "cost": 50,
+          "maintenance": 1,
           "divisions": [
             { "organization": 100, "position": "#bc0441" },
             { "organization": 100, "position": "#726291" }
@@ -69,205 +82,261 @@
       "flag": "UPRS.png"
     },
     "OSR": {
-      "divisions": [],
+      "templates": [],
       "color": "563b18",
       "name": "オデッサ・ソビエト共和国",
       "flag": "Red.png"
     },
     "DKR": {
-      "divisions": [],
+      "templates": [],
       "color": "a92b3a",
       "name": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国",
       "flag": "Red.png"
     },
     "KPR": {
-      "divisions": [],
+      "templates": [],
       "color": "961e62",
       "name": "クバーニ人民共和国",
       "flag": "KPR.png"
     },
     "BPR": {
-      "divisions": [],
+      "templates": [],
       "color": "6818",
       "name": "ベラルーシ人民共和国",
       "flag": "BPR.png"
     },
     "TUR": {
-      "divisions": [],
+      "templates": [],
       "color": "80a100",
       "name": "オスマン帝国",
       "flag": "TUR.png"
     },
     "ROM": {
-      "divisions": [],
+      "templates": [],
       "color": "7c2900",
       "name": "ルーマニア王国",
       "flag": "ROM.png"
     },
     "GER": {
-      "divisions": [],
+      "templates": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "cost": 50,
+          "maintenance": 1,
+          "divisions": [
+            {
+              "organization": 100,
+              "position": "#416161",
+              "destination": null,
+              "movingProgress": 0
+            },
+            {
+              "organization": 100,
+              "position": "#bfdf20",
+              "destination": null,
+              "movingProgress": 0
+            },
+            {
+              "organization": 100,
+              "position": "#406020",
+              "destination": null,
+              "movingProgress": 0
+            },
+            {
+              "organization": 100,
+              "position": "#e06176",
+              "destination": null,
+              "movingProgress": 0
+            },
+            {
+              "organization": 100,
+              "position": "#806161",
+              "destination": null,
+              "movingProgress": 0
+            },
+            { "organization": 100, "position": "#b08021" },
+            {
+              "organization": 100,
+              "position": "#80e0a0",
+              "destination": null,
+              "movingProgress": 0
+            }
+          ]
+        }
+      ],
       "color": "a81500",
       "name": "ドイツ帝国",
       "flag": "GER.png"
     },
     "BUL": {
-      "divisions": [],
+      "templates": [],
       "color": "966e",
       "name": "大ブルガリア公国",
       "flag": "BUL.png"
     },
     "Sea": {
-      "divisions": [],
+      "templates": [],
       "color": "ff",
       "name": "海",
       "flag": "Rebels.png"
     },
     "SER": {
-      "divisions": [],
+      "templates": [],
       "color": "86b4",
       "name": "セルビア王国",
       "flag": "SER.png"
     },
     "GRE": {
-      "divisions": [],
+      "templates": [],
       "color": "935f00",
       "name": "ギリシャ王国",
       "flag": "GRE.png"
     },
     "POL": {
-      "divisions": [],
+      "templates": [
+        {
+          "organization": 100,
+          "attack": 20,
+          "speed": 10,
+          "cost": 50,
+          "maintenance": 1,
+          "divisions": [{ "organization": 100, "position": "#6000df" }]
+        }
+      ],
       "color": "c55c6a",
       "name": "ポーランド摂政王国",
       "flag": "POL.png"
     },
     "GBR": {
-      "divisions": [],
+      "templates": [],
       "color": "c9385d",
       "name": "イギリス帝国",
       "flag": "GBR.png"
     },
     "FRA": {
-      "divisions": [],
+      "templates": [],
       "color": "3971e4",
       "name": "フランス共和国",
       "flag": "FRA.png"
     },
     "LIT": {
-      "divisions": [],
+      "templates": [],
       "color": "dbdb77",
       "name": "リトアニア王国",
       "flag": "LIT.png"
     },
     "TCF": {
-      "divisions": [],
+      "templates": [],
       "color": "fbdb77",
       "name": "ザカフカース民主連邦共和国",
       "flag": "TCF.png"
     },
     "EST": {
-      "divisions": [],
+      "templates": [],
       "color": "3287af",
       "name": "エストニア共和国",
       "flag": "EST.png"
     },
     "DCS": {
-      "divisions": [],
+      "templates": [],
       "color": "ffbfbf",
       "name": "クールラント・ゼムガレン公国",
       "flag": "DCS.png"
     },
     "UBD": {
-      "divisions": [],
+      "templates": [],
       "color": "bfff",
       "name": "バルト連合公国",
       "flag": "UBD.png"
     },
     "TSR": {
-      "divisions": [],
+      "templates": [],
       "color": "ff7f7f",
       "name": "タヴリダ・ソビエト社会主義共和国",
       "flag": "Red.png"
     },
     "KSR": {
-      "divisions": [],
+      "templates": [],
       "color": "961e62",
       "name": "クバーニ・ソビエト共和国",
       "flag": "Red.png"
     },
     "DON": {
-      "divisions": [],
+      "templates": [],
       "color": "1f1fbf",
       "name": "ドン共和国",
       "flag": "DON.png"
     },
     "GEO": {
-      "divisions": [],
+      "templates": [],
       "color": "ff3f1f",
       "name": "グルジア民主共和国",
       "flag": "GEO.png"
     },
     "AZR": {
-      "divisions": [],
+      "templates": [],
       "color": "ff7f1f",
       "name": "アゼルバイジャン民主共和国",
       "flag": "AZR.png"
     },
     "ARM": {
-      "divisions": [],
+      "templates": [],
       "color": "ffff1f",
       "name": "アルメニア共和国",
       "flag": "ARM.png"
     },
     "MRC": {
-      "divisions": [],
+      "templates": [],
       "color": "1fff1f",
       "name": "北カフカース山岳共和国",
       "flag": "MRC.png"
     },
     "SCS": {
-      "divisions": [],
+      "templates": [],
       "color": "8b1765",
       "name": "スロベニア人・クロアチア人・セルビア人国",
       "flag": "SCS.png"
     },
     "CZE": {
-      "divisions": [],
+      "templates": [],
       "color": "d9b700",
       "name": "チェコスロバキア共和国",
       "flag": "CZE.png"
     },
     "WUPR": {
-      "divisions": [],
+      "templates": [],
       "color": "4172",
       "name": "西ウクライナ人民共和国",
       "flag": "WUPR.png"
     },
     "AUS": {
-      "divisions": [],
+      "templates": [],
       "color": "ff31be",
       "name": "ドイツ=オーストリア共和国",
       "flag": "AUS.png"
     },
     "HUN": {
-      "divisions": [],
+      "templates": [],
       "color": "527601",
       "name": "ハンガリー民主共和国",
       "flag": "HUN.png"
     },
     "ITA": {
-      "divisions": [],
+      "templates": [],
       "color": "80a303",
       "name": "イタリア王国",
       "flag": "ITA.png"
     },
     "SWE": {
-      "divisions": [],
+      "templates": [],
       "color": "2484f7",
       "name": "スウェーデン王国",
       "flag": "SWE.png"
     },
     "LAT": {
-      "divisions": [],
+      "templates": [],
       "color": "8d131e",
       "name": "ラトビア共和国",
       "flag": "LAT.png"
@@ -731,8 +800,22 @@
     "#3161e0": { "x": 509, "y": 467, "owner": "Rebels" }
   },
   "diplomacy": [
-    { "type": "access", "active": false, "root": "GER", "target": "POL" },
-    { "type": "access", "active": false, "root": "GER", "target": "UPR" }
+    {
+      "type": "Access",
+      "active": false,
+      "root": "GER",
+      "target": "POL",
+      "root_icon": "access_root.png",
+      "target_icon": "access_target.png"
+    },
+    {
+      "type": "Access",
+      "active": false,
+      "root": "GER",
+      "target": "UPR",
+      "root_icon": "access_root.png",
+      "target_icon": "access_target.png"
+    }
   ],
   "events": [
     {
@@ -808,11 +891,7 @@
               ],
               "root": "LIT"
             },
-            {
-              "type": "GainAccess",
-              "root": "GER",
-              "target": "LIT"
-            }
+            { "type": "GainAccess", "root": "GER", "target": "LIT" }
           ],
           "title": "OK"
         }
@@ -903,11 +982,7 @@
               ],
               "root": "UBD"
             },
-            {
-              "type": "GainAccess",
-              "root": "GER",
-              "target": "UBD"
-            }
+            { "type": "GainAccess", "root": "GER", "target": "UBD" }
           ],
           "title": "OK"
         }
@@ -928,11 +1003,7 @@
               "provinces": ["#4a8e5d", "#806121", "#01e021"],
               "root": "DCS"
             },
-            {
-              "type": "GainAccess",
-              "root": "GER",
-              "target": "DCS"
-            }
+            { "type": "GainAccess", "root": "GER", "target": "DCS" }
           ],
           "title": "OK"
         }
@@ -1024,11 +1095,7 @@
               ],
               "root": "BPR"
             },
-            {
-              "type": "GainAccess",
-              "root": "GER",
-              "target": "BPR"
-            }
+            { "type": "GainAccess", "root": "GER", "target": "BPR" }
           ],
           "title": "OK"
         }
@@ -1073,16 +1140,8 @@
               ],
               "root": "ROM"
             },
-            {
-              "type": "GainAccess",
-              "root": "GER",
-              "target": "ROM"
-            },
-            {
-              "type": "GainAccess",
-              "root": "AHE",
-              "target": "ROM"
-            }
+            { "type": "GainAccess", "root": "GER", "target": "ROM" },
+            { "type": "GainAccess", "root": "AHE", "target": "ROM" }
           ],
           "title": "OK"
         }
@@ -1214,16 +1273,8 @@
               "root": "GBR"
             },
             { "type": "DeclareWar", "root": "GBR", "target": "BUL" },
-            {
-              "type": "GainAccess",
-              "root": "GBR",
-              "target": "GRE"
-            },
-            {
-              "type": "GainAccess",
-              "root": "GRE",
-              "target": "GBR"
-            }
+            { "type": "GainAccess", "root": "GBR", "target": "GRE" },
+            { "type": "GainAccess", "root": "GRE", "target": "GBR" }
           ],
           "title": "OK"
         }
@@ -1265,11 +1316,7 @@
               ],
               "root": "SCS"
             },
-            {
-              "type": "GainAccess",
-              "root": "SER",
-              "target": "SCS"
-            }
+            { "type": "GainAccess", "root": "SER", "target": "SCS" }
           ],
           "title": "OK"
         }

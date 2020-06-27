@@ -14,7 +14,7 @@ export default class Header extends HorizontalBox {
   private myCountry: Country;
   private timer: Timer;
   private myFlag: Flag;
-  private moneyString: MoneyWatcher;
+  private moneyWatcher: MoneyWatcher;
 
   constructor(myCountry: Country) {
     const renderer = GameManager.instance.game.renderer;
@@ -42,8 +42,8 @@ export default class Header extends HorizontalBox {
     this.addPart(debugButton);
 
     //資金表示
-    this.moneyString = new MoneyWatcher();
-    this.addPart(this.moneyString);
+    this.moneyWatcher = new MoneyWatcher();
+    this.addPart(this.moneyWatcher);
 
     //時間コントローラ
     this.timer = new Timer();
@@ -63,6 +63,8 @@ export default class Header extends HorizontalBox {
     const newFlag = new Flag(country);
     this.replacePart(this.myFlag, newFlag);
     this.myFlag = newFlag;
+
+    this.moneyWatcher.update();
   }
 
   public update() {}

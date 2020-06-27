@@ -4,10 +4,12 @@ import Resource from "../Resources";
 import * as PIXI from "pixi.js";
 import MainScene from "../Scenes/MainScene";
 import MoneyObserver from "../MoneyObserver";
+import Country from "../Country";
 
 export default class MoneyWatcher extends HorizontalBox
   implements MoneyObserver {
   private moneyText: PIXI.Text;
+  private target: Country;
 
   constructor() {
     super(100, 50, 0, 0xffffff);
@@ -18,16 +20,23 @@ export default class MoneyWatcher extends HorizontalBox
 
     this.addPart(moneyIcon);
 
-    this.moneyText = new PIXI.Text(
-      MainScene.instance.getMyCountry().__money.getMoney().toString()
-    );
+    this.target = MainScene.instance.getMyCountry();
+
+    this.moneyText = new PIXI.Text(this.target.__money.getMoney().toString());
     this.addPart(this.moneyText);
 
-    MainScene.instance.getMyCountry().__money.addObserver(this);
+    this.target.__money.addObserver(this);
+  }
+
+  public update() {
+    this.target.__money.removeObserver(this);
+    this.target = MainScene.instance.getMyCountry();
+    this.moneyText.text = this.target.__money.getMoney().toString();
+    this.target.__money.addObserver(this);
   }
 
   public destroy() {
-    MainScene.instance.getMyCountry().__money.removeObserver(this);
+    this.target.__money.removeObserver(this);
     super.destroy();
   }
 

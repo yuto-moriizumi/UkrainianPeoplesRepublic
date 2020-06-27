@@ -120,9 +120,13 @@ export default class DivisionInfo {
   public moveTo(destination: Province) {
     //移動先が変更なければ何もしない
     if (this._destination == destination) return;
-    //移動可能かチェック（隣接しているプロヴィンスのみ）
-    if (!this._position.isNextTo(destination) || !this.movableTo(destination))
-      return;
+    //移動可能かチェック
+    if (
+      (!MainScene.instance.cheat_move && //移動チートが無効で
+        !this._position.isNextTo(destination)) || //隣接していないか
+      !this.movableTo(destination) //進入不可な場合は
+    )
+      return; //何もしない
 
     if (this.__progressBar) {
       this.__progressBar.destroy();
@@ -137,6 +141,12 @@ export default class DivisionInfo {
     this.movingProgress = 0;
     this.__progressBar = new ArrowProgress(this.getPosition(), destination);
     MainScene.instance.getMap().addChild(this.__progressBar);
+
+    if (MainScene.instance.cheat_move) {
+      //移動チート有効な場合は直ちに移動
+      this.setPosition(this._destination);
+      this.stopMove();
+    }
   }
 
   private hasCombatWith(target: DivisionInfo) {

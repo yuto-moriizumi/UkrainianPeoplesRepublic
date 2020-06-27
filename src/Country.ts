@@ -65,9 +65,9 @@ export default class Country implements Jsonable {
     return this.__id;
   }
 
-  private set divisions(divisions) {
-    this._templates = divisions.map((division) =>
-      Object.assign(new DivisionTemplate(this), division)
+  private set templates(templates) {
+    this._templates = templates.map((template) =>
+      Object.assign(new DivisionTemplate(this), template)
     );
   }
 

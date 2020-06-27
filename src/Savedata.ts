@@ -62,25 +62,25 @@ export default class Savedata implements Jsonable {
   }
 
   private set diplomacy(diplomacy: Array<object>) {
-    this._diplomacy = diplomacy.map((tie) => {
+    diplomacy.forEach((tie) => {
       switch (tie["type"]) {
-        case "war":
+        case "War":
           const war = new War(
             this._countries.get(tie["root"]),
             this._countries.get(tie["target"])
           );
           war.activate();
-          return war;
-        case "access":
+          return;
+        case "Access":
           const access = new Access(
             this._countries.get(tie["root"]),
             this._countries.get(tie["target"])
           );
           access.activate();
-          return access;
+          return;
         default:
           new Error("diplomacy load error:" + tie["type"]);
-          return null;
+          return;
       }
     });
     console.log("diplomacy loaded:", this._diplomacy);

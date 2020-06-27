@@ -28,6 +28,7 @@ export default class MainScene extends Scene implements Selectable {
   private sidebar: Sidebar;
   private eventDispatcher: EventDispatcher;
   public selectingDivison: DivisionSprite;
+  public cheat_move = false;
 
   constructor(playCountry: Country) {
     super();
