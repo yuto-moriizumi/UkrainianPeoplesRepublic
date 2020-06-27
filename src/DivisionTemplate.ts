@@ -10,6 +10,8 @@ export default class DivisionTemplate extends JsonObject {
   private organization: number = 100;
   private attack: number = 20;
   private speed: number = 10;
+  private cost: number = 10;
+  private maintenance: number = 1;
   private _divisions: Array<DivisionInfo> = [];
 
   constructor(owner: Country) {
@@ -57,6 +59,15 @@ export default class DivisionTemplate extends JsonObject {
       console.log("hi2");
       division.createSprite();
     });
+  }
+
+  public getCost() {
+    return this.cost;
+  }
+
+  public calcTotalMaintanance() {
+    //維持コスト計算
+    return this._divisions.length * this.maintenance;
   }
 
   private set divisions(divisions: Array<any>) {

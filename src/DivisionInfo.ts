@@ -34,6 +34,12 @@ export default class DivisionInfo {
     this.setPosition(this._position);
   }
 
+  public applyCost() {
+    this.owner.__money.setMoney(
+      this.owner.__money.getMoney() - this.__template.getCost()
+    );
+  }
+
   public set position(provinceId: string) {
     new Promise((resolve) => {
       //プロヴィンスオブジェクトが必要なので、ロード後に代入する

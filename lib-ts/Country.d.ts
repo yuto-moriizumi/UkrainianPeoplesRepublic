@@ -2,6 +2,7 @@ import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import War from "./DiplomaticTies/War";
 import DivisionTemplate from "./DivisionTemplate";
 import Jsonable from "./Jsonable";
+import Money from "./Money";
 export default class Country implements Jsonable {
     private __id;
     private _color;
@@ -10,6 +11,7 @@ export default class Country implements Jsonable {
     private diplomaticTies;
     private _templates;
     private ai;
+    __money: Money;
     constructor(id: string);
     addDiplomaticRelation(tie: DiplomaticTie): void;
     removeDiplomaticRelation(tie: DiplomaticTie): void;
@@ -30,6 +32,8 @@ export default class Country implements Jsonable {
     getRandomOwnProvince(): any;
     getWarInfoWith(country: Country): War;
     hasWar(): boolean;
+    calcMaintanance(): number;
+    calcBalance(): number;
     update(): void;
     toJSON(): any;
 }

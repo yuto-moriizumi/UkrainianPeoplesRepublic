@@ -7,6 +7,7 @@ import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
 import CountryAI from "./CountryAI";
 import MainScene from "./Scenes/MainScene";
+import Money from "./Money";
 
 export default class Country implements Jsonable {
   private __id: string;
@@ -16,10 +17,12 @@ export default class Country implements Jsonable {
   private diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _templates: Array<DivisionTemplate> = new Array<DivisionTemplate>();
   private ai: CountryAI;
+  public __money: Money = new Money();
 
   constructor(id: string) {
     this.__id = id;
     this.ai = new CountryAI(this);
+    this.__money = new Money();
   }
 
   public addDiplomaticRelation(tie: DiplomaticTie) {
@@ -98,7 +101,27 @@ export default class Country implements Jsonable {
     });
   }
 
+  public calcMaintanance() {
+    //維持費を計算
+    let ans = 0;
+    this._templates.forEach(
+      (template) => (ans += template.calcTotalMaintanance())
+    );
+    return ans;
+  }
+
+  public calcBalance() {
+    const provinces = [];
+    GameManager.instance.data.getProvinces().forEach((province) => {
+      if (province.getOwner() == this) provinces.push(province); //保有プロヴィンスの数だけ収入UP
+    });
+    return 1 + provinces.length - this.calcMaintanance();
+  }
+
   public update() {
+    //金を更新
+    this.__money.setMoney(this.__money.getMoney() + this.calcBalance());
+
     this._templates.forEach((division) => division.update());
     if (MainScene.instance.getMyCountry() !== this) this.ai.update(); //自国以外ならAIを呼び出す
   }

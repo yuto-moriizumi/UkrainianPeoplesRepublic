@@ -1,6 +1,8 @@
 import Country from "./Country";
 import War from "./DiplomaticTies/War";
 import MyMap from "./MyMap";
+import DivisionTemplate from "./DivisionTemplate";
+import DivisionInfo from "./DivisionInfo";
 
 export default class CountryAI {
   private country: Country;
@@ -9,7 +11,34 @@ export default class CountryAI {
   }
 
   public update() {
+    if (!this.country.hasAnyDivisionTemplate()) {
+      //師団テンプレートが無かったらテンプレートを追加
+      const template = new DivisionTemplate(this.country);
+      this.country.addDivisionTemplate(template);
+    }
+
+    //師団の生産
+    //維持コストの計算
+    const balance = this.country.calcBalance();
+    const maintanance = this.country.calcMaintanance();
+    const expeditionRate = balance == 0 ? 1 : maintanance / balance;
+    if (
+      (this.country.hasWar() && expeditionRate < 0.8) ||
+      expeditionRate < 0.4
+    ) {
+      //戦時中に支出割合が8割を超えていないか、4割を超えていない場合生産
+      const template = this.country.getDivisionTemplates()[0];
+      const divisionInfo = new DivisionInfo(template);
+      template.addDivision(divisionInfo);
+      divisionInfo.applyCost();
+      console.log("division add");
+      divisionInfo.createSprite();
+      divisionInfo.setPosition(this.country.getRandomOwnProvince()); //ランダムなプロビヴィンスに出現させる
+    }
+
     if (!this.country.hasWar()) return; //戦争していないならなにもしない
+
+    //師団の移動
     const targetCountry = this.country
       .getDiplomacy()
       .filter((d) => {

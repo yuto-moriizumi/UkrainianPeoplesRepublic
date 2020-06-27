@@ -29,6 +29,7 @@ export default class Conscription extends Sidebar {
     const resources = GameManager.instance.game.loader.resources;
 
     const myCountry = scene.getMyCountry();
+
     if (!myCountry.hasAnyDivisionTemplate()) {
       //師団テンプレートが無かったらテンプレートを追加
       const template = new DivisionTemplate(myCountry);
@@ -42,6 +43,7 @@ export default class Conscription extends Sidebar {
       produceButton.on("click", () => {
         const divisionInfo = new DivisionInfo(template);
         template.addDivision(divisionInfo);
+        divisionInfo.applyCost();
         console.log("division add");
         divisionInfo.createSprite();
         divisionInfo.setPosition(myCountry.getRandomOwnProvince()); //ランダムなプロビヴィンスに出現させる
