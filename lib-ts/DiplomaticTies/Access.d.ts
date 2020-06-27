@@ -6,4 +6,6 @@ import DiplomaticTie from "./DiplomaticTie";
  * @extends {DiplomaticTie}
  */
 export default class Access extends DiplomaticTie {
+    readonly icon: string;
+    readonly target_icon: string;
 }

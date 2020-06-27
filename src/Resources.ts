@@ -18,6 +18,8 @@ const Resource = Object.freeze({
   conscription: "tank.jpg",
   infantaly: "infantary.png",
   money: "mark_yen_okaikei.png",
+  access_root: "access_root.png",
+  access_target: "access_target.png",
   se: {
     news: "world_news.mp3",
     click_ok: "click_ok.mp3",

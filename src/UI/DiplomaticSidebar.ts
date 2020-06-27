@@ -51,20 +51,25 @@ export default class DiplomaticSidebar extends Sidebar {
 
     //外交関係を表示
     for (const tie of target.getDiplomacy()) {
-      if (tie instanceof War) {
-        const warIcon = new PIXI.Sprite(
-          GameManager.instance.game.loader.resources[Resource.war].texture
-        );
-        warIcon.scale.set(this.DIPLOMACY_HEIGHT / warIcon.height);
-        relationsBox.addChild(warIcon);
-        const warTarget =
-          tie.getTarget() === target ? tie.getRoot() : tie.getTarget();
-        const flag = new Flag(warTarget);
-        flag.scale.set(this.DIPLOMACY_HEIGHT / flag.height);
-        flag.position.set(relationsBox.width * 0.5, 0);
-        flag.on("click", () => this.scene.openDiplomacySidebar(warTarget));
-        relationsBox.addChild(flag);
-      }
+      const relationBox = new HorizontalBox(relationsBox.width, 100);
+
+      //外交関係のアイコンを表示
+      const iconSrc =
+        tie.getRoot() == this.scene.getMyCountry()
+          ? tie.root_icon
+          : tie.target_icon;
+      const icon = new PIXI.Sprite(
+        GameManager.instance.game.loader.resources[iconSrc].texture
+      );
+      relationBox.addPart(icon);
+
+      //外交対象の国旗を表示
+      const target = tie.getOpponent(this.scene.getMyCountry());
+      const flag = new Flag(target);
+      flag.on("click", () => this.scene.openDiplomacySidebar(target));
+      relationBox.addPart(flag);
+
+      relationsBox.addPart(relationBox);
     }
 
     //アクションボックス

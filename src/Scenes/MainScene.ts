@@ -66,6 +66,8 @@ export default class MainScene extends Scene implements Selectable {
     assets.push(Resource.conscription);
     assets.push(Resource.infantaly);
     assets.push(Resource.money);
+    assets.push(Resource.access_root);
+    assets.push(Resource.access_target);
     console.log(assets);
     return assets;
   }

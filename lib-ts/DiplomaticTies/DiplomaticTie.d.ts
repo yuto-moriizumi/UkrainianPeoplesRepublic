@@ -2,6 +2,8 @@ import Country from "../Country";
 import Jsonable from "../Jsonable";
 export default abstract class DiplomaticTie implements Jsonable {
     private type;
+    readonly root_icon: string;
+    readonly target_icon: string;
     protected root: Country;
     protected target: Country;
     protected active: boolean;

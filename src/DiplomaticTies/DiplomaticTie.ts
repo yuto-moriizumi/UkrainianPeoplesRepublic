@@ -4,6 +4,8 @@ import JsonConverter from "../JsonConverter";
 
 export default abstract class DiplomaticTie implements Jsonable {
   private type = this.constructor.name;
+  public readonly root_icon: string;
+  public readonly target_icon: string;
   protected root: Country;
   protected target: Country;
   protected active: boolean = false;

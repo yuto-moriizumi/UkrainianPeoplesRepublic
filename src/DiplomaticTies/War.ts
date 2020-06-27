@@ -7,6 +7,9 @@ import Resource from "../Resources";
 import Country from "../Country";
 
 export default class War extends DiplomaticTie {
+  public readonly root_icon = Resource.war;
+  public readonly target_icon = Resource.war;
+
   constructor(root: Country, target: Country) {
     super(root, target);
   }
