@@ -1,6 +1,9 @@
 import Country from "../Country";
+import Jsonable from "../Jsonable";
+import JsonConverter from "../JsonConverter";
 
-export default abstract class DiplomaticTie {
+export default abstract class DiplomaticTie implements Jsonable {
+  private type = this.constructor.name;
   protected root: Country;
   protected target: Country;
   protected active: boolean = false;
@@ -34,5 +37,12 @@ export default abstract class DiplomaticTie {
     this.root.removeDiplomaticRelation(this);
     this.target.removeDiplomaticRelation(this);
     console.log(this.root);
+  }
+
+  public toJSON() {
+    return JsonConverter.toJSON(this, (key, value) => {
+      if (value instanceof Country) return [key, value.id];
+      return [key, value];
+    });
   }
 }
