@@ -21,5 +21,13 @@ export default class DivisionTemplate extends JsonObject {
     createDivisionsSprites(): void;
     getCost(): number;
     calcTotalMaintanance(): number;
+    deleteChildren(): void;
+    /**
+     * 師団を生産します
+     * 生産コストがかかります
+     * @returns
+     * @memberof DivisionTemplate
+     */
+    buildDivision(): DivisionInfo;
     private set divisions(value);
 }

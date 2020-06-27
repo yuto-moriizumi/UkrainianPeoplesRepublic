@@ -5,6 +5,7 @@ import Jsonable from "./Jsonable";
 import Money from "./Money";
 export default class Country implements Jsonable {
     private __id;
+    private static readonly SEA_ID;
     private _color;
     name: string;
     flag: string;
@@ -35,5 +36,11 @@ export default class Country implements Jsonable {
     calcMaintanance(): number;
     calcBalance(): number;
     update(): void;
+    /**
+     * 何らかの理由で国が消滅する場合に呼ぶ
+     * オブジェクトが消えるわけではない
+     * @memberof Country
+     */
+    destroy(): void;
     toJSON(): any;
 }

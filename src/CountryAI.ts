@@ -24,16 +24,11 @@ export default class CountryAI {
     const expeditionRate = balance == 0 ? 1 : maintanance / balance;
     if (
       (this.country.hasWar() && expeditionRate < 0.8) ||
-      expeditionRate < 0.4
+      expeditionRate < 0.2
     ) {
-      //戦時中に支出割合が8割を超えていないか、4割を超えていない場合生産
+      //戦時中に支出割合が8割を超えていないか、2割を超えていない場合生産
       const template = this.country.getDivisionTemplates()[0];
-      const divisionInfo = new DivisionInfo(template);
-      template.addDivision(divisionInfo);
-      divisionInfo.applyCost();
-      console.log("division add");
-      divisionInfo.createSprite();
-      divisionInfo.setPosition(this.country.getRandomOwnProvince()); //ランダムなプロビヴィンスに出現させる
+      template.buildDivision();
     }
 
     if (!this.country.hasWar()) return; //戦争していないならなにもしない
@@ -49,8 +44,13 @@ export default class CountryAI {
 
     this.country.getDivisionTemplates().forEach((template) => {
       template.getDivisions().forEach((division) => {
-        if (division.isMoving() || division.isFighting()) return;
-        //移動も戦闘もしていないならば、師団を動かす
+        if (
+          division.getPosition() == null ||
+          division.isMoving() ||
+          division.isFighting()
+        )
+          return;
+        //プロヴィンスに属していて、移動も戦闘もしていないならば、師団を動かす
 
         const targetProvince = targetCountry.getRandomOwnProvince();
         const targetCoord = targetProvince.getCoord();

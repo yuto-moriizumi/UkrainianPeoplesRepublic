@@ -41,12 +41,7 @@ export default class Conscription extends Sidebar {
         resources[Resource.infantaly].texture
       );
       produceButton.on("click", () => {
-        const divisionInfo = new DivisionInfo(template);
-        template.addDivision(divisionInfo);
-        divisionInfo.applyCost();
-        console.log("division add");
-        divisionInfo.createSprite();
-        divisionInfo.setPosition(myCountry.getRandomOwnProvince()); //ランダムなプロビヴィンスに出現させる
+        template.buildDivision();
       });
       products.addPart(produceButton);
     });

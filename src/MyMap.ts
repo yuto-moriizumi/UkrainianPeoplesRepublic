@@ -93,12 +93,6 @@ export default class MyMap extends PIXI.Sprite {
           this.provinceMap[idx + 2] / 255,
         ])
       );
-      /*
-      console.log(
-        this.provinceMap[idx + 0],
-        this.provinceMap[idx + 1],
-        this.provinceMap[idx + 2]
-      );*/
     } catch (error) {
       console.log(error);
       console.log(

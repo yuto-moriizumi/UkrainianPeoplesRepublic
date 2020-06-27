@@ -56,7 +56,6 @@ export default class DivisionTemplate extends JsonObject {
   public createDivisionsSprites() {
     //このテンプレートに所属する全ての師団に対し描画用オブジェクトを生成させる
     this._divisions.forEach((division) => {
-      console.log("hi2");
       division.createSprite();
     });
   }
@@ -70,6 +69,26 @@ export default class DivisionTemplate extends JsonObject {
     return this._divisions.length * this.maintenance;
   }
 
+  public deleteChildren() {
+    this._divisions.forEach((division) => [division.destroy()]);
+    this._divisions = [];
+  }
+
+  /**
+   * 師団を生産します
+   * 生産コストがかかります
+   * @returns
+   * @memberof DivisionTemplate
+   */
+  public buildDivision() {
+    if (this.__owner.__money.getMoney() < this.cost) return null; //金が足りない場合は作れない
+    const divisionInfo = new DivisionInfo(this);
+    this.addDivision(divisionInfo);
+    divisionInfo.applyCost();
+    divisionInfo.createSprite();
+    divisionInfo.setPosition(this.owner.getRandomOwnProvince()); //ランダムなプロビヴィンスに出現させる}
+    return divisionInfo;
+  }
   private set divisions(divisions: Array<any>) {
     this._divisions = divisions.map((division) =>
       Object.assign(new DivisionInfo(this), division)

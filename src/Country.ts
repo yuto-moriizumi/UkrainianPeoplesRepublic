@@ -11,6 +11,7 @@ import Money from "./Money";
 
 export default class Country implements Jsonable {
   private __id: string;
+  private static readonly SEA_ID = "Sea";
   private _color: number;
   public name: string;
   public flag: string;
@@ -123,7 +124,24 @@ export default class Country implements Jsonable {
     this.__money.setMoney(this.__money.getMoney() + this.calcBalance());
 
     this._templates.forEach((division) => division.update());
-    if (MainScene.instance.getMyCountry() !== this) this.ai.update(); //自国以外ならAIを呼び出す
+    if (
+      MainScene.instance.getMyCountry() !== this &&
+      MainScene.instance.getMyCountry().__id !== Country.SEA_ID
+    )
+      this.ai.update(); //自国以外で海でないならAIを呼び出す
+  }
+
+  /**
+   * 何らかの理由で国が消滅する場合に呼ぶ
+   * オブジェクトが消えるわけではない
+   * @memberof Country
+   */
+  public destroy() {
+    this.diplomaticTies.forEach((diplomacy) => {
+      //全ての外交関係を削除
+      diplomacy.deactivate();
+    });
+    this._templates.forEach((template) => template.deleteChildren()); //全ての師団を削除
   }
 
   toJSON() {
