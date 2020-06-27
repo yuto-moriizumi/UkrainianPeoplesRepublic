@@ -20,8 +20,14 @@ export default class DivisionInfo {
   private __progressBar: ArrowProgress;
   private __combats: Array<Combat> = new Array<Combat>();
   private __dead: boolean = false;
+  private __owner: Country;
 
-  constructor(template: DivisionTemplate) {
+  constructor(owner: Country) {
+    this.__owner = owner;
+    owner.addDivision(this);
+  }
+
+  public setTemplate(template: DivisionTemplate) {
     this.__template = template;
     this.setOrganization(template.getOrganization());
   }
@@ -55,6 +61,10 @@ export default class DivisionInfo {
     this._destination = GameManager.instance.data.getProvince(provinceId);
   }
 
+  public getMaintainance() {
+    return this.__template.getMaintainance();
+  }
+
   public setPosition(province: Province) {
     if (province == null) return;
     if (this._position) this._position.removeDivision(this);
@@ -67,9 +77,8 @@ export default class DivisionInfo {
     //占領処理
     const owner = province.getOwner();
 
-    if (owner == this.__template.owner) return;
-    if (owner.getWarInfoWith(this.__template.owner))
-      province.setOwner(this.__template.owner);
+    if (owner == this.owner) return;
+    if (owner.getWarInfoWith(this.owner)) province.setOwner(this.owner);
   }
 
   public getPosition() {
@@ -77,7 +86,7 @@ export default class DivisionInfo {
   }
 
   public get owner() {
-    return this.__template.owner;
+    return this.__owner;
   }
 
   public get sprite() {
@@ -171,7 +180,7 @@ export default class DivisionInfo {
     if (this.__progressBar) this.__progressBar.destroy();
     if (this._position) this._position.removeDivision(this);
     this.__sprite.destroy();
-    this.__template.removeDivision(this);
+    this.__owner.removeDivision(this);
   }
 
   public stopMove() {
@@ -191,29 +200,34 @@ export default class DivisionInfo {
   }
 
   public update() {
-    if (this._destination) {
-      this.movingProgress = Math.min(
-        100,
-        this.movingProgress + this.__template.getSpeed()
-      );
-      this.__progressBar.setProgress(this.movingProgress);
+    try {
+      if (this._destination) {
+        this.movingProgress = Math.min(
+          100,
+          this.movingProgress + this.__template.getSpeed()
+        );
+        this.__progressBar.setProgress(this.movingProgress);
 
-      //戦闘判定
+        //戦闘判定
 
-      this._destination.getDivisons().forEach((division) => {
-        if (!division.owner.getWarInfoWith(this.owner)) return; //戦争していないなら関係ない
-        if (this.hasCombatWith(division)) return; //すでに戦闘が発生しているならreturn
+        this._destination.getDivisons().forEach((division) => {
+          if (!division.owner.getWarInfoWith(this.owner)) return; //戦争していないなら関係ない
+          if (this.hasCombatWith(division)) return; //すでに戦闘が発生しているならreturn
 
-        Combat.create(this, division);
-      });
+          Combat.create(this, division);
+        });
 
-      if (this.movingProgress >= 100 && this.__combats.length == 0) {
-        //移動終了判定
+        if (this.movingProgress >= 100 && this.__combats.length == 0) {
+          //移動終了判定
 
-        this.setPosition(this._destination);
-        this.stopMove();
-      } else {
+          this.setPosition(this._destination);
+          this.stopMove();
+        } else {
+        }
       }
+    } catch (error) {
+      console.log(error);
+      console.log(this);
     }
   }
 

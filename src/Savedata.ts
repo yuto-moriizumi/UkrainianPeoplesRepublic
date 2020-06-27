@@ -8,6 +8,7 @@ import Combat from "./Combat";
 import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
 import Access from "./DiplomaticTies/Access";
+import DivisionTemplate from "./DivisionTemplate";
 
 export default class Savedata implements Jsonable {
   private _countries: Map<string, Country> = new Map<string, Country>();
@@ -15,6 +16,7 @@ export default class Savedata implements Jsonable {
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _events: Array<Event> = new Array<Event>();
   private _combats: Array<Combat> = new Array<Combat>();
+  private _templates = new Map<string, DivisionTemplate>();
   public __onProvinceLoaded: Array<any> = new Array<any>();
   public __isProvinceLoaded: boolean = false;
 
@@ -31,6 +33,20 @@ export default class Savedata implements Jsonable {
 
   public getCountry(id: string) {
     return this._countries.get(id);
+  }
+
+  private set templates(templates: object) {
+    for (const id in templates) {
+      this._templates.set(
+        id,
+        Object.assign(new DivisionTemplate(id), templates[id])
+      );
+    }
+    console.log("templates loaded:", this._templates);
+  }
+
+  public getTemplates() {
+    return this._templates;
   }
 
   private set provinces(provinces: object) {

@@ -9,6 +9,7 @@ import CountryAI from "./CountryAI";
 import MainScene from "./Scenes/MainScene";
 import Money from "./Money";
 import Access from "./DiplomaticTies/Access";
+import DivisionInfo from "./DivisionInfo";
 
 export default class Country implements Jsonable {
   private __id: string;
@@ -17,7 +18,7 @@ export default class Country implements Jsonable {
   public name: string;
   public flag: string;
   private __diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
-  private _templates: Array<DivisionTemplate> = new Array<DivisionTemplate>();
+  private _divisions = new Array<DivisionInfo>();
   private __ai: CountryAI;
   public __money: Money = new Money();
 
@@ -49,25 +50,13 @@ export default class Country implements Jsonable {
     return this._color;
   }
 
-  public addDivisionTemplate(template: DivisionTemplate) {
-    this._templates.push(template);
-  }
-
-  public getDivisionTemplates() {
-    return this._templates;
-  }
-
-  public hasAnyDivisionTemplate() {
-    return this._templates.length > 0;
-  }
-
   public get id() {
     return this.__id;
   }
 
-  private set templates(templates) {
-    this._templates = templates.map((template) =>
-      Object.assign(new DivisionTemplate(this), template)
+  private set divisions(divisions: any) {
+    this._divisions = divisions.map((division) =>
+      Object.assign(new DivisionInfo(this), division)
     );
   }
 
@@ -106,9 +95,7 @@ export default class Country implements Jsonable {
   public calcMaintanance() {
     //維持費を計算
     let ans = 0;
-    this._templates.forEach(
-      (template) => (ans += template.calcTotalMaintanance())
-    );
+    this._divisions.forEach((division) => (ans += division.getMaintainance()));
     return ans;
   }
 
@@ -124,12 +111,28 @@ export default class Country implements Jsonable {
     //金を更新
     this.__money.setMoney(this.__money.getMoney() + this.calcBalance());
 
-    this._templates.forEach((division) => division.update());
+    this._divisions.forEach((division) => division.update());
     if (
       MainScene.instance.getMyCountry() !== this &&
       MainScene.instance.getMyCountry().__id !== Country.SEA_ID
     )
       this.__ai.update(); //自国以外で海でないならAIを呼び出す
+  }
+
+  public getDivisions() {
+    return this._divisions;
+  }
+
+  public addDivision(division: DivisionInfo) {
+    this._divisions.push(division);
+  }
+
+  public removeDivision(division: DivisionInfo) {
+    this._divisions = this._divisions.filter((d) => d != division);
+  }
+
+  private set templates(templates: any) {
+    //何もしない
   }
 
   /**
@@ -142,7 +145,7 @@ export default class Country implements Jsonable {
       //全ての外交関係を削除
       diplomacy.deactivate();
     });
-    this._templates.forEach((template) => template.deleteChildren()); //全ての師団を削除
+    this._divisions.forEach((d) => d.destroy());
   }
 
   /**

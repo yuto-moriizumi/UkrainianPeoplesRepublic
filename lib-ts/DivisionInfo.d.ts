@@ -13,11 +13,14 @@ export default class DivisionInfo {
     private __progressBar;
     private __combats;
     private __dead;
-    constructor(template: DivisionTemplate);
+    private __owner;
+    constructor(owner: Country);
+    setTemplate(template: DivisionTemplate): void;
     createSprite(): void;
     applyCost(): void;
     set position(provinceId: string);
     set destination(provinceId: string);
+    getMaintainance(): number;
     setPosition(province: Province): void;
     getPosition(): Province;
     get owner(): Country;

@@ -30,18 +30,13 @@ export default class Conscription extends Sidebar {
 
     const myCountry = scene.getMyCountry();
 
-    if (!myCountry.hasAnyDivisionTemplate()) {
-      //師団テンプレートが無かったらテンプレートを追加
-      const template = new DivisionTemplate(myCountry);
-      myCountry.addDivisionTemplate(template);
-    }
+    GameManager.instance.data.getTemplates().forEach((template) => {
 
-    myCountry.getDivisionTemplates().forEach((template) => {
       const produceButton = new SpriteButton(
         resources[Resource.infantaly].texture
       );
       produceButton.on("click", () => {
-        template.buildDivision();
+        template.buildDivision(scene.getMyCountry());
       });
       products.addPart(produceButton);
     });
