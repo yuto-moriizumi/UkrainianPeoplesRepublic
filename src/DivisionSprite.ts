@@ -67,6 +67,8 @@ export default class DivisionSprite extends VerticalBox {
   private onClick(e: PIXI.interaction.InteractionEvent) {
     e.stopPropagation();
 
+    console.log("division:", this.info);
+
     //自国の師団かチェックする
     if (this.info.owner !== MainScene.instance.getMyCountry()) return;
 

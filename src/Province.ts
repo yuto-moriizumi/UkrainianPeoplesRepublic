@@ -44,9 +44,7 @@ export default class Province extends JsonObject {
     });
     if (provinces.length == 0) {
       //降伏
-      previousOwner.getDiplomacy().forEach((diplomacy) => {
-        diplomacy.deactivate();
-      });
+      previousOwner.destroy();
     }
   }
 

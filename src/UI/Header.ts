@@ -8,11 +8,13 @@ import Resource from "../Resources";
 import MainScene from "../Scenes/MainScene";
 import Button from "./Button";
 import Timer from "./Timer";
+import MoneyWatcher from "./MoneyWatcher";
 export default class Header extends HorizontalBox {
   public static readonly DEFAULT_HEIGHT = 100;
   private myCountry: Country;
   private timer: Timer;
   private myFlag: Flag;
+  private moneyString: MoneyWatcher;
 
   constructor(myCountry: Country) {
     const renderer = GameManager.instance.game.renderer;
@@ -39,6 +41,10 @@ export default class Header extends HorizontalBox {
     });
     this.addPart(debugButton);
 
+    //資金表示
+    this.moneyString = new MoneyWatcher();
+    this.addPart(this.moneyString);
+
     //時間コントローラ
     this.timer = new Timer();
     this.timer.position.set(
@@ -58,4 +64,6 @@ export default class Header extends HorizontalBox {
     this.replacePart(this.myFlag, newFlag);
     this.myFlag = newFlag;
   }
+
+  public update() {}
 }

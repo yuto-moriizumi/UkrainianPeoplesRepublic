@@ -6,7 +6,9 @@ export default class Header extends HorizontalBox {
     private myCountry;
     private timer;
     private myFlag;
+    private moneyString;
     constructor(myCountry: Country);
     getTimer(): Timer;
     setPlayCountry(country: Country): void;
+    update(): void;
 }

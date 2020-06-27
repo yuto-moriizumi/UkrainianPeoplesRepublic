@@ -15,6 +15,7 @@ export default class DivisionInfo {
     private __dead;
     constructor(template: DivisionTemplate);
     createSprite(): void;
+    applyCost(): void;
     set position(provinceId: string);
     set destination(provinceId: string);
     setPosition(province: Province): void;

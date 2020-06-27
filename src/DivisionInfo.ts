@@ -29,9 +29,14 @@ export default class DivisionInfo {
   public createSprite() {
     //描画用オブジェクトを生成し、位置を再設定する
     this.__sprite = new DivisionSprite(this);
-    console.log("division set position", this.owner, this._position);
 
     this.setPosition(this._position);
+  }
+
+  public applyCost() {
+    this.owner.__money.setMoney(
+      this.owner.__money.getMoney() - this.__template.getCost()
+    );
   }
 
   public set position(provinceId: string) {
@@ -43,7 +48,6 @@ export default class DivisionInfo {
       });
     }).then(() => {
       this.setPosition(GameManager.instance.data.getProvince(provinceId));
-      console.log("division position set", this._position);
     });
   }
 
@@ -152,7 +156,6 @@ export default class DivisionInfo {
     if (this.__dead) return; //すでに死亡ならなにもしない
     this.__dead = true;
     if (this.__progressBar) this.__progressBar.destroy();
-    console.log("sprite destroy", this.__sprite);
     this._position.removeDivision(this);
     this.__sprite.destroy();
     this.__template.removeDivision(this);
@@ -160,7 +163,8 @@ export default class DivisionInfo {
 
   public stopMove() {
     this.movingProgress = 0;
-    if (this.__progressBar) this.__progressBar.destroy();
+    if (this.__progressBar && this.__progressBar.geometry)
+      this.__progressBar.destroy();
     this.__progressBar = null;
     this._destination = null;
   }

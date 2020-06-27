@@ -13,7 +13,6 @@ export default class Combat extends JsonObject {
     root.addCombat(combat);
     target.addCombat(combat);
     GameManager.instance.data.addCombat(combat);
-    console.log("combat start", root, target);
     return combat;
   }
 
@@ -38,18 +37,11 @@ export default class Combat extends JsonObject {
       return;
     }
     //戦闘は継続する
-    console.log(
-      "combat now",
-      this.attacker.getOrganization(),
-      this.defender.getOrganization()
-    );
     this.attacker.attack(this.defender);
     this.defender.attack(this.attacker);
   }
 
   private endCombat() {
-    console.log("combat finished", this.attacker, this.defender);
-
     GameManager.instance.data.removeCombat(this);
     this.attacker.removeCombat(this);
     this.defender.removeCombat(this);

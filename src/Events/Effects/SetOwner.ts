@@ -28,7 +28,6 @@ export default class SetOwner extends Effect {
       //console.log(province);
       return province;
     });
-    console.log(this._provinces);
   }
 
   public createEntries() {
