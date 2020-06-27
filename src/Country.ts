@@ -17,12 +17,12 @@ export default class Country implements Jsonable {
   public flag: string;
   private diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _templates: Array<DivisionTemplate> = new Array<DivisionTemplate>();
-  private ai: CountryAI;
+  private __ai: CountryAI;
   public __money: Money = new Money();
 
   constructor(id: string) {
     this.__id = id;
-    this.ai = new CountryAI(this);
+    this.__ai = new CountryAI(this);
     this.__money = new Money();
   }
 
@@ -128,7 +128,7 @@ export default class Country implements Jsonable {
       MainScene.instance.getMyCountry() !== this &&
       MainScene.instance.getMyCountry().__id !== Country.SEA_ID
     )
-      this.ai.update(); //自国以外で海でないならAIを呼び出す
+      this.__ai.update(); //自国以外で海でないならAIを呼び出す
   }
 
   /**

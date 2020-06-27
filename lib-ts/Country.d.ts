@@ -11,7 +11,7 @@ export default class Country implements Jsonable {
     flag: string;
     private diplomaticTies;
     private _templates;
-    private ai;
+    private __ai;
     __money: Money;
     constructor(id: string);
     addDiplomaticRelation(tie: DiplomaticTie): void;
