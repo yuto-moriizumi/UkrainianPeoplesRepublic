@@ -731,7 +731,8 @@
     "#3161e0": { "x": 509, "y": 467, "owner": "Rebels" }
   },
   "diplomacy": [
-    { "type": "access", "active": false, "root": "GER", "target": "POL" }
+    { "type": "access", "active": false, "root": "GER", "target": "POL" },
+    { "type": "access", "active": false, "root": "GER", "target": "UPR" }
   ],
   "events": [
     {
@@ -806,6 +807,11 @@
                 "#41e061"
               ],
               "root": "LIT"
+            },
+            {
+              "type": "GainAccess",
+              "root": "GER",
+              "target": "LIT"
             }
           ],
           "title": "OK"
@@ -896,6 +902,11 @@
                 "#bf2060"
               ],
               "root": "UBD"
+            },
+            {
+              "type": "GainAccess",
+              "root": "GER",
+              "target": "UBD"
             }
           ],
           "title": "OK"
@@ -916,6 +927,11 @@
               "type": "SetOwner",
               "provinces": ["#4a8e5d", "#806121", "#01e021"],
               "root": "DCS"
+            },
+            {
+              "type": "GainAccess",
+              "root": "GER",
+              "target": "DCS"
             }
           ],
           "title": "OK"
@@ -1007,6 +1023,11 @@
                 "#8061e0"
               ],
               "root": "BPR"
+            },
+            {
+              "type": "GainAccess",
+              "root": "GER",
+              "target": "BPR"
             }
           ],
           "title": "OK"
@@ -1051,6 +1072,16 @@
                 "#b06121"
               ],
               "root": "ROM"
+            },
+            {
+              "type": "GainAccess",
+              "root": "GER",
+              "target": "ROM"
+            },
+            {
+              "type": "GainAccess",
+              "root": "AHE",
+              "target": "ROM"
             }
           ],
           "title": "OK"
@@ -1182,7 +1213,17 @@
               "provinces": ["#6181d2", "#f021a0", "#f0a0e0"],
               "root": "GBR"
             },
-            { "type": "DeclareWar", "root": "GBR", "target": "BUL" }
+            { "type": "DeclareWar", "root": "GBR", "target": "BUL" },
+            {
+              "type": "GainAccess",
+              "root": "GBR",
+              "target": "GRE"
+            },
+            {
+              "type": "GainAccess",
+              "root": "GRE",
+              "target": "GBR"
+            }
           ],
           "title": "OK"
         }
@@ -1223,6 +1264,11 @@
                 "#902161"
               ],
               "root": "SCS"
+            },
+            {
+              "type": "GainAccess",
+              "root": "SER",
+              "target": "SCS"
             }
           ],
           "title": "OK"

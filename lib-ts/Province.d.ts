@@ -21,10 +21,10 @@ export default class Province extends JsonObject {
     createEntries(): any[][];
     isNextTo(province: Province): boolean;
     /**
-     * このプロヴィンスに対して指定の国が通行権を有しているか
+     * このプロヴィンスに対して指定の国が進入可能か
      * @param {Country} country
      * @returns
      * @memberof Province
      */
-    hasAccess(country: Country): boolean;
+    hasAccess(country: Country): true | import("./DiplomaticTies/War").default;
 }

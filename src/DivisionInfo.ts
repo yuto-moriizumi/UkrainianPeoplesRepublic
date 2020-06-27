@@ -159,7 +159,7 @@ export default class DivisionInfo {
     if (this.__dead) return; //すでに死亡ならなにもしない
     this.__dead = true;
     if (this.__progressBar) this.__progressBar.destroy();
-    this._position.removeDivision(this);
+    if (this._position) this._position.removeDivision(this);
     this.__sprite.destroy();
     this.__template.removeDivision(this);
   }

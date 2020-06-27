@@ -10,7 +10,7 @@ export default class DivisionTemplate extends JsonObject {
   private organization: number = 100;
   private attack: number = 20;
   private speed: number = 10;
-  private cost: number = 10;
+  private cost: number = 20;
   private maintenance: number = 1;
   private _divisions: Array<DivisionInfo> = [];
 

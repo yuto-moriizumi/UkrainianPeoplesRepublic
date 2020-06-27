@@ -6,6 +6,7 @@ import SetOwner from "./Effects/SetOwner";
 import Annex from "./Effects/Annex";
 import Peace from "./Effects/Peace";
 import ChangeName from "./Effects/ChangeName";
+import GainAccess from "./Effects/GainAccess";
 
 export default class Option extends JsonObject {
   private title: string;
@@ -29,6 +30,8 @@ export default class Option extends JsonObject {
           return Object.assign(new Peace(), effect);
         case "ChangeName":
           return Object.assign(new ChangeName(), effect);
+        case "GainAccess":
+          return Object.assign(new GainAccess(), effect);
         default:
           throw new Error("一致する効果クラスが見つかりませんでした:");
       }
