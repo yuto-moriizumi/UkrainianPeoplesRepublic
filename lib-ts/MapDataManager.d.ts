@@ -1,12 +1,20 @@
+/**
+ * Mapの拡張クラスです
+ * データロードの順番が重要になる場合に使用します
+ * @export
+ * @class MapDataManager
+ * @template T
+ * @template U
+ */
 export default class MapDataManager<T, U> {
     private map;
     private onLoaded;
     private _isLoaded;
     isLoaded(): boolean;
     set(id: T, item: U): Map<T, U>;
-    get2(id: T, onload: (item: U) => void): void;
+    safeGet(id: T, onload: (item: U) => void): void;
     /**
-     * コールバックを使用せずに値を返します
+     * 値を返します
      * ロードが確実に完了している場合にのみ使用して下さい
      * @param {T} id
      * @returns

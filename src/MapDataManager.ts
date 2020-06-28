@@ -20,12 +20,8 @@ export default class MapDataManager<T, U> {
   }
 
   public safeGet(id: T, onload: (item: U) => void) {
-    new Promise((resolve) => {
-      if (this._isLoaded) resolve(); //既にロード済みなら直ちに実行
-      this.onLoaded.push(() => {
-        resolve();
-      });
-    }).then(() => {
+    if (this._isLoaded) onload(this.map.get(id));
+    this.onLoaded.push(() => {
       onload(this.map.get(id));
     });
   }
@@ -63,10 +59,6 @@ export default class MapDataManager<T, U> {
    */
   public endLoad() {
     this._isLoaded = true;
-    while (this.onLoaded.length > 0) {
-      const func = this.onLoaded.shift();
-      console.log("func exec");
-      func();
-    }
+    while (this.onLoaded.length > 0) this.onLoaded.shift()();
   }
 }
