@@ -22,11 +22,9 @@ export default class CountryAI {
       expeditionRate < 0.2
     ) {
       //戦時中に支出割合が8割を超えていないか、2割を超えていない場合生産
-      const template = GameManager.instance.data
-        .getTemplates()
-        .forEach((template) => {
-          template.buildDivision(this.country);
-        });
+      GameManager.instance.data.getTemplates().forEach((template) => {
+        template.buildDivision(this.country);
+      });
     }
 
     if (!this.country.hasWar()) return; //戦争していないならなにもしない

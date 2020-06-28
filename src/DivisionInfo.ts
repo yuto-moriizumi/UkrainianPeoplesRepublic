@@ -46,19 +46,15 @@ export default class DivisionInfo {
   }
 
   public set position(provinceId: string) {
-    new Promise((resolve) => {
-      //プロヴィンスオブジェクトが必要なので、ロード後に代入する
-      if (GameManager.instance.data.__isProvinceLoaded) resolve(); //既にロード済みなら直ちに代入する
-      GameManager.instance.data.__onProvinceLoaded.push(() => {
-        resolve();
-      });
-    }).then(() => {
-      this.setPosition(GameManager.instance.data.getProvince(provinceId));
+    GameManager.instance.data.getProvinces().safeGet(provinceId, (province) => {
+      this.setPosition(province);
     });
   }
 
   public set destination(provinceId: string) {
-    this._destination = GameManager.instance.data.getProvince(provinceId);
+    GameManager.instance.data.getProvinces().safeGet(provinceId, (province) => {
+      this._destination = province;
+    });
   }
 
   public getMaintainance() {
@@ -200,7 +196,9 @@ export default class DivisionInfo {
   }
 
   public set template(id: string) {
-    this.setTemplate(GameManager.instance.data.getTemplate(id));
+    GameManager.instance.data.getTemplates().safeGet(id, (template) => {
+      this.setTemplate(template);
+    });
   }
 
   public update() {

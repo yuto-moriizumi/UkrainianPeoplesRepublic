@@ -31,7 +31,6 @@ export default class Conscription extends Sidebar {
     const myCountry = scene.getMyCountry();
 
     GameManager.instance.data.getTemplates().forEach((template) => {
-
       const produceButton = new SpriteButton(
         resources[Resource.infantaly].texture
       );

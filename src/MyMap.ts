@@ -155,7 +155,7 @@ export default class MyMap extends PIXI.Sprite {
     const provinceId = this.getProvinceIdFromPoint(point);
     if (!provinceId) return null; //provinceIdがnullの時は何もしない
     const data = GameManager.instance.data;
-    let province = data.getProvince(provinceId);
+    let province = data.getProvinces().get(provinceId);
     if (!province) return null; //provinceがnullの時は何もしない
 
     //BFSで探索
@@ -224,7 +224,7 @@ export default class MyMap extends PIXI.Sprite {
     if (!provinceId) return null; //provinceIdがnullの時は何もしない
     if (provinceId == MyMap.BORDER_COLOR) return null; //境界線の時は何もしない
 
-    let province = data.getProvince(provinceId);
+    let province = data.getProvinces().get(provinceId);
     console.log(provinceId, province);
 
     if (!province) {
@@ -248,35 +248,24 @@ export default class MyMap extends PIXI.Sprite {
   }
 
   public update() {
-    this.replacements = [];
-    /*
-    console.log(
-      GameManager.instance.data,
-      GameManager.instance.data.getProvinces().size
-    );*/
+    const provinces = GameManager.instance.data.getProvinces();
+    provinces.addListener(() => {
+      this.replacements = [];
+      provinces.forEach((province) => {
+        this.replacements.push([
+          PIXI.utils.string2hex(province.getId()),
+          province.getOwner().getColor(),
+        ]);
+      });
 
-    GameManager.instance.data.getProvinces().forEach((province) => {
-      /*
-      console.log("replace", [
-        PIXI.utils.string2hex(province.getId()),
-        province.getOwner().getColor(),
-      ]);
-      */
-      this.replacements.push([
-        PIXI.utils.string2hex(province.getId()),
-        province.getOwner().getColor(),
-      ]);
+      //注意 - どういうわけか、replacementsの長さが1以下だと正しく動作しなくなる
+
+      const filter = new Filters.MultiColorReplaceFilter(
+        this.replacements,
+        0.001
+      );
+      this.filters = [filter];
     });
-    /*
-     * 注意 - どういうわけか、replacementsの長さが1以下だと正しく動作しなくなる
-     */
-
-    const filter = new Filters.MultiColorReplaceFilter(
-      this.replacements,
-      0.001
-    );
-    this.filters = [filter];
-    //console.log("Map updated:", this.replacements);
   }
 
   private moveDivisionsTo(province: Province) {
@@ -313,7 +302,7 @@ export default class MyMap extends PIXI.Sprite {
         provinceId2 !== MyMap.BORDER_COLOR
       )
         //スタートのプロヴィンスでも境界線でもないなら
-        answer.add(GameManager.instance.data.getProvince(provinceId2));
+        answer.add(GameManager.instance.data.getProvinces().get(provinceId2));
 
       if (provinceId2 == MyMap.BORDER_COLOR) {
         //境界線であるならば

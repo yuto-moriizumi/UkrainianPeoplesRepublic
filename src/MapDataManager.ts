@@ -1,15 +1,27 @@
+/**
+ * Mapの拡張クラスです
+ * データロードの順番が重要になる場合に使用します
+ * @export
+ * @class MapDataManager
+ * @template T
+ * @template U
+ */
 export default class MapDataManager<T, U> {
   private map = new Map<T, U>();
   private onLoaded = new Array<any>();
-  private isLoaded = false;
+  private _isLoaded = false;
+
+  public isLoaded(): boolean {
+    return this._isLoaded;
+  }
 
   public set(id: T, item: U) {
     return this.map.set(id, item);
   }
 
-  public get(id: T, onload: (item: U) => {}) {
+  public safeGet(id: T, onload: (item: U) => void) {
     new Promise((resolve) => {
-      if (this.isLoaded) resolve(); //既にロード済みなら直ちに実行
+      if (this._isLoaded) resolve(); //既にロード済みなら直ちに実行
       this.onLoaded.push(() => {
         resolve();
       });
@@ -18,8 +30,43 @@ export default class MapDataManager<T, U> {
     });
   }
 
+  /**
+   * 値を返します
+   * ロードが確実に完了している場合にのみ使用して下さい
+   * @param {T} id
+   * @returns
+   * @memberof MapDataManager
+   */
+  public get(id: T) {
+    if (!this._isLoaded) throw new Error("ロード完了前にgetが呼び出されました");
+    return this.map.get(id);
+  }
+
+  public forEach(callback: (item: U) => void) {
+    if (!this._isLoaded)
+      throw new Error("ロード完了前にforeachが呼び出されました");
+    this.map.forEach(callback);
+  }
+
+  public addListener(func: any) {
+    if (this._isLoaded) {
+      func();
+      return;
+    }
+    this.onLoaded.push(func);
+  }
+
+  /**
+   * 保留していた関数を実行します
+   * データのロードが終わったときに必ず呼び出してください
+   * @memberof MapDataManager
+   */
   public endLoad() {
-    this.isLoaded = true;
-    while (this.onLoaded.length > 0) this.onLoaded.shift()();
+    this._isLoaded = true;
+    while (this.onLoaded.length > 0) {
+      const func = this.onLoaded.shift();
+      console.log("func exec");
+      func();
+    }
   }
 }

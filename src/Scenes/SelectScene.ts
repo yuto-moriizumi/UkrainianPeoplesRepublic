@@ -132,10 +132,6 @@ export default class SelectScene extends Scene implements Selectable {
 
     //デバッグ用
     console.log("hi");
-
-    GameManager.instance.data.getProvinces().forEach((value, key) => {
-      //console.log(key, GameManager.instance.data.getProvince(key));
-    });
   }
 
   private selectAsMyCountry(country?: Country) {

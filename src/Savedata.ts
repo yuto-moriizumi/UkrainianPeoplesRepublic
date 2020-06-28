@@ -9,18 +9,15 @@ import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
 import Access from "./DiplomaticTies/Access";
 import DivisionTemplate from "./DivisionTemplate";
+import MapDataManager from "./MapDataManager";
 
 export default class Savedata implements Jsonable {
   private _countries: Map<string, Country> = new Map<string, Country>();
-  private _provinces: Map<string, Province> = new Map<string, Province>();
+  private _provinces = new MapDataManager<string, Province>();
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _events: Array<Event> = new Array<Event>();
   private _combats: Array<Combat> = new Array<Combat>();
-  private _templates = new Map<string, DivisionTemplate>();
-  public __onProvinceLoaded: Array<any> = new Array<any>();
-  public __isProvinceLoaded: boolean = false;
-  public __onTemplateLoaded: Array<any> = new Array<any>();
-  public __isTemplateLoaded: boolean = false;
+  private _templates = new MapDataManager<string, DivisionTemplate>();
 
   private set countries(countries: object) {
     for (const id in countries) {
@@ -45,19 +42,11 @@ export default class Savedata implements Jsonable {
       );
     }
     console.log("templates loaded:", this._templates);
-    this.__isTemplateLoaded = true;
-    while (this.__onTemplateLoaded.length > 0) {
-      const func = this.__onTemplateLoaded.shift();
-      func();
-    }
+    this._templates.endLoad();
   }
 
   public getTemplates() {
     return this._templates;
-  }
-
-  public getTemplate(id: string) {
-    return this._templates.get(id);
   }
 
   private set provinces(provinces: object) {
@@ -69,11 +58,7 @@ export default class Savedata implements Jsonable {
       this._provinces.set(newId, province);
     }
     console.log("provinces loaded:", this._provinces);
-    this.__isProvinceLoaded = true;
-    while (this.__onProvinceLoaded.length > 0) {
-      const func = this.__onProvinceLoaded.shift();
-      func();
-    }
+    this._provinces.endLoad();
   }
 
   public setProvince(id: string, province: Province) {
@@ -82,10 +67,6 @@ export default class Savedata implements Jsonable {
 
   public getProvinces() {
     return this._provinces;
-  }
-
-  public getProvince(id: string) {
-    return this._provinces.get(id);
   }
 
   private set diplomacy(diplomacy: Array<object>) {
