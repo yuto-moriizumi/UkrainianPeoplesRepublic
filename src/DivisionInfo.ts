@@ -9,6 +9,7 @@ import ArrowProgress from "./ArrowProgress";
 import Combat from "./Combat";
 import JsonConverter from "./JsonConverter";
 import DivisionSprite from "./DivisionSprite";
+import MyMap from "./MyMap";
 
 export default class DivisionInfo {
   private _template: DivisionTemplate;
@@ -72,9 +73,25 @@ export default class DivisionInfo {
 
     //占領処理
     const owner = province.getOwner();
-
     if (owner == this.owner) return;
-    if (owner.getWarInfoWith(this.owner)) province.setOwner(this.owner);
+    if (owner.getWarInfoWith(this.owner)) {
+      const neighbours = MyMap.instance.getNeighborProvinces(province);
+      if (neighbours.some((neighbour) => neighbour.getOwner() == this.owner)) {
+        //占領地の周辺に、この師団の所有国の領土がある場合、領有国はこの師団の所有国になる
+        province.setOwner(this.owner);
+        return;
+      }
+      const neighbourCountriesWarWithOwner = neighbours.filter(
+        //占領地の周辺で、領有国と戦争中の国家を取得
+        (neighbour) => neighbour.getOwner().getWarInfoWith(owner) != null
+      );
+      if (neighbourCountriesWarWithOwner.length > 0) {
+        //あればその国が占領
+        province.setOwner(neighbourCountriesWarWithOwner[0].getOwner());
+        return;
+      }
+      province.setOwner(this.owner); //なければ師団の所有国が占領
+    }
   }
 
   public getPosition() {

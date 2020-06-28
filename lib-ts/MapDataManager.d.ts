@@ -1,3 +1,4 @@
+import Jsonable from "./Jsonable";
 /**
  * Mapの拡張クラスです
  * データロードの順番が重要になる場合に使用します
@@ -6,7 +7,7 @@
  * @template T
  * @template U
  */
-export default class MapDataManager<T, U> {
+export default class MapDataManager<T, U> implements Jsonable {
     private map;
     private onLoaded;
     private _isLoaded;
@@ -29,4 +30,5 @@ export default class MapDataManager<T, U> {
      * @memberof MapDataManager
      */
     endLoad(): void;
+    toJSON(): any;
 }

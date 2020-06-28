@@ -7,6 +7,7 @@ import DivisionSprite from "./DivisionSprite";
 import Arrow from "./Arrow";
 import ArrowProgress from "./ArrowProgress";
 import MainScene from "./Scenes/MainScene";
+import ExtendedSet from "./ExtendedSet";
 
 export default class MyMap extends PIXI.Sprite {
   public static instance: MyMap;
@@ -277,7 +278,7 @@ export default class MyMap extends PIXI.Sprite {
 
     //BFSで探索
     const candidates = new Array<object>();
-    const answer = new Set<Province>();
+    const answer = new ExtendedSet<Province>();
     //{x:number,y:number,over:number(黒線を超えた回数)}
     const already = new Set<number>();
     candidates.push({ x: provincePoint.x, y: provincePoint.y, over: 0 });

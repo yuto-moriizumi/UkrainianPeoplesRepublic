@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js";
 import Province from "./Province";
 import { Selectable } from "./Scenes/Selectable";
 import DivisionSprite from "./DivisionSprite";
+import ExtendedSet from "./ExtendedSet";
 export default class MyMap extends PIXI.Sprite {
     static instance: MyMap;
     private static readonly BORDER_COLOR;
@@ -32,6 +33,6 @@ export default class MyMap extends PIXI.Sprite {
     private getProvince;
     update(): void;
     private moveDivisionsTo;
-    getNeighborProvinces(province: Province): Set<Province>;
+    getNeighborProvinces(province: Province): ExtendedSet<Province>;
     isNextTo(province1: Province, province2: Province): boolean;
 }

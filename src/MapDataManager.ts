@@ -1,3 +1,6 @@
+import Jsonable from "./Jsonable";
+import JsonConverter from "./JsonConverter";
+
 /**
  * Mapの拡張クラスです
  * データロードの順番が重要になる場合に使用します
@@ -6,7 +9,7 @@
  * @template T
  * @template U
  */
-export default class MapDataManager<T, U> {
+export default class MapDataManager<T, U> implements Jsonable {
   private map = new Map<T, U>();
   private onLoaded = new Array<any>();
   private _isLoaded = false;
@@ -60,5 +63,9 @@ export default class MapDataManager<T, U> {
   public endLoad() {
     this._isLoaded = true;
     while (this.onLoaded.length > 0) this.onLoaded.shift()();
+  }
+
+  public toJSON() {
+    return JsonConverter.toJSON(this.map);
   }
 }
