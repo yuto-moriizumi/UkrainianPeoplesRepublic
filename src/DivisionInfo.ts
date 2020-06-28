@@ -9,20 +9,27 @@ import ArrowProgress from "./ArrowProgress";
 import Combat from "./Combat";
 import JsonConverter from "./JsonConverter";
 import DivisionSprite from "./DivisionSprite";
+import MyMap from "./MyMap";
 
 export default class DivisionInfo {
-  private __template: DivisionTemplate;
+  private _template: DivisionTemplate;
   private _position: Province;
-  private _organization: number;
+  private organization: number;
   private __sprite: DivisionSprite;
-  private _destination: Province;
-  private movingProgress: number; //整数値で扱う 100で最大値
+  private _destination: Province = null;
+  private movingProgress: number = 0; //整数値で扱う 100で最大値
   private __progressBar: ArrowProgress;
   private __combats: Array<Combat> = new Array<Combat>();
   private __dead: boolean = false;
+  private __owner: Country;
 
-  constructor(template: DivisionTemplate) {
-    this.__template = template;
+  constructor(owner: Country) {
+    this.__owner = owner;
+    owner.addDivision(this);
+  }
+
+  public setTemplate(template: DivisionTemplate) {
+    this._template = template;
     this.setOrganization(template.getOrganization());
   }
 
@@ -35,24 +42,24 @@ export default class DivisionInfo {
 
   public applyCost() {
     this.owner.__money.setMoney(
-      this.owner.__money.getMoney() - this.__template.getCost()
+      this.owner.__money.getMoney() - this._template.getCost()
     );
   }
 
   public set position(provinceId: string) {
-    new Promise((resolve) => {
-      //プロヴィンスオブジェクトが必要なので、ロード後に代入する
-      if (GameManager.instance.data.__isProvinceLoaded) resolve(); //既にロード済みなら直ちに代入する
-      GameManager.instance.data.__onProvinceLoaded.push(() => {
-        resolve();
-      });
-    }).then(() => {
-      this.setPosition(GameManager.instance.data.getProvince(provinceId));
+    GameManager.instance.data.getProvinces().safeGet(provinceId, (province) => {
+      this.setPosition(province);
     });
   }
 
   public set destination(provinceId: string) {
-    this._destination = GameManager.instance.data.getProvince(provinceId);
+    GameManager.instance.data.getProvinces().safeGet(provinceId, (province) => {
+      this._destination = province;
+    });
+  }
+
+  public getMaintainance() {
+    return this._template.getMaintainance();
   }
 
   public setPosition(province: Province) {
@@ -66,10 +73,44 @@ export default class DivisionInfo {
 
     //占領処理
     const owner = province.getOwner();
+    if (owner == this.owner) return;
+    if (owner.getWarInfoWith(this.owner)) {
+      if (province.getCulture() == this.owner.getCulture()) {
+        //プロヴィンスの文化が師団の所有国と同じなら、この師団の所有国が領有国になる
+        province.setOwner(this.owner);
+        return;
+      }
 
-    if (owner == this.__template.owner) return;
-    if (owner.getWarInfoWith(this.__template.owner))
-      province.setOwner(this.__template.owner);
+      //旧領有国と戦争中で、このプロヴィンスと同じ文化の国があるならば、その国が占領する
+      let countryOfThisCulture = null;
+      GameManager.instance.data.getCountries().forEach((country) => {
+        const war = country.getWarInfoWith(owner);
+        const culture = country.getCulture();
+        if (war && culture == province.getCulture())
+          countryOfThisCulture = country;
+      });
+      if (countryOfThisCulture) {
+        province.setOwner(countryOfThisCulture);
+        return;
+      }
+
+      const neighbours = MyMap.instance.getNeighborProvinces(province);
+      if (neighbours.some((neighbour) => neighbour.getOwner() == this.owner)) {
+        //占領地の周辺に、この師団の所有国の領土がある場合、この師団の所有国が領有国になる
+        province.setOwner(this.owner);
+        return;
+      }
+      const neighbourCountriesWarWithOwner = neighbours.filter(
+        //占領地の周辺で、領有国と戦争中の国家を取得
+        (neighbour) => neighbour.getOwner().getWarInfoWith(owner) != null
+      );
+      if (neighbourCountriesWarWithOwner.length > 0) {
+        //あればその国が占領
+        province.setOwner(neighbourCountriesWarWithOwner[0].getOwner());
+        return;
+      }
+      province.setOwner(this.owner); //なければ師団の所有国が占領
+    }
   }
 
   public getPosition() {
@@ -77,7 +118,7 @@ export default class DivisionInfo {
   }
 
   public get owner() {
-    return this.__template.owner;
+    return this.__owner;
   }
 
   public get sprite() {
@@ -87,22 +128,22 @@ export default class DivisionInfo {
   public attack(target: DivisionInfo) {
     target.setOrganization(
       target.getOrganization() -
-        this.__template.getAttack() / this.__combats.length //攻撃に参加している数だけ弱くなる
+        this._template.getAttack() / this.__combats.length //攻撃に参加している数だけ弱くなる
     );
     this.setOrganization(
       this.getOrganization() -
-        target.__template.getAttack() / target.__combats.length //攻撃に参加している数だけ弱くなる
+        target._template.getAttack() / target.__combats.length //攻撃に参加している数だけ弱くなる
     );
   }
 
   public getOrganization() {
-    return this._organization;
+    return this.organization;
   }
 
   public setOrganization(organization: number) {
-    this._organization = Math.min(
+    this.organization = Math.min(
       Math.max(0, organization),
-      this.__template.getOrganization()
+      this._template.getOrganization()
     );
   }
 
@@ -114,15 +155,19 @@ export default class DivisionInfo {
   }
 
   public getTemplate() {
-    return this.__template;
+    return this._template;
   }
 
   public moveTo(destination: Province) {
     //移動先が変更なければ何もしない
     if (this._destination == destination) return;
-    //移動可能かチェック（隣接しているプロヴィンスのみ）
-    if (!this._position.isNextTo(destination) || !this.movableTo(destination))
-      return;
+    //移動可能かチェック
+    if (
+      (!MainScene.instance.cheat_move && //移動チートが無効で
+        !this._position.isNextTo(destination)) || //隣接していないか
+      !this.movableTo(destination) //進入不可な場合は
+    )
+      return; //何もしない
 
     if (this.__progressBar) {
       this.__progressBar.destroy();
@@ -137,6 +182,12 @@ export default class DivisionInfo {
     this.movingProgress = 0;
     this.__progressBar = new ArrowProgress(this.getPosition(), destination);
     MainScene.instance.getMap().addChild(this.__progressBar);
+
+    if (MainScene.instance.cheat_move) {
+      //移動チート有効な場合は直ちに移動
+      this.setPosition(this._destination);
+      this.stopMove();
+    }
   }
 
   private hasCombatWith(target: DivisionInfo) {
@@ -159,9 +210,9 @@ export default class DivisionInfo {
     if (this.__dead) return; //すでに死亡ならなにもしない
     this.__dead = true;
     if (this.__progressBar) this.__progressBar.destroy();
-    this._position.removeDivision(this);
+    if (this._position) this._position.removeDivision(this);
     this.__sprite.destroy();
-    this.__template.removeDivision(this);
+    this.__owner.removeDivision(this);
   }
 
   public stopMove() {
@@ -180,36 +231,48 @@ export default class DivisionInfo {
     return this.__combats.length > 0;
   }
 
+  public set template(id: string) {
+    GameManager.instance.data.getTemplates().safeGet(id, (template) => {
+      this.setTemplate(template);
+    });
+  }
+
   public update() {
-    if (this._destination) {
-      this.movingProgress = Math.min(
-        100,
-        this.movingProgress + this.__template.getSpeed()
-      );
-      this.__progressBar.setProgress(this.movingProgress);
+    try {
+      if (this._destination) {
+        this.movingProgress = Math.min(
+          100,
+          this.movingProgress + this._template.getSpeed()
+        );
+        this.__progressBar.setProgress(this.movingProgress);
 
-      //戦闘判定
+        //戦闘判定
 
-      this._destination.getDivisons().forEach((division) => {
-        if (!division.owner.getWarInfoWith(this.owner)) return; //戦争していないなら関係ない
-        if (this.hasCombatWith(division)) return; //すでに戦闘が発生しているならreturn
+        this._destination.getDivisons().forEach((division) => {
+          if (!division.owner.getWarInfoWith(this.owner)) return; //戦争していないなら関係ない
+          if (this.hasCombatWith(division)) return; //すでに戦闘が発生しているならreturn
 
-        Combat.create(this, division);
-      });
+          Combat.create(this, division);
+        });
 
-      if (this.movingProgress >= 100 && this.__combats.length == 0) {
-        //移動終了判定
+        if (this.movingProgress >= 100 && this.__combats.length == 0) {
+          //移動終了判定
 
-        this.setPosition(this._destination);
-        this.stopMove();
-      } else {
+          this.setPosition(this._destination);
+          this.stopMove();
+        } else {
+        }
       }
+    } catch (error) {
+      console.log(error);
+      console.log(this);
     }
   }
 
   private toJSON() {
     return JsonConverter.toJSON(this, (key, value) => {
       if (value instanceof Province) return [key, value.getId()]; //プロヴィンスはIDにしておく
+      if (value instanceof DivisionTemplate) return [key, value.getId()]; //テンプレートもIDにする
       return [key, value];
     });
   }

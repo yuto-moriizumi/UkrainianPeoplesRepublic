@@ -4,21 +4,25 @@ import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import Event from "./Events/Event";
 import Combat from "./Combat";
 import Jsonable from "./Jsonable";
+import DivisionTemplate from "./DivisionTemplate";
+import MapDataManager from "./MapDataManager";
+import SetDataManager from "./SetDataManager";
 export default class Savedata implements Jsonable {
     private _countries;
     private _provinces;
     private _diplomacy;
     private _events;
     private _combats;
-    __onProvinceLoaded: Array<any>;
-    __isProvinceLoaded: boolean;
+    private _templates;
+    private _cultures;
     private set countries(value);
     getCountries(): Map<string, Country>;
     getCountry(id: string): Country;
+    private set templates(value);
+    getTemplates(): MapDataManager<string, DivisionTemplate>;
     private set provinces(value);
     setProvince(id: string, province: Province): void;
-    getProvinces(): Map<string, Province>;
-    getProvince(id: string): Province;
+    getProvinces(): MapDataManager<string, Province>;
     private set diplomacy(value);
     addDiplomacy(diplomacy: DiplomaticTie): void;
     removeDiplomacy(diplomacy: DiplomaticTie): void;
@@ -30,5 +34,7 @@ export default class Savedata implements Jsonable {
     getCombats(): Combat[];
     load(json: object): void;
     toJSON(): any;
+    private set cultures(value);
+    getCultures(): SetDataManager<string>;
     download(): void;
 }

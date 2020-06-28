@@ -8,6 +8,7 @@ export default class Province extends JsonObject {
     private x;
     private y;
     private __divisions;
+    private _culture;
     constructor(id: string);
     private set owner(value);
     getId(): string;
@@ -21,10 +22,13 @@ export default class Province extends JsonObject {
     createEntries(): any[][];
     isNextTo(province: Province): boolean;
     /**
-     * このプロヴィンスに対して指定の国が通行権を有しているか
+     * このプロヴィンスに対して指定の国が進入可能か
      * @param {Country} country
      * @returns
      * @memberof Province
      */
-    hasAccess(country: Country): boolean;
+    hasAccess(country: Country): true | import("./DiplomaticTies/War").default;
+    private set culture(value);
+    setCulture(culture: string): void;
+    getCulture(): string;
 }

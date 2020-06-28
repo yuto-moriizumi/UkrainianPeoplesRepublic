@@ -1,16 +1,17 @@
 import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import War from "./DiplomaticTies/War";
-import DivisionTemplate from "./DivisionTemplate";
 import Jsonable from "./Jsonable";
 import Money from "./Money";
+import DivisionInfo from "./DivisionInfo";
 export default class Country implements Jsonable {
     private __id;
     private static readonly SEA_ID;
     private _color;
     name: string;
     flag: string;
+    private _culture;
     private __diplomaticTies;
-    private _templates;
+    private _divisions;
     private __ai;
     __money: Money;
     constructor(id: string);
@@ -19,9 +20,6 @@ export default class Country implements Jsonable {
     getDiplomacy(): DiplomaticTie[];
     set color(color: string);
     getColor(): number;
-    addDivisionTemplate(template: DivisionTemplate): void;
-    getDivisionTemplates(): DivisionTemplate[];
-    hasAnyDivisionTemplate(): boolean;
     get id(): string;
     private set divisions(value);
     /**
@@ -36,6 +34,10 @@ export default class Country implements Jsonable {
     calcMaintanance(): number;
     calcBalance(): number;
     update(): void;
+    getDivisions(): DivisionInfo[];
+    addDivision(division: DivisionInfo): void;
+    removeDivision(division: DivisionInfo): void;
+    private set templates(value);
     /**
      * 何らかの理由で国が消滅する場合に呼ぶ
      * オブジェクトが消えるわけではない
@@ -48,5 +50,7 @@ export default class Country implements Jsonable {
      * @memberof Country
      */
     hasAccessTo(country: Country): boolean;
+    private set culture(value);
+    getCulture(): string;
     toJSON(): any;
 }

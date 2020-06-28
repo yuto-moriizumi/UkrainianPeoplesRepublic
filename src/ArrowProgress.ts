@@ -2,7 +2,7 @@ import Arrow from "./Arrow";
 import Province from "./Province";
 
 export default class ArrowProgress extends Arrow {
-  private progress = 0; //0～100%
+  private progress = 0; //これは0～100%
 
   constructor(from: Province, to: Province) {
     super(from, to);

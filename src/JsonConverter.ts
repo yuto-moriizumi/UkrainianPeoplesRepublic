@@ -1,3 +1,5 @@
+import JsonObject from "./JsonObject";
+
 /**
  * オブジェクトをJSONに変換するためのユーティリティクラス
  * _で始まる変数は、json出力時に_が外れます 非ピリミティブメンバに利用して下さい
@@ -14,6 +16,7 @@ export default class JsonConverter {
         if (key.startsWith("_")) key = key.substr(1);
         if (value instanceof Map) value = Object.fromEntries(value);
         if (replacer) [key, value] = replacer(key, value);
+        if (value instanceof JsonObject) value = value.toJSON();
         return [key, value];
       })
     );

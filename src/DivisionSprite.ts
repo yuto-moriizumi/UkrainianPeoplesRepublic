@@ -86,4 +86,8 @@ export default class DivisionSprite extends VerticalBox {
       division.getInfo().moveTo(province);
     });
   }
+
+  public static hasSelectingDivisions() {
+    return DivisionSprite.selects.size > 0;
+  }
 }

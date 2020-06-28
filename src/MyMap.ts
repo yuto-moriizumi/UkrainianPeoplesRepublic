@@ -7,6 +7,7 @@ import DivisionSprite from "./DivisionSprite";
 import Arrow from "./Arrow";
 import ArrowProgress from "./ArrowProgress";
 import MainScene from "./Scenes/MainScene";
+import ExtendedSet from "./ExtendedSet";
 
 export default class MyMap extends PIXI.Sprite {
   public static instance: MyMap;
@@ -60,7 +61,18 @@ export default class MyMap extends PIXI.Sprite {
       this.scene.selectProvince(this.getClickedProvince(e));
     });
     this.on("rightclick", (e: PIXI.interaction.InteractionEvent) => {
-      this.moveDivisionsTo(this.getClickedProvince(e));
+      console.log("rightclick");
+
+      if (DivisionSprite.hasSelectingDivisions()) {
+        console.log("has select");
+
+        //選択している師団があれば、移動
+        this.moveDivisionsTo(this.getClickedProvince(e));
+        return;
+      }
+      //そうでなければ外交画面を開く
+      if (this.scene instanceof MainScene)
+        this.scene.openDiplomacySidebar(this.getClickedProvince(e).getOwner());
     });
   }
 
@@ -155,7 +167,7 @@ export default class MyMap extends PIXI.Sprite {
     const provinceId = this.getProvinceIdFromPoint(point);
     if (!provinceId) return null; //provinceIdがnullの時は何もしない
     const data = GameManager.instance.data;
-    let province = data.getProvince(provinceId);
+    let province = data.getProvinces().get(provinceId);
     if (!province) return null; //provinceがnullの時は何もしない
 
     //BFSで探索
@@ -224,7 +236,7 @@ export default class MyMap extends PIXI.Sprite {
     if (!provinceId) return null; //provinceIdがnullの時は何もしない
     if (provinceId == MyMap.BORDER_COLOR) return null; //境界線の時は何もしない
 
-    let province = data.getProvince(provinceId);
+    let province = data.getProvinces().get(provinceId);
     console.log(provinceId, province);
 
     if (!province) {
@@ -248,35 +260,24 @@ export default class MyMap extends PIXI.Sprite {
   }
 
   public update() {
-    this.replacements = [];
-    /*
-    console.log(
-      GameManager.instance.data,
-      GameManager.instance.data.getProvinces().size
-    );*/
+    const provinces = GameManager.instance.data.getProvinces();
+    provinces.addListener(() => {
+      this.replacements = [];
+      provinces.forEach((province) => {
+        this.replacements.push([
+          PIXI.utils.string2hex(province.getId()),
+          province.getOwner().getColor(),
+        ]);
+      });
 
-    GameManager.instance.data.getProvinces().forEach((province) => {
-      /*
-      console.log("replace", [
-        PIXI.utils.string2hex(province.getId()),
-        province.getOwner().getColor(),
-      ]);
-      */
-      this.replacements.push([
-        PIXI.utils.string2hex(province.getId()),
-        province.getOwner().getColor(),
-      ]);
+      //注意 - どういうわけか、replacementsの長さが1以下だと正しく動作しなくなる
+
+      const filter = new Filters.MultiColorReplaceFilter(
+        this.replacements,
+        0.001
+      );
+      this.filters = [filter];
     });
-    /*
-     * 注意 - どういうわけか、replacementsの長さが1以下だと正しく動作しなくなる
-     */
-
-    const filter = new Filters.MultiColorReplaceFilter(
-      this.replacements,
-      0.001
-    );
-    this.filters = [filter];
-    //console.log("Map updated:", this.replacements);
   }
 
   private moveDivisionsTo(province: Province) {
@@ -288,7 +289,7 @@ export default class MyMap extends PIXI.Sprite {
 
     //BFSで探索
     const candidates = new Array<object>();
-    const answer = new Set<Province>();
+    const answer = new ExtendedSet<Province>();
     //{x:number,y:number,over:number(黒線を超えた回数)}
     const already = new Set<number>();
     candidates.push({ x: provincePoint.x, y: provincePoint.y, over: 0 });
@@ -313,7 +314,7 @@ export default class MyMap extends PIXI.Sprite {
         provinceId2 !== MyMap.BORDER_COLOR
       )
         //スタートのプロヴィンスでも境界線でもないなら
-        answer.add(GameManager.instance.data.getProvince(provinceId2));
+        answer.add(GameManager.instance.data.getProvinces().get(provinceId2));
 
       if (provinceId2 == MyMap.BORDER_COLOR) {
         //境界線であるならば

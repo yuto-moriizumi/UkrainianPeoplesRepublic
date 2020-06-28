@@ -13,6 +13,7 @@ export default class MainScene extends Scene implements Selectable {
     private sidebar;
     private eventDispatcher;
     selectingDivison: DivisionSprite;
+    cheat_move: boolean;
     constructor(playCountry: Country);
     protected createInitialResourceList(): (LoaderAddParam | string)[];
     protected onResourceLoaded(): void;
@@ -20,6 +21,7 @@ export default class MainScene extends Scene implements Selectable {
     openDiplomacySidebar(country: Country): void;
     openConscription(): void;
     openDebug(): void;
+    openProvinceSidebar(province: Province): void;
     getMap(): MyMap;
     update(dt: number): void;
     getMyCountry(): Country;

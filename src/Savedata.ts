@@ -8,15 +8,19 @@ import Combat from "./Combat";
 import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
 import Access from "./DiplomaticTies/Access";
+import DivisionTemplate from "./DivisionTemplate";
+import MapDataManager from "./MapDataManager";
+import ExtendedSet from "./ExtendedSet";
+import SetDataManager from "./SetDataManager";
 
 export default class Savedata implements Jsonable {
   private _countries: Map<string, Country> = new Map<string, Country>();
-  private _provinces: Map<string, Province> = new Map<string, Province>();
+  private _provinces = new MapDataManager<string, Province>();
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _events: Array<Event> = new Array<Event>();
   private _combats: Array<Combat> = new Array<Combat>();
-  public __onProvinceLoaded: Array<any> = new Array<any>();
-  public __isProvinceLoaded: boolean = false;
+  private _templates = new MapDataManager<string, DivisionTemplate>();
+  private _cultures = new SetDataManager<string>();
 
   private set countries(countries: object) {
     for (const id in countries) {
@@ -33,6 +37,21 @@ export default class Savedata implements Jsonable {
     return this._countries.get(id);
   }
 
+  private set templates(templates: object) {
+    for (const id in templates) {
+      this._templates.set(
+        id,
+        Object.assign(new DivisionTemplate(id), templates[id])
+      );
+    }
+    console.log("templates loaded:", this._templates);
+    this._templates.endLoad();
+  }
+
+  public getTemplates() {
+    return this._templates;
+  }
+
   private set provinces(provinces: object) {
     for (const id in provinces) {
       const newId = id.substr(0, 1) == "#" ? id : "#" + id;
@@ -42,11 +61,7 @@ export default class Savedata implements Jsonable {
       this._provinces.set(newId, province);
     }
     console.log("provinces loaded:", this._provinces);
-    this.__isProvinceLoaded = true;
-    while (this.__onProvinceLoaded.length > 0) {
-      const func = this.__onProvinceLoaded.shift();
-      func();
-    }
+    this._provinces.endLoad();
   }
 
   public setProvince(id: string, province: Province) {
@@ -57,30 +72,26 @@ export default class Savedata implements Jsonable {
     return this._provinces;
   }
 
-  public getProvince(id: string) {
-    return this._provinces.get(id);
-  }
-
   private set diplomacy(diplomacy: Array<object>) {
-    this._diplomacy = diplomacy.map((tie) => {
+    diplomacy.forEach((tie) => {
       switch (tie["type"]) {
-        case "war":
+        case "War":
           const war = new War(
             this._countries.get(tie["root"]),
             this._countries.get(tie["target"])
           );
           war.activate();
-          return war;
-        case "access":
+          return;
+        case "Access":
           const access = new Access(
             this._countries.get(tie["root"]),
             this._countries.get(tie["target"])
           );
           access.activate();
-          return access;
+          return;
         default:
           new Error("diplomacy load error:" + tie["type"]);
-          return null;
+          return;
       }
     });
     console.log("diplomacy loaded:", this._diplomacy);
@@ -132,6 +143,17 @@ export default class Savedata implements Jsonable {
 
   public toJSON() {
     return JsonConverter.toJSON(this);
+  }
+
+  private set cultures(cultures: object) {
+    this._cultures.setCollection(cultures);
+
+    console.log("cultures loaded:", this._cultures);
+    this._cultures.endLoad("culture");
+  }
+
+  public getCultures() {
+    return this._cultures;
   }
 
   public download() {

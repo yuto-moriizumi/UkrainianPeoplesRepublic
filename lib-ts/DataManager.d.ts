@@ -1,24 +1,23 @@
-import Country from "./Country";
-import Province from "./Province";
-import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
-import Event from "./Events/Event";
 import JsonObject from "./JsonObject";
-export default class Savedata extends JsonObject {
-    private _countries;
-    private _provinces;
-    private _diplomacy;
-    private _events;
-    private set countries(value);
-    getCountries(): Map<string, Country>;
-    getCountry(id: string): Country;
-    private set provinces(value);
-    setProvince(id: string, province: Province): void;
-    getProvinces(): Map<string, Province>;
-    getProvince(id: string): Province;
-    private set diplomacy(value);
-    addDiplomacy(diplomacy: DiplomaticTie): void;
-    private set events(value);
-    getEvents(): Event[];
-    load(json: object): void;
-    download(): void;
+/**
+ * データロードの順番が重要になる場合に使用します
+ * 関数を登録しますので、要求されるまえにこのオブジェクトを生成しておき、
+ * このインスタンスが格納された変数を書き換えない様にしてください
+ * @export
+ * @abstract
+ * @class DataManager
+ * @extends {JsonObject}
+ */
+export default abstract class DataManager extends JsonObject {
+    onLoaded: any[];
+    _isLoaded: boolean;
+    ON_CREATED: void;
+    isLoaded(): boolean;
+    addListener(func: any): void;
+    /**
+     * 保留していた関数を実行します
+     * データのロードが終わったときに必ず呼び出してください
+     * @memberof MapDataManager
+     */
+    endLoad(test?: string): void;
 }

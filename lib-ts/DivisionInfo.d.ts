@@ -4,20 +4,23 @@ import DivisionTemplate from "./DivisionTemplate";
 import Combat from "./Combat";
 import DivisionSprite from "./DivisionSprite";
 export default class DivisionInfo {
-    private __template;
+    private _template;
     private _position;
-    private _organization;
+    private organization;
     private __sprite;
     private _destination;
     private movingProgress;
     private __progressBar;
     private __combats;
     private __dead;
-    constructor(template: DivisionTemplate);
+    private __owner;
+    constructor(owner: Country);
+    setTemplate(template: DivisionTemplate): void;
     createSprite(): void;
     applyCost(): void;
     set position(provinceId: string);
     set destination(provinceId: string);
+    getMaintainance(): number;
     setPosition(province: Province): void;
     getPosition(): Province;
     get owner(): Country;
@@ -35,6 +38,7 @@ export default class DivisionInfo {
     stopMove(): void;
     isMoving(): boolean;
     isFighting(): boolean;
+    set template(id: string);
     update(): void;
     private toJSON;
 }

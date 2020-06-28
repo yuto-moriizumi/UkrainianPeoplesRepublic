@@ -3,6 +3,7 @@ import War from "./DiplomaticTies/War";
 import MyMap from "./MyMap";
 import DivisionTemplate from "./DivisionTemplate";
 import DivisionInfo from "./DivisionInfo";
+import GameManager from "./GameManager";
 
 export default class CountryAI {
   private country: Country;
@@ -11,12 +12,6 @@ export default class CountryAI {
   }
 
   public update() {
-    if (!this.country.hasAnyDivisionTemplate()) {
-      //師団テンプレートが無かったらテンプレートを追加
-      const template = new DivisionTemplate(this.country);
-      this.country.addDivisionTemplate(template);
-    }
-
     //師団の生産
     //維持コストの計算
     const balance = this.country.calcBalance();
@@ -27,8 +22,9 @@ export default class CountryAI {
       expeditionRate < 0.2
     ) {
       //戦時中に支出割合が8割を超えていないか、2割を超えていない場合生産
-      const template = this.country.getDivisionTemplates()[0];
-      template.buildDivision();
+      GameManager.instance.data.getTemplates().forEach((template) => {
+        template.buildDivision(this.country);
+      });
     }
 
     if (!this.country.hasWar()) return; //戦争していないならなにもしない
@@ -42,43 +38,41 @@ export default class CountryAI {
       })[0]
       .getOpponent(this.country);
 
-    this.country.getDivisionTemplates().forEach((template) => {
-      template.getDivisions().forEach((division) => {
-        if (
-          division.getPosition() == null ||
-          division.isMoving() ||
-          division.isFighting()
-        )
-          return;
-        //プロヴィンスに属していて、移動も戦闘もしていないならば、師団を動かす
+    this.country.getDivisions().forEach((division) => {
+      if (
+        division.getPosition() == null ||
+        division.isMoving() ||
+        division.isFighting()
+      )
+        return;
+      //プロヴィンスに属していて、移動も戦闘もしていないならば、師団を動かす
 
-        const targetProvince = targetCountry.getRandomOwnProvince();
-        const targetCoord = targetProvince.getCoord();
+      const targetProvince = targetCountry.getRandomOwnProvince();
+      const targetCoord = targetProvince.getCoord();
 
-        const position = division.getPosition();
-        //一番近いプロヴィンスに突撃
-        let minDistance = 10 ** 8;
-        let closetProvince = null;
+      const position = division.getPosition();
+      //一番近いプロヴィンスに突撃
+      let minDistance = 10 ** 8;
+      let closetProvince = null;
 
-        //最も近いプロヴィンスを求める
-        MyMap.instance.getNeighborProvinces(position).forEach((province) => {
-          //進入可能か確認
-          if (!province.hasAccess(this.country)) return;
+      //最も近いプロヴィンスを求める
+      MyMap.instance.getNeighborProvinces(position).forEach((province) => {
+        //進入可能か確認
+        if (!province.hasAccess(this.country)) return;
 
-          //距離の最小値で更新
-          const provinceCoord = province.getCoord();
-          const distance =
-            (provinceCoord.x - targetCoord.x) ** 2 +
-            (provinceCoord.y - targetCoord.y) ** 2;
-          if (distance < minDistance) {
-            minDistance = distance;
-            closetProvince = province;
-          }
-        });
-
-        //敵国に一番近いプロヴィンスに動かす
-        division.moveTo(closetProvince);
+        //距離の最小値で更新
+        const provinceCoord = province.getCoord();
+        const distance =
+          (provinceCoord.x - targetCoord.x) ** 2 +
+          (provinceCoord.y - targetCoord.y) ** 2;
+        if (distance < minDistance) {
+          minDistance = distance;
+          closetProvince = province;
+        }
       });
+
+      //敵国に一番近いプロヴィンスに動かす
+      division.moveTo(closetProvince);
     });
   }
 }
