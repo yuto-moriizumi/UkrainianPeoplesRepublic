@@ -6,7 +6,7 @@ import DivisionSprite from "./DivisionSprite";
 export default class DivisionInfo {
     private __template;
     private _position;
-    private _organization;
+    private organization;
     private __sprite;
     private _destination;
     private movingProgress;

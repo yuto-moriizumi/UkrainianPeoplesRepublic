@@ -55,9 +55,10 @@ export default class Country implements Jsonable {
   }
 
   private set divisions(divisions: any) {
-    this._divisions = divisions.map((division) =>
-      Object.assign(new DivisionInfo(this), division)
-    );
+    divisions.map((division) => {
+      //配列に追加する機能はDivisionInfoにある
+      Object.assign(new DivisionInfo(this), division);
+    });
   }
 
   /**

@@ -1,7 +1,20 @@
 {
   "countries": {
     "UPR": {
-      "divisions": [],
+      "divisions": [
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#e001e0"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#71e0a0"
+        }
+      ],
       "color": "5bbb",
       "name": "ウクライナ人民共和国",
       "flag": "Ukraine.png"
@@ -19,13 +32,105 @@
       "flag": "CPR.png"
     },
     "RPG": {
-      "divisions": [],
+      "divisions": [
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#c05001"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#019041"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#405080"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#01d041"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#80d080"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#dfa0a0"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#0a78c3"
+        }
+      ],
       "color": "ac77c5",
       "name": "ロシア共和国",
       "flag": "RPG.png"
     },
     "USSR": {
-      "divisions": [],
+      "divisions": [
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#805140"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#0121a0"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#801040"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#015040"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#e0c080"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#e06020"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#8020df"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#a0a0a0"
+        }
+      ],
       "color": "ff0000",
       "name": "ロシア＝ソヴィエト連邦社会主義共和国",
       "flag": "USSR.png"
@@ -85,7 +190,50 @@
       "flag": "ROM.png"
     },
     "GER": {
-      "divisions": [],
+      "divisions": [
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#e06176"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#80e0a0"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#416161"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#51a0e0"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#c06121"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#bfdf20"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "organization": 100,
+          "position": "#40df20"
+        }
+      ],
       "color": "a81500",
       "name": "ドイツ帝国",
       "flag": "GER.png"

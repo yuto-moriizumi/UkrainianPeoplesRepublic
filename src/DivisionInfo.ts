@@ -13,10 +13,10 @@ import DivisionSprite from "./DivisionSprite";
 export default class DivisionInfo {
   private __template: DivisionTemplate;
   private _position: Province;
-  private _organization: number;
+  private organization: number;
   private __sprite: DivisionSprite;
-  private _destination: Province;
-  private movingProgress: number; //整数値で扱う 100で最大値
+  private _destination: Province = null;
+  private movingProgress: number = 0; //整数値で扱う 100で最大値
   private __progressBar: ArrowProgress;
   private __combats: Array<Combat> = new Array<Combat>();
   private __dead: boolean = false;
@@ -105,11 +105,11 @@ export default class DivisionInfo {
   }
 
   public getOrganization() {
-    return this._organization;
+    return this.organization;
   }
 
   public setOrganization(organization: number) {
-    this._organization = Math.min(
+    this.organization = Math.min(
       Math.max(0, organization),
       this.__template.getOrganization()
     );
