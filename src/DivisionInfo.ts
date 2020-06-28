@@ -11,7 +11,7 @@ import JsonConverter from "./JsonConverter";
 import DivisionSprite from "./DivisionSprite";
 
 export default class DivisionInfo {
-  private __template: DivisionTemplate;
+  private _template: DivisionTemplate;
   private _position: Province;
   private organization: number;
   private __sprite: DivisionSprite;
@@ -28,7 +28,7 @@ export default class DivisionInfo {
   }
 
   public setTemplate(template: DivisionTemplate) {
-    this.__template = template;
+    this._template = template;
     this.setOrganization(template.getOrganization());
   }
 
@@ -41,7 +41,7 @@ export default class DivisionInfo {
 
   public applyCost() {
     this.owner.__money.setMoney(
-      this.owner.__money.getMoney() - this.__template.getCost()
+      this.owner.__money.getMoney() - this._template.getCost()
     );
   }
 
@@ -62,7 +62,7 @@ export default class DivisionInfo {
   }
 
   public getMaintainance() {
-    return this.__template.getMaintainance();
+    return this._template.getMaintainance();
   }
 
   public setPosition(province: Province) {
@@ -96,11 +96,11 @@ export default class DivisionInfo {
   public attack(target: DivisionInfo) {
     target.setOrganization(
       target.getOrganization() -
-        this.__template.getAttack() / this.__combats.length //攻撃に参加している数だけ弱くなる
+        this._template.getAttack() / this.__combats.length //攻撃に参加している数だけ弱くなる
     );
     this.setOrganization(
       this.getOrganization() -
-        target.__template.getAttack() / target.__combats.length //攻撃に参加している数だけ弱くなる
+        target._template.getAttack() / target.__combats.length //攻撃に参加している数だけ弱くなる
     );
   }
 
@@ -111,7 +111,7 @@ export default class DivisionInfo {
   public setOrganization(organization: number) {
     this.organization = Math.min(
       Math.max(0, organization),
-      this.__template.getOrganization()
+      this._template.getOrganization()
     );
   }
 
@@ -123,7 +123,7 @@ export default class DivisionInfo {
   }
 
   public getTemplate() {
-    return this.__template;
+    return this._template;
   }
 
   public moveTo(destination: Province) {
@@ -199,12 +199,16 @@ export default class DivisionInfo {
     return this.__combats.length > 0;
   }
 
+  public set template(id: string) {
+    this.setTemplate(GameManager.instance.data.getTemplate(id));
+  }
+
   public update() {
     try {
       if (this._destination) {
         this.movingProgress = Math.min(
           100,
-          this.movingProgress + this.__template.getSpeed()
+          this.movingProgress + this._template.getSpeed()
         );
         this.__progressBar.setProgress(this.movingProgress);
 
@@ -234,6 +238,7 @@ export default class DivisionInfo {
   private toJSON() {
     return JsonConverter.toJSON(this, (key, value) => {
       if (value instanceof Province) return [key, value.getId()]; //プロヴィンスはIDにしておく
+      if (value instanceof DivisionTemplate) return [key, value.getId()]; //テンプレートもIDにする
       return [key, value];
     });
   }

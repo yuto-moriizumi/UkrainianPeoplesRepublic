@@ -29,7 +29,7 @@ export default class DebugSidebar extends Sidebar {
     money_cheat.on("click", () => {
       scene
         .getMyCountry()
-        .__money.setMoney(scene.getMyCountry().__money.getMoney() + 20);
+        .__money.setMoney(scene.getMyCountry().__money.getMoney() * 2 + 10);
     });
     this.addPart(money_cheat);
   }

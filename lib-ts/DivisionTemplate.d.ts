@@ -10,6 +10,7 @@ export default class DivisionTemplate extends JsonObject {
     private maintenance;
     private aiProductionRate;
     constructor(id: any);
+    getId(): string;
     getSpeed(): number;
     getAttack(): number;
     getOrganization(): number;

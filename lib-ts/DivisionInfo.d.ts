@@ -4,7 +4,7 @@ import DivisionTemplate from "./DivisionTemplate";
 import Combat from "./Combat";
 import DivisionSprite from "./DivisionSprite";
 export default class DivisionInfo {
-    private __template;
+    private _template;
     private _position;
     private organization;
     private __sprite;
@@ -38,6 +38,7 @@ export default class DivisionInfo {
     stopMove(): void;
     isMoving(): boolean;
     isFighting(): boolean;
+    set template(id: string);
     update(): void;
     private toJSON;
 }

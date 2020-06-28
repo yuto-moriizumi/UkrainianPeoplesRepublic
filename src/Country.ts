@@ -55,9 +55,17 @@ export default class Country implements Jsonable {
   }
 
   private set divisions(divisions: any) {
-    divisions.map((division) => {
-      //配列に追加する機能はDivisionInfoにある
-      Object.assign(new DivisionInfo(this), division);
+    new Promise((resolve) => {
+      //テンプレートオブジェクトが必要なので、ロード後に代入する
+      if (GameManager.instance.data.__isTemplateLoaded) resolve(); //既にロード済みなら直ちに代入する
+      GameManager.instance.data.__onTemplateLoaded.push(() => {
+        resolve();
+      });
+    }).then(() => {
+      divisions.map((division) => {
+        //配列に追加する機能はDivisionInfoにある
+        Object.assign(new DivisionInfo(this), division);
+      });
     });
   }
 

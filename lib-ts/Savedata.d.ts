@@ -14,11 +14,14 @@ export default class Savedata implements Jsonable {
     private _templates;
     __onProvinceLoaded: Array<any>;
     __isProvinceLoaded: boolean;
+    __onTemplateLoaded: Array<any>;
+    __isTemplateLoaded: boolean;
     private set countries(value);
     getCountries(): Map<string, Country>;
     getCountry(id: string): Country;
     private set templates(value);
     getTemplates(): Map<string, DivisionTemplate>;
+    getTemplate(id: string): DivisionTemplate;
     private set provinces(value);
     setProvince(id: string, province: Province): void;
     getProvinces(): Map<string, Province>;

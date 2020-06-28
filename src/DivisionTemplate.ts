@@ -19,6 +19,10 @@ export default class DivisionTemplate extends JsonObject {
     this.__id = id;
   }
 
+  public getId(): string {
+    return this.__id;
+  }
+
   public getSpeed() {
     return this.speed;
   }

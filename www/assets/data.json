@@ -5,14 +5,16 @@
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#e001e0"
+          "position": "#71e0a0"
         },
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#71e0a0"
+          "position": "#e001e0"
         }
       ],
       "color": "5bbb",
@@ -36,44 +38,44 @@
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#c05001"
+          "position": "#c090c0"
         },
         {
           "destination": null,
           "movingProgress": 0,
-          "organization": 100,
-          "position": "#019041"
-        },
-        {
-          "destination": null,
-          "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
           "position": "#405080"
         },
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#01d041"
+          "position": "#835452"
         },
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#80d080"
+          "position": "#e041e0"
         },
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#a0dfa0"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
           "position": "#dfa0a0"
-        },
-        {
-          "destination": null,
-          "movingProgress": 0,
-          "organization": 100,
-          "position": "#0a78c3"
         }
       ],
       "color": "ac77c5",
@@ -85,50 +87,58 @@
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#805140"
+          "position": "#bf6060"
         },
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#0121a0"
+          "position": "#4190c0"
         },
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#801040"
+          "position": "#c0d001"
         },
         {
           "destination": null,
           "movingProgress": 0,
-          "organization": 100,
-          "position": "#015040"
-        },
-        {
-          "destination": null,
-          "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
           "position": "#e0c080"
         },
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#e06020"
+          "position": "#801040"
         },
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#8020df"
+          "position": "#e0c0e0"
         },
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
-          "position": "#a0a0a0"
+          "position": "#bf6060"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#21df21"
         }
       ],
       "color": "ff0000",
@@ -136,7 +146,22 @@
       "flag": "USSR.png"
     },
     "AHE": {
-      "divisions": [],
+      "divisions": [
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#902161"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#846165"
+        }
+      ],
       "color": "ff31be",
       "name": "オーストリア＝ハンガリー帝国",
       "flag": "AHE.png"
@@ -178,7 +203,22 @@
       "flag": "BPR.png"
     },
     "TUR": {
-      "divisions": [],
+      "divisions": [
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#f02082"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#c01000"
+        }
+      ],
       "color": "80a100",
       "name": "オスマン帝国",
       "flag": "TUR.png"
@@ -194,44 +234,44 @@
         {
           "destination": null,
           "movingProgress": 0,
-          "organization": 100,
-          "position": "#e06176"
-        },
-        {
-          "destination": null,
-          "movingProgress": 0,
-          "organization": 100,
-          "position": "#80e0a0"
-        },
-        {
-          "destination": null,
-          "movingProgress": 0,
-          "organization": 100,
-          "position": "#416161"
-        },
-        {
-          "destination": null,
-          "movingProgress": 0,
-          "organization": 100,
-          "position": "#51a0e0"
-        },
-        {
-          "destination": null,
-          "movingProgress": 0,
-          "organization": 100,
-          "position": "#c06121"
-        },
-        {
-          "destination": null,
-          "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
           "position": "#bfdf20"
         },
         {
           "destination": null,
           "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#61c0a0"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
           "organization": 100,
           "position": "#40df20"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#51a0e0"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#416161"
+        },
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#83b1a8"
         }
       ],
       "color": "a81500",
@@ -239,7 +279,15 @@
       "flag": "GER.png"
     },
     "BUL": {
-      "divisions": [],
+      "divisions": [
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#702020"
+        }
+      ],
       "color": "966e",
       "name": "大ブルガリア公国",
       "flag": "BUL.png"
@@ -257,7 +305,15 @@
       "flag": "SER.png"
     },
     "GRE": {
-      "divisions": [],
+      "divisions": [
+        {
+          "destination": null,
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#01d060"
+        }
+      ],
       "color": "935f00",
       "name": "ギリシャ王国",
       "flag": "GRE.png"

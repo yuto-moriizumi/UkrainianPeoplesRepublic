@@ -19,6 +19,8 @@ export default class Savedata implements Jsonable {
   private _templates = new Map<string, DivisionTemplate>();
   public __onProvinceLoaded: Array<any> = new Array<any>();
   public __isProvinceLoaded: boolean = false;
+  public __onTemplateLoaded: Array<any> = new Array<any>();
+  public __isTemplateLoaded: boolean = false;
 
   private set countries(countries: object) {
     for (const id in countries) {
@@ -43,10 +45,19 @@ export default class Savedata implements Jsonable {
       );
     }
     console.log("templates loaded:", this._templates);
+    this.__isTemplateLoaded = true;
+    while (this.__onTemplateLoaded.length > 0) {
+      const func = this.__onTemplateLoaded.shift();
+      func();
+    }
   }
 
   public getTemplates() {
     return this._templates;
+  }
+
+  public getTemplate(id: string) {
+    return this._templates.get(id);
   }
 
   private set provinces(provinces: object) {
