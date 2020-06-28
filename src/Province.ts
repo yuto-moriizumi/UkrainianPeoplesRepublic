@@ -5,13 +5,14 @@ import * as PIXI from "pixi.js";
 import MainScene from "./Scenes/MainScene";
 import MyMap from "./MyMap";
 import DivisionInfo from "./DivisionInfo";
+import FromJson from "./FromJson";
 
-export default class Province extends JsonObject {
+export default class Province extends JsonObject implements FromJson {
   private id: string;
-  private _owner: Country;
+  private _owner = new Country();
   private x: number = 0;
   private y: number = 0;
-  private __divisions: Array<DivisionInfo> = new Array<DivisionInfo>();
+  private __divisions = new Array<DivisionInfo>();
 
   constructor(id: string) {
     super();
@@ -97,5 +98,21 @@ export default class Province extends JsonObject {
       country.hasAccessTo(this._owner) || //軍事通行権があるか
       country.getWarInfoWith(this._owner) //戦争中か
     );
+  }
+
+  public fromJson(obj: object) {
+    Object.entries(this).forEach(([key, value]) => {
+      if (value instanceof Country) {
+        this[key] = GameManager.instance.data.getCountry(obj[key.substr(1)]);
+
+        if (value == undefined || value == null) {
+          console.log(this, obj[key.substr(1)]);
+          throw new Error("COUNTRY NOT FOUND");
+        }
+        return;
+      }
+      if (obj[key]) this[key] = obj[key];
+    });
+    return this;
   }
 }

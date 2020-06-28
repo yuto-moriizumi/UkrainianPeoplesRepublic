@@ -1,5 +1,7 @@
 import MainScene from "../Scenes/MainScene";
-export default class Event {
+import JsonObject from "../JsonObject";
+export default class Event extends JsonObject {
+    private class;
     private id;
     private title;
     private desc;
@@ -12,4 +14,5 @@ export default class Event {
     set options(options: Array<any>);
     get options(): Array<any>;
     toJSON(): object;
+    fromJson(obj: object): this;
 }

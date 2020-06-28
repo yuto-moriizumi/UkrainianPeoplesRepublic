@@ -13,7 +13,7 @@ export default class Country implements Jsonable {
     private _divisions;
     private __ai;
     __money: Money;
-    constructor(id: string);
+    constructor(id?: string);
     addDiplomaticRelation(tie: DiplomaticTie): void;
     removeDiplomaticRelation(tie: DiplomaticTie): void;
     getDiplomacy(): DiplomaticTie[];
@@ -36,7 +36,6 @@ export default class Country implements Jsonable {
     getDivisions(): DivisionInfo[];
     addDivision(division: DivisionInfo): void;
     removeDivision(division: DivisionInfo): void;
-    private set templates(value);
     /**
      * 何らかの理由で国が消滅する場合に呼ぶ
      * オブジェクトが消えるわけではない

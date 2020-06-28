@@ -10,17 +10,20 @@ import JsonConverter from "./JsonConverter";
 import Access from "./DiplomaticTies/Access";
 import DivisionTemplate from "./DivisionTemplate";
 import MapDataManager from "./MapDataManager";
+import ExtendedArray from "./ExtendedArray";
+import EventArray from "./EventArray";
 
-export default class Savedata implements Jsonable {
+export default class Savedata extends JsonObject {
   private _countries: Map<string, Country> = new Map<string, Country>();
   private _provinces = new MapDataManager<string, Province>();
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
-  private _events: Array<Event> = new Array<Event>();
+  private _events = new EventArray();
   private _combats: Array<Combat> = new Array<Combat>();
   private _templates = new MapDataManager<string, DivisionTemplate>();
 
   private set countries(countries: object) {
     for (const id in countries) {
+      //this._countries.set(id, Country.TEST(countries[id]));
       this._countries.set(id, Object.assign(new Country(id), countries[id]));
     }
     console.log("countries loaded:", this._countries);
@@ -51,11 +54,12 @@ export default class Savedata implements Jsonable {
 
   private set provinces(provinces: object) {
     for (const id in provinces) {
-      const newId = id.substr(0, 1) == "#" ? id : "#" + id;
-      //console.log(newId);
-      const province = new Province(newId);
+      /*
+      const province = new Province(id);
       Object.assign(province, provinces[id]);
-      this._provinces.set(newId, province);
+      this._provinces.set(id, province);*/
+      provinces[id]["id"] = id; //idプロパティを追加しておく
+      this._provinces.set(id, new Province(id).fromJson(provinces[id]));
     }
     console.log("provinces loaded:", this._provinces);
     this._provinces.endLoad();
@@ -103,11 +107,13 @@ export default class Savedata implements Jsonable {
   }
 
   private set events(events: Array<object>) {
-    this._events = events.map((eventObject) => {
-      const event = new Event();
-      Object.assign(event, eventObject);
-      return event;
-    });
+    this._events = new EventArray(
+      events.map((eventObject) => {
+        const event = new Event();
+        Object.assign(event, eventObject);
+        return event;
+      })
+    );
     console.log("events loaded:", this._events);
   }
 
@@ -135,7 +141,10 @@ export default class Savedata implements Jsonable {
   }
 
   public load(json: object) {
-    Object.assign(this, json);
+    this.fromJson(json);
+    console.log("LOADED", this);
+
+    //Object.assign(this, json);
   }
 
   public toJSON() {
@@ -153,5 +162,17 @@ export default class Savedata implements Jsonable {
     a.href = URL.createObjectURL(blob);
     a.download = "data.json";
     a.click();
+  }
+
+  public fromJson(obj: object) {
+    Object.entries(this).forEach(([key, value]) => {
+      if (value instanceof JsonObject) {
+        console.log(value, "is instance of JsonObject", key);
+        this[key] = value.fromJson(obj[key.substr(1)]); //valueがJsonobjectなら再帰的に呼び出す
+        return;
+      }
+      if (obj[key]) this[key] = obj[key]; //jsonに存在しないプロパティが代入されることを防ぐ
+    });
+    return this;
   }
 }

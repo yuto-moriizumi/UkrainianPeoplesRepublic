@@ -1,9 +1,11 @@
+import FromJson from "./FromJson";
+import Jsonable from "./Jsonable";
 /**
  * JSON出力可能なオブジェクトの親オブジェクトです
  * @export
  * @class JsonObject
  */
-export default class JsonObject {
+export default abstract class JsonObject implements Jsonable, FromJson {
     /**
      * オブジェクトの変数名と値がセットになった配列を生成します
      * JSONから読み込み時にはObject.assign()を利用します
@@ -21,4 +23,5 @@ export default class JsonObject {
      * @memberof JsonObject
      */
     toJSON(): object;
+    fromJson(obj: object): this;
 }

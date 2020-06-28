@@ -2,7 +2,8 @@ import Country from "./Country";
 import JsonObject from "./JsonObject";
 import * as PIXI from "pixi.js";
 import DivisionInfo from "./DivisionInfo";
-export default class Province extends JsonObject {
+import FromJson from "./FromJson";
+export default class Province extends JsonObject implements FromJson {
     private id;
     private _owner;
     private x;
@@ -27,4 +28,5 @@ export default class Province extends JsonObject {
      * @memberof Province
      */
     hasAccess(country: Country): true | import("./DiplomaticTies/War").default;
+    fromJson(obj: object): this;
 }

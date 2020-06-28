@@ -22,7 +22,7 @@ export default class Country implements Jsonable {
   private __ai: CountryAI;
   public __money: Money = new Money();
 
-  constructor(id: string) {
+  constructor(id?: string) {
     this.__id = id;
     this.__ai = new CountryAI(this);
     this.__money = new Money();
@@ -132,10 +132,6 @@ export default class Country implements Jsonable {
 
   public removeDivision(division: DivisionInfo) {
     this._divisions = this._divisions.filter((d) => d != division);
-  }
-
-  private set templates(templates: any) {
-    //何もしない
   }
 
   /**

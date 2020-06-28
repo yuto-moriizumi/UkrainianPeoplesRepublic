@@ -7,14 +7,25 @@ import DateCondition from "./Conditions/DateCondition";
 import Button from "../UI/Button";
 import Sound from "../Sound";
 import Resource from "../Resources";
+import JsonObject from "../JsonObject";
 
-export default class Event {
-  private id: string;
-  private title: string;
-  private desc: string;
-  private picture: string;
+/**
+ * Object.assignを改良しようと試みたものの、
+ * 初期値を代入しないとObject.entiresに出現しないことが分かった
+ * 特にクラスの場合、初期値として空のオブジェクトを用意する必要があるのがあまりよくないので、
+ * 中断
+ * @export
+ * @class Event
+ * @extends {JsonObject}
+ */
+export default class Event extends JsonObject {
+  private class = this.constructor.name;
+  private id: string = "";
+  private title: string = "";
+  private desc: string = "";
+  private picture: string = "";
   private fired: boolean = false;
-  private _condition: Condition;
+  private _condition: Condition = new DateCondition();
   private _options: Array<Option> = new Array<Option>();
 
   public dispatch(scene: MainScene, date: Date) {
@@ -156,5 +167,17 @@ export default class Event {
         return [key, value];
       })
     );
+  }
+
+  public fromJson(obj: object) {
+    Object.entries(this).forEach(([key, value]) => {
+      if (value instanceof JsonObject) {
+        this[key] = value.fromJson(obj[key.substr(1)]); //valueがJsonobjectなら再帰的に呼び出す
+        return;
+      }
+      console.log("event fromjson called", key, obj[key], this);
+      if (obj[key]) this[key] = obj[key]; //jsonに存在しないプロパティが代入されることを防ぐ
+    });
+    return this;
   }
 }
