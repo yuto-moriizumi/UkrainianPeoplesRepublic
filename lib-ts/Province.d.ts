@@ -8,6 +8,7 @@ export default class Province extends JsonObject {
     private x;
     private y;
     private __divisions;
+    private _culture;
     constructor(id: string);
     private set owner(value);
     getId(): string;
@@ -27,4 +28,7 @@ export default class Province extends JsonObject {
      * @memberof Province
      */
     hasAccess(country: Country): true | import("./DiplomaticTies/War").default;
+    private set culture(value);
+    setCulture(culture: string): void;
+    getCulture(): string;
 }

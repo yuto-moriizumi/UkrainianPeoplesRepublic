@@ -174,6 +174,10 @@ export default class Country implements Jsonable {
     });
   }
 
+  public getCulture(): string {
+    return this._culture;
+  }
+
   public toJSON() {
     return JsonConverter.toJSON(this, (key, value) => {
       if (key === "color") return [key, value.toString(16)];

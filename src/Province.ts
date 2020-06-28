@@ -12,6 +12,7 @@ export default class Province extends JsonObject {
   private x: number = 0;
   private y: number = 0;
   private __divisions: Array<DivisionInfo> = new Array<DivisionInfo>();
+  private _culture: string = "DEFAULT_CULTURE";
 
   constructor(id: string) {
     super();
@@ -97,5 +98,22 @@ export default class Province extends JsonObject {
       country.hasAccessTo(this._owner) || //軍事通行権があるか
       country.getWarInfoWith(this._owner) //戦争中か
     );
+  }
+
+  private set culture(culture: string) {
+    this.setCulture(culture);
+  }
+
+  public setCulture(culture: string) {
+    const cultures = GameManager.instance.data.getCultures();
+    cultures.addListener(() => {
+      if (!cultures.has(culture))
+        throw new Error("文化は見つかりませんでした:" + culture);
+      this._culture = culture;
+    });
+  }
+
+  public getCulture(): string {
+    return this._culture;
   }
 }

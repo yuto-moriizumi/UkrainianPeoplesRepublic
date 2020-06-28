@@ -75,9 +75,28 @@ export default class DivisionInfo {
     const owner = province.getOwner();
     if (owner == this.owner) return;
     if (owner.getWarInfoWith(this.owner)) {
+      if (province.getCulture() == this.owner.getCulture()) {
+        //プロヴィンスの文化が師団の所有国と同じなら、この師団の所有国が領有国になる
+        province.setOwner(this.owner);
+        return;
+      }
+
+      //旧領有国と戦争中で、このプロヴィンスと同じ文化の国があるならば、その国が占領する
+      let countryOfThisCulture = null;
+      GameManager.instance.data.getCountries().forEach((country) => {
+        const war = country.getWarInfoWith(owner);
+        const culture = country.getCulture();
+        if (war && culture == province.getCulture())
+          countryOfThisCulture = country;
+      });
+      if (countryOfThisCulture) {
+        province.setOwner(countryOfThisCulture);
+        return;
+      }
+
       const neighbours = MyMap.instance.getNeighborProvinces(province);
       if (neighbours.some((neighbour) => neighbour.getOwner() == this.owner)) {
-        //占領地の周辺に、この師団の所有国の領土がある場合、領有国はこの師団の所有国になる
+        //占領地の周辺に、この師団の所有国の領土がある場合、この師団の所有国が領有国になる
         province.setOwner(this.owner);
         return;
       }

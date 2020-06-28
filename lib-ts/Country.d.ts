@@ -51,5 +51,6 @@ export default class Country implements Jsonable {
      */
     hasAccessTo(country: Country): boolean;
     private set culture(value);
+    getCulture(): string;
     toJSON(): any;
 }
