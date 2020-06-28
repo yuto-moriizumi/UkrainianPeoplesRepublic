@@ -21,6 +21,7 @@ export default class MainScene extends Scene implements Selectable {
     openDiplomacySidebar(country: Country): void;
     openConscription(): void;
     openDebug(): void;
+    openProvinceSidebar(province: Province): void;
     getMap(): MyMap;
     update(dt: number): void;
     getMyCountry(): Country;

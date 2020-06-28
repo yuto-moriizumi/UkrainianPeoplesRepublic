@@ -61,7 +61,18 @@ export default class MyMap extends PIXI.Sprite {
       this.scene.selectProvince(this.getClickedProvince(e));
     });
     this.on("rightclick", (e: PIXI.interaction.InteractionEvent) => {
-      this.moveDivisionsTo(this.getClickedProvince(e));
+      console.log("rightclick");
+
+      if (DivisionSprite.hasSelectingDivisions()) {
+        console.log("has select");
+
+        //選択している師団があれば、移動
+        this.moveDivisionsTo(this.getClickedProvince(e));
+        return;
+      }
+      //そうでなければ外交画面を開く
+      if (this.scene instanceof MainScene)
+        this.scene.openDiplomacySidebar(this.getClickedProvince(e).getOwner());
     });
   }
 

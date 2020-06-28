@@ -1,5 +1,7 @@
 import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
+import JsonObject from "./JsonObject";
+import DataManager from "./DataManager";
 
 /**
  * Mapの拡張クラスです
@@ -9,14 +11,8 @@ import JsonConverter from "./JsonConverter";
  * @template T
  * @template U
  */
-export default class MapDataManager<T, U> implements Jsonable {
+export default class MapDataManager<T, U> extends DataManager {
   private map = new Map<T, U>();
-  private onLoaded = new Array<any>();
-  private _isLoaded = false;
-
-  public isLoaded(): boolean {
-    return this._isLoaded;
-  }
 
   public set(id: T, item: U) {
     return this.map.set(id, item);
@@ -47,25 +43,13 @@ export default class MapDataManager<T, U> implements Jsonable {
     this.map.forEach(callback);
   }
 
-  public addListener(func: any) {
-    if (this._isLoaded) {
-      func();
-      return;
-    }
-    this.onLoaded.push(func);
-  }
-
   /**
    * 保留していた関数を実行します
    * データのロードが終わったときに必ず呼び出してください
    * @memberof MapDataManager
    */
-  public endLoad() {
-    this._isLoaded = true;
-    while (this.onLoaded.length > 0) this.onLoaded.shift()();
-  }
 
   public toJSON() {
-    return JsonConverter.toJSON(this.map);
+    return Object.fromEntries(this.map);
   }
 }

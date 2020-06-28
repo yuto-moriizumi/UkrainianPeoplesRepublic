@@ -1,4 +1,4 @@
-import Jsonable from "./Jsonable";
+import DataManager from "./DataManager";
 /**
  * Mapの拡張クラスです
  * データロードの順番が重要になる場合に使用します
@@ -7,11 +7,8 @@ import Jsonable from "./Jsonable";
  * @template T
  * @template U
  */
-export default class MapDataManager<T, U> implements Jsonable {
+export default class MapDataManager<T, U> extends DataManager {
     private map;
-    private onLoaded;
-    private _isLoaded;
-    isLoaded(): boolean;
     set(id: T, item: U): Map<T, U>;
     safeGet(id: T, onload: (item: U) => void): void;
     /**
@@ -23,12 +20,10 @@ export default class MapDataManager<T, U> implements Jsonable {
      */
     get(id: T): U;
     forEach(callback: (item: U) => void): void;
-    addListener(func: any): void;
     /**
      * 保留していた関数を実行します
      * データのロードが終わったときに必ず呼び出してください
      * @memberof MapDataManager
      */
-    endLoad(): void;
     toJSON(): any;
 }

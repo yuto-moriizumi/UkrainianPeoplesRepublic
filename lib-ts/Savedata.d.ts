@@ -6,6 +6,7 @@ import Combat from "./Combat";
 import Jsonable from "./Jsonable";
 import DivisionTemplate from "./DivisionTemplate";
 import MapDataManager from "./MapDataManager";
+import SetDataManager from "./SetDataManager";
 export default class Savedata implements Jsonable {
     private _countries;
     private _provinces;
@@ -13,6 +14,7 @@ export default class Savedata implements Jsonable {
     private _events;
     private _combats;
     private _templates;
+    private _cultures;
     private set countries(value);
     getCountries(): Map<string, Country>;
     getCountry(id: string): Country;
@@ -32,5 +34,7 @@ export default class Savedata implements Jsonable {
     getCombats(): Combat[];
     load(json: object): void;
     toJSON(): any;
+    private set cultures(value);
+    getCultures(): SetDataManager<string>;
     download(): void;
 }

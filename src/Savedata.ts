@@ -10,6 +10,8 @@ import JsonConverter from "./JsonConverter";
 import Access from "./DiplomaticTies/Access";
 import DivisionTemplate from "./DivisionTemplate";
 import MapDataManager from "./MapDataManager";
+import ExtendedSet from "./ExtendedSet";
+import SetDataManager from "./SetDataManager";
 
 export default class Savedata implements Jsonable {
   private _countries: Map<string, Country> = new Map<string, Country>();
@@ -18,6 +20,7 @@ export default class Savedata implements Jsonable {
   private _events: Array<Event> = new Array<Event>();
   private _combats: Array<Combat> = new Array<Combat>();
   private _templates = new MapDataManager<string, DivisionTemplate>();
+  private _cultures = new SetDataManager<string>();
 
   private set countries(countries: object) {
     for (const id in countries) {
@@ -140,6 +143,17 @@ export default class Savedata implements Jsonable {
 
   public toJSON() {
     return JsonConverter.toJSON(this);
+  }
+
+  private set cultures(cultures: object) {
+    this._cultures.setCollection(cultures);
+
+    console.log("cultures loaded:", this._cultures);
+    this._cultures.endLoad("culture");
+  }
+
+  public getCultures() {
+    return this._cultures;
   }
 
   public download() {

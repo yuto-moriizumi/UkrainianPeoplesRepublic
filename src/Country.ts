@@ -17,6 +17,7 @@ export default class Country implements Jsonable {
   private _color: number;
   public name: string;
   public flag: string;
+  private _culture: string = "DEFAULT_CULTURE";
   private __diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _divisions = new Array<DivisionInfo>();
   private __ai: CountryAI;
@@ -161,6 +162,15 @@ export default class Country implements Jsonable {
       return (
         d instanceof Access && d.getRoot() == this && d.getTarget() == country
       );
+    });
+  }
+
+  private set culture(culture: string) {
+    const cultures = GameManager.instance.data.getCultures();
+    cultures.addListener(() => {
+      if (!cultures.has(culture))
+        throw new Error("文化は見つかりませんでした:" + culture);
+      this._culture = culture;
     });
   }
 

@@ -14,4 +14,5 @@ export default class DivisionSprite extends VerticalBox {
     deselect(): void;
     private onClick;
     static moveSelectingDivisionsTo(province: Province): void;
+    static hasSelectingDivisions(): boolean;
 }

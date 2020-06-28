@@ -1,12 +1,24 @@
-export default class ExtendedSet<T> {
+import Jsonable from "./Jsonable";
+import JsonObject from "./JsonObject";
+
+export default class ExtendedSet<T> extends JsonObject {
   private set = new Set<T>();
+
+  constructor(array?: any) {
+    super();
+    if (array) this.set = new Set<T>(array);
+  }
 
   public add(value: T) {
     this.set.add(value);
   }
 
   public delete(value: T) {
-    this.set.delete(value);
+    return this.set.delete(value);
+  }
+
+  public has(value: T) {
+    return this.set.has(value);
   }
 
   public forEach(callback: (value: T) => void) {
@@ -19,5 +31,9 @@ export default class ExtendedSet<T> {
 
   public filter(callback: (value: T) => boolean) {
     return Array.from(this.set).filter(callback);
+  }
+
+  public toJSON(): object {
+    return Array.from(this.set);
   }
 }

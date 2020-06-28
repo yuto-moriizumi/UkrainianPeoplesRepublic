@@ -19,6 +19,7 @@ import Conscription from "../UI/Conscription";
 import SpriteButton from "../UI/SpriteButton";
 import DivisionSprite from "../DivisionSprite";
 import DebugSidebar from "../UI/DebugSidebar";
+import ProvinceSidebar from "../UI/ProvinceSidebar";
 
 export default class MainScene extends Scene implements Selectable {
   public static instance: MainScene;
@@ -93,8 +94,7 @@ export default class MainScene extends Scene implements Selectable {
   }
 
   public selectProvince(province: Province) {
-    const owner = province.getOwner();
-    if (owner) this.openDiplomacySidebar(owner);
+    this.openProvinceSidebar(province);
   }
 
   public openDiplomacySidebar(country: Country) {
@@ -112,6 +112,12 @@ export default class MainScene extends Scene implements Selectable {
   public openDebug() {
     if (this.sidebar && this.sidebar.parent) this.sidebar.destroy();
     this.sidebar = new DebugSidebar(this);
+    this.addChild(this.sidebar);
+  }
+
+  public openProvinceSidebar(province: Province) {
+    if (this.sidebar && this.sidebar.parent) this.sidebar.destroy();
+    this.sidebar = new ProvinceSidebar(this, province);
     this.addChild(this.sidebar);
   }
 

@@ -9,6 +9,7 @@ export default class Country implements Jsonable {
     private _color;
     name: string;
     flag: string;
+    private _culture;
     private __diplomaticTies;
     private _divisions;
     private __ai;
@@ -49,5 +50,6 @@ export default class Country implements Jsonable {
      * @memberof Country
      */
     hasAccessTo(country: Country): boolean;
+    private set culture(value);
     toJSON(): any;
 }

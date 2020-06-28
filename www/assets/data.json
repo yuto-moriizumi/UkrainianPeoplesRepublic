@@ -19,7 +19,8 @@
       ],
       "color": "5bbb",
       "name": "ウクライナ人民共和国",
-      "flag": "Ukraine.png"
+      "flag": "Ukraine.png",
+      "culture": "ウクライナ"
     },
     "Rebels": {
       "divisions": [],
@@ -31,7 +32,8 @@
       "divisions": [],
       "color": "ffbf",
       "name": "クリミア人民共和国",
-      "flag": "CPR.png"
+      "flag": "CPR.png",
+      "culture": "ウクライナ"
     },
     "RPG": {
       "divisions": [
@@ -80,7 +82,8 @@
       ],
       "color": "ac77c5",
       "name": "ロシア共和国",
-      "flag": "RPG.png"
+      "flag": "RPG.png",
+      "culture": "ロシア"
     },
     "USSR": {
       "divisions": [
@@ -143,7 +146,8 @@
       ],
       "color": "ff0000",
       "name": "ロシア＝ソヴィエト連邦社会主義共和国",
-      "flag": "USSR.png"
+      "flag": "USSR.png",
+      "culture": "ロシア"
     },
     "AHE": {
       "divisions": [
@@ -164,43 +168,50 @@
       ],
       "color": "ff31be",
       "name": "オーストリア＝ハンガリー帝国",
-      "flag": "AHE.png"
+      "flag": "AHE.png",
+      "culture": "ドイツ"
     },
     "MDR": {
       "divisions": [],
       "color": "ae7b00",
       "name": "モルダヴィア民主共和国",
-      "flag": "MDR.png"
+      "flag": "MDR.png",
+      "culture": "ルーマニア"
     },
     "UPRS": {
       "divisions": [],
       "color": "ad328f",
       "name": "ウクライナ人民共和国（ソビエト派）",
-      "flag": "UPRS.png"
+      "flag": "UPRS.png",
+      "culture": "ウクライナ"
     },
     "OSR": {
       "divisions": [],
       "color": "563b18",
       "name": "オデッサ・ソビエト共和国",
-      "flag": "Red.png"
+      "flag": "Red.png",
+      "culture": "ウクライナ"
     },
     "DKR": {
       "divisions": [],
       "color": "a92b3a",
       "name": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国",
-      "flag": "Red.png"
+      "flag": "Red.png",
+      "culture": "ウクライナ"
     },
     "KPR": {
       "divisions": [],
       "color": "961e62",
       "name": "クバーニ人民共和国",
-      "flag": "KPR.png"
+      "flag": "KPR.png",
+      "culture": "ウクライナ"
     },
     "BPR": {
       "divisions": [],
       "color": "6818",
       "name": "ベラルーシ人民共和国",
-      "flag": "BPR.png"
+      "flag": "BPR.png",
+      "culture": "ベラルーシ"
     },
     "TUR": {
       "divisions": [
@@ -221,13 +232,15 @@
       ],
       "color": "80a100",
       "name": "オスマン帝国",
-      "flag": "TUR.png"
+      "flag": "TUR.png",
+      "culture": "トルコ"
     },
     "ROM": {
       "divisions": [],
       "color": "7c2900",
       "name": "ルーマニア王国",
-      "flag": "ROM.png"
+      "flag": "ROM.png",
+      "culture": "ルーマニア"
     },
     "GER": {
       "divisions": [
@@ -276,7 +289,8 @@
       ],
       "color": "a81500",
       "name": "ドイツ帝国",
-      "flag": "GER.png"
+      "flag": "GER.png",
+      "culture": "ドイツ"
     },
     "BUL": {
       "divisions": [
@@ -290,7 +304,8 @@
       ],
       "color": "966e",
       "name": "大ブルガリア公国",
-      "flag": "BUL.png"
+      "flag": "BUL.png",
+      "culture": "ブルガリア"
     },
     "Sea": {
       "divisions": [],
@@ -302,7 +317,8 @@
       "divisions": [],
       "color": "86b4",
       "name": "セルビア王国",
-      "flag": "SER.png"
+      "flag": "SER.png",
+      "culture": "セルビア・クロアチア"
     },
     "GRE": {
       "divisions": [
@@ -316,145 +332,169 @@
       ],
       "color": "935f00",
       "name": "ギリシャ王国",
-      "flag": "GRE.png"
+      "flag": "GRE.png",
+      "culture": "ギリシャ"
     },
     "POL": {
       "divisions": [],
       "color": "c55c6a",
       "name": "ポーランド摂政王国",
-      "flag": "POL.png"
+      "flag": "POL.png",
+      "culture": "ポーランド"
     },
     "GBR": {
       "divisions": [],
       "color": "c9385d",
       "name": "イギリス帝国",
-      "flag": "GBR.png"
+      "flag": "GBR.png",
+      "culture": "イギリス"
     },
     "FRA": {
       "divisions": [],
       "color": "3971e4",
       "name": "フランス共和国",
-      "flag": "FRA.png"
+      "flag": "FRA.png",
+      "culture": "フランス"
     },
     "LIT": {
       "divisions": [],
       "color": "dbdb77",
       "name": "リトアニア王国",
-      "flag": "LIT.png"
+      "flag": "LIT.png",
+      "culture": "バルト"
     },
     "TCF": {
       "divisions": [],
       "color": "fbdb77",
       "name": "ザカフカース民主連邦共和国",
-      "flag": "TCF.png"
+      "flag": "TCF.png",
+      "culture": "トルコ"
     },
     "EST": {
       "divisions": [],
       "color": "3287af",
       "name": "エストニア共和国",
-      "flag": "EST.png"
+      "flag": "EST.png",
+      "culture": "バルト"
     },
     "DCS": {
       "divisions": [],
       "color": "ffbfbf",
       "name": "クールラント・ゼムガレン公国",
-      "flag": "DCS.png"
+      "flag": "DCS.png",
+      "culture": "バルト"
     },
     "UBD": {
       "divisions": [],
       "color": "bfff",
       "name": "バルト連合公国",
-      "flag": "UBD.png"
+      "flag": "UBD.png",
+      "culture": "バルト"
     },
     "TSR": {
       "divisions": [],
       "color": "ff7f7f",
       "name": "タヴリダ・ソビエト社会主義共和国",
-      "flag": "Red.png"
+      "flag": "Red.png",
+      "culture": "ウクライナ"
     },
     "KSR": {
       "divisions": [],
       "color": "961e62",
       "name": "クバーニ・ソビエト共和国",
-      "flag": "Red.png"
+      "flag": "Red.png",
+      "culture": "ウクライナ"
     },
     "DON": {
       "divisions": [],
       "color": "1f1fbf",
       "name": "ドン共和国",
-      "flag": "DON.png"
+      "flag": "DON.png",
+      "culture": "ウクライナ"
     },
     "GEO": {
       "divisions": [],
       "color": "ff3f1f",
       "name": "グルジア民主共和国",
-      "flag": "GEO.png"
+      "flag": "GEO.png",
+      "culture": "トルコ"
     },
     "AZR": {
       "divisions": [],
       "color": "ff7f1f",
       "name": "アゼルバイジャン民主共和国",
-      "flag": "AZR.png"
+      "flag": "AZR.png",
+      "culture": "トルコ"
     },
     "ARM": {
       "divisions": [],
       "color": "ffff1f",
       "name": "アルメニア共和国",
-      "flag": "ARM.png"
+      "flag": "ARM.png",
+      "culture": "トルコ"
     },
     "MRC": {
       "divisions": [],
       "color": "1fff1f",
       "name": "北カフカース山岳共和国",
-      "flag": "MRC.png"
+      "flag": "MRC.png",
+      "culture": "トルコ"
     },
     "SCS": {
       "divisions": [],
       "color": "8b1765",
       "name": "スロベニア人・クロアチア人・セルビア人国",
-      "flag": "SCS.png"
+      "flag": "SCS.png",
+      "culture": "セルビア・クロアチア"
     },
     "CZE": {
       "divisions": [],
       "color": "d9b700",
       "name": "チェコスロバキア共和国",
-      "flag": "CZE.png"
+      "flag": "CZE.png",
+      "culture": "チェコスロバキア"
     },
     "WUPR": {
       "divisions": [],
       "color": "4172",
       "name": "西ウクライナ人民共和国",
-      "flag": "WUPR.png"
+      "flag": "WUPR.png",
+      "culture": "ウクライナ"
     },
     "AUS": {
       "divisions": [],
       "color": "ff31be",
       "name": "ドイツ=オーストリア共和国",
-      "flag": "AUS.png"
+      "flag": "AUS.png",
+      "culture": "ドイツ"
     },
     "HUN": {
       "divisions": [],
       "color": "527601",
       "name": "ハンガリー民主共和国",
-      "flag": "HUN.png"
+      "flag": "HUN.png",
+      "culture": "ハンガリー"
     },
     "ITA": {
       "divisions": [],
       "color": "80a303",
       "name": "イタリア王国",
-      "flag": "ITA.png"
+      "flag": "ITA.png",
+      "culture": "イタリア"
     },
     "SWE": {
       "divisions": [],
       "color": "2484f7",
       "name": "スウェーデン王国",
-      "flag": "SWE.png"
+      "flag": "SWE.png",
+      "culture": "北ゲルマン"
     },
     "LAT": {
       "divisions": [],
       "color": "8d131e",
       "name": "ラトビア共和国",
-      "flag": "LAT.png"
+      "flag": "LAT.png",
+      "culture": "バルト"
     }
   },
   "provinces": {
@@ -1728,5 +1768,25 @@
       "cost": 50,
       "maintenance": 1
     }
-  }
+  },
+  "cultures": [
+    "ドイツ",
+    "ポーランド",
+    "イタリア",
+    "ブルガリア",
+    "ギリシャ",
+    "トルコ",
+    "ロシア",
+    "ウクライナ",
+    "ベラルーシ",
+    "バルト",
+    "北ゲルマン",
+    "ルーマニア",
+    "DEFAULT_CULTURE",
+    "セルビア・クロアチア",
+    "イギリス",
+    "フランス",
+    "チェコスロバキア",
+    "ハンガリー"
+  ]
 }
