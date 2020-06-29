@@ -48,6 +48,7 @@ export default class CultureMap extends MapMode
 
   public onCultureChange() {
     //プロヴィンスの変化を受けてアップデート
+
     this.update();
   }
 

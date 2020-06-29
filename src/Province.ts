@@ -146,4 +146,8 @@ export default class Province extends JsonObject implements Observable {
       (observer2) => observer2 != observer
     );
   }
+
+  public debug_getCultureObservers(): CultureObserver[] {
+    return this.__cultureObservers;
+  }
 }

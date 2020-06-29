@@ -45,5 +45,7 @@ export default class DebugSidebar extends Sidebar {
     const mode2culture = new Button("文化マップへ");
     mode2culture.on("click", () => Atlas.instance.setMode(new CultureMap()));
     this.addPart(mode2culture);
+
+   
   }
 }

@@ -329,7 +329,7 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
   }
 
   public setMode(mode: MapMode) {
-    if (this.mode) mode.destroy();
+    if (this.mode) this.mode.destroy();
     this.mode = mode;
     this.mode.addObserver(this);
     this.mode.update();
