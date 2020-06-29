@@ -6,6 +6,7 @@ import DateCondition from "./DateCondition";
 import EventFired from "./EventFired";
 import CountryIs from "./CountryIs";
 import And from "./And";
+import Always from "./Always";
 
 export default abstract class ConditionCreator {
   public static createCondition(condition: object) {
@@ -18,8 +19,12 @@ export default abstract class ConditionCreator {
         return Object.assign(new CountryIs(), condition);
       case "And":
         return Object.assign(new And(), condition);
+      case "Always":
+        return Object.assign(new Always(), condition);
       default:
-        throw new Error("一致する条件クラスが見つかりませんでした:");
+        throw new Error(
+          "一致する条件クラスが見つかりませんでした:" + condition["type"]
+        );
     }
   }
 }

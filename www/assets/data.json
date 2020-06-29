@@ -1578,16 +1578,37 @@
       "options": [
         {
           "effects": [
-            { "type": "DeclareWar", "root": "RPG", "target": "USSR" }
+            { "type": "DeclareWar", "root": "USSR", "target": "RPG" },
+            {
+              "type": "DispatchEvent",
+              "id": "russian_civilwar_begins_news",
+              "time2happen": 3
+            }
           ],
-          "title": "OK"
+          "title": "ブルジョワに死を！"
         }
       ],
       "id": "russian_civilwar_begins",
+      "title": "白軍への攻撃",
+      "desc": "ロシアの各地には、反革命分子が潜んでいる。ただちに攻撃し、全ロシアを解放するのだ！",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-01-25 00:00" }
+    },
+    "russian_civilwar_begins_news": {
+      "fired": false,
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "id": "russian_civilwar_begins_news",
       "title": "ロシア内戦",
       "desc": "1918年1月のロシアでは、憲法制定議会が招集されたが、ボリシェヴィキはそこでは多数を占めることができなかった。議会制民主主義をブルジョワ権力の擬制であるとしたレーニンは実力で憲法制定議会を解散させ、ソヴィエトを最高機関とする労働者・兵士の政権を樹立し、ボリシェヴィキ以外の党派をほぼ追放し、ボリシェヴィキ独裁体制を作り上げた。それに対し、ロシア各地で反革命軍が蜂起。ロシア内戦が始まった。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-01-25 00:00" }
+      "condition": { "type": "Always", "always": true },
+      "isGlobal": true,
+      "triggeredOnly": true
     },
     "donets_leaves_ukraine": {
       "fired": false,

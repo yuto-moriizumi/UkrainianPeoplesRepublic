@@ -7,6 +7,7 @@ import GameManager from "./GameManager";
 import CountryHandler from "./CountryHandler";
 import MainScene from "./Scenes/MainScene";
 import Event from "./Events/Event";
+import Util from "./Utils/Util";
 
 export default class CountryAI extends CountryHandler {
   country: Country;
@@ -22,8 +23,11 @@ export default class CountryAI extends CountryHandler {
     });
   }
 
-  onEvent() {
-    throw new Error("onEvent not implemented");
+  onEvent(event: Event) {
+    //ランダムな選択肢を実行する
+    event
+      .getOptions()
+      [Util.getRandomInt(0, event.getOptions().length - 1)].takeEffects();
   }
 
   public update() {

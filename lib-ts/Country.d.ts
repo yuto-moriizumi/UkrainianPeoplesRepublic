@@ -5,6 +5,7 @@ import Money from "./Money";
 import DivisionInfo from "./DivisionInfo";
 import Leader from "./Leader";
 import CountryHandler from "./CountryHandler";
+import Event from "./Events/Event";
 export default class Country implements Jsonable {
     private __id;
     private static readonly SEA_ID;
@@ -65,5 +66,6 @@ export default class Country implements Jsonable {
     getLeaders(): Map<string, Leader>;
     getLeader(): Leader;
     setHandler(handler: CountryHandler): void;
+    onEvent(event: Event): void;
     toJSON(): any;
 }

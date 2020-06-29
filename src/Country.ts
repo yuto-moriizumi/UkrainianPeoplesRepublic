@@ -12,6 +12,8 @@ import Access from "./DiplomaticTies/Access";
 import DivisionInfo from "./DivisionInfo";
 import Leader from "./Leader";
 import CountryHandler from "./CountryHandler";
+import Event from "./Events/Event";
+import Util from "./Utils/Util";
 
 export default class Country implements Jsonable {
   private __id: string;
@@ -79,7 +81,7 @@ export default class Country implements Jsonable {
     GameManager.instance.data.getProvinces().forEach((province) => {
       if (province.getOwner() == this) provinces.push(province);
     });
-    const province = provinces[Math.floor(Math.random() * provinces.length)];
+    const province = provinces[Util.getRandomInt(0, provinces.length - 1)];
 
     return province;
   }
@@ -214,6 +216,10 @@ export default class Country implements Jsonable {
 
   public setHandler(handler: CountryHandler) {
     this.__handler = handler;
+  }
+
+  public onEvent(event: Event) {
+    this.__handler.onEvent(event);
   }
 
   public toJSON() {

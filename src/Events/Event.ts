@@ -20,17 +20,17 @@ export default class Event {
   private _options: Array<Option> = new Array<Option>();
   private time2happen: number;
   private triggeredOnly = false;
+  /**
+   * グローバルイベントであるかどうか
+   * グローバルイベントは、いずれかの国で発火されたときに、全ての国で発火します
+   * ニュース的イベントに使用して下さい
+   * @private
+   * @memberof Event
+   */
+  private isGlobal = false;
 
   public isDispatchable(country: Country, date: Date): boolean {
     if (this.fired) return false;
-
-    if (this.triggeredOnly)
-      console.log(
-        "triggerd only event",
-        this.__id,
-        "happens in",
-        this.time2happen
-      );
 
     if (this.time2happen == NaN) {
       //time2happenがセットされていない場合
@@ -48,6 +48,11 @@ export default class Event {
   public dispatch(dispatcher: CountryHandler, date: Date) {
     if (!this.isDispatchable(dispatcher.getCountry(), date)) return; //発火可能でないなら発火しない
     this.fired = true;
+    if (this.isGlobal)
+      //グローバルイベントの場合は全ての国で発火します
+      GameManager.instance.data
+        .getCountries()
+        .forEach((country) => country.onEvent(this));
     dispatcher.onEvent(this);
   }
 
@@ -61,7 +66,7 @@ export default class Event {
     );
   }
 
-  get options() {
+  public getOptions() {
     return this._options;
   }
 
@@ -124,7 +129,7 @@ export default class Event {
         10 +
         10 +
         10 +
-        (title.height + 5) * this.options.length,
+        (title.height + 5) * this._options.length,
       renderer.height * 0.2
     );
     dialog.position.set(
@@ -150,7 +155,7 @@ export default class Event {
     message.position.set(width * 0.5, header.y + header.height + 5);
 
     //オプションボタン
-    this.options.forEach((option: Option, index: number) => {
+    this._options.forEach((option: Option, index: number) => {
       const button = new Button(option.getTitle(), dialog.width * 0.8);
       button.position.set(
         dialog.width * 0.1,
