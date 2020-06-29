@@ -18,11 +18,8 @@ export default class Event {
   private _options: Array<Option> = new Array<Option>();
 
   public dispatch(scene: MainScene, date: Date) {
-    //console.log("dispatchOK?", this.title);
-
     if (this.fired) return;
     if (!this._condition.isValid(date)) return;
-
     this.fired = true;
 
     const dialog = new PIXI.Graphics();
@@ -81,15 +78,6 @@ export default class Event {
     message.anchor.set(0.5, 0);
     message.position.set(width * 0.5, header.y + header.height + 5);
 
-    //OKボタン
-    /*
-    const ok = new Option();
-    ok.position.set(width * 0.5 - ok.width * 0.5, height - ok.height - 5);
-    ok.interactive = true;
-    ok.buttonMode = true;
-    ok.on("click", () => this.destroy());
-    this.addChild(ok);*/
-
     //オプションボタン
     this.options.forEach((option: Option, index: number) => {
       const button = new Button(option.getTitle(), dialog.width * 0.8);
@@ -147,6 +135,10 @@ export default class Event {
 
   get options() {
     return this._options;
+  }
+
+  public getId() {
+    return this.id;
   }
 
   public toJSON(): object {

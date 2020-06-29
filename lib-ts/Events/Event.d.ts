@@ -11,5 +11,6 @@ export default class Event {
     set condition(condition: any);
     set options(options: Array<any>);
     get options(): Array<any>;
+    getId(): string;
     toJSON(): object;
 }

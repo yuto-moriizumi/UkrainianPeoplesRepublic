@@ -4,6 +4,7 @@ import Jsonable from "./Utils/Jsonable";
 import Money from "./Money";
 import DivisionInfo from "./DivisionInfo";
 import Leader from "./Leader";
+import CountryHandler from "./CountryHandler";
 export default class Country implements Jsonable {
     private __id;
     private static readonly SEA_ID;
@@ -13,7 +14,7 @@ export default class Country implements Jsonable {
     private _culture;
     private __diplomaticTies;
     private _divisions;
-    private __ai;
+    private __handler;
     __money: Money;
     private _leaders;
     private _leader;
@@ -63,5 +64,6 @@ export default class Country implements Jsonable {
     private set leader(value);
     getLeaders(): Map<string, Leader>;
     getLeader(): Leader;
+    setHandler(handler: CountryHandler): void;
     toJSON(): any;
 }

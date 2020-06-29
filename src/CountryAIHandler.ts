@@ -4,10 +4,12 @@ import Atlas from "./Map/Atlas";
 import DivisionTemplate from "./DivisionTemplate";
 import DivisionInfo from "./DivisionInfo";
 import GameManager from "./GameManager";
+import CountryHandler from "./CountryHandler";
 
-export default class CountryAI {
-  private country: Country;
+export default class CountryAI extends CountryHandler {
+  country: Country;
   constructor(country: Country) {
+    super();
     this.country = country;
   }
 

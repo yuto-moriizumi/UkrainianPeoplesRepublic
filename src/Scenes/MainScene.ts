@@ -11,15 +11,13 @@ import Province from "../Province";
 import Header from "../UI/Header";
 import Sidebar from "../UI/Sidebar";
 import DiplomaticSidebar from "../UI/DiplomaticSidebar";
-import Timer from "../UI/Timer";
-import EventDispatcher from "../Events/EventDispacher";
 import Event from "../Events/Event";
 import Button from "../UI/Button";
 import Conscription from "../UI/Conscription";
-import SpriteButton from "../UI/SpriteButton";
 import DivisionSprite from "../DivisionSprite";
 import DebugSidebar from "../UI/DebugSidebar";
 import ProvinceSidebar from "../UI/ProvinceSidebar";
+import CountryPlayerHandler from "../CountryPlayerHandler";
 
 export default class MainScene extends Scene implements Selectable {
   public static instance: MainScene;
@@ -27,7 +25,6 @@ export default class MainScene extends Scene implements Selectable {
   private map: Atlas;
   private header: Header;
   private sidebar: Sidebar;
-  private eventDispatcher: EventDispatcher;
   public selectingDivison: DivisionSprite;
   public cheat_move = false;
 
@@ -42,7 +39,6 @@ export default class MainScene extends Scene implements Selectable {
     this.transitionIn = new Fade(1.0, 0.0, -0.02);
     this.transitionOut = new Fade(0.0, 1.0, 0.02);
     this.playCountry = playCountry;
-    this.eventDispatcher = new EventDispatcher(this);
 
     //ダウンロードボタン（暫定）
     const renderer = GameManager.instance.game.renderer;
@@ -97,6 +93,9 @@ export default class MainScene extends Scene implements Selectable {
 
     this.header = new Header(this.playCountry);
     this.addChild(this.header);
+
+    //プレイヤー国をセット
+    this.setPlayCountry(this.playCountry);
   }
 
   public selectProvince(province: Province) {
@@ -163,5 +162,7 @@ export default class MainScene extends Scene implements Selectable {
   public setPlayCountry(country: Country) {
     this.playCountry = country;
     this.header.setPlayCountry(country);
+    //プレイヤー国にプレイヤーハンドラをセット
+    country.setHandler(new CountryPlayerHandler(country));
   }
 }

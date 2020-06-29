@@ -5,12 +5,13 @@ import DivisionTemplate from "./DivisionTemplate";
 import GameManager from "./GameManager";
 import Jsonable from "./Utils/Jsonable";
 import JsonConverter from "./Utils/JsonConverter";
-import CountryAI from "./CountryAI";
+import CountryAI from "./CountryAIHandler";
 import MainScene from "./Scenes/MainScene";
 import Money from "./Money";
 import Access from "./DiplomaticTies/Access";
 import DivisionInfo from "./DivisionInfo";
 import Leader from "./Leader";
+import CountryHandler from "./CountryHandler";
 
 export default class Country implements Jsonable {
   private __id: string;
@@ -21,7 +22,7 @@ export default class Country implements Jsonable {
   private _culture: string = "DEFAULT_CULTURE";
   private __diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _divisions = new Array<DivisionInfo>();
-  private __handler: CountryAI;
+  private __handler: CountryHandler;
   public __money: Money = new Money();
   private _leaders = new Map<string, Leader>();
   private _leader: Leader;
@@ -209,6 +210,10 @@ export default class Country implements Jsonable {
 
   public getLeader() {
     return this._leader;
+  }
+
+  public setHandler(handler: CountryHandler) {
+    this.__handler = handler;
   }
 
   public toJSON() {

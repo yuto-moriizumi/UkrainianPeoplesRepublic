@@ -17,7 +17,7 @@ export default class Savedata implements Jsonable {
   private _countries: Map<string, Country> = new Map<string, Country>();
   private _provinces = new MapDataManager<string, Province>();
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
-  private _events: Array<Event> = new Array<Event>();
+  private _events = new Map<string, Event>();
   private _combats: Array<Combat> = new Array<Combat>();
   private _templates = new MapDataManager<string, DivisionTemplate>();
   private _cultures = new SetDataManager<string>();
@@ -105,12 +105,13 @@ export default class Savedata implements Jsonable {
     this._diplomacy = this._diplomacy.filter((d) => d != diplomacy);
   }
 
-  private set events(events: Array<object>) {
-    this._events = events.map((eventObject) => {
+  private set events(events: object) {
+    for (const id in events) {
       const event = new Event();
-      Object.assign(event, eventObject);
-      return event;
-    });
+      events[id]["id"] = id;
+      Object.assign(event, events[id]);
+      this._events.set(id, event);
+    }
     console.log("events loaded:", this._events);
   }
 

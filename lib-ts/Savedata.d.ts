@@ -27,7 +27,7 @@ export default class Savedata implements Jsonable {
     addDiplomacy(diplomacy: DiplomaticTie): void;
     removeDiplomacy(diplomacy: DiplomaticTie): void;
     private set events(value);
-    getEvents(): Event[];
+    getEvents(): Map<string, Event>;
     private set combats(value);
     addCombat(combat: Combat): void;
     removeCombat(combat: Combat): void;

@@ -4,14 +4,12 @@
       "culture": "ウクライナ",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#71e0a0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
@@ -50,42 +48,36 @@
       "culture": "ロシア",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c090c0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#405080"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#835452"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e041e0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#a0dfa0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
@@ -106,56 +98,48 @@
       "culture": "ロシア",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bf6060"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#4190c0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c0d001"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e0c080"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#801040"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e0c0e0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bf6060"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
@@ -174,14 +158,12 @@
       "culture": "ドイツ",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#902161"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
@@ -270,14 +252,12 @@
       "culture": "トルコ",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#f02082"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
@@ -305,42 +285,36 @@
       "culture": "ドイツ",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bfdf20"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#61c0a0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#40df20"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#51a0e0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#416161"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
@@ -357,7 +331,6 @@
       "culture": "ブルガリア",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
@@ -394,7 +367,6 @@
       "culture": "ギリシャ",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
@@ -1600,8 +1572,8 @@
       "target_icon": "access_target.png"
     }
   ],
-  "events": [
-    {
+  "events": {
+    "russian_civilwar_begins": {
       "fired": false,
       "options": [
         {
@@ -1617,7 +1589,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-01-25 00:00" }
     },
-    {
+    "donets_leaves_ukraine": {
       "fired": false,
       "options": [
         {
@@ -1637,7 +1609,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-02-12 00:00" }
     },
-    {
+    "kuban_independence": {
       "fired": false,
       "options": [
         {
@@ -1654,7 +1626,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-02-16 00:00" }
     },
-    {
+    "lithuania_independence": {
       "fired": false,
       "options": [
         {
@@ -1685,7 +1657,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-02-16 00:00" }
     },
-    {
+    "kafkas_independence": {
       "fired": false,
       "options": [
         {
@@ -1729,7 +1701,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-02-26 00:00" }
     },
-    {
+    "estonia_independence": {
       "fired": false,
       "options": [
         {
@@ -1749,7 +1721,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-02-26 00:00" }
     },
-    {
+    "udb_independence": {
       "fired": false,
       "options": [
         {
@@ -1776,7 +1748,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-03-08 00:00" }
     },
-    {
+    "dcs_independence": {
       "fired": false,
       "options": [
         {
@@ -1797,7 +1769,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-03-08 00:00" }
     },
-    {
+    "ger_invasion_osr": {
       "fired": false,
       "options": [
         {
@@ -1811,7 +1783,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-03-12 00:00" }
     },
-    {
+    "tsr_independence": {
       "fired": false,
       "options": [
         {
@@ -1837,7 +1809,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-03-21 00:00" }
     },
-    {
+    "ukr_civil_war": {
       "fired": false,
       "options": [
         {
@@ -1854,7 +1826,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-01-24 00:00" }
     },
-    {
+    "bpr_independence": {
       "fired": false,
       "options": [
         {
@@ -1891,7 +1863,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-03-25 00:00" }
     },
-    {
+    "rom_annex_mdr": {
       "fired": false,
       "options": [
         {
@@ -1905,7 +1877,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-04-09 00:00" }
     },
-    {
+    "bucharest_peace": {
       "fired": false,
       "options": [
         {
@@ -1937,7 +1909,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-05-07 00:00" }
     },
-    {
+    "ksr_form": {
       "fired": false,
       "options": [
         {
@@ -1957,7 +1929,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-04-13 00:00" }
     },
-    {
+    "don_independence": {
       "fired": false,
       "options": [
         {
@@ -1983,7 +1955,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-05-18 00:00" }
     },
-    {
+    "kafkas_collapce": {
       "fired": false,
       "options": [
         {
@@ -2033,7 +2005,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-05-26 00:00" }
     },
-    {
+    "greece_attack_bulgaria": {
       "fired": false,
       "options": [
         {
@@ -2047,7 +2019,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-09-23 00:00" }
     },
-    {
+    "britain_landing_bulgaria": {
       "fired": false,
       "options": [
         {
@@ -2070,7 +2042,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-09-30 00:00" }
     },
-    {
+    "scs_independence": {
       "fired": false,
       "options": [
         {
@@ -2112,7 +2084,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
-    {
+    "ubd_integrate_dcs": {
       "fired": false,
       "options": [
         {
@@ -2126,27 +2098,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-09-22 00:00" }
     },
-    {
-      "fired": false,
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": ["#71e041", "#ef6080", "#9080a0", "#71e080"],
-              "root": "CZE"
-            }
-          ],
-          "title": "OK"
-        }
-      ],
-      "id": "cze_independence",
-      "title": "チェコスロバキア共和国がオーストリアを離脱",
-      "desc": "チェコスロバキア国内の国民委員会が独立宣言を行い、プラハの政庁を占拠。新政府は熱心な独立運動家であるトマーシュ・マサリクに率いられている。",
-      "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-10-18 00:00" }
-    },
-    {
+    "wupr_independence": {
       "fired": false,
       "options": [
         {
@@ -2176,21 +2128,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-10-20 00:00" }
     },
-    {
-      "fired": false,
-      "options": [
-        {
-          "effects": [{ "type": "Annex", "root": "UBD", "target": "DCS" }],
-          "title": "OK"
-        }
-      ],
-      "id": "ubd_integrate_dcs",
-      "title": "クールラント公国がバルト連合公国に統合",
-      "desc": "クールラント公国成立の後に構想されたバルト連合公国は、クールラントよりも大きな支持を得ており、結果的にこの国は統合されることとなった。",
-      "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-09-22 00:00" }
-    },
-    {
+    "cze_independence": {
       "fired": false,
       "options": [
         {
@@ -2210,7 +2148,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-10-18 00:00" }
     },
-    {
+    "ger_surrender": {
       "fired": false,
       "options": [
         {
@@ -2335,7 +2273,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-11-11 00:00" }
     },
-    {
+    "ser_annex_scs": {
       "fired": false,
       "options": [
         {
@@ -2356,7 +2294,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-12-01 00:00" }
     },
-    {
+    "baltic_independence": {
       "fired": false,
       "options": [
         {
@@ -2388,7 +2326,7 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-11-18 00:00" }
     }
-  ],
+  },
   "combats": [],
   "templates": {
     "infantry": {
