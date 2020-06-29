@@ -32,12 +32,16 @@ export default class Country implements Jsonable {
     getWarInfoWith(country: Country): War;
     hasWar(): boolean;
     calcMaintanance(): number;
+    /**
+     * 時間単位の利益を計算します
+     * @returns
+     * @memberof Country
+     */
     calcBalance(): number;
     update(): void;
     getDivisions(): DivisionInfo[];
     addDivision(division: DivisionInfo): void;
     removeDivision(division: DivisionInfo): void;
-    private set templates(value);
     /**
      * 何らかの理由で国が消滅する場合に呼ぶ
      * オブジェクトが消えるわけではない

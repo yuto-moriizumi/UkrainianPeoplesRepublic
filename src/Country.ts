@@ -103,12 +103,21 @@ export default class Country implements Jsonable {
     return ans;
   }
 
+  /**
+   * 時間単位の利益を計算します
+   * @returns
+   * @memberof Country
+   */
   public calcBalance() {
-    const provinces = [];
+    let balance = 0;
     GameManager.instance.data.getProvinces().forEach((province) => {
-      if (province.getOwner() == this) provinces.push(province); //保有プロヴィンスの数だけ収入UP
+      if (province.getOwner() == this) {
+        balance += 1; //領土につき1
+        if (province.getCulture() == province.getOwner().getCulture())
+          balance += 1; //自国と同じ文化ならさらに+1
+      }
     });
-    return 1 + provinces.length - this.calcMaintanance();
+    return balance - this.calcMaintanance();
   }
 
   public update() {
@@ -133,10 +142,6 @@ export default class Country implements Jsonable {
 
   public removeDivision(division: DivisionInfo) {
     this._divisions = this._divisions.filter((d) => d != division);
-  }
-
-  private set templates(templates: any) {
-    //何もしない
   }
 
   /**
