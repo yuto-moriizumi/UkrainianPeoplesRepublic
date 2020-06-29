@@ -2338,7 +2338,11 @@
         {
           "effects": [
             { "type": "DeclareWar", "root": "USSR", "target": "UPR" },
-            { "type": "DeclareWar", "root": "USSR", "target": "BPR" }
+            { "type": "DeclareWar", "root": "USSR", "target": "BPR" },
+            { "type": "DeclareWar", "root": "USSR", "target": "EST" },
+            { "type": "DeclareWar", "root": "USSR", "target": "LAT" },
+            { "type": "DeclareWar", "root": "USSR", "target": "LIT" },
+            { "type": "DeclareWar", "root": "USSR", "target": "DON" }
           ],
           "title": "OK"
         }
@@ -2348,6 +2352,68 @@
       "desc": "ドイツの敗戦に伴い、東欧には権力の空白が生まれた。これに目を付けたソビエトは、直ちに攻撃を開始した。",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "EventFired", "id": "ger_surrender" }
+    },
+    "hungarian_occupation": {
+      "fired": false,
+      "options": [
+        {
+          "effects": [
+            {
+              "type": "SetOwner",
+              "provinces": [
+                "#1161a0",
+                "#d061a0",
+                "#d0e0a0",
+                "#b06161",
+                "#00a7f4",
+                "#31a0a0",
+                "#3161a0",
+                "#51e0a0",
+                "#d0e021",
+                "#e02121",
+                "#306060",
+                "#af609f"
+              ],
+              "root": "ROM"
+            },
+            {
+              "type": "SetOwner",
+              "provinces": [
+                "#11e021",
+                "#626998",
+                "#902161",
+                "#906121",
+                "#80cf00"
+              ],
+              "root": "SER"
+            },
+            {
+              "type": "SetOwner",
+              "provinces": [
+                "#f0e080",
+                "#71e080",
+                "#10dfdf",
+                "#1d6b94",
+                "#716141",
+                "#f06141",
+                "#90e0e0",
+                "#51306a",
+                "#20c000",
+                "#516161",
+                "#d06161",
+                "#51e061"
+              ],
+              "root": "CZE"
+            }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "hungarian_occupation",
+      "title": "ルーマニア・ユーゴスラビアがハンガリーを占領",
+      "desc": "ハンガリーの軍隊は弱体であり、また領土的野心を抱く周辺諸国によって、ハンガリーは占領された。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1919-01-10 00:00" }
     }
   },
   "combats": [],

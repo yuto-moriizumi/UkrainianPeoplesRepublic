@@ -5,6 +5,8 @@ import DivisionTemplate from "./DivisionTemplate";
 import DivisionInfo from "./DivisionInfo";
 import GameManager from "./GameManager";
 import CountryHandler from "./CountryHandler";
+import MainScene from "./Scenes/MainScene";
+import Event from "./Events/Event";
 
 export default class CountryAI extends CountryHandler {
   country: Country;
@@ -13,7 +15,21 @@ export default class CountryAI extends CountryHandler {
     this.country = country;
   }
 
+  dispatchEvents() {
+    GameManager.instance.data.getEvents().forEach((event: Event) => {
+      event.countFoward();
+      event.dispatch(this, MainScene.instance.getDate());
+    });
+  }
+
+  onEvent() {
+    throw new Error("onEvent not implemented");
+  }
+
   public update() {
+    //イベント発火処理
+    this.dispatchEvents();
+
     //師団の生産
     //維持コストの計算
     const balance = this.country.calcBalance();

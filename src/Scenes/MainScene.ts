@@ -148,12 +148,6 @@ export default class MainScene extends Scene implements Selectable {
 
     //ヘッダ更新
     this.header.update();
-
-    //イベント発火処理
-    data.getEvents().forEach((event: Event) => {
-      event.countFoward();
-      event.dispatch(this, this.header.getTimer().getDate());
-    });
   }
 
   public getMyCountry() {
@@ -165,5 +159,9 @@ export default class MainScene extends Scene implements Selectable {
     this.header.setPlayCountry(country);
     //プレイヤー国にプレイヤーハンドラをセット
     country.setHandler(new CountryPlayerHandler(country));
+  }
+
+  public getDate() {
+    return this.header.getTimer().getDate();
   }
 }

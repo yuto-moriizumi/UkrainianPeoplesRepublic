@@ -3,11 +3,12 @@ import Condition from "./Conditions/Condition";
 import MainScene from "../Scenes/MainScene";
 import GameManager from "../GameManager";
 import * as PIXI from "pixi.js";
-import DateCondition from "./Conditions/DateCondition";
 import Button from "../UI/Button";
 import Sound from "../Sound";
 import Resource from "../Resources";
-import EventFired from "./Conditions/EventFired";
+import CountryHandler from "../CountryHandler";
+import Country from "../Country";
+import ConditionCreator from "./Conditions/ConditionCreator";
 
 export default class Event {
   private __id: string;
@@ -20,7 +21,7 @@ export default class Event {
   private time2happen: number;
   private triggeredOnly = false;
 
-  public isDispatchable(date: Date): boolean {
+  public isDispatchable(country: Country, date: Date): boolean {
     if (this.fired) return false;
 
     if (this.triggeredOnly)
@@ -34,21 +35,64 @@ export default class Event {
     if (this.time2happen == NaN) {
       //time2happenがセットされていない場合
       if (this.triggeredOnly) return false; //受動的イベントなら発火しない
-      if (this._condition.isValid(date)) return true; //受動的イベントではなく、条件を満たしている場合は発火
+      if (this._condition.isValid(country, date)) return true; //受動的イベントではなく、条件を満たしている場合は発火
     } else {
       //time2happenがセットされている場合
       if (this.time2happen <= 0) return true; //発火期限であれば条件に関係なく発火
       if (this.triggeredOnly) return false; //発火期限でなく、受動的イベントなら発火しない
-      if (this._condition.isValid(date)) return true; //発火期限でなく、受動的イベントでないなら条件を満たしている場合は発火
+      if (this._condition.isValid(country, date)) return true; //発火期限でなく、受動的イベントでないなら条件を満たしている場合は発火
     }
     return false; //基本は発火しない
   }
 
-  public dispatch(scene: MainScene, date: Date) {
-    if (!this.isDispatchable(date)) return; //発火可能でないなら発火しない
-
+  public dispatch(dispatcher: CountryHandler, date: Date) {
+    if (!this.isDispatchable(dispatcher.getCountry(), date)) return; //発火可能でないなら発火しない
     this.fired = true;
+    dispatcher.onEvent(this);
+  }
 
+  set condition(condition: object) {
+    this._condition = ConditionCreator.createCondition(condition);
+  }
+
+  set options(options: Array<any>) {
+    this._options = options.map((option) =>
+      Object.assign(new Option(), option)
+    );
+  }
+
+  get options() {
+    return this._options;
+  }
+
+  public getId() {
+    return this.__id;
+  }
+
+  public setTime2happen(time2happen) {
+    this.time2happen =
+      this.time2happen == NaN || this.time2happen == undefined
+        ? time2happen
+        : Math.min(this.time2happen, time2happen);
+  }
+
+  public countFoward() {
+    if (!this.fired && this.time2happen) this.time2happen -= 1; //未発火ならカウントを進める
+  }
+
+  public isFired() {
+    return this.fired;
+  }
+
+  public getDesc() {
+    return this.desc;
+  }
+
+  public getTitle() {
+    return this.title;
+  }
+
+  public showDialog() {
     const dialog = new PIXI.Graphics();
     dialog.beginFill(0x2f2f2f);
     const renderer = GameManager.instance.game.renderer;
@@ -128,7 +172,7 @@ export default class Event {
       dialog.addChild(button);
     });
 
-    scene.addChild(dialog);
+    MainScene.instance.addChild(dialog);
 
     //クリック判定が貫通しないようにする
     dialog.interactive = true;
@@ -141,49 +185,6 @@ export default class Event {
     );
     sound.volume = 0.25;
     sound.play(false);
-  }
-
-  set condition(condition: any) {
-    if (condition instanceof Condition) this._condition = condition;
-    switch (condition.type) {
-      case "DateCondition":
-        this._condition = Object.assign(new DateCondition(), condition);
-        break;
-      case "EventFired":
-        this._condition = Object.assign(new EventFired(), condition);
-        break;
-      default:
-        throw new Error("一致する条件クラスが見つかりませんでした:");
-    }
-  }
-
-  set options(options: Array<any>) {
-    this._options = options.map((option) =>
-      Object.assign(new Option(), option)
-    );
-  }
-
-  get options() {
-    return this._options;
-  }
-
-  public getId() {
-    return this.__id;
-  }
-
-  public setTime2happen(time2happen) {
-    this.time2happen =
-      this.time2happen == NaN || this.time2happen == undefined
-        ? time2happen
-        : Math.min(this.time2happen, time2happen);
-  }
-
-  public countFoward() {
-    if (!this.fired && this.time2happen) this.time2happen -= 1; //未発火ならカウントを進める
-  }
-
-  public isFired() {
-    return this.fired;
   }
 
   public toJSON(): object {

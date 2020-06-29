@@ -1,4 +1,5 @@
-import MainScene from "../Scenes/MainScene";
+import CountryHandler from "../CountryHandler";
+import Country from "../Country";
 export default class Event {
     private __id;
     private title;
@@ -9,14 +10,17 @@ export default class Event {
     private _options;
     private time2happen;
     private triggeredOnly;
-    isDispatchable(date: Date): boolean;
-    dispatch(scene: MainScene, date: Date): void;
-    set condition(condition: any);
+    isDispatchable(country: Country, date: Date): boolean;
+    dispatch(dispatcher: CountryHandler, date: Date): void;
+    set condition(condition: object);
     set options(options: Array<any>);
     get options(): Array<any>;
     getId(): string;
     setTime2happen(time2happen: any): void;
     countFoward(): void;
     isFired(): boolean;
+    getDesc(): string;
+    getTitle(): string;
+    showDialog(): void;
     toJSON(): object;
 }

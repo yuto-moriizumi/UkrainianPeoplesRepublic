@@ -25,4 +25,5 @@ export default class MainScene extends Scene implements Selectable {
     update(dt: number): void;
     getMyCountry(): Country;
     setPlayCountry(country: Country): void;
+    getDate(): Date;
 }

@@ -1,7 +1,7 @@
 import Condition from "./Condition";
+import Country from "../../Country";
 export default class EventFired extends Condition {
     private type;
     private id;
-    isValid(date: Date): boolean;
-    toJSON(): object;
+    isValid(country: Country, date: Date): boolean;
 }

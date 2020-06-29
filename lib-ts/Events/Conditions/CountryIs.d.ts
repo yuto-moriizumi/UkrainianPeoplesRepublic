@@ -1,8 +1,9 @@
 import Condition from "./Condition";
 import Country from "../../Country";
-export default class DateCondition extends Condition {
+export default class CountryIs extends Condition {
     private type;
-    private _when;
-    set when(date: string);
+    private _country;
     isValid(country: Country, date: Date): boolean;
+    private set country(value);
+    toJSON(): any;
 }

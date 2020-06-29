@@ -1,5 +1,6 @@
 import Condition from "./Condition";
 import DateAdapter from "../../DateAdapter";
+import Country from "../../Country";
 
 export default class DateCondition extends Condition {
   private type = this.constructor.name;
@@ -12,15 +13,7 @@ export default class DateCondition extends Condition {
     }
     this._when = date;
   }
-  public isValid(date: Date): boolean {
+  public isValid(country: Country, date: Date): boolean {
     return date.getTime() >= this._when.getTime();
-  }
-  public toJSON(): object {
-    return Object.fromEntries(
-      Object.entries(this).map(([key, value]) => {
-        if (key.startsWith("_")) return [key.substr(1), value];
-        return [key, value];
-      })
-    );
   }
 }
