@@ -3,7 +3,6 @@ import DateAdapter from "../../DateAdapter";
 import Country from "../../Country";
 
 export default class DateCondition extends Condition {
-  private type = this.constructor.name;
   private _when: DateAdapter;
 
   public set when(date: string) {

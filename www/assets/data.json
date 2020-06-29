@@ -1592,7 +1592,13 @@
       "title": "白軍への攻撃",
       "desc": "ロシアの各地には、反革命分子が潜んでいる。ただちに攻撃し、全ロシアを解放するのだ！",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-01-25 00:00" }
+      "condition": {
+        "type": "And",
+        "conditions": [
+          { "type": "DateCondition", "when": "1918-01-25 00:00" },
+          { "type": "CountryIs", "country": "USSR" }
+        ]
+      }
     },
     "russian_civilwar_begins_news": {
       "fired": false,

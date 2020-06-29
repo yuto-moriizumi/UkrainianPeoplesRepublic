@@ -4,7 +4,6 @@ import Country from "../../Country";
 import GameManager from "../../GameManager";
 
 export default class CountryIs extends Condition {
-  private type = this.constructor.name;
   private _country: Country;
 
   public isValid(country: Country, date: Date): boolean {

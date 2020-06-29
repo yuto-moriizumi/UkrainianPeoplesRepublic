@@ -12,6 +12,12 @@ export default class And extends Condition {
     );
   }
   public isValid(country: Country, date: Date): boolean {
+    console.log(
+      this.type,
+      "called which is",
+      this._conditions.every((condition) => condition.isValid(country, date))
+    );
+
     return this._conditions.every((condition) =>
       condition.isValid(country, date)
     );

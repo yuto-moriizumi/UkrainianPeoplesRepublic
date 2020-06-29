@@ -131,10 +131,7 @@ export default class Country implements Jsonable {
     this.__money.setMoney(this.__money.getMoney() + this.calcBalance());
 
     this._divisions.forEach((division) => division.update());
-    if (
-      MainScene.instance.getMyCountry() !== this &&
-      MainScene.instance.getMyCountry().__id !== Country.SEA_ID
-    )
+    if (MainScene.instance.getMyCountry().__id !== Country.SEA_ID)
       this.__handler.update(); //自国以外で海でないならAIを呼び出す
   }
 

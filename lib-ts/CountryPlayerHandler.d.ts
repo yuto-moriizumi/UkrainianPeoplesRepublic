@@ -6,4 +6,5 @@ export default class CountryPlayerHandler extends CountryHandler {
     constructor(country: Country);
     dispatchEvents(): void;
     onEvent(event: Event): void;
+    update(): void;
 }

@@ -23,4 +23,8 @@ export default class CountryPlayerHandler extends CountryHandler {
   onEvent(event: Event) {
     event.showDialog();
   }
+
+  public update() {
+    this.dispatchEvents();
+  }
 }

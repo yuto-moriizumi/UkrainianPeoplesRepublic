@@ -48,12 +48,12 @@ export default class Event {
   public dispatch(dispatcher: CountryHandler, date: Date) {
     if (!this.isDispatchable(dispatcher.getCountry(), date)) return; //発火可能でないなら発火しない
     this.fired = true;
-    if (this.isGlobal)
+    if (this.isGlobal) {
       //グローバルイベントの場合は全ての国で発火します
       GameManager.instance.data
         .getCountries()
         .forEach((country) => country.onEvent(this));
-    dispatcher.onEvent(this);
+    } else dispatcher.onEvent(this); //そうでない場合は発火国でのみ発火します
   }
 
   set condition(condition: object) {
