@@ -5,6 +5,7 @@ import Peace from "./Peace";
 import ChangeName from "./ChangeName";
 import GainAccess from "./GainAccess";
 import Effect from "./Effect";
+import DispatchEvent from "./DispatchEvent";
 
 export default class EffectCreator {
   public static createEffect(effect: any): Effect {
@@ -21,6 +22,8 @@ export default class EffectCreator {
         return Object.assign(new ChangeName(), effect);
       case "GainAccess":
         return Object.assign(new GainAccess(), effect);
+      case "DispatchEvent":
+        return Object.assign(new DispatchEvent(), effect);
       default:
         throw new Error("一致する効果クラスが見つかりませんでした:");
     }

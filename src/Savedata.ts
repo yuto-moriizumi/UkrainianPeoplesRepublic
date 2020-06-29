@@ -108,7 +108,7 @@ export default class Savedata implements Jsonable {
   private set events(events: object) {
     for (const id in events) {
       const event = new Event();
-      events[id]["id"] = id;
+      events[id]["__id"] = id;
       Object.assign(event, events[id]);
       this._events.set(id, event);
     }

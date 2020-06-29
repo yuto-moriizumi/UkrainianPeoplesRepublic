@@ -7,19 +7,46 @@ import DateCondition from "./Conditions/DateCondition";
 import Button from "../UI/Button";
 import Sound from "../Sound";
 import Resource from "../Resources";
+import EventFired from "./Conditions/EventFired";
 
 export default class Event {
-  private id: string;
+  private __id: string;
   private title: string;
   private desc: string;
   private picture: string;
-  private fired: boolean = false;
+  private fired = false;
   private _condition: Condition;
   private _options: Array<Option> = new Array<Option>();
+  private time2happen: number;
+  private triggeredOnly = false;
+
+  public isDispatchable(date: Date): boolean {
+    if (this.fired) return false;
+
+    if (this.triggeredOnly)
+      console.log(
+        "triggerd only event",
+        this.__id,
+        "happens in",
+        this.time2happen
+      );
+
+    if (this.time2happen == NaN) {
+      //time2happenがセットされていない場合
+      if (this.triggeredOnly) return false; //受動的イベントなら発火しない
+      if (this._condition.isValid(date)) return true; //受動的イベントではなく、条件を満たしている場合は発火
+    } else {
+      //time2happenがセットされている場合
+      if (this.time2happen <= 0) return true; //発火期限であれば条件に関係なく発火
+      if (this.triggeredOnly) return false; //発火期限でなく、受動的イベントなら発火しない
+      if (this._condition.isValid(date)) return true; //発火期限でなく、受動的イベントでないなら条件を満たしている場合は発火
+    }
+    return false; //基本は発火しない
+  }
 
   public dispatch(scene: MainScene, date: Date) {
-    if (this.fired) return;
-    if (!this._condition.isValid(date)) return;
+    if (!this.isDispatchable(date)) return; //発火可能でないなら発火しない
+
     this.fired = true;
 
     const dialog = new PIXI.Graphics();
@@ -122,6 +149,9 @@ export default class Event {
       case "DateCondition":
         this._condition = Object.assign(new DateCondition(), condition);
         break;
+      case "EventFired":
+        this._condition = Object.assign(new EventFired(), condition);
+        break;
       default:
         throw new Error("一致する条件クラスが見つかりませんでした:");
     }
@@ -138,7 +168,22 @@ export default class Event {
   }
 
   public getId() {
-    return this.id;
+    return this.__id;
+  }
+
+  public setTime2happen(time2happen) {
+    this.time2happen =
+      this.time2happen == NaN || this.time2happen == undefined
+        ? time2happen
+        : Math.min(this.time2happen, time2happen);
+  }
+
+  public countFoward() {
+    if (!this.fired && this.time2happen) this.time2happen -= 1; //未発火ならカウントを進める
+  }
+
+  public isFired() {
+    return this.fired;
   }
 
   public toJSON(): object {

@@ -2262,7 +2262,12 @@
               "root": "SER"
             },
             { "type": "Peace", "root": "GER", "target": "OSR" },
-            { "type": "Peace", "root": "GER", "target": "UPRS" }
+            { "type": "Peace", "root": "GER", "target": "UPRS" },
+            {
+              "type": "DispatchEvent",
+              "id": "ussr_attack_west",
+              "time2happen": 5
+            }
           ],
           "title": "OK"
         }
@@ -2325,6 +2330,24 @@
       "desc": "ラトビアはドイツからの独立を宣言した。またエストニアでは、次の日にドイツ軍政部からエストニア自治政府首脳コンスタンティン・パッツに主権を移動した。ドイツ政府はこれを承認する予定だが、軍部の中では反対する者もいるようだ。",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-11-18 00:00" }
+    },
+    "ussr_attack_west": {
+      "fired": false,
+      "triggeredOnly": true,
+      "options": [
+        {
+          "effects": [
+            { "type": "DeclareWar", "root": "USSR", "target": "UPR" },
+            { "type": "DeclareWar", "root": "USSR", "target": "BPR" }
+          ],
+          "title": "OK"
+        }
+      ],
+      "id": "ussr_attack_west",
+      "title": "ソ連軍の東進",
+      "desc": "ドイツの敗戦に伴い、東欧には権力の空白が生まれた。これに目を付けたソビエトは、直ちに攻撃を開始した。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "EventFired", "id": "ger_surrender" }
     }
   },
   "combats": [],

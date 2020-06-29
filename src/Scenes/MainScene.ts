@@ -151,6 +151,7 @@ export default class MainScene extends Scene implements Selectable {
 
     //イベント発火処理
     data.getEvents().forEach((event: Event) => {
+      event.countFoward();
       event.dispatch(this, this.header.getTimer().getDate());
     });
   }
