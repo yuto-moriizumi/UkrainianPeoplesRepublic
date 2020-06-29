@@ -31,6 +31,10 @@ export default class SetDataManager<T> extends DataManager {
     return this.set.has(value);
   }
 
+  public get size() {
+    return this.set.size;
+  }
+
   public setCollection(collection: any) {
     this.set = new ExtendedSet<T>(collection);
   }

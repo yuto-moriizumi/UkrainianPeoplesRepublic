@@ -8,5 +8,6 @@ export default class ExtendedSet<T> extends JsonObject {
     forEach(callback: (value: T) => void): void;
     some(callback: (value: T) => boolean): boolean;
     filter(callback: (value: T) => boolean): T[];
+    get size(): number;
     toJSON(): object;
 }

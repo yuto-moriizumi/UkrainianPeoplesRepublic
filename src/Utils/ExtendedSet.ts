@@ -33,6 +33,10 @@ export default class ExtendedSet<T> extends JsonObject {
     return Array.from(this.set).filter(callback);
   }
 
+  public get size(): number {
+    return this.set.size;
+  }
+
   public toJSON(): object {
     return Array.from(this.set);
   }

@@ -7,6 +7,7 @@ import Atlas from "./Map/Atlas";
 import DivisionInfo from "./DivisionInfo";
 import Observable from "./Observable";
 import ProvinceObserver from "ProvinceObserver";
+import CultureObserver from "./CultureObserve";
 
 export default class Province extends JsonObject implements Observable {
   private id: string;
@@ -16,6 +17,7 @@ export default class Province extends JsonObject implements Observable {
   private __divisions: Array<DivisionInfo> = new Array<DivisionInfo>();
   private _culture: string = "DEFAULT_CULTURE";
   private __observers = new Array<ProvinceObserver>();
+  private __cultureObservers = new Array<CultureObserver>();
 
   constructor(id: string) {
     super();
@@ -115,6 +117,9 @@ export default class Province extends JsonObject implements Observable {
       if (!cultures.has(culture))
         throw new Error("文化は見つかりませんでした:" + culture);
       this._culture = culture;
+      this.__cultureObservers.forEach((observer) => {
+        observer.onCultureChange();
+      });
     });
   }
 
@@ -128,6 +133,16 @@ export default class Province extends JsonObject implements Observable {
 
   public removeObserver(observer: ProvinceObserver) {
     this.__observers = this.__observers.filter(
+      (observer2) => observer2 != observer
+    );
+  }
+
+  public addCultureObserver(observer: CultureObserver) {
+    this.__cultureObservers.push(observer);
+  }
+
+  public removeCultureObserver(observer: CultureObserver) {
+    this.__cultureObservers = this.__cultureObservers.filter(
       (observer2) => observer2 != observer
     );
   }

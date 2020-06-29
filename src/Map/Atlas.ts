@@ -18,7 +18,7 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
   private defaultWidth: number;
   private defaultHeight: number;
   private pressKeys: Set<string> = new Set<string>();
-  private mode: MapMode = new PoliticalMap();
+  private mode: MapMode;
 
   constructor(scene: Selectable, texture?: PIXI.Texture) {
     super(texture);
@@ -42,8 +42,7 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     );
 
     //フィルターを更新
-    this.mode.addObserver(this);
-    this.mode.update();
+    this.setMode(new PoliticalMap());
 
     document.body.addEventListener("wheel", (e: WheelEvent) => {
       //拡大縮小
@@ -327,5 +326,12 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     return this.getNeighborProvinces(province1).some(
       (province) => province == province2
     );
+  }
+
+  public setMode(mode: MapMode) {
+    if (this.mode) mode.destroy();
+    this.mode = mode;
+    this.mode.addObserver(this);
+    this.mode.update();
   }
 }

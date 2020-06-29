@@ -5,16 +5,18 @@ import * as Filters from "pixi-filters";
 import ProvinceObserver from "../ProvinceObserver";
 import Observable from "../Observable";
 import MapModeObserver from "./MapModeObserver";
+import CultureObserver from "../CultureObserve";
 
-export default class PoliticalMap extends MapMode
-  implements ProvinceObserver, Observable {
+export default class CultureMap extends MapMode
+  implements CultureObserver, Observable {
   observers = Array<MapModeObserver>();
   private filter: PIXI.Filter;
+  private cultureDictionaly = new Map<string, string>();
 
   constructor() {
     super();
     GameManager.instance.data.getProvinces().forEach((province) => {
-      province.addObserver(this);
+      province.addCultureObserver(this);
     });
   }
 
@@ -22,9 +24,17 @@ export default class PoliticalMap extends MapMode
     const provinces = GameManager.instance.data.getProvinces();
     let replacements = [];
     provinces.forEach((province) => {
+      const culture = province.getCulture();
+      if (!this.cultureDictionaly.has(culture))
+        this.cultureDictionaly.set(
+          culture,
+          PIXI.utils.hex2string(
+            PIXI.utils.rgb2hex([Math.random(), Math.random(), Math.random()])
+          )
+        );
       replacements.push([
         PIXI.utils.string2hex(province.getId()),
-        province.getOwner().getColor(),
+        PIXI.utils.string2hex(this.cultureDictionaly.get(culture)),
       ]);
     });
     //注意 - どういうわけか、replacementsの長さが1以下だと正しく動作しなくなる
@@ -36,7 +46,7 @@ export default class PoliticalMap extends MapMode
     });
   }
 
-  public onProvinceChange() {
+  public onCultureChange() {
     //プロヴィンスの変化を受けてアップデート
     this.update();
   }
@@ -50,11 +60,10 @@ export default class PoliticalMap extends MapMode
       (observer2) => observer2 != observer
     );
   }
-
   public destroy() {
     //プロヴィンスに登録したオブザーバーを解除
     GameManager.instance.data.getProvinces().forEach((province) => {
-      province.removeObserver(this);
+      province.removeCultureObserver(this);
     });
   }
 }

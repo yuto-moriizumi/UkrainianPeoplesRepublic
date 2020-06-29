@@ -3,6 +3,7 @@ import Province from "../Province";
 import { Selectable } from "../Scenes/Selectable";
 import DivisionSprite from "../DivisionSprite";
 import ExtendedSet from "../Utils/ExtendedSet";
+import MapMode from "./MapMode";
 import MapModeObserver from "./MapModeObserver";
 export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     static instance: Atlas;
@@ -34,4 +35,5 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     private moveDivisionsTo;
     getNeighborProvinces(province: Province): ExtendedSet<Province>;
     isNextTo(province1: Province, province2: Province): boolean;
+    setMode(mode: MapMode): void;
 }

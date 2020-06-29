@@ -4,6 +4,7 @@ import * as PIXI from "pixi.js";
 import DivisionInfo from "./DivisionInfo";
 import Observable from "./Observable";
 import ProvinceObserver from "ProvinceObserver";
+import CultureObserver from "./CultureObserve";
 export default class Province extends JsonObject implements Observable {
     private id;
     private _owner;
@@ -12,6 +13,7 @@ export default class Province extends JsonObject implements Observable {
     private __divisions;
     private _culture;
     private __observers;
+    private __cultureObservers;
     constructor(id: string);
     private set owner(value);
     getId(): string;
@@ -36,4 +38,6 @@ export default class Province extends JsonObject implements Observable {
     getCulture(): string;
     addObserver(observer: ProvinceObserver): void;
     removeObserver(observer: ProvinceObserver): void;
+    addCultureObserver(observer: CultureObserver): void;
+    removeCultureObserver(observer: CultureObserver): void;
 }
