@@ -4,20 +4,26 @@
       "culture": "ウクライナ",
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#71e0a0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e001e0"
         }
       ],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "ムィハーイロ・フルシェーウシクィイ": {
+          "imgPath": "ムィハーイロ・フルシェーウシクィイ.jpg"
+        }
+      },
+      "leader": "ムィハーイロ・フルシェーウシクィイ",
       "color": "5bbb",
       "name": "ウクライナ人民共和国",
       "flag": "Ukraine.png"
@@ -25,7 +31,7 @@
     "Rebels": {
       "culture": "DEFAULT_CULTURE",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "ffffff",
       "name": "Rebels(System)",
@@ -34,7 +40,7 @@
     "CPR": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "ffbf",
       "name": "クリミア人民共和国",
@@ -44,44 +50,54 @@
       "culture": "ロシア",
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c090c0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#405080"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#835452"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e041e0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#a0dfa0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#dfa0a0"
         }
       ],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "アレクサンドル・コルチャーク": {
+          "imgPath": "アレクサンドル・コルチャーク.jpg"
+        }
+      },
+      "leader": "アレクサンドル・コルチャーク",
       "color": "ac77c5",
       "name": "ロシア共和国",
       "flag": "RPG.png"
@@ -90,56 +106,66 @@
       "culture": "ロシア",
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bf6060"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#4190c0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c0d001"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e0c080"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#801040"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e0c0e0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bf6060"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#21df21"
         }
       ],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "ウラジーミル・レーニン": { "imgPath": "ウラジーミル・レーニン.jpg" }
+      },
+      "leader": "ウラジーミル・レーニン",
       "color": "ff0000",
       "name": "ロシア＝ソヴィエト連邦社会主義共和国",
       "flag": "USSR.png"
@@ -148,20 +174,22 @@
       "culture": "ドイツ",
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#902161"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#846165"
         }
       ],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "カール1世": { "imgPath": "カール1世.png" } },
+      "leader": "カール1世",
       "color": "ff31be",
       "name": "オーストリア＝ハンガリー帝国",
       "flag": "AHE.png"
@@ -169,8 +197,10 @@
     "MDR": {
       "culture": "ルーマニア",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "イオン・インキュレット": { "imgPath": "イオン・インキュレット.jpg" }
+      },
+      "leader": "イオン・インキュレット",
       "color": "ae7b00",
       "name": "モルダヴィア民主共和国",
       "flag": "MDR.png"
@@ -178,8 +208,12 @@
     "UPRS": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "メドベージェフ・ユキム・グリゴロビッチ": {
+          "imgPath": "メドベージェフ・ユキム・グリゴロビッチ.jpg"
+        }
+      },
+      "leader": "メドベージェフ・ユキム・グリゴロビッチ",
       "color": "ad328f",
       "name": "ウクライナ人民共和国（ソビエト派）",
       "flag": "UPRS.png"
@@ -187,8 +221,12 @@
     "OSR": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "ユドフスキー・ウラジミール・グリゴロビッチ": {
+          "imgPath": "ユドフスキー・ウラジミール・グリゴロビッチ.jpg"
+        }
+      },
+      "leader": "ユドフスキー・ウラジミール・グリゴロビッチ",
       "color": "563b18",
       "name": "オデッサ・ソビエト共和国",
       "flag": "Red.png"
@@ -196,7 +234,7 @@
     "DKR": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "a92b3a",
       "name": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国",
@@ -205,8 +243,12 @@
     "KPR": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "オレクサンドル・フィリモーノウ": {
+          "imgPath": "オレクサンドル・フィリモーノウ.jpg"
+        }
+      },
+      "leader": "オレクサンドル・フィリモーノウ",
       "color": "961e62",
       "name": "クバーニ人民共和国",
       "flag": "KPR.png"
@@ -214,8 +256,8 @@
     "BPR": {
       "culture": "ベラルーシ",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "ヤン・シェラダ": { "imgPath": "ヤン・シェラダ.jpg" } },
+      "leader": "ヤン・シェラダ",
       "color": "6818",
       "name": "ベラルーシ人民共和国",
       "flag": "BPR.png"
@@ -224,20 +266,22 @@
       "culture": "トルコ",
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#f02082"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c01000"
         }
       ],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "メフメト6世": { "imgPath": "メフメト6世.png" } },
+      "leader": "メフメト6世",
       "color": "80a100",
       "name": "オスマン帝国",
       "flag": "TUR.png"
@@ -245,8 +289,10 @@
     "ROM": {
       "culture": "ルーマニア",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "フェルディナンド1世": { "imgPath": "フェルディナンド1世.jpg" }
+      },
+      "leader": "フェルディナンド1世",
       "color": "7c2900",
       "name": "ルーマニア王国",
       "flag": "ROM.png"
@@ -255,44 +301,50 @@
       "culture": "ドイツ",
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bfdf20"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#61c0a0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#40df20"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#51a0e0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#416161"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#83b1a8"
         }
       ],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "ヴィルヘルム2世": { "imgPath": "ヴィルヘルム2世.jpg" } },
+      "leader": "ヴィルヘルム2世",
       "color": "a81500",
       "name": "ドイツ帝国",
       "flag": "GER.png"
@@ -301,14 +353,17 @@
       "culture": "ブルガリア",
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#702020"
         }
       ],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "フェルディナンド1世": { "imgPath": "ツァー・フェルディナンド1世.jpg" }
+      },
+      "leader": "フェルディナンド1世",
       "color": "966e",
       "name": "大ブルガリア公国",
       "flag": "BUL.png"
@@ -316,7 +371,7 @@
     "Sea": {
       "culture": "DEFAULT_CULTURE",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "ff",
       "name": "海",
@@ -325,8 +380,8 @@
     "SER": {
       "culture": "セルビア・クロアチア",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "ペータル1世": { "imgPath": "ペータル1世.jpg" } },
+      "leader": "ペータル1世",
       "color": "86b4",
       "name": "セルビア王国",
       "flag": "SER.png"
@@ -335,14 +390,17 @@
       "culture": "ギリシャ",
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#01d060"
         }
       ],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "コンスタンティノス1世": { "imgPath": "コンスタンティノス1世.jpg" }
+      },
+      "leader": "コンスタンティノス1世",
       "color": "935f00",
       "name": "ギリシャ王国",
       "flag": "GRE.png"
@@ -350,8 +408,12 @@
     "POL": {
       "culture": "ポーランド",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "ヤン・クチャルゼフスキー": {
+          "imgPath": "ヤン・クチャルゼフスキー.jpg"
+        }
+      },
+      "leader": "ヤン・クチャルゼフスキー",
       "color": "c55c6a",
       "name": "ポーランド摂政王国",
       "flag": "POL.png"
@@ -359,8 +421,8 @@
     "GBR": {
       "culture": "イギリス",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "ジョージ5世": { "imgPath": "ジョージ5世.jpg" } },
+      "leader": "ジョージ5世",
       "color": "c9385d",
       "name": "イギリス帝国",
       "flag": "GBR.png"
@@ -368,8 +430,10 @@
     "FRA": {
       "culture": "フランス",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "レイモン・ポアンカレ": { "imgPath": "レイモン・ポアンカレ.jpg" }
+      },
+      "leader": "レイモン・ポアンカレ",
       "color": "3971e4",
       "name": "フランス共和国",
       "flag": "FRA.png"
@@ -377,8 +441,8 @@
     "LIT": {
       "culture": "バルト",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "ミンダウガス2世": { "imgPath": "ミンダウガス2世.jpg" } },
+      "leader": "ミンダウガス2世",
       "color": "dbdb77",
       "name": "リトアニア王国",
       "flag": "LIT.png"
@@ -386,8 +450,10 @@
     "TCF": {
       "culture": "トルコ",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "ニコライ・チヘイゼ": { "imgPath": "ニコライ・チヘイゼ.jpg" }
+      },
+      "leader": "ニコライ・チヘイゼ",
       "color": "fbdb77",
       "name": "ザカフカース民主連邦共和国",
       "flag": "TCF.png"
@@ -395,8 +461,12 @@
     "EST": {
       "culture": "バルト",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "コンスタンティン・パッツ": {
+          "imgPath": "コンスタンティン・パッツ.jpg"
+        }
+      },
+      "leader": "コンスタンティン・パッツ",
       "color": "3287af",
       "name": "エストニア共和国",
       "flag": "EST.png"
@@ -404,8 +474,8 @@
     "DCS": {
       "culture": "バルト",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "ヴィルヘルム2世": { "imgPath": "ヴィルヘルム2世.jpg" } },
+      "leader": "ヴィルヘルム2世",
       "color": "ffbfbf",
       "name": "クールラント・ゼムガレン公国",
       "flag": "DCS.png"
@@ -413,8 +483,12 @@
     "UBD": {
       "culture": "バルト",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "アドルフ・フリードリヒ・ツー・メクレンブルク": {
+          "imgPath": "アドルフ・フリードリヒ・ツー・メクレンブルク.jpg"
+        }
+      },
+      "leader": "アドルフ・フリードリヒ・ツー・メクレンブルク",
       "color": "bfff",
       "name": "バルト連合公国",
       "flag": "UBD.png"
@@ -422,8 +496,12 @@
     "TSR": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "スラツキー・アントン・イオシフォビッチ": {
+          "imgPath": "スラツキー・アントン・イオシフォビッチ.jpg"
+        }
+      },
+      "leader": "スラツキー・アントン・イオシフォビッチ",
       "color": "ff7f7f",
       "name": "タヴリダ・ソビエト社会主義共和国",
       "flag": "Red.png"
@@ -431,8 +509,8 @@
     "KSR": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "ヤン・ポルヤン": { "imgPath": "ヤン・ポルヤン.jpg" } },
+      "leader": "ヤン・ポルヤン",
       "color": "961e62",
       "name": "クバーニ・ソビエト共和国",
       "flag": "Red.png"
@@ -440,8 +518,10 @@
     "DON": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": {},
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "ピョートル・クラスノフ": { "imgPath": "ピョートル・クラスノフ.jpg" }
+      },
+      "leader": "ピョートル・クラスノフ",
       "color": "1f1fbf",
       "name": "ドン共和国",
       "flag": "DON.png"
@@ -449,7 +529,7 @@
     "GEO": {
       "culture": "トルコ",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "ff3f1f",
       "name": "グルジア民主共和国",
@@ -458,7 +538,7 @@
     "AZR": {
       "culture": "トルコ",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "ff7f1f",
       "name": "アゼルバイジャン民主共和国",
@@ -467,7 +547,7 @@
     "ARM": {
       "culture": "トルコ",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "ffff1f",
       "name": "アルメニア共和国",
@@ -476,7 +556,7 @@
     "MRC": {
       "culture": "トルコ",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "1fff1f",
       "name": "北カフカース山岳共和国",
@@ -485,7 +565,7 @@
     "SCS": {
       "culture": "セルビア・クロアチア",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "8b1765",
       "name": "スロベニア人・クロアチア人・セルビア人国",
@@ -494,7 +574,7 @@
     "CZE": {
       "culture": "チェコスロバキア",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "d9b700",
       "name": "チェコスロバキア共和国",
@@ -503,7 +583,7 @@
     "WUPR": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "4172",
       "name": "西ウクライナ人民共和国",
@@ -512,7 +592,7 @@
     "AUS": {
       "culture": "ドイツ",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "ff31be",
       "name": "ドイツ=オーストリア共和国",
@@ -521,7 +601,7 @@
     "HUN": {
       "culture": "ハンガリー",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "527601",
       "name": "ハンガリー民主共和国",
@@ -530,7 +610,7 @@
     "ITA": {
       "culture": "イタリア",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "80a303",
       "name": "イタリア王国",
@@ -539,7 +619,7 @@
     "SWE": {
       "culture": "北ゲルマン",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "2484f7",
       "name": "スウェーデン王国",
@@ -548,7 +628,7 @@
     "LAT": {
       "culture": "バルト",
       "divisions": [],
-      "leaders": {},
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
       "leader": "DEFAULT_LEADER_NAME",
       "color": "8d131e",
       "name": "ラトビア共和国",

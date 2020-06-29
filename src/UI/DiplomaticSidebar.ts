@@ -15,7 +15,7 @@ import Access from "../DiplomaticTies/Access";
 export default class DiplomaticSidebar extends Sidebar {
   private scene: MainScene;
   private readonly DIPLOMACY_HEIGHT: number = 40;
-  private static readonly SUMMARY_HEIGHT_RATE: number = 0.3;
+  private static readonly SUMMARY_HEIGHT_RATE: number = 0.32;
   private static readonly FLAG_BOX_RATE: number = 0.65;
 
   constructor(scene: MainScene, target: Country) {

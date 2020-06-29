@@ -192,7 +192,7 @@ export default class Country implements Jsonable {
       this._leaders.set(Leader.DEFAULT_NAME, Object.assign(new Leader()));
     }
     for (const name in leaders) {
-      leaders[name]["name"] = leaders[name];
+      leaders[name]["name"] = name;
       this._leaders.set(name, Object.assign(new Leader(), leaders[name]));
     }
   }
