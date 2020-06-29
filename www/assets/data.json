@@ -234,8 +234,12 @@
     "DKR": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "フョードル・セルゲイエフ": {
+          "imgPath": "フョードル・セルゲイエフ.jpg"
+        }
+      },
+      "leader": "フョードル・セルゲイエフ",
       "color": "a92b3a",
       "name": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国",
       "flag": "Red.png"
@@ -280,7 +284,7 @@
           "position": "#c01000"
         }
       ],
-      "leaders": { "メフメト6世": { "imgPath": "メフメト6世.png" } },
+      "leaders": { "メフメト6世": { "imgPath": "メフメト6世.jpg" } },
       "leader": "メフメト6世",
       "color": "80a100",
       "name": "オスマン帝国",
@@ -1870,7 +1874,9 @@
                 "#016161",
                 "#c0a0e0",
                 "#01e061",
-                "#8061e0"
+                "#8061e0",
+                "#c0a060",
+                "#c0df60"
               ],
               "root": "BPR"
             },
