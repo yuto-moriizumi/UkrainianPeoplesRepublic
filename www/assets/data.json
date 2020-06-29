@@ -529,8 +529,10 @@
     "GEO": {
       "culture": "トルコ",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "ノエ・ラミシュビリ": { "imgPath": "ノエ・ラミシュビリ.jpg" }
+      },
+      "leader": "ノエ・ラミシュビリ",
       "color": "ff3f1f",
       "name": "グルジア民主共和国",
       "flag": "GEO.png"
@@ -538,8 +540,12 @@
     "AZR": {
       "culture": "トルコ",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "メフメト・エミーン・ラスールザーデ": {
+          "imgPath": "メフメト・エミーン・ラスールザーデ.jpg"
+        }
+      },
+      "leader": "メフメト・エミーン・ラスールザーデ",
       "color": "ff7f1f",
       "name": "アゼルバイジャン民主共和国",
       "flag": "AZR.png"
@@ -547,8 +553,12 @@
     "ARM": {
       "culture": "トルコ",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "ホヴハンネス・カチャズヌニ": {
+          "imgPath": "ホヴハンネス・カチャズヌニ.jpg"
+        }
+      },
+      "leader": "ホヴハンネス・カチャズヌニ",
       "color": "ffff1f",
       "name": "アルメニア共和国",
       "flag": "ARM.png"
@@ -556,8 +566,10 @@
     "MRC": {
       "culture": "トルコ",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "タパ・チェルモエフ": { "imgPath": "タパ・チェルモエフ.jpg" }
+      },
+      "leader": "タパ・チェルモエフ",
       "color": "1fff1f",
       "name": "北カフカース山岳共和国",
       "flag": "MRC.png"
@@ -565,8 +577,10 @@
     "SCS": {
       "culture": "セルビア・クロアチア",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "アントン・コロシェツ": { "imgPath": "アントン・コロシェツ.jpg" }
+      },
+      "leader": "アントン・コロシェツ",
       "color": "8b1765",
       "name": "スロベニア人・クロアチア人・セルビア人国",
       "flag": "SCS.png"
@@ -574,8 +588,10 @@
     "CZE": {
       "culture": "チェコスロバキア",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "トマーシュ・マサリク": { "imgPath": "トマーシュ・マサリク.jpg" }
+      },
+      "leader": "トマーシュ・マサリク",
       "color": "d9b700",
       "name": "チェコスロバキア共和国",
       "flag": "CZE.png"
@@ -583,8 +599,10 @@
     "WUPR": {
       "culture": "ウクライナ",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "コスト・レヴィツキー": { "imgPath": "コスト・レヴィツキー.jpg" }
+      },
+      "leader": "コスト・レヴィツキー",
       "color": "4172",
       "name": "西ウクライナ人民共和国",
       "flag": "WUPR.png"
@@ -592,8 +610,8 @@
     "AUS": {
       "culture": "ドイツ",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "カール・ザイツ": { "imgPath": "カール・ザイツ.jpg" } },
+      "leader": "カール・ザイツ",
       "color": "ff31be",
       "name": "ドイツ=オーストリア共和国",
       "flag": "AUS.png"
@@ -601,8 +619,10 @@
     "HUN": {
       "culture": "ハンガリー",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "カーロイ・ミハーイ": { "imgPath": "カーロイ・ミハーイ.jpg" }
+      },
+      "leader": "カーロイ・ミハーイ",
       "color": "527601",
       "name": "ハンガリー民主共和国",
       "flag": "HUN.png"
@@ -610,8 +630,12 @@
     "ITA": {
       "culture": "イタリア",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "ヴィットーリオ・エマヌエーレ3世": {
+          "imgPath": "ヴィットーリオ・エマヌエーレ3世.jpg"
+        }
+      },
+      "leader": "ヴィットーリオ・エマヌエーレ3世",
       "color": "80a303",
       "name": "イタリア王国",
       "flag": "ITA.png"
@@ -619,8 +643,8 @@
     "SWE": {
       "culture": "北ゲルマン",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": { "グスタフ5世": { "imgPath": "グスタフ5世.jpg" } },
+      "leader": "グスタフ5世",
       "color": "2484f7",
       "name": "スウェーデン王国",
       "flag": "SWE.png"
@@ -628,8 +652,10 @@
     "LAT": {
       "culture": "バルト",
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
+      "leaders": {
+        "ヤーニス・チャクステ": { "imgPath": "ヤーニス・チャクステ.jpg" }
+      },
+      "leader": "ヤーニス・チャクステ",
       "color": "8d131e",
       "name": "ラトビア共和国",
       "flag": "LAT.png"
