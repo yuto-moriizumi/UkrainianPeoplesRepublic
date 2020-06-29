@@ -1,7 +1,8 @@
 import MoneyObserver from "./MoneyObserver";
-export default class Money {
+import Observable from "./Observable";
+export default class Money implements Observable {
     private money;
-    private observers;
+    observers: MoneyObserver[];
     getMoney(): number;
     setMoney(money: number): void;
     addObserver(observer: MoneyObserver): void;

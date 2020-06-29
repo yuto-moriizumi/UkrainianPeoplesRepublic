@@ -2,10 +2,10 @@ import * as PIXI from "pixi.js";
 import Scene from "./Scene";
 import Fade from "./Fade";
 import GameManager from "../GameManager";
-import LoaderAddParam from "../LoaderAddParam";
+import LoaderAddParam from "../Utils/LoaderAddParam";
 import Resource from "../Resources";
 
-import MyMap from "../MyMap";
+import Atlas from "../Map/Atlas";
 import Country from "../Country";
 import Flag from "../Flag";
 import Button from "../UI/Button";
@@ -19,7 +19,7 @@ export default class SelectScene extends Scene implements Selectable {
   private target: Country;
   private selectButton: Button;
   private myCountry: Country;
-  private map: MyMap;
+  private map: Atlas;
   private changeCountryIndex = 0;
   private countries: Array<Country> = new Array<Country>();
   private countryName: PIXI.Text;
@@ -51,8 +51,7 @@ export default class SelectScene extends Scene implements Selectable {
     const renderer = GameManager.instance.game.renderer;
 
     //地図の更新
-    this.map = new MyMap(this, resources[Resource.Map].texture);
-    this.map.update();
+    this.map = new Atlas(this, resources[Resource.Map].texture);
     this.addChild(this.map);
 
     //ダウンロードボタン（暫定）
@@ -118,7 +117,6 @@ export default class SelectScene extends Scene implements Selectable {
         province.setOwner(owner);
       });
       this.moddingProvinces = [];
-      this.map.update();
     });
     this.addChild(moddingButton);
 
@@ -161,7 +159,6 @@ export default class SelectScene extends Scene implements Selectable {
     if (this.myCountry) {
       //自国選択済みならば、その州の領有国を自国に変更する
       province.setOwner(this.myCountry);
-      this.map.update();
     } else {
       this.selectAsTarget(province.getOwner());
     }

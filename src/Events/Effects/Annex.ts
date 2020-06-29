@@ -13,7 +13,6 @@ export default class Annex extends Effect {
       if (province.getOwner() !== this._target) return;
       province.setOwner(this._root);
     });
-    MainScene.instance.getMap().update();
   }
 
   set root(countryId: string) {

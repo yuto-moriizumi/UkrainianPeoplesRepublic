@@ -1,5 +1,5 @@
 import Scene from "./Scene";
-import LoaderAddParam from "../LoaderAddParam";
+import LoaderAddParam from "../Utils/LoaderAddParam";
 export default class TitleScene extends Scene {
     private text;
     private readonly textAppealDuration;

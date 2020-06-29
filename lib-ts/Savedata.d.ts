@@ -3,9 +3,9 @@ import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import Event from "./Events/Event";
 import Combat from "./Combat";
-import Jsonable from "./Jsonable";
+import Jsonable from "./Utils/Jsonable";
 import DivisionTemplate from "./DivisionTemplate";
-import MapDataManager from "./MapDataManager";
+import MapDataManager from "./Utils/MapDataManager";
 import SetDataManager from "./SetDataManager";
 export default class Savedata implements Jsonable {
     private _countries;

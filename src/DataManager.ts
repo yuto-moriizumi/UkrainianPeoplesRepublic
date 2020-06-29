@@ -1,4 +1,4 @@
-import JsonObject from "./JsonObject";
+import JsonObject from "./Utils/JsonObject";
 
 /**
  * データロードの順番が重要になる場合に使用します

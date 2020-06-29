@@ -1,6 +1,6 @@
 import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import War from "./DiplomaticTies/War";
-import Jsonable from "./Jsonable";
+import Jsonable from "./Utils/Jsonable";
 import Money from "./Money";
 import DivisionInfo from "./DivisionInfo";
 export default class Country implements Jsonable {

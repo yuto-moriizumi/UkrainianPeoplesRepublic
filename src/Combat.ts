@@ -1,4 +1,4 @@
-import JsonObject from "./JsonObject";
+import JsonObject from "./Utils/JsonObject";
 import DivisionInfo from "./DivisionInfo";
 import GameManager from "./GameManager";
 

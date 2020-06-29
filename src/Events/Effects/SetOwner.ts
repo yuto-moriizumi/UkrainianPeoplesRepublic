@@ -14,7 +14,6 @@ export default class SetOwner extends Effect {
     this._provinces.forEach((province) => {
       province.setOwner(this._root);
     });
-    MainScene.instance.getMap().update();
   }
 
   set root(countryId: string) {
@@ -24,9 +23,7 @@ export default class SetOwner extends Effect {
   set provinces(provinceIds: Array<string>) {
     this._provinces = provinceIds.map((provinceId) => {
       if (provinceId.substr(0, 1) != "#") provinceId = "#" + provinceId; //#ついてないやつにつける data.json更新後削除
-      const province = GameManager.instance.data
-        .getProvinces()
-        .get(provinceId);
+      const province = GameManager.instance.data.getProvinces().get(provinceId);
       //console.log(province);
       return province;
     });

@@ -1,7 +1,7 @@
 import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
 import JsonObject from "./JsonObject";
-import DataManager from "./DataManager";
+import DataManager from "../DataManager";
 
 /**
  * Mapの拡張クラスです

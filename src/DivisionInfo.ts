@@ -1,15 +1,15 @@
 import * as PIXI from "pixi.js";
 import Country from "./Country";
 import GameManager from "./GameManager";
-import JsonObject from "./JsonObject";
+import JsonObject from "./Utils/JsonObject";
 import Province from "./Province";
 import DivisionTemplate from "./DivisionTemplate";
 import MainScene from "./Scenes/MainScene";
 import ArrowProgress from "./ArrowProgress";
 import Combat from "./Combat";
-import JsonConverter from "./JsonConverter";
+import JsonConverter from "./Utils/JsonConverter";
 import DivisionSprite from "./DivisionSprite";
-import MyMap from "./MyMap";
+import Atlas from "./Map/Atlas";
 
 export default class DivisionInfo {
   private _template: DivisionTemplate;
@@ -94,7 +94,7 @@ export default class DivisionInfo {
         return;
       }
 
-      const neighbours = MyMap.instance.getNeighborProvinces(province);
+      const neighbours = Atlas.instance.getNeighborProvinces(province);
       if (neighbours.some((neighbour) => neighbour.getOwner() == this.owner)) {
         //占領地の周辺に、この師団の所有国の領土がある場合、この師団の所有国が領有国になる
         province.setOwner(this.owner);

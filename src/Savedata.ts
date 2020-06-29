@@ -3,14 +3,14 @@ import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import War from "./DiplomaticTies/War";
 import Event from "./Events/Event";
-import JsonObject from "./JsonObject";
+import JsonObject from "./Utils/JsonObject";
 import Combat from "./Combat";
-import Jsonable from "./Jsonable";
-import JsonConverter from "./JsonConverter";
+import Jsonable from "./Utils/Jsonable";
+import JsonConverter from "./Utils/JsonConverter";
 import Access from "./DiplomaticTies/Access";
 import DivisionTemplate from "./DivisionTemplate";
-import MapDataManager from "./MapDataManager";
-import ExtendedSet from "./ExtendedSet";
+import MapDataManager from "./Utils/MapDataManager";
+import ExtendedSet from "./Utils/ExtendedSet";
 import SetDataManager from "./SetDataManager";
 
 export default class Savedata implements Jsonable {

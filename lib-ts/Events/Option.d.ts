@@ -1,4 +1,4 @@
-import JsonObject from "../JsonObject";
+import JsonObject from "../Utils/JsonObject";
 export default class Option extends JsonObject {
     private title;
     private _effects;

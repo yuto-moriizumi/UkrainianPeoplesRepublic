@@ -2,8 +2,8 @@ import * as PIXI from "pixi.js";
 import Scene from "./Scene";
 import Country from "../Country";
 import Fade from "./Fade";
-import LoaderAddParam from "../LoaderAddParam";
-import MyMap from "../MyMap";
+import LoaderAddParam from "../Utils/LoaderAddParam";
+import Atlas from "../Map/Atlas";
 import GameManager from "../GameManager";
 import Resource from "../Resources";
 import { Selectable } from "./Selectable";
@@ -24,7 +24,7 @@ import ProvinceSidebar from "../UI/ProvinceSidebar";
 export default class MainScene extends Scene implements Selectable {
   public static instance: MainScene;
   private playCountry: Country;
-  private map: MyMap;
+  private map: Atlas;
   private header: Header;
   private sidebar: Sidebar;
   private eventDispatcher: EventDispatcher;
@@ -78,8 +78,7 @@ export default class MainScene extends Scene implements Selectable {
   protected onResourceLoaded(): void {
     super.onResourceLoaded();
     const resources = GameManager.instance.game.loader.resources;
-    this.map = new MyMap(this, resources[Resource.Map].texture);
-    this.map.update();
+    this.map = new Atlas(this, resources[Resource.Map].texture);
     this.addChild(this.map);
 
     //師団を表示する

@@ -2,7 +2,7 @@ import UpdateObject from "../UpdateObject";
 import * as PIXI from "pixi.js";
 import Transition from "./Transition";
 import Immediate from "./Immediate";
-import LoaderAddParam from "../LoaderAddParam";
+import LoaderAddParam from "../Utils/LoaderAddParam";
 import GameManager from "../GameManager";
 
 export default abstract class Scene extends PIXI.Container {

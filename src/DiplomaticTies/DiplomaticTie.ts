@@ -1,6 +1,6 @@
 import Country from "../Country";
-import Jsonable from "../Jsonable";
-import JsonConverter from "../JsonConverter";
+import Jsonable from "../Utils/Jsonable";
+import JsonConverter from "../Utils/JsonConverter";
 import GameManager from "../GameManager";
 
 export default abstract class DiplomaticTie implements Jsonable {

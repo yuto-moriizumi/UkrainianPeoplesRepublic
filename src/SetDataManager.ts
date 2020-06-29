@@ -1,8 +1,8 @@
-import Jsonable from "./Jsonable";
-import JsonConverter from "./JsonConverter";
-import JsonObject from "./JsonObject";
+import Jsonable from "./Utils/Jsonable";
+import JsonConverter from "./Utils/JsonConverter";
+import JsonObject from "./Utils/JsonObject";
 import DataManager from "./DataManager";
-import ExtendedSet from "./ExtendedSet";
+import ExtendedSet from "./Utils/ExtendedSet";
 
 /**
  * Setの拡張クラスです

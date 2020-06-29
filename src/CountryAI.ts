@@ -1,6 +1,6 @@
 import Country from "./Country";
 import War from "./DiplomaticTies/War";
-import MyMap from "./MyMap";
+import Atlas from "./Map/Atlas";
 import DivisionTemplate from "./DivisionTemplate";
 import DivisionInfo from "./DivisionInfo";
 import GameManager from "./GameManager";
@@ -56,7 +56,7 @@ export default class CountryAI {
       let closetProvince = null;
 
       //最も近いプロヴィンスを求める
-      MyMap.instance.getNeighborProvinces(position).forEach((province) => {
+      Atlas.instance.getNeighborProvinces(position).forEach((province) => {
         //進入可能か確認
         if (!province.hasAccess(this.country)) return;
 

@@ -1,5 +1,5 @@
 import Scene from "./Scene";
-import LoaderAddParam from "../LoaderAddParam";
+import LoaderAddParam from "../Utils/LoaderAddParam";
 import Province from "../Province";
 import { Selectable } from "./Selectable";
 export default class SelectScene extends Scene implements Selectable {

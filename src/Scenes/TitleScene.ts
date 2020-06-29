@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import Scene from "./Scene";
 import Fade from "./Fade";
 import GameManager from "../GameManager";
-import LoaderAddParam from "../LoaderAddParam";
+import LoaderAddParam from "../Utils/LoaderAddParam";
 import Resource from "../Resources";
 import SelectScene from "./SelectScene";
 

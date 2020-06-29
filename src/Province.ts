@@ -1,18 +1,21 @@
 import Country from "./Country";
 import GameManager from "./GameManager";
-import JsonObject from "./JsonObject";
+import JsonObject from "./Utils/JsonObject";
 import * as PIXI from "pixi.js";
 import MainScene from "./Scenes/MainScene";
-import MyMap from "./MyMap";
+import Atlas from "./Map/Atlas";
 import DivisionInfo from "./DivisionInfo";
+import Observable from "./Observable";
+import ProvinceObserver from "ProvinceObserver";
 
-export default class Province extends JsonObject {
+export default class Province extends JsonObject implements Observable {
   private id: string;
   private _owner: Country;
   private x: number = 0;
   private y: number = 0;
   private __divisions: Array<DivisionInfo> = new Array<DivisionInfo>();
   private _culture: string = "DEFAULT_CULTURE";
+  private __observers = new Array<ProvinceObserver>();
 
   constructor(id: string) {
     super();
@@ -36,7 +39,9 @@ export default class Province extends JsonObject {
   public setOwner(owner: Country) {
     const previousOwner = this._owner;
     this._owner = owner;
-    MyMap.instance.update();
+    this.__observers.forEach((observer) => {
+      observer.onProvinceChange();
+    });
 
     //降伏判定
     const provinces = [];
@@ -115,5 +120,15 @@ export default class Province extends JsonObject {
 
   public getCulture(): string {
     return this._culture;
+  }
+
+  public addObserver(observer: ProvinceObserver) {
+    this.__observers.push(observer);
+  }
+
+  public removeObserver(observer: ProvinceObserver) {
+    this.__observers = this.__observers.filter(
+      (observer2) => observer2 != observer
+    );
   }
 }
