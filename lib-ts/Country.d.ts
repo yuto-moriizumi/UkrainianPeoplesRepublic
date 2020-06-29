@@ -3,6 +3,7 @@ import War from "./DiplomaticTies/War";
 import Jsonable from "./Utils/Jsonable";
 import Money from "./Money";
 import DivisionInfo from "./DivisionInfo";
+import Leader from "./Leader";
 export default class Country implements Jsonable {
     private __id;
     private static readonly SEA_ID;
@@ -14,6 +15,8 @@ export default class Country implements Jsonable {
     private _divisions;
     private __ai;
     __money: Money;
+    private _leaders;
+    private _leader;
     constructor(id: string);
     addDiplomaticRelation(tie: DiplomaticTie): void;
     removeDiplomaticRelation(tie: DiplomaticTie): void;
@@ -56,5 +59,9 @@ export default class Country implements Jsonable {
     hasAccessTo(country: Country): boolean;
     private set culture(value);
     getCulture(): string;
+    private set leaders(value);
+    private set leader(value);
+    getLeaders(): Map<string, Leader>;
+    getLeader(): Leader;
     toJSON(): any;
 }

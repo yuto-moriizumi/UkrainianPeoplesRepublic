@@ -10,6 +10,7 @@ import MainScene from "./Scenes/MainScene";
 import Money from "./Money";
 import Access from "./DiplomaticTies/Access";
 import DivisionInfo from "./DivisionInfo";
+import Leader from "./Leader";
 
 export default class Country implements Jsonable {
   private __id: string;
@@ -22,6 +23,8 @@ export default class Country implements Jsonable {
   private _divisions = new Array<DivisionInfo>();
   private __ai: CountryAI;
   public __money: Money = new Money();
+  private _leaders = new Map<string, Leader>();
+  private _leader: Leader;
 
   constructor(id: string) {
     this.__id = id;
@@ -183,9 +186,35 @@ export default class Country implements Jsonable {
     return this._culture;
   }
 
+  private set leaders(leaders: object) {
+    if (Object.keys(leaders).length == 0) {
+      //リーダーデータが無い場合
+      this._leaders.set(Leader.DEFAULT_NAME, Object.assign(new Leader()));
+    }
+    for (const name in leaders) {
+      leaders[name]["name"] = leaders[name];
+      this._leaders.set(name, Object.assign(new Leader(), leaders[name]));
+    }
+  }
+
+  private set leader(leader: string) {
+    if (!this._leaders.has(leader))
+      throw new Error("Leader not found:" + leader);
+    this._leader = this._leaders.get(leader);
+  }
+
+  public getLeaders() {
+    return this._leaders;
+  }
+
+  public getLeader() {
+    return this._leader;
+  }
+
   public toJSON() {
     return JsonConverter.toJSON(this, (key, value) => {
       if (key === "color") return [key, value.toString(16)];
+      if (key === "leader") return [key, value.getName()];
       return [key, value];
     });
   }

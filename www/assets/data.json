@@ -4,20 +4,20 @@
       "culture": "ウクライナ",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#71e0a0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e001e0"
         }
       ],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "5bbb",
       "name": "ウクライナ人民共和国",
       "flag": "Ukraine.png"
@@ -25,6 +25,8 @@
     "Rebels": {
       "culture": "DEFAULT_CULTURE",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ffffff",
       "name": "Rebels(System)",
       "flag": "Rebels.png"
@@ -32,6 +34,8 @@
     "CPR": {
       "culture": "ウクライナ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ffbf",
       "name": "クリミア人民共和国",
       "flag": "CPR.png"
@@ -40,48 +44,44 @@
       "culture": "ロシア",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c090c0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#405080"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#835452"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e041e0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#a0dfa0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#dfa0a0"
         }
       ],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ac77c5",
       "name": "ロシア共和国",
       "flag": "RPG.png"
@@ -90,62 +90,56 @@
       "culture": "ロシア",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bf6060"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#4190c0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c0d001"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e0c080"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#801040"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e0c0e0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bf6060"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#21df21"
         }
       ],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ff0000",
       "name": "ロシア＝ソヴィエト連邦社会主義共和国",
       "flag": "USSR.png"
@@ -154,20 +148,20 @@
       "culture": "ドイツ",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#902161"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#846165"
         }
       ],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ff31be",
       "name": "オーストリア＝ハンガリー帝国",
       "flag": "AHE.png"
@@ -175,6 +169,8 @@
     "MDR": {
       "culture": "ルーマニア",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ae7b00",
       "name": "モルダヴィア民主共和国",
       "flag": "MDR.png"
@@ -182,6 +178,8 @@
     "UPRS": {
       "culture": "ウクライナ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ad328f",
       "name": "ウクライナ人民共和国（ソビエト派）",
       "flag": "UPRS.png"
@@ -189,6 +187,8 @@
     "OSR": {
       "culture": "ウクライナ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "563b18",
       "name": "オデッサ・ソビエト共和国",
       "flag": "Red.png"
@@ -196,6 +196,8 @@
     "DKR": {
       "culture": "ウクライナ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "a92b3a",
       "name": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国",
       "flag": "Red.png"
@@ -203,6 +205,8 @@
     "KPR": {
       "culture": "ウクライナ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "961e62",
       "name": "クバーニ人民共和国",
       "flag": "KPR.png"
@@ -210,6 +214,8 @@
     "BPR": {
       "culture": "ベラルーシ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "6818",
       "name": "ベラルーシ人民共和国",
       "flag": "BPR.png"
@@ -218,20 +224,20 @@
       "culture": "トルコ",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#f02082"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c01000"
         }
       ],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "80a100",
       "name": "オスマン帝国",
       "flag": "TUR.png"
@@ -239,6 +245,8 @@
     "ROM": {
       "culture": "ルーマニア",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "7c2900",
       "name": "ルーマニア王国",
       "flag": "ROM.png"
@@ -247,48 +255,44 @@
       "culture": "ドイツ",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bfdf20"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#61c0a0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#40df20"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#51a0e0"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#416161"
         },
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#83b1a8"
         }
       ],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "a81500",
       "name": "ドイツ帝国",
       "flag": "GER.png"
@@ -297,13 +301,14 @@
       "culture": "ブルガリア",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#702020"
         }
       ],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "966e",
       "name": "大ブルガリア公国",
       "flag": "BUL.png"
@@ -311,6 +316,8 @@
     "Sea": {
       "culture": "DEFAULT_CULTURE",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ff",
       "name": "海",
       "flag": "Rebels.png"
@@ -318,6 +325,8 @@
     "SER": {
       "culture": "セルビア・クロアチア",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "86b4",
       "name": "セルビア王国",
       "flag": "SER.png"
@@ -326,13 +335,14 @@
       "culture": "ギリシャ",
       "divisions": [
         {
-          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#01d060"
         }
       ],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "935f00",
       "name": "ギリシャ王国",
       "flag": "GRE.png"
@@ -340,6 +350,8 @@
     "POL": {
       "culture": "ポーランド",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "c55c6a",
       "name": "ポーランド摂政王国",
       "flag": "POL.png"
@@ -347,6 +359,8 @@
     "GBR": {
       "culture": "イギリス",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "c9385d",
       "name": "イギリス帝国",
       "flag": "GBR.png"
@@ -354,6 +368,8 @@
     "FRA": {
       "culture": "フランス",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "3971e4",
       "name": "フランス共和国",
       "flag": "FRA.png"
@@ -361,6 +377,8 @@
     "LIT": {
       "culture": "バルト",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "dbdb77",
       "name": "リトアニア王国",
       "flag": "LIT.png"
@@ -368,6 +386,8 @@
     "TCF": {
       "culture": "トルコ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "fbdb77",
       "name": "ザカフカース民主連邦共和国",
       "flag": "TCF.png"
@@ -375,6 +395,8 @@
     "EST": {
       "culture": "バルト",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "3287af",
       "name": "エストニア共和国",
       "flag": "EST.png"
@@ -382,6 +404,8 @@
     "DCS": {
       "culture": "バルト",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ffbfbf",
       "name": "クールラント・ゼムガレン公国",
       "flag": "DCS.png"
@@ -389,6 +413,8 @@
     "UBD": {
       "culture": "バルト",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "bfff",
       "name": "バルト連合公国",
       "flag": "UBD.png"
@@ -396,6 +422,8 @@
     "TSR": {
       "culture": "ウクライナ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ff7f7f",
       "name": "タヴリダ・ソビエト社会主義共和国",
       "flag": "Red.png"
@@ -403,6 +431,8 @@
     "KSR": {
       "culture": "ウクライナ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "961e62",
       "name": "クバーニ・ソビエト共和国",
       "flag": "Red.png"
@@ -410,6 +440,8 @@
     "DON": {
       "culture": "ウクライナ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "1f1fbf",
       "name": "ドン共和国",
       "flag": "DON.png"
@@ -417,6 +449,8 @@
     "GEO": {
       "culture": "トルコ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ff3f1f",
       "name": "グルジア民主共和国",
       "flag": "GEO.png"
@@ -424,6 +458,8 @@
     "AZR": {
       "culture": "トルコ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ff7f1f",
       "name": "アゼルバイジャン民主共和国",
       "flag": "AZR.png"
@@ -431,6 +467,8 @@
     "ARM": {
       "culture": "トルコ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ffff1f",
       "name": "アルメニア共和国",
       "flag": "ARM.png"
@@ -438,6 +476,8 @@
     "MRC": {
       "culture": "トルコ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "1fff1f",
       "name": "北カフカース山岳共和国",
       "flag": "MRC.png"
@@ -445,6 +485,8 @@
     "SCS": {
       "culture": "セルビア・クロアチア",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "8b1765",
       "name": "スロベニア人・クロアチア人・セルビア人国",
       "flag": "SCS.png"
@@ -452,6 +494,8 @@
     "CZE": {
       "culture": "チェコスロバキア",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "d9b700",
       "name": "チェコスロバキア共和国",
       "flag": "CZE.png"
@@ -459,6 +503,8 @@
     "WUPR": {
       "culture": "ウクライナ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "4172",
       "name": "西ウクライナ人民共和国",
       "flag": "WUPR.png"
@@ -466,6 +512,8 @@
     "AUS": {
       "culture": "ドイツ",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "ff31be",
       "name": "ドイツ=オーストリア共和国",
       "flag": "AUS.png"
@@ -473,6 +521,8 @@
     "HUN": {
       "culture": "ハンガリー",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "527601",
       "name": "ハンガリー民主共和国",
       "flag": "HUN.png"
@@ -480,6 +530,8 @@
     "ITA": {
       "culture": "イタリア",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "80a303",
       "name": "イタリア王国",
       "flag": "ITA.png"
@@ -487,6 +539,8 @@
     "SWE": {
       "culture": "北ゲルマン",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "2484f7",
       "name": "スウェーデン王国",
       "flag": "SWE.png"
@@ -494,6 +548,8 @@
     "LAT": {
       "culture": "バルト",
       "divisions": [],
+      "leaders": {},
+      "leader": "DEFAULT_LEADER_NAME",
       "color": "8d131e",
       "name": "ラトビア共和国",
       "flag": "LAT.png"

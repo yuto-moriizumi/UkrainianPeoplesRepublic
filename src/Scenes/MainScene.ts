@@ -70,7 +70,14 @@ export default class MainScene extends Scene implements Selectable {
     assets.push(Resource.money);
     assets.push(Resource.access_root);
     assets.push(Resource.access_target);
-    console.log(assets);
+
+    //肖像画を追加
+    GameManager.instance.data.getCountries().forEach((country) =>
+      country.getLeaders().forEach((leader) => {
+        assets.push(leader.getImgPath());
+      })
+    );
+    console.log("loadedAssets:" + assets);
     return assets;
   }
 
