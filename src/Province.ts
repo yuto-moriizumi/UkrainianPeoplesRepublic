@@ -1,14 +1,14 @@
 import Country from "./Country";
 import GameManager from "./GameManager";
-import JsonObject from "./Utils/JsonObject";
 import * as PIXI from "pixi.js";
 import MainScene from "./Scenes/MainScene";
-import Atlas from "./Map/Atlas";
 import DivisionInfo from "./DivisionInfo";
+import JsonObject from "./Utils/JsonObject";
 import Observable from "./Observable";
-import ProvinceObserver from "ProvinceObserver";
+import ProvinceObserver from "./ProvinceObserver";
 import CultureObserver from "./CultureObserve";
 import JsonType from "./Utils/JsonType";
+import ExtendedSet from "./Utils/ExtendedSet";
 
 export default class Province extends JsonObject implements Observable {
   private __id: string;
@@ -19,6 +19,7 @@ export default class Province extends JsonObject implements Observable {
   private _culture: string = "DEFAULT_CULTURE";
   private __observers = new Array<ProvinceObserver>();
   private __cultureObservers = new Array<CultureObserver>();
+  private _neighbours = new ExtendedSet<string>();
 
   constructor(id: string) {
     super();
@@ -81,9 +82,7 @@ export default class Province extends JsonObject implements Observable {
   }
 
   public isNextTo(province: Province): boolean {
-    const ans = MainScene.instance.getMap().isNextTo(this, province);
-    //console.log(this, province, ans);
-    return ans;
+    return this._neighbours.some((p) => p === province.getId());
   }
 
   /**
@@ -140,8 +139,16 @@ export default class Province extends JsonObject implements Observable {
     );
   }
 
-  public debug_getCultureObservers(): CultureObserver[] {
-    return this.__cultureObservers;
+  public set neighbours(neighbours: string[] | ExtendedSet<Province>) {
+    if (neighbours instanceof ExtendedSet) {
+      const array = [];
+      neighbours.forEach((p) => array.push(p.getId()));
+      this._neighbours = new ExtendedSet(array);
+    } else this._neighbours = new ExtendedSet(neighbours);
+  }
+
+  public getNeighbours() {
+    return this._neighbours;
   }
 
   replacer(key: string, value: any, type: JsonType) {
@@ -150,7 +157,13 @@ export default class Province extends JsonObject implements Observable {
         if (key === "owner") return []; //除外リスト
         return [key, value];
       case JsonType.SaveData:
-        if (key === "culture" || key === "x" || key === "y") return []; //除外リスト
+        if (
+          key === "culture" ||
+          key === "x" ||
+          key === "y" ||
+          key == "neighbours"
+        )
+          return []; //除外リスト
         if (value instanceof Country) return [key, value.id];
         return [key, value];
       default:

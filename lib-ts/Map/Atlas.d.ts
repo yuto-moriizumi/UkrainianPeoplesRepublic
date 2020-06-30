@@ -15,6 +15,7 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     private defaultHeight;
     private pressKeys;
     private mode;
+    private graphArrows;
     constructor(scene: Selectable, texture?: PIXI.Texture);
     private getProvinceIdFromPoint;
     private getClickedProvince;
@@ -36,4 +37,6 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     getNeighborProvinces(province: Province): ExtendedSet<Province>;
     isNextTo(province1: Province, province2: Province): boolean;
     setMode(mode: MapMode): void;
+    generateProvinceGraph(): void;
+    switchProvinceGraph(): void;
 }

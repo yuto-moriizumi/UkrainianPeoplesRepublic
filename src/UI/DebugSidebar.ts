@@ -60,5 +60,19 @@ export default class DebugSidebar extends Sidebar {
       GameManager.instance.data.download(JsonType.SaveData);
     });
     this.addPart(button2);
+
+    //プロヴィンスグラフを生成する
+    const button3 = new Button("プロヴィンスグラフを作成");
+    button3.on("mousedown", () => {
+      Atlas.instance.generateProvinceGraph();
+    });
+    this.addPart(button3);
+
+    //重心を再計算
+    const button4 = new Button("重心再計算");
+    button4.on("mousedown", () => {
+      Atlas.instance.calculateBarycenterOfAll();
+    });
+    this.addPart(button4);
   }
 }

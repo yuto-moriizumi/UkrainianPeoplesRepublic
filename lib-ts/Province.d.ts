@@ -1,11 +1,12 @@
 import Country from "./Country";
-import JsonObject from "./Utils/JsonObject";
 import * as PIXI from "pixi.js";
 import DivisionInfo from "./DivisionInfo";
+import JsonObject from "./Utils/JsonObject";
 import Observable from "./Observable";
-import ProvinceObserver from "ProvinceObserver";
+import ProvinceObserver from "./ProvinceObserver";
 import CultureObserver from "./CultureObserve";
 import JsonType from "./Utils/JsonType";
+import ExtendedSet from "./Utils/ExtendedSet";
 export default class Province extends JsonObject implements Observable {
     private __id;
     private _owner;
@@ -15,6 +16,7 @@ export default class Province extends JsonObject implements Observable {
     private _culture;
     private __observers;
     private __cultureObservers;
+    private _neighbours;
     constructor(id: string);
     private set owner(value);
     getId(): string;
@@ -40,6 +42,7 @@ export default class Province extends JsonObject implements Observable {
     removeObserver(observer: ProvinceObserver): void;
     addCultureObserver(observer: CultureObserver): void;
     removeCultureObserver(observer: CultureObserver): void;
-    debug_getCultureObservers(): CultureObserver[];
+    set neighbours(neighbours: string[] | ExtendedSet<Province>);
+    getNeighbours(): ExtendedSet<string>;
     replacer(key: string, value: any, type: JsonType): any[];
 }

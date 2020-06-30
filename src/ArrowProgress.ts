@@ -3,6 +3,7 @@ import Province from "./Province";
 
 export default class ArrowProgress extends Arrow {
   private progress = 0; //これは0～100%
+  private static readonly RECT_WIDTH = 5;
 
   constructor(from: Province, to: Province) {
     super(from, to);
@@ -20,9 +21,9 @@ export default class ArrowProgress extends Arrow {
     this.beginFill(0xffff7f);
     this.drawRect(
       0,
-      (Arrow.TRIANGLE_HEIGHT - Arrow.RECT_WIDTH) / 2,
+      (Arrow.TRIANGLE_HEIGHT - ArrowProgress.RECT_WIDTH) / 2,
       (this.length * progress) / 100,
-      Arrow.RECT_WIDTH
+      ArrowProgress.RECT_WIDTH
     );
     this.endFill();
   }
