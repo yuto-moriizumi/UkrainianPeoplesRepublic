@@ -25,7 +25,11 @@ export default class EffectCreator {
       case "DispatchEvent":
         return Object.assign(new DispatchEvent(), effect);
       default:
-        throw new Error("一致する効果クラスが見つかりませんでした:");
+        console.log(effect);
+
+        throw new Error(
+          "一致する効果クラスが見つかりませんでした:" + effect.type
+        );
     }
   }
 }

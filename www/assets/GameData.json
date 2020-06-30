@@ -968,18 +968,39 @@
               ],
               "root": "LIT"
             },
-            { "type": "GainAccess", "root": "GER", "target": "LIT" }
+            { "type": "GainAccess", "root": "GER", "target": "LIT" },
+            {
+              "type": "DispatchEvent",
+              "id": "lithuania_independence_news",
+              "time2happen": 3
+            }
           ],
-          "title": "OK"
+          "title": "NEWS_TRIGGER"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
       "id": "lithuania_independence",
+      "title": "NEWS_TRIGGER",
+      "desc": "NEWS_TRIGGER",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-02-16 00:00" }
+    },
+    "lithuania_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "lithuania_independence_news",
       "title": "リトアニア王国が独立",
       "desc": "ドイツ帝国軍占領下のリトアニアにおいて、リトアニア王国が建国された。ドイツはヴィルヘルム2世をリトアニア王に据えることを企んでいるが、リトアニアはそれを受け入れていない。王位はまだ未確定だ。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-02-16 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "kafkas_independence": {
       "options": [
@@ -1013,18 +1034,39 @@
               ],
               "root": "TCF"
             },
-            { "type": "DeclareWar", "root": "TUR", "target": "TCF" }
+            { "type": "DeclareWar", "root": "TUR", "target": "TCF" },
+            {
+              "type": "DispatchEvent",
+              "id": "kafkas_independence_news",
+              "time2happen": 3
+            }
           ],
-          "title": "OK"
+          "title": "NEWS_TRIGGER"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
       "id": "kafkas_independence",
+      "title": "NEWS_TRIGGER",
+      "desc": "NEWS_TRIGGER",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-02-26 00:00" }
+    },
+    "kafkas_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "kafkas_independence_news",
       "title": "ザカフカース民主連邦共和国が独立",
       "desc": "ボリシェビキの権力奪取によって、南ロシアは権力の空白地帯となった。さらに、オスマン帝国とソビエトの講和によって南ロシアが放棄されたことにより、オスマン帝国軍が進軍を開始した。これに対応するため、アルメニア、グルジア、アゼルバイジャンを初めとする民族主義系政党は連合して、ロシアからの離脱を宣言した。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-02-26 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "estonia_independence": {
       "options": [
@@ -1034,18 +1076,39 @@
               "type": "SetOwner",
               "provinces": ["#01a021", "#80a021", "#6040e0"],
               "root": "EST"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "estonia_independence_news",
+              "time2happen": 3
             }
           ],
-          "title": "OK"
+          "title": "EVENT_TRIGGER"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
       "id": "estonia_independence",
+      "title": "EVENT_TRIGGER",
+      "desc": "EVENT_TRIGGER",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-02-26 00:00" }
+    },
+    "estonia_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "estonia_independence_news",
       "title": "エストニア共和国が独立",
       "desc": "タリン市長とエストニア・ボリシェビキの権力闘争の後、ドイツ軍の支援もあってエストニア共和国が独立した。しかし、国土の南半分はドイツが樹立した別の国家に占領されたままだ。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-02-26 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "udb_independence": {
       "options": [
@@ -1062,18 +1125,39 @@
               ],
               "root": "UBD"
             },
-            { "type": "GainAccess", "root": "GER", "target": "UBD" }
+            { "type": "GainAccess", "root": "GER", "target": "UBD" },
+            {
+              "type": "DispatchEvent",
+              "id": "udb_independence_news",
+              "time2happen": 3
+            }
           ],
-          "title": "OK"
+          "title": "NEWS_TRIGGER"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
+      "id": "udb_independence",
+      "title": "NEWS_TRIGGER",
+      "desc": "NEWS_TRIGGER",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-03-08 00:00" }
+    },
+    "udb_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
       "id": "udb_independence",
       "title": "バルト連合公国が独立",
       "desc": "ドイツ軍の進撃を受けて、バルト・ドイツ人貴族と亡命ロシア貴族が中心となってバルト連合公国が成立した。ドイツ軍の勢力圏は益々拡大する一方だ。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-03-08 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "dcs_independence": {
       "options": [
@@ -1084,33 +1168,79 @@
               "provinces": ["#4a8e5d", "#806121", "#01e021"],
               "root": "DCS"
             },
-            { "type": "GainAccess", "root": "GER", "target": "DCS" }
+            { "type": "GainAccess", "root": "GER", "target": "DCS" },
+            {
+              "type": "DispatchEvent",
+              "id": "dcs_independence_news",
+              "time2happen": 3
+            }
           ],
-          "title": "OK"
+          "title": "NEWS_TRIGGER"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
+      "id": "dcs_independence",
+      "title": "NEWS_TRIGGER",
+      "desc": "NEWS_TRIGGER",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-03-08 00:00" }
+    },
+    "dcs_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
       "id": "dcs_independence",
       "title": "クールラント・ゼムガレン公国が独立",
       "desc": "ドイツ軍の進撃を受けて、バルト・ドイツ人貴族が中心となってクールラント公国が成立した。公位はヴィルヘルム2世が有している。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-03-08 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "ger_invasion_osr": {
       "options": [
         {
           "effects": [{ "type": "DeclareWar", "root": "GER", "target": "OSR" }],
-          "title": "OK"
+          "title": "オデッサに侵攻する"
+        },
+        {
+          "effects": [],
+          "title": "避けるべきだ"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
       "id": "ger_invasion_osr",
+      "title": "オデッサへの拡大？",
+      "desc": "ドイツ軍は東部への拡大を続けている。いまだウクライナ南方にはボリシェビキ政権が存在しているが、そこは休戦条約で我が国の影響が認められている。反抗的な政権を破壊しておこう。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": {
+        "type": "And",
+        "conditions": [
+          { "type": "DateCondition", "when": "1918-03-12 00:00" },
+          { "type": "CountryIs", "country": "GER" }
+        ]
+      }
+    },
+    "ger_invasion_osr_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "ger_invasion_osr_news",
       "title": "ドイツ軍がオデッサへ侵攻",
       "desc": "ドイツ軍は東部への拡大を続けている。ウクライナ南部に駐留するドイツ軍部隊は、さらに南東のオデッサへ侵攻することを決定した。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-03-12 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "tsr_independence": {
       "options": [
@@ -1126,24 +1256,45 @@
                 "#706060"
               ],
               "root": "TSR"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "tsr_independence_news",
+              "time2happen": 3
             }
           ],
-          "title": "OK"
+          "title": "NEWS_TRIGGER"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
+      "id": "tsr_independence",
+      "title": "NEWS_TRIGGER",
+      "desc": "NEWS_TRIGGER",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-03-21 00:00" }
+    },
+    "tsr_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
       "id": "tsr_independence",
       "title": "タヴリダ共和国が成立",
       "desc": "シンフェロポリにおけるボリシェビキの会談で、旧クリミア人民共和国の領域にタヴリダソビエト社会主義共和国が設置されることが決まった。しかし、北部の領域は他のソビエト共和国と被っている。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-03-21 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "ukr_civil_war": {
       "options": [
         {
           "effects": [
-            { "type": "DeclareWar", "root": "UPRS", "target": "UPR" },
+            { "type": "DeclareWar", "root": "UPR", "target": "GER" },
             { "type": "DeclareWar", "root": "GER", "target": "UPRS" }
           ],
           "title": "国土を取り戻そう！"
@@ -1155,7 +1306,13 @@
       "title": "1918年のウクライナ",
       "desc": "ウクライナ人民共和国は国土の大半を失った。大半の領土はソビエト派が掌握しており、いまや風前の灯火である。しかしながら、恐れることは無い。ドイツ軍が東部への進軍を決定したのだ！",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-01-24 00:00" }
+      "condition": {
+        "type": "And",
+        "conditions": [
+          { "type": "DateCondition", "when": "1918-01-24 00:00" },
+          { "type": "CountryIs", "country": "UPR" }
+        ]
+      }
     },
     "bpr_independence": {
       "options": [
@@ -1182,33 +1339,82 @@
               ],
               "root": "BPR"
             },
-            { "type": "GainAccess", "root": "GER", "target": "BPR" }
+            { "type": "GainAccess", "root": "GER", "target": "BPR" },
+            {
+              "type": "DispatchEvent",
+              "id": "bpr_independence_news",
+              "time2happen": 3
+            }
           ],
           "title": "OK"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
       "id": "bpr_independence",
       "title": "ベラルーシ人民共和国が成立",
       "desc": "第一次世界大戦中の1918年3月25日、ベラルーシがドイツ軍に占領されている時にブレスト＝リトフスク条約によって独立が宣言された。ブレスト＝リトフスク条約の第3条でその領土が規定されている。ベラルーシ人が人口の大半を占めている地域をその領土としたが、リトアニア人やポーランド人、ユダヤ人なども多く居住していた。一部のユダヤ人はロシア語を母語とし、それ以外のユダヤ人はイディッシュ語を話した。 ",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-03-25 00:00" }
     },
+    "bpr_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "bpr_independence",
+      "title": "ベラルーシ人民共和国が成立",
+      "desc": "第一次世界大戦中の1918年3月25日、ベラルーシがドイツ軍に占領されている時にブレスト＝リトフスク条約によって独立が宣言された。ブレスト＝リトフスク条約の第3条でその領土が規定されている。ベラルーシ人が人口の大半を占めている地域をその領土としたが、リトアニア人やポーランド人、ユダヤ人なども多く居住していた。一部のユダヤ人はロシア語を母語とし、それ以外のユダヤ人はイディッシュ語を話した。 ",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "Always", "always": true }
+    },
     "rom_annex_mdr": {
       "options": [
         {
-          "effects": [{ "type": "Annex", "root": "ROM", "target": "MDR" }],
-          "title": "OK"
+          "effects": [
+            { "type": "Annex", "root": "ROM", "target": "MDR" },
+            {
+              "type": "DispatchEvent",
+              "id": "rom_annex_mdr_news",
+              "time2happen": 3
+            }
+          ],
+          "title": "ルーマニア人いるところルーマニアなり！"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
       "id": "rom_annex_mdr",
+      "title": "モルダヴィアが統合を要請",
+      "desc": "元々ルーマニア系民族で構成されるモルダヴィアであったが、ロシアからの離脱が決定してからというもの、国民はルーマニアとの連合を強く望むようになった。これに促され、1918年4月9日、スファトゥル・ツァーリーはルーマニアとの連合の票決を行い86人の賛成、3人の反対、36人の棄権で連合を行うことが決定された。地方自治、ベッサラビア議会の継続、地方議会と行政体としての権限を条件にルーマニアとの合同を強く望んでいる。どうするべきだろうか？ ",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": {
+        "type": "And",
+        "conditions": [
+          { "type": "DateCondition", "when": "1918-04-09 00:00" },
+          { "type": "CountryIs", "country": "ROM" }
+        ]
+      }
+    },
+    "rom_annex_mdr_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "rom_annex_mdr",
       "title": "ルーマニア王国がモルダヴィア民主共和国を統合",
       "desc": "元々ルーマニア系民族で構成されるモルダヴィアであったが、ロシアからの離脱が決定してからというもの、国民はルーマニアとの連合を強く望むようになった。これに促され、1918年4月9日、スファトゥル・ツァーリーはルーマニアとの連合の票決を行い86人の賛成、3人の反対、36人の棄権で連合を行うことが決定された。地方自治、ベッサラビア議会の継続、地方議会と行政体としての権限を条件にルーマニアと交渉を行い、スファトゥル・ツァーリーは法的にモルダヴィア民主共和国を終焉させ、ベッサラビアとルーマニア王国の連合を宣言した。 ",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-04-09 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "bucharest_peace": {
       "options": [
@@ -1230,18 +1436,39 @@
               "root": "ROM"
             },
             { "type": "GainAccess", "root": "GER", "target": "ROM" },
-            { "type": "GainAccess", "root": "AHE", "target": "ROM" }
+            { "type": "GainAccess", "root": "AHE", "target": "ROM" },
+            {
+              "type": "DispatchEvent",
+              "id": "bucharest_peace_news",
+              "time2happen": 3
+            }
           ],
           "title": "OK"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
       "id": "bucharest_peace",
       "title": "ブカレスト講和条約",
       "desc": "1918年5月7日、ロシアが革命で戦争を離脱すると、後ろ盾を失ったルーマニア軍と政府は同盟軍に降伏した。直ちにブカレスト講和条約が締結され、ルーマニアは同盟軍の占領地として総督府が設置された。ルーマニア降伏は膨大な穀物と石油を同盟軍に与え、連合軍にとって不利な状態を与えた。",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-05-07 00:00" }
+    },
+    "bucharest_peace_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "bucharest_peace",
+      "title": "ブカレスト講和条約",
+      "desc": "1918年5月7日、ロシアが革命で戦争を離脱すると、後ろ盾を失ったルーマニア軍と政府は同盟軍に降伏した。直ちにブカレスト講和条約が締結され、ルーマニアは同盟軍の占領地として総督府が設置された。ルーマニア降伏は膨大な穀物と石油を同盟軍に与え、連合軍にとって不利な状態を与えた。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "Always", "alywas": true }
     },
     "ksr_form": {
       "options": [
@@ -1251,6 +1478,11 @@
               "type": "SetOwner",
               "provinces": ["#405000", "#80d080", "#c05001"],
               "root": "KSR"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "ksr_form_news",
+              "time2happen": 3
             }
           ],
           "title": "OK"
@@ -1258,6 +1490,21 @@
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "id": "ksr_form",
+      "title": "クバーニ・ソビエト共和国の成立",
+      "desc": "1918年4月13日にクバーニ人民共和国に反して誕生した。クバン全土が含まれていた。クバーニ人民共和国はタタールの政権であったために、農民はソビエト側に付いた。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-04-13 00:00" }
+    },
+    "ksr_form_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
       "id": "ksr_form",
       "title": "クバーニ・ソビエト共和国の成立",
       "desc": "1918年4月13日にクバーニ人民共和国に反して誕生した。クバン全土が含まれていた。クバーニ人民共和国はタタールの政権であったために、農民はソビエト側に付いた。",
@@ -1278,6 +1525,11 @@
                 "#805180"
               ],
               "root": "DON"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "don_independence_news",
+              "time2happen": 3
             }
           ],
           "title": "OK"
@@ -1285,6 +1537,22 @@
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
+      "id": "don_independence",
+      "title": "ドン共和国が独立",
+      "desc": "1918年5月18日、クルークと呼ばれたドン・コサックの会議に独立が宣言された。この出来事の後、ドン・ソビエト共和国はドン軍管州から一掃された。ドン共和国はドン地域を領土とし、ノヴォチェルカースクを首都とすることを宣言した。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-05-18 00:00" }
+    },
+    "don_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
       "id": "don_independence",
       "title": "ドン共和国が独立",
       "desc": "1918年5月18日、クルークと呼ばれたドン・コサックの会議に独立が宣言された。この出来事の後、ドン・ソビエト共和国はドン軍管州から一掃された。ドン共和国はドン地域を領土とし、ノヴォチェルカースクを首都とすることを宣言した。",
@@ -1329,6 +1597,11 @@
               "type": "SetOwner",
               "provinces": ["#c01040", "#bfd159"],
               "root": "MRC"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "kafkas_collapce_news",
+              "time2happen": 3
             }
           ],
           "title": "OK"
@@ -1336,6 +1609,21 @@
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "id": "kafkas_collapce",
+      "title": "カフカース連邦が崩壊",
+      "desc": "ザカフカース議会は軍事力を持たなかったため、バトゥーミにおいてドイツ・トルコ軍司令部と交渉に入った。交渉中、3民族の意見の相違（アルメニアとグルジアは親独、アゼルバイジャンは親土など）が明らかになったため、3民族の国民会議は独立国家の建国に賛成した。また、ドイツ・トルコ側も連邦共和国の廃止に賛成した。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-05-26 00:00" }
+    },
+    "kafkas_collapce_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
       "id": "kafkas_collapce",
       "title": "カフカース連邦が崩壊",
       "desc": "ザカフカース議会は軍事力を持たなかったため、バトゥーミにおいてドイツ・トルコ軍司令部と交渉に入った。交渉中、3民族の意見の相違（アルメニアとグルジアは親独、アゼルバイジャンは親土など）が明らかになったため、3民族の国民会議は独立国家の建国に賛成した。また、ドイツ・トルコ側も連邦共和国の廃止に賛成した。",
@@ -1353,9 +1641,15 @@
       "isGlobal": false,
       "id": "greece_attack_bulgaria",
       "title": "ギリシャ軍の侵攻",
-      "desc": "ギリシャとブルガリアが戦うマケドニア戦線は長い間膠着状態にあったが、ついにギリシャ側が突破を開始した。",
+      "desc": "ギリシャとブルガリアが戦うマケドニア戦線は長い間膠着状態にあったが、それももう終わりだ。突破の準備はできている。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-09-23 00:00" }
+      "condition": {
+        "type": "And",
+        "conditions": [
+          { "type": "DateCondition", "when": "1918-09-23 00:00" },
+          { "type": "CountryIs", "country": "GRE" }
+        ]
+      }
     },
     "britain_landing_bulgaria": {
       "options": [
@@ -1379,7 +1673,13 @@
       "title": "イギリス軍が南ブルガリアに上陸",
       "desc": "ギリシャ軍の攻勢を支援するため、イギリス軍が南ブルガリアに上陸した",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-09-30 00:00" }
+      "condition": {
+        "type": "And",
+        "conditions": [
+          { "type": "DateCondition", "when": "1918-09-30 00:00" },
+          { "type": "CountryIs", "country": "USSR" }
+        ]
+      }
     },
     "scs_independence": {
       "options": [
@@ -1411,13 +1711,33 @@
               ],
               "root": "SCS"
             },
-            { "type": "GainAccess", "root": "SER", "target": "SCS" }
+            { "type": "GainAccess", "root": "SER", "target": "SCS" },
+            {
+              "type": "DispatchEvent",
+              "id": "scs_independence_news",
+              "time2happen": 3
+            }
           ],
           "title": "OK"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "id": "scs_independence",
+      "title": "クロアチア・ボスニアがオーストリアを離脱",
+      "desc": "有力政治家で構成される国民評議会が、「スロベニア人・クロアチア人・セルビア人国」の独立を宣言した。もはやクロアチアはオーストリアにとどまっていない。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
+    },
+    "scs_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
       "id": "scs_independence",
       "title": "クロアチア・ボスニアがオーストリアを離脱",
       "desc": "有力政治家で構成される国民評議会が、「スロベニア人・クロアチア人・セルビア人国」の独立を宣言した。もはやクロアチアはオーストリアにとどまっていない。",
@@ -1457,6 +1777,11 @@
                 "#1161e0"
               ],
               "root": "WUPR"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "wupr_independence_news",
+              "time2happen": 3
             }
           ],
           "title": "OK"
@@ -1470,6 +1795,21 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-10-20 00:00" }
     },
+    "wupr_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "scs_independence",
+      "title": "西ウクライナ人民共和国がオーストリアを離脱",
+      "desc": "20世紀初頭、ガリツィア地方の住民はウクライナ人が6割を占めていたが、彼らの大半は農村部に住んでおり、都市部は主にポーランド人やユダヤ人によって支配されていた。とりわけ本国の首都とされるリヴィウには多くのポーランド人が住んでおり、ポーランドにとって最も重要な都市の一つと見なされている。この国の政情は不安定だ。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
+    },
     "cze_independence": {
       "options": [
         {
@@ -1478,6 +1818,11 @@
               "type": "SetOwner",
               "provinces": ["#71e041", "#ef6080", "#9080a0", "#71e080"],
               "root": "CZE"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "cze_independence_news",
+              "time2happen": 3
             }
           ],
           "title": "OK"
@@ -1490,6 +1835,21 @@
       "desc": "チェコスロバキア国内の国民委員会が独立宣言を行い、プラハの政庁を占拠。新政府は熱心な独立運動家であるトマーシュ・マサリクに率いられている。",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-10-18 00:00" }
+    },
+    "cze_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "scs_independence",
+      "title": "チェコスロバキア共和国がオーストリアを離脱",
+      "desc": "チェコスロバキア国内の国民委員会が独立宣言を行い、プラハの政庁を占拠。新政府は熱心な独立運動家であるトマーシュ・マサリクに率いられている。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
     "ger_surrender": {
       "options": [
@@ -1609,6 +1969,11 @@
               "type": "DispatchEvent",
               "id": "ussr_attack_west",
               "time2happen": 5
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "ger_surrender_news",
+              "time2happen": 3
             }
           ],
           "title": "OK"
@@ -1622,6 +1987,21 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-11-11 00:00" }
     },
+    "ger_surrender_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "scs_independence",
+      "title": "ドイツ帝国が休戦！",
+      "desc": "1914年から始まった「大戦争」は、4年の歳月を経て、ドイツの休戦という形で終結を迎えた。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
+    },
     "ser_annex_scs": {
       "options": [
         {
@@ -1631,6 +2011,11 @@
               "type": "ChangeName",
               "country": "SER",
               "name": "ユーゴスラビア王国"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "ser_annex_scs_news",
+              "time2happen": 3
             }
           ],
           "title": "OK"
@@ -1643,6 +2028,21 @@
       "desc": "セルビア国王ペータル1世の摂政王子アレクサンダル1世によって、ユーゴスラビア王国の設立が宣言された。汎スラブ主義やセルビア民族主義者の強い後押しを受けている。",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-12-01 00:00" }
+    },
+    "ser_annex_scs_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "scs_independence",
+      "title": "ユーゴスラビア王国が成立",
+      "desc": "セルビア国王ペータル1世の摂政王子アレクサンダル1世によって、ユーゴスラビア王国の設立が宣言された。汎スラブ主義やセルビア民族主義者の強い後押しを受けている。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
     "baltic_independence": {
       "options": [
@@ -1664,6 +2064,11 @@
                 "#bf2060"
               ],
               "root": "LAT"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "baltic_independence_news",
+              "time2happen": 3
             }
           ],
           "title": "OK"
@@ -1677,6 +2082,21 @@
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1918-11-18 00:00" }
     },
+    "baltic_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "scs_independence",
+      "title": "バルト諸国が独立",
+      "desc": "ラトビアはドイツからの独立を宣言した。またエストニアでは、次の日にドイツ軍政部からエストニア自治政府首脳コンスタンティン・パッツに主権を移動した。ドイツ政府はこれを承認する予定だが、軍部の中では反対する者もいるようだ。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
+    },
     "ussr_attack_west": {
       "options": [
         {
@@ -1689,6 +2109,11 @@
             { "type": "DeclareWar", "root": "USSR", "target": "DON" }
           ],
           "title": "OK"
+        },
+        {
+          "type": "DispatchEvent",
+          "id": "ussr_attack_west_news",
+          "time2happen": 3
         }
       ],
       "triggeredOnly": true,
@@ -1698,6 +2123,21 @@
       "desc": "ドイツの敗戦に伴い、東欧には権力の空白が生まれた。これに目を付けたソビエトは、直ちに攻撃を開始した。",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "EventFired", "id": "ger_surrender" }
+    },
+    "ussr_attack_west_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "scs_independence",
+      "title": "ソ連軍の東進",
+      "desc": "ドイツの敗戦に伴い、東欧には権力の空白が生まれた。これに目を付けたソビエトは、直ちに攻撃を開始した。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
     "hungarian_occupation": {
       "options": [
@@ -1749,6 +2189,11 @@
                 "#51e061"
               ],
               "root": "CZE"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "hungarian_occupation_news",
+              "time2happen": 3
             }
           ],
           "title": "OK"
@@ -1761,6 +2206,21 @@
       "desc": "ハンガリーの軍隊は弱体であり、また領土的野心を抱く周辺諸国によって、ハンガリーは占領された。",
       "picture": "russian_civilwar_begins.jpg",
       "condition": { "type": "DateCondition", "when": "1919-01-10 00:00" }
+    },
+    "hungarian_occupation_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "scs_independence",
+      "title": "ルーマニア・ユーゴスラビアがハンガリーを占領",
+      "desc": "ハンガリーの軍隊は弱体であり、また領土的野心を抱く周辺諸国によって、ハンガリーは占領された。",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     }
   },
   "templates": {

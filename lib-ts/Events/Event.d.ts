@@ -34,5 +34,6 @@ export default class Event extends JsonObject {
     getDesc(): string;
     getTitle(): string;
     showDialog(): void;
+    private set id(value);
     replacer(key: string, value: any, type: JsonType): any[];
 }

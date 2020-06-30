@@ -196,6 +196,8 @@ export default class Event extends JsonObject {
     sound.play(false);
   }
 
+  private set id(id) {} //なにもしない
+
   replacer(key: string, value: any, type: JsonType) {
     switch (type) {
       case JsonType.GameData:
