@@ -44,6 +44,10 @@ export default class MapDataManager<T, U> extends DataManager {
     this.map.forEach(callback);
   }
 
+  public get size(): number {
+    return this.map.size;
+  }
+
   /**
    * 保留していた関数を実行します
    * データのロードが終わったときに必ず呼び出してください
@@ -53,7 +57,8 @@ export default class MapDataManager<T, U> extends DataManager {
   toJsonObject(type: JsonType): object {
     const map = Object.fromEntries(this.map);
     for (const key in map) {
-      if (map[key] instanceof JsonObject) map[key] = map[key].toJsonObject();
+      if (map[key] instanceof JsonObject)
+        map[key] = map[key].toJsonObject(type);
     }
     return map;
   }

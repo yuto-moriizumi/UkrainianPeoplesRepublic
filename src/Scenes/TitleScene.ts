@@ -21,6 +21,7 @@ export default class TitleScene extends Scene {
     let assets = super.createInitialResourceList();
     //assets.push(staticResource.Audio.Bgm.Title);
     assets.push(Resource.Title.Bg);
+    assets.push(Resource.gamedata);
     assets.push(Resource.savedata);
     //console.log(assets);
     return assets;
@@ -69,6 +70,7 @@ export default class TitleScene extends Scene {
     this.on("pointerdown", () => this.onPointerDown());
 
     //セーブデータ読み込み
+    GameManager.instance.data.load(resources[Resource.gamedata].data);
     GameManager.instance.data.load(resources[Resource.savedata].data);
   }
 

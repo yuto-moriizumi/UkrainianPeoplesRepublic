@@ -22,10 +22,19 @@ export default class Savedata extends JsonObject {
   private _cultures = new SetDataManager<string>();
 
   private set countries(countries: object) {
-    for (const id in countries) {
-      this._countries.set(id, Object.assign(new Country(id), countries[id]));
+    if (this._countries.size > 0) {
+      //ゲームデータがロードされている時
+      for (const id in countries) {
+        const country = this._countries.get(id);
+        Object.assign(country, countries[id]);
+      }
+      console.log("savedata countries loaded:", this._countries);
+    } else {
+      for (const id in countries) {
+        this._countries.set(id, Object.assign(new Country(id), countries[id]));
+      }
+      console.log("gamedata countries loaded:", this._countries);
     }
-    console.log("countries loaded:", this._countries);
   }
 
   public getCountries() {
@@ -52,15 +61,24 @@ export default class Savedata extends JsonObject {
   }
 
   private set provinces(provinces: object) {
-    for (const id in provinces) {
-      const newId = id.substr(0, 1) == "#" ? id : "#" + id;
-      //console.log(newId);
-      const province = new Province(newId);
-      Object.assign(province, provinces[id]);
-      this._provinces.set(newId, province);
+    if (this._provinces.size > 0) {
+      //ゲームデータがロードされている時
+      for (const id in provinces) {
+        const province = this._provinces.get(id);
+        Object.assign(province, provinces[id]);
+      }
+      console.log("savedata provinces loaded:", this._provinces);
+    } else {
+      for (const id in provinces) {
+        const newId = id.substr(0, 1) == "#" ? id : "#" + id;
+        //console.log(newId);
+        const province = new Province(newId);
+        Object.assign(province, provinces[id]);
+        this._provinces.set(newId, province);
+      }
+      console.log("gamedata provinces loaded:", this._provinces);
+      this._provinces.endLoad();
     }
-    console.log("provinces loaded:", this._provinces);
-    this._provinces.endLoad();
   }
 
   public setProvince(id: string, province: Province) {
@@ -105,13 +123,22 @@ export default class Savedata extends JsonObject {
   }
 
   private set events(events: object) {
-    for (const id in events) {
-      const event = new Event();
-      events[id]["__id"] = id;
-      Object.assign(event, events[id]);
-      this._events.set(id, event);
+    if (this._events.size > 0) {
+      //ゲームデータがロードされている時
+      for (const id in events) {
+        const event = this._events.get(id);
+        Object.assign(event, events[id]);
+      }
+      console.log("savedata events loaded:", this._events);
+    } else {
+      for (const id in events) {
+        const event = new Event();
+        events[id]["__id"] = id;
+        Object.assign(event, events[id]);
+        this._events.set(id, event);
+      }
+      console.log("gamedata events loaded:", this._events);
     }
-    console.log("events loaded:", this._events);
   }
 
   public getEvents() {
@@ -154,6 +181,8 @@ export default class Savedata extends JsonObject {
 
   public download(type: JsonType) {
     //console.log(Object.entries(this));
+    console.log("download" + type);
+
     const jsonObject = this.toJsonObject(type);
     console.log(jsonObject);
     const json = JSON.stringify(jsonObject);
@@ -165,5 +194,18 @@ export default class Savedata extends JsonObject {
     a.href = URL.createObjectURL(blob);
     a.download = type + ".json";
     a.click();
+  }
+
+  replacer(key: string, value: any, type: JsonType) {
+    switch (type) {
+      case JsonType.GameData:
+        if (key === "diplomacy" || key === "combats") return []; //除外リスト
+        return [key, value];
+      case JsonType.SaveData:
+        if (key === "templates" || key === "cultures") return []; //除外リスト
+        return [key, value];
+      default:
+        throw new Error("Invalid type:" + type);
+    }
   }
 }

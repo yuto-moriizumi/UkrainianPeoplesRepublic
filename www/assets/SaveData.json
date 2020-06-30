@@ -1,0 +1,1007 @@
+{
+  "countries": {
+    "UPR": {
+      "divisions": [
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#71e0a0"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#e001e0"
+        }
+      ],
+      "leaders": {
+        "ムィハーイロ・フルシェーウシクィイ": {
+          "imgPath": "ムィハーイロ・フルシェーウシクィイ.jpg"
+        }
+      },
+      "leader": "ムィハーイロ・フルシェーウシクィイ",
+      "name": "ウクライナ人民共和国"
+    },
+    "Rebels": {
+      "divisions": [],
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
+      "leader": "DEFAULT_LEADER_NAME",
+      "name": "Rebels(System)"
+    },
+    "CPR": {
+      "divisions": [],
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
+      "leader": "DEFAULT_LEADER_NAME",
+      "name": "クリミア人民共和国"
+    },
+    "RPG": {
+      "divisions": [
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#c090c0"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#405080"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#835452"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#e041e0"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#a0dfa0"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#dfa0a0"
+        }
+      ],
+      "leaders": {
+        "アレクサンドル・コルチャーク": {
+          "imgPath": "アレクサンドル・コルチャーク.jpg"
+        }
+      },
+      "leader": "アレクサンドル・コルチャーク",
+      "name": "ロシア共和国"
+    },
+    "USSR": {
+      "divisions": [
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#bf6060"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#4190c0"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#c0d001"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#e0c080"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#801040"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#e0c0e0"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#bf6060"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#21df21"
+        }
+      ],
+      "leaders": {
+        "ウラジーミル・レーニン": { "imgPath": "ウラジーミル・レーニン.jpg" }
+      },
+      "leader": "ウラジーミル・レーニン",
+      "name": "ロシア＝ソヴィエト連邦社会主義共和国"
+    },
+    "AHE": {
+      "divisions": [
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#902161"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#846165"
+        }
+      ],
+      "leaders": { "カール1世": { "imgPath": "カール1世.png" } },
+      "leader": "カール1世",
+      "name": "オーストリア＝ハンガリー帝国"
+    },
+    "MDR": {
+      "divisions": [],
+      "leaders": {
+        "イオン・インキュレット": { "imgPath": "イオン・インキュレット.jpg" }
+      },
+      "leader": "イオン・インキュレット",
+      "name": "モルダヴィア民主共和国"
+    },
+    "UPRS": {
+      "divisions": [],
+      "leaders": {
+        "メドベージェフ・ユキム・グリゴロビッチ": {
+          "imgPath": "メドベージェフ・ユキム・グリゴロビッチ.jpg"
+        }
+      },
+      "leader": "メドベージェフ・ユキム・グリゴロビッチ",
+      "name": "ウクライナ人民共和国（ソビエト派）"
+    },
+    "OSR": {
+      "divisions": [],
+      "leaders": {
+        "ユドフスキー・ウラジミール・グリゴロビッチ": {
+          "imgPath": "ユドフスキー・ウラジミール・グリゴロビッチ.jpg"
+        }
+      },
+      "leader": "ユドフスキー・ウラジミール・グリゴロビッチ",
+      "name": "オデッサ・ソビエト共和国"
+    },
+    "DKR": {
+      "divisions": [],
+      "leaders": {
+        "フョードル・セルゲイエフ": {
+          "imgPath": "フョードル・セルゲイエフ.jpg"
+        }
+      },
+      "leader": "フョードル・セルゲイエフ",
+      "name": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国"
+    },
+    "KPR": {
+      "divisions": [],
+      "leaders": {
+        "オレクサンドル・フィリモーノウ": {
+          "imgPath": "オレクサンドル・フィリモーノウ.jpg"
+        }
+      },
+      "leader": "オレクサンドル・フィリモーノウ",
+      "name": "クバーニ人民共和国"
+    },
+    "BPR": {
+      "divisions": [],
+      "leaders": { "ヤン・シェラダ": { "imgPath": "ヤン・シェラダ.jpg" } },
+      "leader": "ヤン・シェラダ",
+      "name": "ベラルーシ人民共和国"
+    },
+    "TUR": {
+      "divisions": [
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#f02082"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#c01000"
+        }
+      ],
+      "leaders": { "メフメト6世": { "imgPath": "メフメト6世.jpg" } },
+      "leader": "メフメト6世",
+      "name": "オスマン帝国"
+    },
+    "ROM": {
+      "divisions": [],
+      "leaders": {
+        "フェルディナンド1世": { "imgPath": "フェルディナンド1世.jpg" }
+      },
+      "leader": "フェルディナンド1世",
+      "name": "ルーマニア王国"
+    },
+    "GER": {
+      "divisions": [
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#bfdf20"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#61c0a0"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#40df20"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#51a0e0"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#416161"
+        },
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#83b1a8"
+        }
+      ],
+      "leaders": { "ヴィルヘルム2世": { "imgPath": "ヴィルヘルム2世.jpg" } },
+      "leader": "ヴィルヘルム2世",
+      "name": "ドイツ帝国"
+    },
+    "BUL": {
+      "divisions": [
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#702020"
+        }
+      ],
+      "leaders": {
+        "フェルディナンド1世": { "imgPath": "ツァー・フェルディナンド1世.jpg" }
+      },
+      "leader": "フェルディナンド1世",
+      "name": "大ブルガリア公国"
+    },
+    "Sea": {
+      "divisions": [],
+      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
+      "leader": "DEFAULT_LEADER_NAME",
+      "name": "海"
+    },
+    "SER": {
+      "divisions": [],
+      "leaders": { "ペータル1世": { "imgPath": "ペータル1世.jpg" } },
+      "leader": "ペータル1世",
+      "name": "セルビア王国"
+    },
+    "GRE": {
+      "divisions": [
+        {
+          "movingProgress": 0,
+          "template": "infantry",
+          "organization": 100,
+          "position": "#01d060"
+        }
+      ],
+      "leaders": {
+        "コンスタンティノス1世": { "imgPath": "コンスタンティノス1世.jpg" }
+      },
+      "leader": "コンスタンティノス1世",
+      "name": "ギリシャ王国"
+    },
+    "POL": {
+      "divisions": [],
+      "leaders": {
+        "ヤン・クチャルゼフスキー": {
+          "imgPath": "ヤン・クチャルゼフスキー.jpg"
+        }
+      },
+      "leader": "ヤン・クチャルゼフスキー",
+      "name": "ポーランド摂政王国"
+    },
+    "GBR": {
+      "divisions": [],
+      "leaders": { "ジョージ5世": { "imgPath": "ジョージ5世.jpg" } },
+      "leader": "ジョージ5世",
+      "name": "イギリス帝国"
+    },
+    "FRA": {
+      "divisions": [],
+      "leaders": {
+        "レイモン・ポアンカレ": { "imgPath": "レイモン・ポアンカレ.jpg" }
+      },
+      "leader": "レイモン・ポアンカレ",
+      "name": "フランス共和国"
+    },
+    "LIT": {
+      "divisions": [],
+      "leaders": { "ミンダウガス2世": { "imgPath": "ミンダウガス2世.jpg" } },
+      "leader": "ミンダウガス2世",
+      "name": "リトアニア王国"
+    },
+    "TCF": {
+      "divisions": [],
+      "leaders": {
+        "ニコライ・チヘイゼ": { "imgPath": "ニコライ・チヘイゼ.jpg" }
+      },
+      "leader": "ニコライ・チヘイゼ",
+      "name": "ザカフカース民主連邦共和国"
+    },
+    "EST": {
+      "divisions": [],
+      "leaders": {
+        "コンスタンティン・パッツ": {
+          "imgPath": "コンスタンティン・パッツ.jpg"
+        }
+      },
+      "leader": "コンスタンティン・パッツ",
+      "name": "エストニア共和国"
+    },
+    "DCS": {
+      "divisions": [],
+      "leaders": { "ヴィルヘルム2世": { "imgPath": "ヴィルヘルム2世.jpg" } },
+      "leader": "ヴィルヘルム2世",
+      "name": "クールラント・ゼムガレン公国"
+    },
+    "UBD": {
+      "divisions": [],
+      "leaders": {
+        "アドルフ・フリードリヒ・ツー・メクレンブルク": {
+          "imgPath": "アドルフ・フリードリヒ・ツー・メクレンブルク.jpg"
+        }
+      },
+      "leader": "アドルフ・フリードリヒ・ツー・メクレンブルク",
+      "name": "バルト連合公国"
+    },
+    "TSR": {
+      "divisions": [],
+      "leaders": {
+        "スラツキー・アントン・イオシフォビッチ": {
+          "imgPath": "スラツキー・アントン・イオシフォビッチ.jpg"
+        }
+      },
+      "leader": "スラツキー・アントン・イオシフォビッチ",
+      "name": "タヴリダ・ソビエト社会主義共和国"
+    },
+    "KSR": {
+      "divisions": [],
+      "leaders": { "ヤン・ポルヤン": { "imgPath": "ヤン・ポルヤン.jpg" } },
+      "leader": "ヤン・ポルヤン",
+      "name": "クバーニ・ソビエト共和国"
+    },
+    "DON": {
+      "divisions": [],
+      "leaders": {
+        "ピョートル・クラスノフ": { "imgPath": "ピョートル・クラスノフ.jpg" }
+      },
+      "leader": "ピョートル・クラスノフ",
+      "name": "ドン共和国"
+    },
+    "GEO": {
+      "divisions": [],
+      "leaders": {
+        "ノエ・ラミシュビリ": { "imgPath": "ノエ・ラミシュビリ.jpg" }
+      },
+      "leader": "ノエ・ラミシュビリ",
+      "name": "グルジア民主共和国"
+    },
+    "AZR": {
+      "divisions": [],
+      "leaders": {
+        "メフメト・エミーン・ラスールザーデ": {
+          "imgPath": "メフメト・エミーン・ラスールザーデ.jpg"
+        }
+      },
+      "leader": "メフメト・エミーン・ラスールザーデ",
+      "name": "アゼルバイジャン民主共和国"
+    },
+    "ARM": {
+      "divisions": [],
+      "leaders": {
+        "ホヴハンネス・カチャズヌニ": {
+          "imgPath": "ホヴハンネス・カチャズヌニ.jpg"
+        }
+      },
+      "leader": "ホヴハンネス・カチャズヌニ",
+      "name": "アルメニア共和国"
+    },
+    "MRC": {
+      "divisions": [],
+      "leaders": {
+        "タパ・チェルモエフ": { "imgPath": "タパ・チェルモエフ.jpg" }
+      },
+      "leader": "タパ・チェルモエフ",
+      "name": "北カフカース山岳共和国"
+    },
+    "SCS": {
+      "divisions": [],
+      "leaders": {
+        "アントン・コロシェツ": { "imgPath": "アントン・コロシェツ.jpg" }
+      },
+      "leader": "アントン・コロシェツ",
+      "name": "スロベニア人・クロアチア人・セルビア人国"
+    },
+    "CZE": {
+      "divisions": [],
+      "leaders": {
+        "トマーシュ・マサリク": { "imgPath": "トマーシュ・マサリク.jpg" }
+      },
+      "leader": "トマーシュ・マサリク",
+      "name": "チェコスロバキア共和国"
+    },
+    "WUPR": {
+      "divisions": [],
+      "leaders": {
+        "コスト・レヴィツキー": { "imgPath": "コスト・レヴィツキー.jpg" }
+      },
+      "leader": "コスト・レヴィツキー",
+      "name": "西ウクライナ人民共和国"
+    },
+    "AUS": {
+      "divisions": [],
+      "leaders": { "カール・ザイツ": { "imgPath": "カール・ザイツ.jpg" } },
+      "leader": "カール・ザイツ",
+      "name": "ドイツ=オーストリア共和国"
+    },
+    "HUN": {
+      "divisions": [],
+      "leaders": {
+        "カーロイ・ミハーイ": { "imgPath": "カーロイ・ミハーイ.jpg" }
+      },
+      "leader": "カーロイ・ミハーイ",
+      "name": "ハンガリー民主共和国"
+    },
+    "ITA": {
+      "divisions": [],
+      "leaders": {
+        "ヴィットーリオ・エマヌエーレ3世": {
+          "imgPath": "ヴィットーリオ・エマヌエーレ3世.jpg"
+        }
+      },
+      "leader": "ヴィットーリオ・エマヌエーレ3世",
+      "name": "イタリア王国"
+    },
+    "SWE": {
+      "divisions": [],
+      "leaders": { "グスタフ5世": { "imgPath": "グスタフ5世.jpg" } },
+      "leader": "グスタフ5世",
+      "name": "スウェーデン王国"
+    },
+    "LAT": {
+      "divisions": [],
+      "leaders": {
+        "ヤーニス・チャクステ": { "imgPath": "ヤーニス・チャクステ.jpg" }
+      },
+      "leader": "ヤーニス・チャクステ",
+      "name": "ラトビア共和国"
+    }
+  },
+  "provinces": {
+    "#106020": { "owner": "AHE" },
+    "#108021": { "owner": "ITA" },
+    "#206020": { "owner": "RPG" },
+    "#208001": { "owner": "USSR" },
+    "#208040": { "owner": "RPG" },
+    "#214180": { "owner": "RPG" },
+    "#306060": { "owner": "AHE" },
+    "#316021": { "owner": "BUL" },
+    "#316141": { "owner": "AHE" },
+    "#401080": { "owner": "TUR" },
+    "#405000": { "owner": "RPG" },
+    "#405080": { "owner": "RPG" },
+    "#406020": { "owner": "GER" },
+    "#409000": { "owner": "TUR" },
+    "#416161": { "owner": "GER" },
+    "#506020": { "owner": "GRE" },
+    "#516161": { "owner": "AHE" },
+    "#554866": { "owner": "ITA" },
+    "#567452": { "owner": "GER" },
+    "#604060": { "owner": "SWE" },
+    "#604180": { "owner": "USSR" },
+    "#614121": { "owner": "GER" },
+    "#616020": { "owner": "USSR" },
+    "#626998": { "owner": "AHE" },
+    "#702020": { "owner": "BUL" },
+    "#704020": { "owner": "ITA" },
+    "#706060": { "owner": "USSR" },
+    "#707040": { "owner": "AHE" },
+    "#712161": { "owner": "MDR" },
+    "#716121": { "owner": "OSR" },
+    "#716141": { "owner": "AHE" },
+    "#716180": { "owner": "AHE" },
+    "#726291": { "owner": "UPRS" },
+    "#785460": { "owner": "ITA" },
+    "#785849": { "owner": "TUR" },
+    "#795368": { "owner": "GER" },
+    "#801000": { "owner": "RPG" },
+    "#801040": { "owner": "USSR" },
+    "#801080": { "owner": "RPG" },
+    "#802161": { "owner": "POL" },
+    "#805000": { "owner": "RPG" },
+    "#805140": { "owner": "USSR" },
+    "#805180": { "owner": "USSR" },
+    "#806121": { "owner": "GER" },
+    "#806161": { "owner": "GER" },
+    "#809000": { "owner": "TUR" },
+    "#809001": { "owner": "RPG" },
+    "#809040": { "owner": "RPG" },
+    "#809080": { "owner": "TUR" },
+    "#835452": { "owner": "RPG" },
+    "#846165": { "owner": "AHE" },
+    "#900021": { "owner": "ITA" },
+    "#902161": { "owner": "AHE" },
+    "#906060": { "owner": "POL" },
+    "#906121": { "owner": "AHE" },
+    "#945000": { "owner": "GER" },
+    "#001080": { "owner": "RPG" },
+    "#005000": { "owner": "RPG" },
+    "#007060": { "owner": "RPG" },
+    "#009000": { "owner": "RPG" },
+    "#009080": { "owner": "TUR" },
+    "#011141": { "owner": "RPG" },
+    "#015040": { "owner": "USSR" },
+    "#015080": { "owner": "USSR" },
+    "#016161": { "owner": "USSR" },
+    "#019041": { "owner": "RPG" },
+    "#31e0e0": { "owner": "USSR" },
+    "#b0dfdf": { "owner": "USSR" },
+    "#9021a0": { "owner": "AHE" },
+    "#b06161": { "owner": "AHE" },
+    "#d0e061": { "owner": "AHE" },
+    "#20c000": { "owner": "AHE" },
+    "#51e061": { "owner": "AHE" },
+    "#d061e0": { "owner": "AHE" },
+    "#51306a": { "owner": "AHE" },
+    "#109f9f": { "owner": "AHE" },
+    "#5060df": { "owner": "AHE" },
+    "#5161a0": { "owner": "AHE" },
+    "#d0e0a0": { "owner": "AHE" },
+    "#d061a0": { "owner": "AHE" },
+    "#d0e021": { "owner": "AHE" },
+    "#51e0a0": { "owner": "AHE" },
+    "#3161a0": { "owner": "AHE" },
+    "#af609f": { "owner": "AHE" },
+    "#1161a0": { "owner": "AHE" },
+    "#90e021": { "owner": "AHE" },
+    "#11e021": { "owner": "AHE" },
+    "#90a0a0": { "owner": "AHE" },
+    "#51e0e0": { "owner": "AHE" },
+    "#cfdfdf": { "owner": "AHE" },
+    "#715f5d": { "owner": "AHE" },
+    "#d06161": { "owner": "AHE" },
+    "#90e0e0": { "owner": "AHE" },
+    "#1101a0": { "owner": "AHE" },
+    "#8f8020": { "owner": "AHE" },
+    "#f061c0": { "owner": "AHE" },
+    "#9001a0": { "owner": "AHE" },
+    "#a9793b": { "owner": "AHE" },
+    "#1180a0": { "owner": "AHE" },
+    "#b06141": { "owner": "AHE" },
+    "#30a020": { "owner": "AHE" },
+    "#f0e001": { "owner": "AHE" },
+    "#ef6080": { "owner": "AHE" },
+    "#71e041": { "owner": "AHE" },
+    "#1d6b94": { "owner": "AHE" },
+    "#f06141": { "owner": "AHE" },
+    "#f0e041": { "owner": "AHE" },
+    "#9080a0": { "owner": "AHE" },
+    "#71e080": { "owner": "AHE" },
+    "#10dfdf": { "owner": "AHE" },
+    "#9061e0": { "owner": "AHE" },
+    "#1161e0": { "owner": "AHE" },
+    "#7141e0": { "owner": "UPRS" },
+    "#f061e0": { "owner": "UPRS" },
+    "#40dfdf": { "owner": "UPRS" },
+    "#b0e0a0": { "owner": "MDR" },
+    "#8aca9b": { "owner": "MDR" },
+    "#b02161": { "owner": "OSR" },
+    "#71e021": { "owner": "OSR" },
+    "#f0e0a0": { "owner": "OSR" },
+    "#ef6020": { "owner": "USSR" },
+    "#f06161": { "owner": "USSR" },
+    "#71e061": { "owner": "UPRS" },
+    "#71e0e0": { "owner": "UPRS" },
+    "#7020df": { "owner": "USSR" },
+    "#f0e061": { "owner": "USSR" },
+    "#7161e0": { "owner": "UPRS" },
+    "#80d080": { "owner": "RPG" },
+    "#c05001": { "owner": "RPG" },
+    "#c0d001": { "owner": "USSR" },
+    "#c05180": { "owner": "USSR" },
+    "#80e0a0": { "owner": "GER" },
+    "#e06176": { "owner": "GER" },
+    "#80e061": { "owner": "USSR" },
+    "#0161e0": { "owner": "USSR" },
+    "#c0a0e0": { "owner": "USSR" },
+    "#41a0e0": { "owner": "USSR" },
+    "#80dfdf": { "owner": "USSR" },
+    "#8061e0": { "owner": "USSR" },
+    "#bc0441": { "owner": "UPRS" },
+    "#01e061": { "owner": "USSR" },
+    "#c0a060": { "owner": "USSR" },
+    "#c0df60": { "owner": "USSR" },
+    "#bfdf20": { "owner": "GER" },
+    "#f061a0": { "owner": "UPRS" },
+    "#01e0e0": { "owner": "UPRS" },
+    "#1121a0": { "owner": "UPRS" },
+    "#e08061": { "owner": "UPRS" },
+    "#e001e0": { "owner": "UPR" },
+    "#71e0a0": { "owner": "UPR" },
+    "#7161a0": { "owner": "UPRS" },
+    "#f0e021": { "owner": "UPRS" },
+    "#c0e0e0": { "owner": "UPRS" },
+    "#a0a0a0": { "owner": "USSR" },
+    "#21a0a0": { "owner": "USSR" },
+    "#a020a0": { "owner": "USSR" },
+    "#c020e0": { "owner": "USSR" },
+    "#20a020": { "owner": "USSR" },
+    "#a02120": { "owner": "USSR" },
+    "#a0a021": { "owner": "USSR" },
+    "#dfbf60": { "owner": "USSR" },
+    "#40a060": { "owner": "USSR" },
+    "#8020df": { "owner": "USSR" },
+    "#a00000": { "owner": "USSR" },
+    "#e9c671": { "owner": "USSR" },
+    "#01a0e0": { "owner": "USSR" },
+    "#4020df": { "owner": "USSR" },
+    "#6c6e7a": { "owner": "USSR" },
+    "#4a6463": { "owner": "USSR" },
+    "#e0c0e0": { "owner": "USSR" },
+    "#a08000": { "owner": "USSR" },
+    "#e04000": { "owner": "USSR" },
+    "#e0c080": { "owner": "USSR" },
+    "#b1ee74": { "owner": "USSR" },
+    "#e02020": { "owner": "USSR" },
+    "#6121a0": { "owner": "USSR" },
+    "#8d6462": { "owner": "USSR" },
+    "#e0a021": { "owner": "USSR" },
+    "#2121a0": { "owner": "USSR" },
+    "#6161a0": { "owner": "USSR" },
+    "#60a0a0": { "owner": "USSR" },
+    "#df20a0": { "owner": "USSR" },
+    "#c0c040": { "owner": "USSR" },
+    "#60c080": { "owner": "USSR" },
+    "#a080a0": { "owner": "USSR" },
+    "#df4080": { "owner": "RPG" },
+    "#a000c0": { "owner": "RPG" },
+    "#0a78c3": { "owner": "RPG" },
+    "#2080c0": { "owner": "RPG" },
+    "#dfa0a0": { "owner": "RPG" },
+    "#a06020": { "owner": "RPG" },
+    "#a060a0": { "owner": "RPG" },
+    "#bf7060": { "owner": "RPG" },
+    "#a0e021": { "owner": "USSR" },
+    "#21df21": { "owner": "USSR" },
+    "#60df21": { "owner": "USSR" },
+    "#4190c0": { "owner": "USSR" },
+    "#a0dfa0": { "owner": "RPG" },
+    "#5aae42": { "owner": "RPG" },
+    "#21dfa0": { "owner": "RPG" },
+    "#c090c0": { "owner": "RPG" },
+    "#e06020": { "owner": "USSR" },
+    "#bf10bf": { "owner": "RPG" },
+    "#8f79e9": { "owner": "USSR" },
+    "#0020e0": { "owner": "USSR" },
+    "#80a0e0": { "owner": "USSR" },
+    "#01d041": { "owner": "RPG" },
+    "#41d080": { "owner": "RPG" },
+    "#c09041": { "owner": "RPG" },
+    "#c01040": { "owner": "RPG" },
+    "#bfd159": { "owner": "RPG" },
+    "#b0e040": { "owner": "AHE" },
+    "#3060bf": { "owner": "AHE" },
+    "#b061c0": { "owner": "AHE" },
+    "#f0a040": { "owner": "AHE" },
+    "#31e041": { "owner": "AHE" },
+    "#f0e0c0": { "owner": "AHE" },
+    "#31a0a0": { "owner": "AHE" },
+    "#7edd9e": { "owner": "AHE" },
+    "#b021a0": { "owner": "AHE" },
+    "#11a021": { "owner": "AHE" },
+    "#8f9f20": { "owner": "AHE" },
+    "#90e060": { "owner": "AHE" },
+    "#11e061": { "owner": "AHE" },
+    "#00a7f4": { "owner": "AHE" },
+    "#b02121": { "owner": "AHE" },
+    "#cf2020": { "owner": "AHE" },
+    "#124d73": { "owner": "AHE" },
+    "#71a041": { "owner": "AHE" },
+    "#51a021": { "owner": "AHE" },
+    "#70df00": { "owner": "AHE" },
+    "#71a0c0": { "owner": "AHE" },
+    "#efa0c0": { "owner": "AHE" },
+    "#d0a021": { "owner": "AHE" },
+    "#80cf00": { "owner": "AHE" },
+    "#f06101": { "owner": "AHE" },
+    "#50209f": { "owner": "AHE" },
+    "#d021a0": { "owner": "AHE" },
+    "#51a0a0": { "owner": "AHE" },
+    "#d0a0a0": { "owner": "AHE" },
+    "#9021e0": { "owner": "AHE" },
+    "#1121e0": { "owner": "AHE" },
+    "#c01000": { "owner": "TUR" },
+    "#f040e0": { "owner": "TUR" },
+    "#c01080": { "owner": "TUR" },
+    "#b0a060": { "owner": "TUR" },
+    "#3020e0": { "owner": "TUR" },
+    "#30a0e0": { "owner": "TUR" },
+    "#b020e0": { "owner": "TUR" },
+    "#30a060": { "owner": "TUR" },
+    "#f0a020": { "owner": "TUR" },
+    "#56087a": { "owner": "TUR" },
+    "#f02082": { "owner": "TUR" },
+    "#2073f0": { "owner": "TUR" },
+    "#70a020": { "owner": "TUR" },
+    "#40d001": { "owner": "RPG" },
+    "#c09080": { "owner": "RPG" },
+    "#00d000": { "owner": "RPG" },
+    "#c0cf80": { "owner": "RPG" },
+    "#9bc69b": { "owner": "RPG" },
+    "#80d041": { "owner": "RPG" },
+    "#30df60": { "owner": "RPG" },
+    "#008fbf": { "owner": "RPG" },
+    "#8090bf": { "owner": "RPG" },
+    "#f0e0df": { "owner": "RPG" },
+    "#f02020": { "owner": "TUR" },
+    "#30e0a0": { "owner": "AHE" },
+    "#b0a0e0": { "owner": "ROM" },
+    "#f40045": { "owner": "ROM" },
+    "#ef2060": { "owner": "ROM" },
+    "#2164e0": { "owner": "AHE" },
+    "#31e021": { "owner": "AHE" },
+    "#e0a321": { "owner": "AHE" },
+    "#b0e020": { "owner": "AHE" },
+    "#51e021": { "owner": "AHE" },
+    "#e02121": { "owner": "AHE" },
+    "#d9e021": { "owner": "BUL" },
+    "#51a0e0": { "owner": "POL" },
+    "#6000df": { "owner": "POL" },
+    "#d0a0e0": { "owner": "POL" },
+    "#40df20": { "owner": "POL" },
+    "#4161a0": { "owner": "POL" },
+    "#c06121": { "owner": "GER" },
+    "#809f60": { "owner": "GER" },
+    "#00e0a0": { "owner": "GER" },
+    "#0161a0": { "owner": "GER" },
+    "#41e061": { "owner": "GER" },
+    "#a8ff51": { "owner": "GER" },
+    "#c0a0a0": { "owner": "GER" },
+    "#8060a0": { "owner": "GER" },
+    "#4a8e5d": { "owner": "GER" },
+    "#01e021": { "owner": "GER" },
+    "#00a0a0": { "owner": "GER" },
+    "#8021a0": { "owner": "USSR" },
+    "#bf2060": { "owner": "USSR" },
+    "#bf6060": { "owner": "USSR" },
+    "#0121a0": { "owner": "USSR" },
+    "#80a021": { "owner": "USSR" },
+    "#01a021": { "owner": "USSR" },
+    "#6040e0": { "owner": "USSR" },
+    "#c020a0": { "owner": "GER" },
+    "#4121a0": { "owner": "GER" },
+    "#40a0a0": { "owner": "GER" },
+    "#7a6061": { "owner": "GER" },
+    "#80a0a0": { "owner": "GER" },
+    "#0180a0": { "owner": "GER" },
+    "#2141a0": { "owner": "GER" },
+    "#6e617f": { "owner": "GER" },
+    "#af9f20": { "owner": "GER" },
+    "#41e0a0": { "owner": "GER" },
+    "#c0e0a0": { "owner": "POL" },
+    "#577ee4": { "owner": "POL" },
+    "#c061a0": { "owner": "POL" },
+    "#c02121": { "owner": "GER" },
+    "#41a021": { "owner": "GER" },
+    "#bf9f20": { "owner": "GER" },
+    "#5e9091": { "owner": "GER" },
+    "#f0e080": { "owner": "AHE" },
+    "#60bf20": { "owner": "GER" },
+    "#a0c020": { "owner": "GER" },
+    "#8001a0": { "owner": "GER" },
+    "#19ae19": { "owner": "GER" },
+    "#a040a0": { "owner": "GER" },
+    "#df4020": { "owner": "GER" },
+    "#afdfbf": { "owner": "GER" },
+    "#cf5d8e": { "owner": "GER" },
+    "#83b1a8": { "owner": "GER" },
+    "#61c0a0": { "owner": "GER" },
+    "#e080a0": { "owner": "GER" },
+    "#e041a0": { "owner": "GER" },
+    "#a04121": { "owner": "GER" },
+    "#31e0c0": { "owner": "GER" },
+    "#3101a0": { "owner": "GER" },
+    "#b08021": { "owner": "GER" },
+    "#b00121": { "owner": "GER" },
+    "#51c0e0": { "owner": "GER" },
+    "#6e7192": { "owner": "BUL" },
+    "#e8d59c": { "owner": "BUL" },
+    "#71a0a0": { "owner": "BUL" },
+    "#b55757": { "owner": "BUL" },
+    "#cdd237": { "owner": "BUL" },
+    "#d06121": { "owner": "BUL" },
+    "#f021a0": { "owner": "BUL" },
+    "#f0a0e0": { "owner": "BUL" },
+    "#6181d2": { "owner": "BUL" },
+    "#7121a0": { "owner": "BUL" },
+    "#f0a0a0": { "owner": "BUL" },
+    "#b06121": { "owner": "BUL" },
+    "#70a0e0": { "owner": "BUL" },
+    "#11e0a0": { "owner": "BUL" },
+    "#e0118b": { "owner": "BUL" },
+    "#62a730": { "owner": "BUL" },
+    "#4dc8c8": { "owner": "Sea" },
+    "#8011c0": { "owner": "RPG" },
+    "#f5f6c2": { "owner": "AHE" },
+    "#a12f82": { "owner": "AHE" },
+    "#8c6292": { "owner": "AHE" },
+    "#446e84": { "owner": "AHE" },
+    "#51a061": { "owner": "AHE" },
+    "#90a0e0": { "owner": "AHE" },
+    "#d0a061": { "owner": "AHE" },
+    "#c771e0": { "owner": "AHE" },
+    "#71c0e0": { "owner": "AHE" },
+    "#4040df": { "owner": "SWE" },
+    "#41c061": { "owner": "SWE" },
+    "#c0c061": { "owner": "SWE" },
+    "#c04161": { "owner": "SWE" },
+    "#a00120": { "owner": "SWE" },
+    "#a08021": { "owner": "SWE" },
+    "#f8e400": { "owner": "SWE" },
+    "#c0c0e0": { "owner": "SWE" },
+    "#0101a0": { "owner": "SWE" },
+    "#c480a5": { "owner": "SWE" },
+    "#61c061": { "owner": "SWE" },
+    "#a001a0": { "owner": "SWE" },
+    "#e041e0": { "owner": "RPG" },
+    "#21c0e0": { "owner": "SWE" },
+    "#9000e0": { "owner": "SWE" },
+    "#79d379": { "owner": "RPG" },
+    "#61c0e0": { "owner": "RPG" },
+    "#40c040": { "owner": "RPG" },
+    "#e08001": { "owner": "Rebels" },
+    "#48fafa": { "owner": "Sea" },
+    "#4bdcfa": { "owner": "Sea" },
+    "#49c8c8": { "owner": "Sea" },
+    "#4ac8fa": { "owner": "Sea" },
+    "#08fafa": { "owner": "Sea" },
+    "#07dcfa": { "owner": "Sea" },
+    "#06c8fa": { "owner": "Sea" },
+    "#05c8c8": { "owner": "Sea" },
+    "#31c0a0": { "owner": "ITA" },
+    "#30c021": { "owner": "ITA" },
+    "#3040a0": { "owner": "ITA" },
+    "#b0c0a0": { "owner": "ITA" },
+    "#36c8fa": { "owner": "Sea" },
+    "#b02040": { "owner": "ITA" },
+    "#0e8bcc": { "owner": "ITA" },
+    "#30209f": { "owner": "ITA" },
+    "#4090a0": { "owner": "ITA" },
+    "#c050e0": { "owner": "ITA" },
+    "#37dcfa": { "owner": "Sea" },
+    "#3ec8fa": { "owner": "Sea" },
+    "#4050df": { "owner": "ITA" },
+    "#3dc8c8": { "owner": "Sea" },
+    "#3cfafa": { "owner": "Sea" },
+    "#3bdcfa": { "owner": "Sea" },
+    "#5141e0": { "owner": "ITA" },
+    "#b001a0": { "owner": "ITA" },
+    "#f000a0": { "owner": "ITA" },
+    "#b080a0": { "owner": "ITA" },
+    "#80c0e0": { "owner": "SWE" },
+    "#09c8c8": { "owner": "Sea" },
+    "#2080a0": { "owner": "SWE" },
+    "#41c0c0": { "owner": "SWE" },
+    "#04fafa": { "owner": "Sea" },
+    "#e04161": { "owner": "Rebels" },
+    "#47dcfa": { "owner": "Sea" },
+    "#46c8fa": { "owner": "Sea" },
+    "#0cfafa": { "owner": "Sea" },
+    "#0dc8c8": { "owner": "Sea" },
+    "#0bdcfa": { "owner": "Sea" },
+    "#01c8c8": { "owner": "Sea" },
+    "#01dec8": { "owner": "Sea" },
+    "#02c8fa": { "owner": "Sea" },
+    "#9061a0": { "owner": "BUL" },
+    "#90a061": { "owner": "AHE" },
+    "#10a060": { "owner": "AHE" },
+    "#edba20": { "owner": "AHE" },
+    "#d021e0": { "owner": "BUL" },
+    "#d02161": { "owner": "AHE" },
+    "#9dffaf": { "owner": "AHE" },
+    "#a5d3a9": { "owner": "AHE" },
+    "#d2619e": { "owner": "GRE" },
+    "#01d060": { "owner": "GRE" },
+    "#90e0a0": { "owner": "GRE" },
+    "#7be071": { "owner": "GRE" },
+    "#8050e0": { "owner": "GRE" },
+    "#e6e868": { "owner": "GRE" },
+    "#80d060": { "owner": "GRE" },
+    "#a0d0a0": { "owner": "GRE" },
+    "#009f60": { "owner": "POL" },
+    "#00d080": { "owner": "USSR" },
+    "#41c0e0": { "owner": "Rebels" },
+    "#a080e0": { "owner": "Rebels" },
+    "#8a448c": { "owner": "Rebels" },
+    "#c00121": { "owner": "GER" },
+    "#51c021": { "owner": "Rebels" },
+    "#d041a0": { "owner": "Rebels" },
+    "#4cfafa": { "owner": "Rebels" },
+    "#f021c0": { "owner": "AHE" },
+    "#11a0e0": { "owner": "Rebels" },
+    "#b040a0": { "owner": "Rebels" },
+    "#2190a0": { "owner": "Rebels" },
+    "#4b79ca": { "owner": "Rebels" },
+    "#3161e0": { "owner": "Rebels" }
+  },
+  "diplomacy": [
+    { "type": "Access", "active": false, "root": "GER", "target": "POL" },
+    { "type": "Access", "active": false, "root": "GER", "target": "UPR" }
+  ],
+  "events": {
+    "russian_civilwar_begins": { "fired": false },
+    "russian_civilwar_begins_news": { "fired": false },
+    "donets_leaves_ukraine": { "fired": false },
+    "kuban_independence": { "fired": false },
+    "lithuania_independence": { "fired": false },
+    "kafkas_independence": { "fired": false },
+    "estonia_independence": { "fired": false },
+    "udb_independence": { "fired": false },
+    "dcs_independence": { "fired": false },
+    "ger_invasion_osr": { "fired": false },
+    "tsr_independence": { "fired": false },
+    "ukr_civil_war": { "fired": false },
+    "bpr_independence": { "fired": false },
+    "rom_annex_mdr": { "fired": false },
+    "bucharest_peace": { "fired": false },
+    "ksr_form": { "fired": false },
+    "don_independence": { "fired": false },
+    "kafkas_collapce": { "fired": false },
+    "greece_attack_bulgaria": { "fired": false },
+    "britain_landing_bulgaria": { "fired": false },
+    "scs_independence": { "fired": false },
+    "ubd_integrate_dcs": { "fired": false },
+    "wupr_independence": { "fired": false },
+    "cze_independence": { "fired": false },
+    "ger_surrender": { "fired": false },
+    "ser_annex_scs": { "fired": false },
+    "baltic_independence": { "fired": false },
+    "ussr_attack_west": { "fired": false },
+    "hungarian_occupation": { "fired": false }
+  },
+  "combats": []
+}

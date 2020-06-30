@@ -10,6 +10,7 @@ declare const Resource: Readonly<{
     war: string;
     plus: string;
     minus: string;
+    gamedata: string;
     savedata: string;
     conscription: string;
     infantaly: string;

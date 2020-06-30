@@ -10,6 +10,7 @@ import CountryHandler from "../CountryHandler";
 import Country from "../Country";
 import ConditionCreator from "./Conditions/ConditionCreator";
 import JsonObject from "../Utils/JsonObject";
+import JsonType from "../Utils/JsonType";
 
 export default class Event extends JsonObject {
   private __id: string;
@@ -191,5 +192,18 @@ export default class Event extends JsonObject {
     );
     sound.volume = 0.25;
     sound.play(false);
+  }
+
+  replacer(key: string, value: any, type: JsonType) {
+    switch (type) {
+      case JsonType.GameData:
+        if (key === "fired") return []; //除外リスト
+        return [key, value];
+      case JsonType.SaveData:
+        if (key !== "fired") return []; //除外リスト fired以外全部除外
+        return [key, value];
+      default:
+        throw new Error("Invalid type:" + type);
+    }
   }
 }

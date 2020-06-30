@@ -26,13 +26,13 @@ export default abstract class JsonObject {
           value = Object.fromEntries(value); //key={subkey:value,subkey2:value2...} 形式
           for (const key in value) {
             if (value[key] instanceof JsonObject)
-              value[key] = value[key].toJsonObject();
+              value[key] = value[key].toJsonObject(type);
           }
         }
         if (value instanceof Array) {
           for (const i in value)
             if (value[i] instanceof JsonObject)
-              value[i] = value[i].toJsonObject();
+              value[i] = value[i].toJsonObject(type);
         }
         if (value instanceof JsonObject) value = value.toJsonObject(type);
         return [key, value];

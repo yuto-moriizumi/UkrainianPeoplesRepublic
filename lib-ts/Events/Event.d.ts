@@ -2,6 +2,7 @@ import Option from "./Option";
 import CountryHandler from "../CountryHandler";
 import Country from "../Country";
 import JsonObject from "../Utils/JsonObject";
+import JsonType from "../Utils/JsonType";
 export default class Event extends JsonObject {
     private __id;
     private title;
@@ -32,4 +33,5 @@ export default class Event extends JsonObject {
     getDesc(): string;
     getTitle(): string;
     showDialog(): void;
+    replacer(key: string, value: any, type: JsonType): any[];
 }

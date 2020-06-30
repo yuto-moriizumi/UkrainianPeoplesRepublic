@@ -74,6 +74,7 @@ export default class DivisionInfo extends JsonObject {
 
     //占領処理
     const owner = province.getOwner();
+    if (owner === undefined) return; //領有国情報が未ロードであれば、なにもしない
     if (owner == this.owner) return;
     if (owner.getWarInfoWith(this.owner)) {
       if (province.getCulture() == this.owner.getCulture()) {

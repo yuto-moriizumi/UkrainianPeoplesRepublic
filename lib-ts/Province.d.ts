@@ -7,7 +7,7 @@ import ProvinceObserver from "ProvinceObserver";
 import CultureObserver from "./CultureObserve";
 import JsonType from "./Utils/JsonType";
 export default class Province extends JsonObject implements Observable {
-    private id;
+    private __id;
     private _owner;
     private x;
     private y;

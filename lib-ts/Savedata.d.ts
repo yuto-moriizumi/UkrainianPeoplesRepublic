@@ -37,4 +37,5 @@ export default class Savedata extends JsonObject {
     private set cultures(value);
     getCultures(): SetDataManager<string>;
     download(type: JsonType): void;
+    replacer(key: string, value: any, type: JsonType): any[];
 }

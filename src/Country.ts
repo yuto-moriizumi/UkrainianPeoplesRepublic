@@ -221,8 +221,23 @@ export default class Country extends JsonObject {
   }
 
   replacer(key: string, value: any, type: JsonType) {
-    if (key === "color") return [key, value.toString(16)];
-    if (key === "leader") return [key, value.getName()];
-    return [key, value];
+    switch (type) {
+      case JsonType.GameData:
+        if (key === "leader" || key === "divisions") return []; //除外リスト
+        if (key === "color") return [key, value.toString(16)];
+        return [key, value];
+      case JsonType.SaveData:
+        if (
+          key === "culture" ||
+          key === "color" ||
+          key === "flag" ||
+          key === "leaders"
+        )
+          return []; //除外リスト
+        if (key === "leader") return [key, value.getName()];
+        return [key, value];
+      default:
+        throw new Error("Invalid type:" + type);
+    }
   }
 }

@@ -11,7 +11,7 @@ import CultureObserver from "./CultureObserve";
 import JsonType from "./Utils/JsonType";
 
 export default class Province extends JsonObject implements Observable {
-  private id: string;
+  private __id: string;
   private _owner: Country;
   private x: number = 0;
   private y: number = 0;
@@ -22,9 +22,9 @@ export default class Province extends JsonObject implements Observable {
 
   constructor(id: string) {
     super();
-    if (id.substr(0, 1) != "#") this.id = "#" + id;
+    if (id.substr(0, 1) != "#") this.__id = "#" + id;
     //#ついてないやつにつける data.json更新後削除
-    else this.id = id;
+    else this.__id = id;
   }
 
   private set owner(countryId: string) {
@@ -32,7 +32,7 @@ export default class Province extends JsonObject implements Observable {
   }
 
   public getId(): string {
-    return this.id;
+    return this.__id;
   }
 
   public getOwner() {
@@ -145,8 +145,16 @@ export default class Province extends JsonObject implements Observable {
   }
 
   replacer(key: string, value: any, type: JsonType) {
-    if (value instanceof Country) return [key, value.id];
-    if (key === "id") return [];
-    return [key, value];
+    switch (type) {
+      case JsonType.GameData:
+        if (key === "owner") return []; //除外リスト
+        return [key, value];
+      case JsonType.SaveData:
+        if (key === "culture" || key === "x" || key === "y") return []; //除外リスト
+        if (value instanceof Country) return [key, value.id];
+        return [key, value];
+      default:
+        throw new Error("Invalid type:" + type);
+    }
   }
 }
