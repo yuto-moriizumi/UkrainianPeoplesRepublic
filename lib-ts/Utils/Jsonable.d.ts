@@ -1,3 +1,3 @@
 export default interface Jsonable {
-    toJSON(): object;
+    toJSON(superkey: string): object;
 }

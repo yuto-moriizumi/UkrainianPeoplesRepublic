@@ -1,4 +1,5 @@
 import DataManager from "../DataManager";
+import JsonType from "./JsonType";
 /**
  * Mapの拡張クラスです
  * データロードの順番が重要になる場合に使用します
@@ -25,5 +26,5 @@ export default class MapDataManager<T, U> extends DataManager {
      * データのロードが終わったときに必ず呼び出してください
      * @memberof MapDataManager
      */
-    toJSON(): any;
+    toJsonObject(type: JsonType): object;
 }

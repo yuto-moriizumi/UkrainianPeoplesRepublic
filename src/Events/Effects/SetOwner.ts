@@ -4,6 +4,7 @@ import GameManager from "../../GameManager";
 import Province from "../../Province";
 import MainScene from "../../Scenes/MainScene";
 import * as PIXI from "pixi.js";
+import JsonType from "../../Utils/JsonType";
 
 export default class SetOwner extends Effect {
   private type = this.constructor.name;
@@ -29,8 +30,8 @@ export default class SetOwner extends Effect {
     });
   }
 
-  public createEntries() {
-    return super.createEntries().map(([key, value]) => {
+  replacer(key: string, value: any, type: JsonType) {
+    try {
       if (value instanceof Country) return [key, value.id];
       if (value instanceof Array) {
         return [
@@ -41,19 +42,10 @@ export default class SetOwner extends Effect {
         ];
       }
       return [key, value];
-    });
-  }
+    } catch (error) {
+      console.log("Fatal Error at", this);
 
-  /*
-  public toJson(): string {
-    return (
-      "{" +
-      [
-        '"type":' + this.constructor.name,
-        '"root":' + this.root.id,
-        '"target":' + this.target.id,
-      ].join(",") +
-      "}"
-    );
-  }*/
+      return [key, value];
+    }
+  }
 }

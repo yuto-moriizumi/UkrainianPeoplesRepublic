@@ -1,5 +1,4 @@
 import DateAdapter from "../../DateAdapter";
-import Jsonable from "../../Utils/Jsonable";
 import JsonConverter from "../../Utils/JsonConverter";
 import Country from "../../Country";
 import DateCondition from "./DateCondition";

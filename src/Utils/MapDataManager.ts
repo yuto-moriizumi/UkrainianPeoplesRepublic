@@ -1,7 +1,7 @@
-import Jsonable from "./Jsonable";
 import JsonConverter from "./JsonConverter";
 import JsonObject from "./JsonObject";
 import DataManager from "../DataManager";
+import JsonType from "./JsonType";
 
 /**
  * Mapの拡張クラスです
@@ -19,8 +19,8 @@ export default class MapDataManager<T, U> extends DataManager {
   }
 
   public safeGet(id: T, onload: (item: U) => void) {
-    if (this._isLoaded) onload(this.map.get(id));
-    this.onLoaded.push(() => {
+    if (this.__isLoaded) onload(this.map.get(id));
+    this.__onLoaded.push(() => {
       onload(this.map.get(id));
     });
   }
@@ -33,12 +33,13 @@ export default class MapDataManager<T, U> extends DataManager {
    * @memberof MapDataManager
    */
   public get(id: T) {
-    if (!this._isLoaded) throw new Error("ロード完了前にgetが呼び出されました");
+    if (!this.__isLoaded)
+      throw new Error("ロード完了前にgetが呼び出されました");
     return this.map.get(id);
   }
 
   public forEach(callback: (item: U) => void) {
-    if (!this._isLoaded)
+    if (!this.__isLoaded)
       throw new Error("ロード完了前にforeachが呼び出されました");
     this.map.forEach(callback);
   }
@@ -49,7 +50,11 @@ export default class MapDataManager<T, U> extends DataManager {
    * @memberof MapDataManager
    */
 
-  public toJSON() {
-    return Object.fromEntries(this.map);
+  toJsonObject(type: JsonType): object {
+    const map = Object.fromEntries(this.map);
+    for (const key in map) {
+      if (map[key] instanceof JsonObject) map[key] = map[key].toJsonObject();
+    }
+    return map;
   }
 }

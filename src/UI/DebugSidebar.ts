@@ -17,6 +17,7 @@ import SelectScene from "../Scenes/SelectScene";
 import Atlas from "../Map/Atlas";
 import PoliticalMap from "../Map/PoliticalMap";
 import CultureMap from "../Map/CultureMap";
+import JsonType from "../Utils/JsonType";
 
 export default class DebugSidebar extends Sidebar {
   constructor(scene: MainScene) {
@@ -46,6 +47,18 @@ export default class DebugSidebar extends Sidebar {
     mode2culture.on("click", () => Atlas.instance.setMode(new CultureMap()));
     this.addPart(mode2culture);
 
-   
+    //ダウンロードボタン
+    const renderer = GameManager.instance.game.renderer;
+    const button = new Button("GameData");
+    button.on("mousedown", () => {
+      GameManager.instance.data.download(JsonType.GameData);
+    });
+    this.addPart(button);
+
+    const button2 = new Button("SaveData");
+    button2.on("mousedown", () => {
+      GameManager.instance.data.download(JsonType.SaveData);
+    });
+    this.addPart(button2);
   }
 }

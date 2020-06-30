@@ -10,8 +10,8 @@ import Combat from "./Combat";
 import JsonConverter from "./Utils/JsonConverter";
 import DivisionSprite from "./DivisionSprite";
 import Atlas from "./Map/Atlas";
-
-export default class DivisionInfo {
+import JsonType from "./Utils/JsonType";
+export default class DivisionInfo extends JsonObject {
   private _template: DivisionTemplate;
   private _position: Province;
   private organization: number;
@@ -24,6 +24,7 @@ export default class DivisionInfo {
   private __owner: Country;
 
   constructor(owner: Country) {
+    super();
     this.__owner = owner;
     owner.addDivision(this);
   }
@@ -269,11 +270,9 @@ export default class DivisionInfo {
     }
   }
 
-  private toJSON() {
-    return JsonConverter.toJSON(this, (key, value) => {
-      if (value instanceof Province) return [key, value.getId()]; //プロヴィンスはIDにしておく
-      if (value instanceof DivisionTemplate) return [key, value.getId()]; //テンプレートもIDにする
-      return [key, value];
-    });
+  replacer(key: string, value: any, type: string) {
+    if (value instanceof Province) return [key, value.getId()]; //プロヴィンスはIDにしておく
+    if (value instanceof DivisionTemplate) return [key, value.getId()]; //テンプレートもIDにする
+    return [key, value];
   }
 }

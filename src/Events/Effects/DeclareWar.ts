@@ -2,6 +2,7 @@ import Effect from "./Effect";
 import Country from "../../Country";
 import War from "../../DiplomaticTies/War";
 import GameManager from "../../GameManager";
+import JsonType from "../../Utils/JsonType";
 
 export default class DeclareWar extends Effect {
   private type = this.constructor.name;
@@ -21,10 +22,8 @@ export default class DeclareWar extends Effect {
     this._target = GameManager.instance.data.getCountry(countryId);
   }
 
-  public createEntries() {
-    return super.createEntries().map(([key, value]) => {
-      if (value instanceof Country) return [key, value.id];
-      return [key, value];
-    });
+  replacer(key: string, value: any, type: JsonType) {
+    if (value instanceof Country) return [key, value.id];
+    return [key, value];
   }
 }

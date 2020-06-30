@@ -3,7 +3,6 @@ import JsonObject from "./Utils/JsonObject";
 import War from "./DiplomaticTies/War";
 import DivisionTemplate from "./DivisionTemplate";
 import GameManager from "./GameManager";
-import Jsonable from "./Utils/Jsonable";
 import JsonConverter from "./Utils/JsonConverter";
 import CountryAI from "./CountryAIHandler";
 import MainScene from "./Scenes/MainScene";
@@ -14,8 +13,9 @@ import Leader from "./Leader";
 import CountryHandler from "./CountryHandler";
 import Event from "./Events/Event";
 import Util from "./Utils/Util";
+import JsonType from "./Utils/JsonType";
 
-export default class Country implements Jsonable {
+export default class Country extends JsonObject {
   private __id: string;
   private static readonly SEA_ID = "Sea";
   private _color: number;
@@ -30,6 +30,7 @@ export default class Country implements Jsonable {
   private _leader: Leader;
 
   constructor(id: string) {
+    super();
     this.__id = id;
     this.__handler = new CountryAI(this);
     this.__money = new Money();
@@ -219,11 +220,9 @@ export default class Country implements Jsonable {
     this.__handler.onEvent(event);
   }
 
-  public toJSON() {
-    return JsonConverter.toJSON(this, (key, value) => {
-      if (key === "color") return [key, value.toString(16)];
-      if (key === "leader") return [key, value.getName()];
-      return [key, value];
-    });
+  replacer(key: string, value: any, type: JsonType) {
+    if (key === "color") return [key, value.toString(16)];
+    if (key === "leader") return [key, value.getName()];
+    return [key, value];
   }
 }

@@ -1,4 +1,4 @@
-import JsonObject from "./JsonObject";
+import JsonType from "./JsonType";
 
 /**
  * オブジェクトをJSONに変換するためのユーティリティクラス
@@ -16,7 +16,6 @@ export default class JsonConverter {
         if (key.startsWith("_")) key = key.substr(1);
         if (value instanceof Map) value = Object.fromEntries(value);
         if (replacer) [key, value] = replacer(key, value);
-        if (value instanceof JsonObject) value = value.toJSON();
         return [key, value];
       })
     );

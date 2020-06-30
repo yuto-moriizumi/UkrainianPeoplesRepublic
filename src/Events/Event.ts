@@ -9,8 +9,9 @@ import Resource from "../Resources";
 import CountryHandler from "../CountryHandler";
 import Country from "../Country";
 import ConditionCreator from "./Conditions/ConditionCreator";
+import JsonObject from "../Utils/JsonObject";
 
-export default class Event {
+export default class Event extends JsonObject {
   private __id: string;
   private title: string;
   private desc: string;
@@ -190,14 +191,5 @@ export default class Event {
     );
     sound.volume = 0.25;
     sound.play(false);
-  }
-
-  public toJSON(): object {
-    return Object.fromEntries(
-      Object.entries(this).map(([key, value]) => {
-        if (key.startsWith("_")) return [key.substr(1), value];
-        return [key, value];
-      })
-    );
   }
 }

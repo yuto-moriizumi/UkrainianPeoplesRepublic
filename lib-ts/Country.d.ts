@@ -1,12 +1,13 @@
 import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
+import JsonObject from "./Utils/JsonObject";
 import War from "./DiplomaticTies/War";
-import Jsonable from "./Utils/Jsonable";
 import Money from "./Money";
 import DivisionInfo from "./DivisionInfo";
 import Leader from "./Leader";
 import CountryHandler from "./CountryHandler";
 import Event from "./Events/Event";
-export default class Country implements Jsonable {
+import JsonType from "./Utils/JsonType";
+export default class Country extends JsonObject {
     private __id;
     private static readonly SEA_ID;
     private _color;
@@ -67,5 +68,5 @@ export default class Country implements Jsonable {
     getLeader(): Leader;
     setHandler(handler: CountryHandler): void;
     onEvent(event: Event): void;
-    toJSON(): any;
+    replacer(key: string, value: any, type: JsonType): any[];
 }

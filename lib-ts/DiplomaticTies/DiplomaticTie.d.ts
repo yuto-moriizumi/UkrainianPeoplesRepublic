@@ -1,6 +1,7 @@
 import Country from "../Country";
-import Jsonable from "../Utils/Jsonable";
-export default abstract class DiplomaticTie implements Jsonable {
+import JsonType from "../Utils/JsonType";
+import JsonObject from "../Utils/JsonObject";
+export default abstract class DiplomaticTie extends JsonObject {
     private type;
     readonly root_icon: string;
     readonly target_icon: string;
@@ -13,5 +14,5 @@ export default abstract class DiplomaticTie implements Jsonable {
     getOpponent(country: Country): Country;
     activate(): void;
     deactivate(): void;
-    toJSON(): any;
+    replacer(key: string, value: any, type: JsonType): any[];
 }

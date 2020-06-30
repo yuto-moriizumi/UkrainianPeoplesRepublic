@@ -5,15 +5,14 @@ import War from "./DiplomaticTies/War";
 import Event from "./Events/Event";
 import JsonObject from "./Utils/JsonObject";
 import Combat from "./Combat";
-import Jsonable from "./Utils/Jsonable";
-import JsonConverter from "./Utils/JsonConverter";
 import Access from "./DiplomaticTies/Access";
 import DivisionTemplate from "./DivisionTemplate";
 import MapDataManager from "./Utils/MapDataManager";
 import ExtendedSet from "./Utils/ExtendedSet";
 import SetDataManager from "./SetDataManager";
+import JsonType from "./Utils/JsonType";
 
-export default class Savedata implements Jsonable {
+export default class Savedata extends JsonObject {
   private _countries: Map<string, Country> = new Map<string, Country>();
   private _provinces = new MapDataManager<string, Province>();
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
@@ -142,10 +141,6 @@ export default class Savedata implements Jsonable {
     Object.assign(this, json);
   }
 
-  public toJSON() {
-    return JsonConverter.toJSON(this);
-  }
-
   private set cultures(cultures: object) {
     this._cultures.setCollection(cultures);
 
@@ -157,16 +152,18 @@ export default class Savedata implements Jsonable {
     return this._cultures;
   }
 
-  public download() {
+  public download(type: JsonType) {
     //console.log(Object.entries(this));
-    const json = JSON.stringify(this);
+    const jsonObject = this.toJsonObject(type);
+    console.log(jsonObject);
+    const json = JSON.stringify(jsonObject);
 
     const blob = new Blob([json], {
       type: "application/json",
     });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "data.json";
+    a.download = type + ".json";
     a.click();
   }
 }

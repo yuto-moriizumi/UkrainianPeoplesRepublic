@@ -1,4 +1,3 @@
-import Jsonable from "./Jsonable";
 import JsonObject from "./JsonObject";
 
 export default class ExtendedSet<T> extends JsonObject {

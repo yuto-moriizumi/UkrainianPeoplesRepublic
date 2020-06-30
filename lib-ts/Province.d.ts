@@ -5,6 +5,7 @@ import DivisionInfo from "./DivisionInfo";
 import Observable from "./Observable";
 import ProvinceObserver from "ProvinceObserver";
 import CultureObserver from "./CultureObserve";
+import JsonType from "./Utils/JsonType";
 export default class Province extends JsonObject implements Observable {
     private id;
     private _owner;
@@ -24,7 +25,6 @@ export default class Province extends JsonObject implements Observable {
     addDivision(division: DivisionInfo): void;
     removeDivision(division: DivisionInfo): void;
     getDivisons(): DivisionInfo[];
-    createEntries(): any[][];
     isNextTo(province: Province): boolean;
     /**
      * このプロヴィンスに対して指定の国が進入可能か
@@ -41,4 +41,5 @@ export default class Province extends JsonObject implements Observable {
     addCultureObserver(observer: CultureObserver): void;
     removeCultureObserver(observer: CultureObserver): void;
     debug_getCultureObservers(): CultureObserver[];
+    replacer(key: string, value: any, type: JsonType): any[];
 }

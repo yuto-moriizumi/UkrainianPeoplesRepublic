@@ -12,6 +12,7 @@ import Button from "../UI/Button";
 import Province from "../Province";
 import MainScene from "./MainScene";
 import { Selectable } from "./Selectable";
+import JsonType from "../Utils/JsonType";
 
 export default class SelectScene extends Scene implements Selectable {
   private myFlag: Flag;
@@ -58,7 +59,8 @@ export default class SelectScene extends Scene implements Selectable {
     const button = new Button("JSON");
     button.position.set(renderer.width * 0.8, renderer.height * 0.8);
     button.on("mousedown", () => {
-      GameManager.instance.data.download();
+      GameManager.instance.data.download(JsonType.GameData);
+      GameManager.instance.data.download(JsonType.SaveData);
     });
     this.addChild(button);
 

@@ -40,14 +40,6 @@ export default class MainScene extends Scene implements Selectable {
     this.transitionOut = new Fade(0.0, 1.0, 0.02);
     this.playCountry = playCountry;
 
-    //ダウンロードボタン（暫定）
-    const renderer = GameManager.instance.game.renderer;
-    const button = new Button("JSON");
-    button.position.set(renderer.width * 0.8, renderer.height * 0.8);
-    button.on("mousedown", () => {
-      GameManager.instance.data.download();
-    });
-    this.addChild(button);
     MainScene.instance = this;
   }
 

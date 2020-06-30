@@ -1,4 +1,5 @@
 import Effect from "./Effect";
+import JsonType from "../../Utils/JsonType";
 export default class Annex extends Effect {
     private type;
     private _root;
@@ -6,5 +7,5 @@ export default class Annex extends Effect {
     activate(): void;
     set root(countryId: string);
     set target(countryId: string);
-    createEntries(): any[][];
+    replacer(key: string, value: any, type: JsonType): any[];
 }

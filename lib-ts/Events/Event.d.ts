@@ -1,7 +1,8 @@
 import Option from "./Option";
 import CountryHandler from "../CountryHandler";
 import Country from "../Country";
-export default class Event {
+import JsonObject from "../Utils/JsonObject";
+export default class Event extends JsonObject {
     private __id;
     private title;
     private desc;
@@ -31,5 +32,4 @@ export default class Event {
     getDesc(): string;
     getTitle(): string;
     showDialog(): void;
-    toJSON(): object;
 }

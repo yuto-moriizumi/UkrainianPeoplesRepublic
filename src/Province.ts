@@ -8,6 +8,7 @@ import DivisionInfo from "./DivisionInfo";
 import Observable from "./Observable";
 import ProvinceObserver from "ProvinceObserver";
 import CultureObserver from "./CultureObserve";
+import JsonType from "./Utils/JsonType";
 
 export default class Province extends JsonObject implements Observable {
   private id: string;
@@ -79,14 +80,6 @@ export default class Province extends JsonObject implements Observable {
     return this.__divisions;
   }
 
-  public createEntries() {
-    return super.createEntries().map(([key, value]) => {
-      if (value instanceof Country) return [key, value.id];
-      if (key === "id") return [];
-      return [key, value];
-    });
-  }
-
   public isNextTo(province: Province): boolean {
     const ans = MainScene.instance.getMap().isNextTo(this, province);
     //console.log(this, province, ans);
@@ -149,5 +142,11 @@ export default class Province extends JsonObject implements Observable {
 
   public debug_getCultureObservers(): CultureObserver[] {
     return this.__cultureObservers;
+  }
+
+  replacer(key: string, value: any, type: JsonType) {
+    if (value instanceof Country) return [key, value.id];
+    if (key === "id") return [];
+    return [key, value];
   }
 }

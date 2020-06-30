@@ -1,4 +1,3 @@
-import Jsonable from "./Utils/Jsonable";
 import JsonConverter from "./Utils/JsonConverter";
 import JsonObject from "./Utils/JsonObject";
 import DataManager from "./DataManager";

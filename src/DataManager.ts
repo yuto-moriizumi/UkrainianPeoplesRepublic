@@ -1,4 +1,5 @@
 import JsonObject from "./Utils/JsonObject";
+import JsonType from "./Utils/JsonType";
 
 /**
  * データロードの順番が重要になる場合に使用します
@@ -10,20 +11,20 @@ import JsonObject from "./Utils/JsonObject";
  * @extends {JsonObject}
  */
 export default abstract class DataManager extends JsonObject {
-  onLoaded = new Array<any>();
-  _isLoaded = false;
-  ON_CREATED = console.info("DataManagerがインスタンス化されました");
+  __onLoaded = new Array<any>();
+  __isLoaded = false;
+  __ON_CREATED = console.info("DataManagerがインスタンス化されました");
 
   public isLoaded(): boolean {
-    return this._isLoaded;
+    return this.__isLoaded;
   }
 
   public addListener(func: any) {
-    if (this._isLoaded) {
+    if (this.__isLoaded) {
       func();
       return;
     }
-    this.onLoaded.push(func);
+    this.__onLoaded.push(func);
   }
 
   /**
@@ -32,9 +33,9 @@ export default abstract class DataManager extends JsonObject {
    * @memberof MapDataManager
    */
   public endLoad(test?: string) {
-    this._isLoaded = true;
-    while (this.onLoaded.length > 0) {
-      this.onLoaded.shift()();
+    this.__isLoaded = true;
+    while (this.__onLoaded.length > 0) {
+      this.__onLoaded.shift()();
     }
   }
 }
