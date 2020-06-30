@@ -70,7 +70,7 @@ export default class DiplomaticSidebar extends Sidebar {
 
     //人物名
     const portraitName = new PIXI.Text(
-      target.getLeader().getName(),
+      target.getLeader().getName().replace(/・/g, " "), //・を空白に置き換える
       new PIXI.TextStyle({
         fill: 0xffffff,
         wordWrap: true,
