@@ -2,6 +2,7 @@ import Effect from "./Effect";
 import Country from "../../Country";
 import GameManager from "../../GameManager";
 import MainScene from "../../Scenes/MainScene";
+import JsonType from "../../Utils/JsonType";
 
 export default class Annex extends Effect {
   private type = this.constructor.name;
@@ -13,7 +14,6 @@ export default class Annex extends Effect {
       if (province.getOwner() !== this._target) return;
       province.setOwner(this._root);
     });
-    MainScene.instance.getMap().update();
   }
 
   set root(countryId: string) {
@@ -24,10 +24,8 @@ export default class Annex extends Effect {
     this._target = GameManager.instance.data.getCountry(countryId);
   }
 
-  public createEntries() {
-    return super.createEntries().map(([key, value]) => {
-      if (value instanceof Country) return [key, value.id];
-      return [key, value];
-    });
+  replacer(key: string, value: any, type: JsonType) {
+    if (value instanceof Country) return [key, value.id];
+    return [key, value];
   }
 }

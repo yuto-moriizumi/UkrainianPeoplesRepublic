@@ -3,30 +3,38 @@ import Province from "./Province";
 import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
 import War from "./DiplomaticTies/War";
 import Event from "./Events/Event";
-import JsonObject from "./JsonObject";
+import JsonObject from "./Utils/JsonObject";
 import Combat from "./Combat";
-import Jsonable from "./Jsonable";
-import JsonConverter from "./JsonConverter";
 import Access from "./DiplomaticTies/Access";
 import DivisionTemplate from "./DivisionTemplate";
-import MapDataManager from "./MapDataManager";
-import ExtendedSet from "./ExtendedSet";
-import SetDataManager from "./SetDataManager";
+import MapDataManager from "./Utils/MapDataManager";
+import ExtendedSet from "./Utils/ExtendedSet";
+import SetDataManager from "./Utils/SetDataManager";
+import JsonType from "./Utils/JsonType";
 
-export default class Savedata implements Jsonable {
+export default class Savedata extends JsonObject {
   private _countries: Map<string, Country> = new Map<string, Country>();
   private _provinces = new MapDataManager<string, Province>();
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();
-  private _events: Array<Event> = new Array<Event>();
+  private _events = new Map<string, Event>();
   private _combats: Array<Combat> = new Array<Combat>();
   private _templates = new MapDataManager<string, DivisionTemplate>();
   private _cultures = new SetDataManager<string>();
 
   private set countries(countries: object) {
-    for (const id in countries) {
-      this._countries.set(id, Object.assign(new Country(id), countries[id]));
+    if (this._countries.size > 0) {
+      //ゲームデータがロードされている時
+      for (const id in countries) {
+        const country = this._countries.get(id);
+        Object.assign(country, countries[id]);
+      }
+      console.log("savedata countries loaded:", this._countries);
+    } else {
+      for (const id in countries) {
+        this._countries.set(id, Object.assign(new Country(id), countries[id]));
+      }
+      console.log("gamedata countries loaded:", this._countries);
     }
-    console.log("countries loaded:", this._countries);
   }
 
   public getCountries() {
@@ -53,15 +61,24 @@ export default class Savedata implements Jsonable {
   }
 
   private set provinces(provinces: object) {
-    for (const id in provinces) {
-      const newId = id.substr(0, 1) == "#" ? id : "#" + id;
-      //console.log(newId);
-      const province = new Province(newId);
-      Object.assign(province, provinces[id]);
-      this._provinces.set(newId, province);
+    if (this._provinces.size > 0) {
+      //ゲームデータがロードされている時
+      for (const id in provinces) {
+        const province = this._provinces.get(id);
+        Object.assign(province, provinces[id]);
+      }
+      console.log("savedata provinces loaded:", this._provinces);
+    } else {
+      for (const id in provinces) {
+        const newId = id.substr(0, 1) == "#" ? id : "#" + id;
+        //console.log(newId);
+        const province = new Province(newId);
+        Object.assign(province, provinces[id]);
+        this._provinces.set(newId, province);
+      }
+      console.log("gamedata provinces loaded:", this._provinces);
+      this._provinces.endLoad();
     }
-    console.log("provinces loaded:", this._provinces);
-    this._provinces.endLoad();
   }
 
   public setProvince(id: string, province: Province) {
@@ -105,13 +122,23 @@ export default class Savedata implements Jsonable {
     this._diplomacy = this._diplomacy.filter((d) => d != diplomacy);
   }
 
-  private set events(events: Array<object>) {
-    this._events = events.map((eventObject) => {
-      const event = new Event();
-      Object.assign(event, eventObject);
-      return event;
-    });
-    console.log("events loaded:", this._events);
+  private set events(events: object) {
+    if (this._events.size > 0) {
+      //ゲームデータがロードされている時
+      for (const id in events) {
+        const event = this._events.get(id);
+        Object.assign(event, events[id]);
+      }
+      console.log("savedata events loaded:", this._events);
+    } else {
+      for (const id in events) {
+        const event = new Event();
+        events[id]["__id"] = id;
+        Object.assign(event, events[id]);
+        this._events.set(id, event);
+      }
+      console.log("gamedata events loaded:", this._events);
+    }
   }
 
   public getEvents() {
@@ -141,10 +168,6 @@ export default class Savedata implements Jsonable {
     Object.assign(this, json);
   }
 
-  public toJSON() {
-    return JsonConverter.toJSON(this);
-  }
-
   private set cultures(cultures: object) {
     this._cultures.setCollection(cultures);
 
@@ -156,16 +179,33 @@ export default class Savedata implements Jsonable {
     return this._cultures;
   }
 
-  public download() {
+  public download(type: JsonType) {
     //console.log(Object.entries(this));
-    const json = JSON.stringify(this);
+    console.log("download" + type);
+
+    const jsonObject = this.toJsonObject(type);
+    console.log(jsonObject);
+    const json = JSON.stringify(jsonObject);
 
     const blob = new Blob([json], {
       type: "application/json",
     });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "data.json";
+    a.download = type + ".json";
     a.click();
+  }
+
+  replacer(key: string, value: any, type: JsonType) {
+    switch (type) {
+      case JsonType.GameData:
+        if (key === "diplomacy" || key === "combats") return []; //除外リスト
+        return [key, value];
+      case JsonType.SaveData:
+        if (key === "templates" || key === "cultures") return []; //除外リスト
+        return [key, value];
+      default:
+        throw new Error("Invalid type:" + type);
+    }
   }
 }

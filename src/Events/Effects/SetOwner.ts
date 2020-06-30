@@ -4,6 +4,8 @@ import GameManager from "../../GameManager";
 import Province from "../../Province";
 import MainScene from "../../Scenes/MainScene";
 import * as PIXI from "pixi.js";
+import JsonType from "../../Utils/JsonType";
+import JsonObject from "../../Utils/JsonObject";
 
 export default class SetOwner extends Effect {
   private type = this.constructor.name;
@@ -14,7 +16,6 @@ export default class SetOwner extends Effect {
     this._provinces.forEach((province) => {
       province.setOwner(this._root);
     });
-    MainScene.instance.getMap().update();
   }
 
   set root(countryId: string) {
@@ -24,39 +25,18 @@ export default class SetOwner extends Effect {
   set provinces(provinceIds: Array<string>) {
     this._provinces = provinceIds.map((provinceId) => {
       if (provinceId.substr(0, 1) != "#") provinceId = "#" + provinceId; //#ついてないやつにつける data.json更新後削除
-      const province = GameManager.instance.data
-        .getProvinces()
-        .get(provinceId);
+      const province = GameManager.instance.data.getProvinces().get(provinceId);
       //console.log(province);
       return province;
     });
   }
 
-  public createEntries() {
-    return super.createEntries().map(([key, value]) => {
-      if (value instanceof Country) return [key, value.id];
-      if (value instanceof Array) {
-        return [
-          key,
-          value.map((province: Province) => {
-            return province.getId();
-          }),
-        ];
-      }
-      return [key, value];
-    });
+  replacer(key: string, value: any, type: JsonType) {
+    if (value instanceof Country) return [key, value.id];
+    if (value instanceof Array) {
+      for (const i in value)
+        if (value[i] instanceof Province) value[i] = value[i].getId();
+    }
+    return [key, value];
   }
-
-  /*
-  public toJson(): string {
-    return (
-      "{" +
-      [
-        '"type":' + this.constructor.name,
-        '"root":' + this.root.id,
-        '"target":' + this.target.id,
-      ].join(",") +
-      "}"
-    );
-  }*/
 }

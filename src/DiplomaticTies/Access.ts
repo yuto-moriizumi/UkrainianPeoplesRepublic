@@ -8,6 +8,13 @@ import Resource from "../Resources";
  * @extends {DiplomaticTie}
  */
 export default class Access extends DiplomaticTie {
-  public readonly root_icon = Resource.access_root;
-  public readonly target_icon = Resource.access_target;
+  public static readonly root_icon = Resource.access_root;
+  public static readonly target_icon = Resource.access_target;
+
+  public getRootIcon() {
+    return Access.root_icon;
+  }
+  public getTargetIcon() {
+    return Access.target_icon;
+  }
 }

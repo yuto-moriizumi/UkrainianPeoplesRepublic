@@ -2,8 +2,8 @@ import * as PIXI from "pixi.js";
 import Scene from "./Scene";
 import Country from "../Country";
 import Fade from "./Fade";
-import LoaderAddParam from "../LoaderAddParam";
-import MyMap from "../MyMap";
+import LoaderAddParam from "../Utils/LoaderAddParam";
+import Atlas from "../Map/Atlas";
 import GameManager from "../GameManager";
 import Resource from "../Resources";
 import { Selectable } from "./Selectable";
@@ -11,23 +11,21 @@ import Province from "../Province";
 import Header from "../UI/Header";
 import Sidebar from "../UI/Sidebar";
 import DiplomaticSidebar from "../UI/DiplomaticSidebar";
-import Timer from "../UI/Timer";
-import EventDispatcher from "../Events/EventDispacher";
 import Event from "../Events/Event";
 import Button from "../UI/Button";
 import Conscription from "../UI/Conscription";
-import SpriteButton from "../UI/SpriteButton";
 import DivisionSprite from "../DivisionSprite";
 import DebugSidebar from "../UI/DebugSidebar";
 import ProvinceSidebar from "../UI/ProvinceSidebar";
+import CountryPlayerHandler from "../CountryPlayerHandler";
+import CountryAIHandler from "../CountryAIHandler";
 
 export default class MainScene extends Scene implements Selectable {
   public static instance: MainScene;
   private playCountry: Country;
-  private map: MyMap;
+  private map: Atlas;
   private header: Header;
   private sidebar: Sidebar;
-  private eventDispatcher: EventDispatcher;
   public selectingDivison: DivisionSprite;
   public cheat_move = false;
 
@@ -42,16 +40,7 @@ export default class MainScene extends Scene implements Selectable {
     this.transitionIn = new Fade(1.0, 0.0, -0.02);
     this.transitionOut = new Fade(0.0, 1.0, 0.02);
     this.playCountry = playCountry;
-    this.eventDispatcher = new EventDispatcher(this);
 
-    //ダウンロードボタン（暫定）
-    const renderer = GameManager.instance.game.renderer;
-    const button = new Button("JSON");
-    button.position.set(renderer.width * 0.8, renderer.height * 0.8);
-    button.on("mousedown", () => {
-      GameManager.instance.data.download();
-    });
-    this.addChild(button);
     MainScene.instance = this;
   }
 
@@ -70,7 +59,14 @@ export default class MainScene extends Scene implements Selectable {
     assets.push(Resource.money);
     assets.push(Resource.access_root);
     assets.push(Resource.access_target);
-    console.log(assets);
+
+    //肖像画を追加
+    GameManager.instance.data.getCountries().forEach((country) =>
+      country.getLeaders().forEach((leader) => {
+        assets.push(leader.getImgPath());
+      })
+    );
+    console.log("loadedAssets:" + assets);
     return assets;
   }
 
@@ -78,8 +74,7 @@ export default class MainScene extends Scene implements Selectable {
   protected onResourceLoaded(): void {
     super.onResourceLoaded();
     const resources = GameManager.instance.game.loader.resources;
-    this.map = new MyMap(this, resources[Resource.Map].texture);
-    this.map.update();
+    this.map = new Atlas(this, resources[Resource.Map].texture);
     this.addChild(this.map);
 
     //師団を表示する
@@ -91,6 +86,9 @@ export default class MainScene extends Scene implements Selectable {
 
     this.header = new Header(this.playCountry);
     this.addChild(this.header);
+
+    //プレイヤー国をセット
+    this.setPlayCountry(this.playCountry);
   }
 
   public selectProvince(province: Province) {
@@ -143,11 +141,6 @@ export default class MainScene extends Scene implements Selectable {
 
     //ヘッダ更新
     this.header.update();
-
-    //イベント発火処理
-    data.getEvents().forEach((event: Event) => {
-      event.dispatch(this, this.header.getTimer().getDate());
-    });
   }
 
   public getMyCountry() {
@@ -155,7 +148,14 @@ export default class MainScene extends Scene implements Selectable {
   }
 
   public setPlayCountry(country: Country) {
+    this.playCountry.setHandler(new CountryAIHandler(this.playCountry));
     this.playCountry = country;
     this.header.setPlayCountry(country);
+    //プレイヤー国にプレイヤーハンドラをセット
+    country.setHandler(new CountryPlayerHandler(country));
+  }
+
+  public getDate() {
+    return this.header.getTimer().getDate();
   }
 }

@@ -1,14 +1,20 @@
 import Country from "./Country";
-import JsonObject from "./JsonObject";
+import JsonObject from "./Utils/JsonObject";
 import * as PIXI from "pixi.js";
 import DivisionInfo from "./DivisionInfo";
-export default class Province extends JsonObject {
-    private id;
+import Observable from "./Observable";
+import ProvinceObserver from "ProvinceObserver";
+import CultureObserver from "./CultureObserve";
+import JsonType from "./Utils/JsonType";
+export default class Province extends JsonObject implements Observable {
+    private __id;
     private _owner;
     private x;
     private y;
     private __divisions;
     private _culture;
+    private __observers;
+    private __cultureObservers;
     constructor(id: string);
     private set owner(value);
     getId(): string;
@@ -19,7 +25,6 @@ export default class Province extends JsonObject {
     addDivision(division: DivisionInfo): void;
     removeDivision(division: DivisionInfo): void;
     getDivisons(): DivisionInfo[];
-    createEntries(): any[][];
     isNextTo(province: Province): boolean;
     /**
      * このプロヴィンスに対して指定の国が進入可能か
@@ -31,4 +36,10 @@ export default class Province extends JsonObject {
     private set culture(value);
     setCulture(culture: string): void;
     getCulture(): string;
+    addObserver(observer: ProvinceObserver): void;
+    removeObserver(observer: ProvinceObserver): void;
+    addCultureObserver(observer: CultureObserver): void;
+    removeCultureObserver(observer: CultureObserver): void;
+    debug_getCultureObservers(): CultureObserver[];
+    replacer(key: string, value: any, type: JsonType): any[];
 }

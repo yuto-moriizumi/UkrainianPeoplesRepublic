@@ -3,10 +3,11 @@ import GameManager from "./GameManager";
 import Resource from "./Resources";
 import * as PIXI from "pixi.js";
 import MoneyObserver from "./MoneyObserver";
+import Observable from "./Observable";
 
-export default class Money {
+export default class Money implements Observable {
   private money: number = 0;
-  private observers = new Array<MoneyObserver>();
+  observers = new Array<MoneyObserver>();
 
   public getMoney() {
     return this.money;

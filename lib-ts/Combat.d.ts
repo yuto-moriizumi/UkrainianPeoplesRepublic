@@ -1,4 +1,4 @@
-import JsonObject from "./JsonObject";
+import JsonObject from "./Utils/JsonObject";
 import DivisionInfo from "./DivisionInfo";
 export default class Combat extends JsonObject {
     private attacker;

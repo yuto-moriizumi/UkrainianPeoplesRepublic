@@ -13,6 +13,7 @@ export default class SetDataManager<T> extends DataManager {
     add(value: T): void;
     delete(value: T): boolean;
     has(value: T): boolean;
+    get size(): number;
     setCollection(collection: any): void;
     toJSON(): object;
 }

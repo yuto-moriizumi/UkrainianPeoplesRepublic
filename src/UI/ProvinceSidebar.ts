@@ -5,8 +5,15 @@ import Province from "../Province";
 import Button from "./Button";
 
 export default class ProvinceSidebar extends Sidebar {
+  private static culture_spoit: string;
+  private cultureButton: Button;
   constructor(scene: MainScene, province: Province) {
     super("プロヴィンス情報");
+
+    if (ProvinceSidebar.culture_spoit == undefined)
+      ProvinceSidebar.culture_spoit = MainScene.instance
+        .getMyCountry()
+        .getCulture();
 
     const idText = new PIXI.Text(
       province.getId(),
@@ -32,12 +39,21 @@ export default class ProvinceSidebar extends Sidebar {
     );
     this.addPart(culture);
 
-    const cultureButton = new Button(
-      "文化を" + MainScene.instance.getMyCountry().getCulture() + "に変更"
+    this.cultureButton = new Button(
+      "文化を" + ProvinceSidebar.culture_spoit + "に変更"
     );
-    cultureButton.on("click", () => {
-      province.setCulture(MainScene.instance.getMyCountry().getCulture());
+    this.cultureButton.on("click", () => {
+      province.setCulture(ProvinceSidebar.culture_spoit);
     });
-    this.addPart(cultureButton);
+    this.addPart(this.cultureButton);
+
+    const culture2mine = new Button("文化をスポイト");
+    culture2mine.on("click", () => {
+      ProvinceSidebar.culture_spoit = province.getCulture();
+      this.cultureButton.setText(
+        "文化を" + ProvinceSidebar.culture_spoit + "に変更"
+      );
+    });
+    this.addPart(culture2mine);
   }
 }

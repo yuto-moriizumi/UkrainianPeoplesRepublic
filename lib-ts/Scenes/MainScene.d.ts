@@ -1,7 +1,7 @@
 import Scene from "./Scene";
 import Country from "../Country";
-import LoaderAddParam from "../LoaderAddParam";
-import MyMap from "../MyMap";
+import LoaderAddParam from "../Utils/LoaderAddParam";
+import Atlas from "../Map/Atlas";
 import { Selectable } from "./Selectable";
 import Province from "../Province";
 import DivisionSprite from "../DivisionSprite";
@@ -11,7 +11,6 @@ export default class MainScene extends Scene implements Selectable {
     private map;
     private header;
     private sidebar;
-    private eventDispatcher;
     selectingDivison: DivisionSprite;
     cheat_move: boolean;
     constructor(playCountry: Country);
@@ -22,8 +21,9 @@ export default class MainScene extends Scene implements Selectable {
     openConscription(): void;
     openDebug(): void;
     openProvinceSidebar(province: Province): void;
-    getMap(): MyMap;
+    getMap(): Atlas;
     update(dt: number): void;
     getMyCountry(): Country;
     setPlayCountry(country: Country): void;
+    getDate(): Date;
 }

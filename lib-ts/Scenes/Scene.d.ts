@@ -1,7 +1,7 @@
 import UpdateObject from "../UpdateObject";
 import * as PIXI from "pixi.js";
 import Transition from "./Transition";
-import LoaderAddParam from "../LoaderAddParam";
+import LoaderAddParam from "../Utils/LoaderAddParam";
 export default abstract class Scene extends PIXI.Container {
     protected transitionIn: Transition;
     protected transitionOut: Transition;

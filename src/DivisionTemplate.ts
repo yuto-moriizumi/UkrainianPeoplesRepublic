@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import Country from "./Country";
 import GameManager from "./GameManager";
-import JsonObject from "./JsonObject";
+import JsonObject from "./Utils/JsonObject";
 import Province from "./Province";
 import DivisionInfo from "./DivisionInfo";
 

@@ -1,9 +1,10 @@
 import Country from "./Country";
+import JsonObject from "./Utils/JsonObject";
 import Province from "./Province";
 import DivisionTemplate from "./DivisionTemplate";
 import Combat from "./Combat";
 import DivisionSprite from "./DivisionSprite";
-export default class DivisionInfo {
+export default class DivisionInfo extends JsonObject {
     private _template;
     private _position;
     private organization;
@@ -40,5 +41,5 @@ export default class DivisionInfo {
     isFighting(): boolean;
     set template(id: string);
     update(): void;
-    private toJSON;
+    replacer(key: string, value: any, type: string): any[];
 }

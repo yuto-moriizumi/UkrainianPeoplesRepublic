@@ -15,30 +15,73 @@ import Access from "../DiplomaticTies/Access";
 export default class DiplomaticSidebar extends Sidebar {
   private scene: MainScene;
   private readonly DIPLOMACY_HEIGHT: number = 40;
+  private static readonly SUMMARY_HEIGHT_RATE: number = 0.32;
+  private static readonly FLAG_BOX_RATE: number = 0.65;
 
   constructor(scene: MainScene, target: Country) {
     super("外交");
 
     this.scene = scene;
 
+    //国旗と肖像画を表示するボックス
+    const summaryBox = new HorizontalBox(
+      this.width,
+      this.height * DiplomaticSidebar.SUMMARY_HEIGHT_RATE
+    );
+
+    //国旗を表示するボックス
+    const flagBox = new VerticalBox(
+      this.width * DiplomaticSidebar.FLAG_BOX_RATE,
+      this.height * DiplomaticSidebar.SUMMARY_HEIGHT_RATE
+    );
+
     //相手国の国旗を表示
     const flag = new Flag(target);
-    console.log(flag.width);
-
-    flag.scale.set(170 / flag.height);
-    console.log(flag.width);
-
-    this.addPart(flag);
-    console.log(flag.height);
+    flagBox.addPart(flag);
 
     //国名
-    const text = new PIXI.Text(
+    const countryName = new PIXI.Text(
       target.name,
-      new PIXI.TextStyle({ fill: 0xffffff })
+      new PIXI.TextStyle({
+        fill: 0xffffff,
+        breakWords: true,
+        wordWrap: true,
+        wordWrapWidth: flagBox.width,
+      })
     );
-    this.addPart(text);
+    flagBox.addPart(countryName);
+    summaryBox.addPart(flagBox);
 
-    //横に並べるbox
+    //肖像画を表示するBOX
+    const portraitBox = new VerticalBox(
+      this.width * (1 - DiplomaticSidebar.FLAG_BOX_RATE),
+      this.height * DiplomaticSidebar.SUMMARY_HEIGHT_RATE
+    );
+
+    //肖像画
+    const portrait = new PIXI.Sprite(
+      GameManager.instance.game.loader.resources[
+        target.getLeader().getImgPath()
+      ].texture
+    );
+    console.log("portrait path", target.getLeader().getImgPath());
+
+    portraitBox.addPart(portrait);
+
+    //人物名
+    const portraitName = new PIXI.Text(
+      target.getLeader().getName().replace(/・/g, " "), //・を空白に置き換える
+      new PIXI.TextStyle({
+        fill: 0xffffff,
+        wordWrap: true,
+        wordWrapWidth: portraitBox.width,
+      })
+    );
+    portraitBox.addPart(portraitName);
+    summaryBox.addPart(portraitBox);
+    this.addPart(summaryBox);
+
+    //外交関係と外交アクションを横に並べるbox
     const alignBox = new HorizontalBox(
       this.width,
       this.height - this.getUiHeight()
@@ -56,7 +99,8 @@ export default class DiplomaticSidebar extends Sidebar {
       //外交関係のアイコンを表示
       console.log("tie", tie);
 
-      const iconSrc = tie.getRoot() == target ? tie.root_icon : tie.target_icon;
+      const iconSrc =
+        tie.getRoot() == target ? tie.getRootIcon() : tie.getTargetIcon();
       const icon = new PIXI.Sprite(
         GameManager.instance.game.loader.resources[iconSrc].texture
       );

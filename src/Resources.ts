@@ -1,6 +1,6 @@
 const Resource = Object.freeze({
   Title: {
-    Bg: "Ukraine.png",
+    Bg: "flags/Ukraine.png",
   },
   //重要な情報
   //プロヴィンスの画像はピクセルの色が非常に重要です。
@@ -14,7 +14,8 @@ const Resource = Object.freeze({
   war: "war.png",
   plus: "+.png",
   minus: "-.png",
-  savedata: "data.json",
+  gamedata: "GameData.json",
+  savedata: "SaveData.json",
   conscription: "tank.jpg",
   infantaly: "infantary.png",
   money: "mark_yen_okaikei.png",

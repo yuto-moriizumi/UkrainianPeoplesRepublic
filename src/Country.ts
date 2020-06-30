@@ -1,17 +1,21 @@
 import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
-import JsonObject from "./JsonObject";
+import JsonObject from "./Utils/JsonObject";
 import War from "./DiplomaticTies/War";
 import DivisionTemplate from "./DivisionTemplate";
 import GameManager from "./GameManager";
-import Jsonable from "./Jsonable";
-import JsonConverter from "./JsonConverter";
-import CountryAI from "./CountryAI";
+import JsonConverter from "./Utils/JsonConverter";
+import CountryAI from "./CountryAIHandler";
 import MainScene from "./Scenes/MainScene";
 import Money from "./Money";
 import Access from "./DiplomaticTies/Access";
 import DivisionInfo from "./DivisionInfo";
+import Leader from "./Leader";
+import CountryHandler from "./CountryHandler";
+import Event from "./Events/Event";
+import Util from "./Utils/Util";
+import JsonType from "./Utils/JsonType";
 
-export default class Country implements Jsonable {
+export default class Country extends JsonObject {
   private __id: string;
   private static readonly SEA_ID = "Sea";
   private _color: number;
@@ -20,12 +24,15 @@ export default class Country implements Jsonable {
   private _culture: string = "DEFAULT_CULTURE";
   private __diplomaticTies: Array<DiplomaticTie> = new Array<DiplomaticTie>();
   private _divisions = new Array<DivisionInfo>();
-  private __ai: CountryAI;
+  private __handler: CountryHandler;
   public __money: Money = new Money();
+  private _leaders = new Map<string, Leader>();
+  private _leader: Leader;
 
   constructor(id: string) {
+    super();
     this.__id = id;
-    this.__ai = new CountryAI(this);
+    this.__handler = new CountryAI(this);
     this.__money = new Money();
   }
 
@@ -75,7 +82,7 @@ export default class Country implements Jsonable {
     GameManager.instance.data.getProvinces().forEach((province) => {
       if (province.getOwner() == this) provinces.push(province);
     });
-    const province = provinces[Math.floor(Math.random() * provinces.length)];
+    const province = provinces[Util.getRandomInt(0, provinces.length - 1)];
 
     return province;
   }
@@ -103,12 +110,21 @@ export default class Country implements Jsonable {
     return ans;
   }
 
+  /**
+   * 時間単位の利益を計算します
+   * @returns
+   * @memberof Country
+   */
   public calcBalance() {
-    const provinces = [];
+    let balance = 0;
     GameManager.instance.data.getProvinces().forEach((province) => {
-      if (province.getOwner() == this) provinces.push(province); //保有プロヴィンスの数だけ収入UP
+      if (province.getOwner() == this) {
+        balance += 1; //領土につき1
+        if (province.getCulture() == province.getOwner().getCulture())
+          balance += 1; //自国と同じ文化ならさらに+1
+      }
     });
-    return 1 + provinces.length - this.calcMaintanance();
+    return balance - this.calcMaintanance();
   }
 
   public update() {
@@ -116,11 +132,7 @@ export default class Country implements Jsonable {
     this.__money.setMoney(this.__money.getMoney() + this.calcBalance());
 
     this._divisions.forEach((division) => division.update());
-    if (
-      MainScene.instance.getMyCountry() !== this &&
-      MainScene.instance.getMyCountry().__id !== Country.SEA_ID
-    )
-      this.__ai.update(); //自国以外で海でないならAIを呼び出す
+    if (this.__id !== Country.SEA_ID) this.__handler.update(); //海でないならAIを呼び出す
   }
 
   public getDivisions() {
@@ -133,10 +145,6 @@ export default class Country implements Jsonable {
 
   public removeDivision(division: DivisionInfo) {
     this._divisions = this._divisions.filter((d) => d != division);
-  }
-
-  private set templates(templates: any) {
-    //何もしない
   }
 
   /**
@@ -178,10 +186,57 @@ export default class Country implements Jsonable {
     return this._culture;
   }
 
-  public toJSON() {
-    return JsonConverter.toJSON(this, (key, value) => {
-      if (key === "color") return [key, value.toString(16)];
-      return [key, value];
-    });
+  private set leaders(leaders: object) {
+    if (Object.keys(leaders).length == 0) {
+      //リーダーデータが無い場合
+      this._leaders.set(Leader.DEFAULT_NAME, Object.assign(new Leader()));
+    }
+    for (const name in leaders) {
+      leaders[name]["name"] = name;
+      this._leaders.set(name, Object.assign(new Leader(), leaders[name]));
+    }
+  }
+
+  private set leader(leader: string) {
+    if (!this._leaders.has(leader))
+      throw new Error("Leader not found:" + leader);
+    this._leader = this._leaders.get(leader);
+  }
+
+  public getLeaders() {
+    return this._leaders;
+  }
+
+  public getLeader() {
+    return this._leader;
+  }
+
+  public setHandler(handler: CountryHandler) {
+    this.__handler = handler;
+  }
+
+  public onEvent(event: Event) {
+    this.__handler.onEvent(event);
+  }
+
+  replacer(key: string, value: any, type: JsonType) {
+    switch (type) {
+      case JsonType.GameData:
+        if (key === "leader" || key === "divisions") return []; //除外リスト
+        if (key === "color") return [key, value.toString(16)];
+        return [key, value];
+      case JsonType.SaveData:
+        if (
+          key === "culture" ||
+          key === "color" ||
+          key === "flag" ||
+          key === "leaders"
+        )
+          return []; //除外リスト
+        if (key === "leader") return [key, value.getName()];
+        return [key, value];
+      default:
+        throw new Error("Invalid type:" + type);
+    }
   }
 }
