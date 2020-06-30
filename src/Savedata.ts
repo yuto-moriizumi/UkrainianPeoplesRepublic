@@ -9,7 +9,7 @@ import Access from "./DiplomaticTies/Access";
 import DivisionTemplate from "./DivisionTemplate";
 import MapDataManager from "./Utils/MapDataManager";
 import ExtendedSet from "./Utils/ExtendedSet";
-import SetDataManager from "./SetDataManager";
+import SetDataManager from "./Utils/SetDataManager";
 import JsonType from "./Utils/JsonType";
 
 export default class Savedata extends JsonObject {

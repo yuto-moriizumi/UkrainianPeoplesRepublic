@@ -5,6 +5,7 @@ import Province from "../../Province";
 import MainScene from "../../Scenes/MainScene";
 import * as PIXI from "pixi.js";
 import JsonType from "../../Utils/JsonType";
+import JsonObject from "../../Utils/JsonObject";
 
 export default class SetOwner extends Effect {
   private type = this.constructor.name;
@@ -31,21 +32,11 @@ export default class SetOwner extends Effect {
   }
 
   replacer(key: string, value: any, type: JsonType) {
-    try {
-      if (value instanceof Country) return [key, value.id];
-      if (value instanceof Array) {
-        return [
-          key,
-          value.map((province: Province) => {
-            return province.getId();
-          }),
-        ];
-      }
-      return [key, value];
-    } catch (error) {
-      console.log("Fatal Error at", this);
-
-      return [key, value];
+    if (value instanceof Country) return [key, value.id];
+    if (value instanceof Array) {
+      for (const i in value)
+        if (value[i] instanceof Province) value[i] = value[i].getId();
     }
+    return [key, value];
   }
 }

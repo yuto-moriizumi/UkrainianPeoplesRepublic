@@ -100,7 +100,8 @@ export default class DiplomaticSidebar extends Sidebar {
       //外交関係のアイコンを表示
       console.log("tie", tie);
 
-      const iconSrc = tie.getRoot() == target ? tie.root_icon : tie.target_icon;
+      const iconSrc =
+        tie.getRoot() == target ? tie.getRootIcon() : tie.getTargetIcon();
       const icon = new PIXI.Sprite(
         GameManager.instance.game.loader.resources[iconSrc].texture
       );

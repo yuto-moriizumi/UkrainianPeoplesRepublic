@@ -3,8 +3,8 @@ import JsonType from "../Utils/JsonType";
 import JsonObject from "../Utils/JsonObject";
 export default abstract class DiplomaticTie extends JsonObject {
     private type;
-    readonly root_icon: string;
-    readonly target_icon: string;
+    static readonly root_icon: string;
+    static readonly target_icon: string;
     protected root: Country;
     protected target: Country;
     protected active: boolean;
@@ -14,5 +14,7 @@ export default abstract class DiplomaticTie extends JsonObject {
     getOpponent(country: Country): Country;
     activate(): void;
     deactivate(): void;
+    abstract getRootIcon(): any;
+    abstract getTargetIcon(): any;
     replacer(key: string, value: any, type: JsonType): any[];
 }

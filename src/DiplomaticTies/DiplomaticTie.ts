@@ -6,8 +6,8 @@ import JsonObject from "../Utils/JsonObject";
 
 export default abstract class DiplomaticTie extends JsonObject {
   private type = this.constructor.name;
-  public readonly root_icon: string;
-  public readonly target_icon: string;
+  public static readonly root_icon: string;
+  public static readonly target_icon: string;
   protected root: Country;
   protected target: Country;
   protected active: boolean = false;
@@ -44,6 +44,10 @@ export default abstract class DiplomaticTie extends JsonObject {
     this.target.removeDiplomaticRelation(this);
     GameManager.instance.data.removeDiplomacy(this);
   }
+
+  public abstract getRootIcon();
+
+  public abstract getTargetIcon();
 
   replacer(key: string, value: any, type: JsonType) {
     if (value instanceof Country) return [key, value.id];

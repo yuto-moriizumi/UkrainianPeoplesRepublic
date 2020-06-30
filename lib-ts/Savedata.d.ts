@@ -6,7 +6,7 @@ import JsonObject from "./Utils/JsonObject";
 import Combat from "./Combat";
 import DivisionTemplate from "./DivisionTemplate";
 import MapDataManager from "./Utils/MapDataManager";
-import SetDataManager from "./SetDataManager";
+import SetDataManager from "./Utils/SetDataManager";
 import JsonType from "./Utils/JsonType";
 export default class Savedata extends JsonObject {
     private _countries;

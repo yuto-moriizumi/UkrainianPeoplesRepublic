@@ -7,8 +7,8 @@ import Resource from "../Resources";
 import Country from "../Country";
 
 export default class War extends DiplomaticTie {
-  public readonly root_icon = Resource.war;
-  public readonly target_icon = Resource.war;
+  public static readonly root_icon = Resource.war;
+  public static readonly target_icon = Resource.war;
 
   constructor(root: Country, target: Country) {
     super(root, target);
@@ -45,5 +45,11 @@ export default class War extends DiplomaticTie {
     );
     sound.volume = 0.5;
     sound.play(false);
+  }
+  public getRootIcon() {
+    return War.root_icon;
+  }
+  public getTargetIcon() {
+    return War.target_icon;
   }
 }

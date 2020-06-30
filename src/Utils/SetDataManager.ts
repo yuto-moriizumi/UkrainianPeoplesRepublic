@@ -1,7 +1,8 @@
-import JsonConverter from "./Utils/JsonConverter";
-import JsonObject from "./Utils/JsonObject";
-import DataManager from "./DataManager";
-import ExtendedSet from "./Utils/ExtendedSet";
+import JsonConverter from "./JsonConverter";
+import JsonObject from "./JsonObject";
+import DataManager from "../DataManager";
+import ExtendedSet from "./ExtendedSet";
+import JsonType from "./JsonType";
 
 /**
  * Setの拡張クラスです
@@ -38,7 +39,7 @@ export default class SetDataManager<T> extends DataManager {
     this.set = new ExtendedSet<T>(collection);
   }
 
-  public toJSON() {
-    return this.set.toJSON();
+  toJsonObject(type: JsonType): object {
+    return this.set.toJsonObject(type);
   }
 }

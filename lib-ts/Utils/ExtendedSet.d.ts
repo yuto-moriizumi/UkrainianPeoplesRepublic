@@ -1,4 +1,5 @@
 import JsonObject from "./JsonObject";
+import JsonType from "./JsonType";
 export default class ExtendedSet<T> extends JsonObject {
     private set;
     constructor(array?: any);
@@ -9,5 +10,5 @@ export default class ExtendedSet<T> extends JsonObject {
     some(callback: (value: T) => boolean): boolean;
     filter(callback: (value: T) => boolean): T[];
     get size(): number;
-    toJSON(): object;
+    toJsonObject(type: JsonType): object;
 }

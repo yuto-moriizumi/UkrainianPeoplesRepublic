@@ -2,6 +2,7 @@ import Condition from "./Condition";
 import DateAdapter from "../../DateAdapter";
 import Country from "../../Country";
 import GameManager from "../../GameManager";
+import JsonType from "../../Utils/JsonType";
 
 export default class CountryIs extends Condition {
   private _country: Country;
@@ -14,14 +15,8 @@ export default class CountryIs extends Condition {
     this._country = GameManager.instance.data.getCountry(countryId);
   }
 
-  public toJSON() {
-    return Object.fromEntries(
-      Object.entries(this).map(([key, value]) => {
-        if (key.startsWith("__")) return [];
-        if (key.startsWith("_")) key = key.substr(1);
-        if (value instanceof Country) value = value.id;
-        return [key, value];
-      })
-    );
+  replacer(key: string, value: any, type: JsonType) {
+    if (value instanceof Country) value = value.id;
+    return [key, value];
   }
 }

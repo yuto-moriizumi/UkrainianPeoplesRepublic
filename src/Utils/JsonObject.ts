@@ -21,6 +21,7 @@ export default abstract class JsonObject {
       Object.entries(this).map(([key, value]) => {
         if (key.startsWith("__")) return [];
         if (key.startsWith("_")) key = key.substr(1);
+        [key, value] = this.replacer(key, value, type);
         if (value instanceof Map) {
           value = Object.fromEntries(value); //key={subkey:value,subkey2:value2...} 形式
           for (const key in value) {
@@ -33,7 +34,6 @@ export default abstract class JsonObject {
             if (value[i] instanceof JsonObject)
               value[i] = value[i].toJsonObject();
         }
-        [key, value] = this.replacer(key, value, type);
         if (value instanceof JsonObject) value = value.toJsonObject(type);
         return [key, value];
       })

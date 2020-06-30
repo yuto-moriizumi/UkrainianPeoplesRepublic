@@ -1,4 +1,5 @@
 import JsonObject from "./JsonObject";
+import JsonType from "./JsonType";
 
 export default class ExtendedSet<T> extends JsonObject {
   private set = new Set<T>();
@@ -36,7 +37,7 @@ export default class ExtendedSet<T> extends JsonObject {
     return this.set.size;
   }
 
-  public toJSON(): object {
+  toJsonObject(type: JsonType): object {
     return Array.from(this.set);
   }
 }
