@@ -132,8 +132,7 @@ export default class Country extends JsonObject {
     this.__money.setMoney(this.__money.getMoney() + this.calcBalance());
 
     this._divisions.forEach((division) => division.update());
-    if (MainScene.instance.getMyCountry().__id !== Country.SEA_ID)
-      this.__handler.update(); //自国以外で海でないならAIを呼び出す
+    if (this.__id !== Country.SEA_ID) this.__handler.update(); //海でないならAIを呼び出す
   }
 
   public getDivisions() {

@@ -18,6 +18,7 @@ import DivisionSprite from "../DivisionSprite";
 import DebugSidebar from "../UI/DebugSidebar";
 import ProvinceSidebar from "../UI/ProvinceSidebar";
 import CountryPlayerHandler from "../CountryPlayerHandler";
+import CountryAIHandler from "../CountryAIHandler";
 
 export default class MainScene extends Scene implements Selectable {
   public static instance: MainScene;
@@ -147,6 +148,7 @@ export default class MainScene extends Scene implements Selectable {
   }
 
   public setPlayCountry(country: Country) {
+    this.playCountry.setHandler(new CountryAIHandler(this.playCountry));
     this.playCountry = country;
     this.header.setPlayCountry(country);
     //プレイヤー国にプレイヤーハンドラをセット

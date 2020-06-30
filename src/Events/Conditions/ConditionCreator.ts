@@ -6,6 +6,8 @@ import EventFired from "./EventFired";
 import CountryIs from "./CountryIs";
 import And from "./And";
 import Always from "./Always";
+import OwnProvince from "./OwnProvince";
+import AtWarWith from "./AtWarWith";
 
 export default abstract class ConditionCreator {
   public static createCondition(condition: object) {
@@ -20,7 +22,13 @@ export default abstract class ConditionCreator {
         return Object.assign(new And(), condition);
       case "Always":
         return Object.assign(new Always(), condition);
+      case "OwnProvince":
+        return Object.assign(new OwnProvince(), condition);
+      case "AtWarWith":
+        return Object.assign(new AtWarWith(), condition);
       default:
+        console.log(condition);
+
         throw new Error(
           "一致する条件クラスが見つかりませんでした:" + condition["type"]
         );

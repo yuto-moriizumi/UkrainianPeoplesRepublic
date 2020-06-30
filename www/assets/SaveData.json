@@ -3,512 +3,409 @@
     "UPR": {
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#71e0a0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e001e0"
         }
       ],
-      "leaders": {
-        "ムィハーイロ・フルシェーウシクィイ": {
-          "imgPath": "ムィハーイロ・フルシェーウシクィイ.jpg"
-        }
-      },
-      "leader": "ムィハーイロ・フルシェーウシクィイ",
-      "name": "ウクライナ人民共和国"
+      "name": "ウクライナ人民共和国",
+      "leader": "ムィハーイロ・フルシェーウシクィイ"
     },
     "Rebels": {
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
-      "name": "Rebels(System)"
+      "name": "Rebels(System)",
+      "leader": "DEFAULT_LEADER_NAME"
     },
     "CPR": {
       "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
-      "name": "クリミア人民共和国"
+      "name": "クリミア人民共和国",
+      "leader": "DEFAULT_LEADER_NAME"
     },
     "RPG": {
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c090c0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#405080"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#835452"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e041e0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#a0dfa0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#dfa0a0"
         }
       ],
-      "leaders": {
-        "アレクサンドル・コルチャーク": {
-          "imgPath": "アレクサンドル・コルチャーク.jpg"
-        }
-      },
-      "leader": "アレクサンドル・コルチャーク",
-      "name": "ロシア共和国"
+      "name": "ロシア共和国",
+      "leader": "アレクサンドル・コルチャーク"
     },
     "USSR": {
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bf6060"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#4190c0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c0d001"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e0c080"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#801040"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#e0c0e0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bf6060"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#21df21"
         }
       ],
-      "leaders": {
-        "ウラジーミル・レーニン": { "imgPath": "ウラジーミル・レーニン.jpg" }
-      },
-      "leader": "ウラジーミル・レーニン",
-      "name": "ロシア＝ソヴィエト連邦社会主義共和国"
+      "name": "ロシア＝ソヴィエト連邦社会主義共和国",
+      "leader": "ウラジーミル・レーニン"
     },
     "AHE": {
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#902161"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#846165"
         }
       ],
-      "leaders": { "カール1世": { "imgPath": "カール1世.png" } },
-      "leader": "カール1世",
-      "name": "オーストリア＝ハンガリー帝国"
+      "name": "オーストリア＝ハンガリー帝国",
+      "leader": "カール1世"
     },
     "MDR": {
       "divisions": [],
-      "leaders": {
-        "イオン・インキュレット": { "imgPath": "イオン・インキュレット.jpg" }
-      },
-      "leader": "イオン・インキュレット",
-      "name": "モルダヴィア民主共和国"
+      "name": "モルダヴィア民主共和国",
+      "leader": "イオン・インキュレット"
     },
     "UPRS": {
       "divisions": [],
-      "leaders": {
-        "メドベージェフ・ユキム・グリゴロビッチ": {
-          "imgPath": "メドベージェフ・ユキム・グリゴロビッチ.jpg"
-        }
-      },
-      "leader": "メドベージェフ・ユキム・グリゴロビッチ",
-      "name": "ウクライナ人民共和国（ソビエト派）"
+      "name": "ウクライナ人民共和国（ソビエト派）",
+      "leader": "メドベージェフ・ユキム・グリゴロビッチ"
     },
     "OSR": {
       "divisions": [],
-      "leaders": {
-        "ユドフスキー・ウラジミール・グリゴロビッチ": {
-          "imgPath": "ユドフスキー・ウラジミール・グリゴロビッチ.jpg"
-        }
-      },
-      "leader": "ユドフスキー・ウラジミール・グリゴロビッチ",
-      "name": "オデッサ・ソビエト共和国"
+      "name": "オデッサ・ソビエト共和国",
+      "leader": "ユドフスキー・ウラジミール・グリゴロビッチ"
     },
     "DKR": {
       "divisions": [],
-      "leaders": {
-        "フョードル・セルゲイエフ": {
-          "imgPath": "フョードル・セルゲイエフ.jpg"
-        }
-      },
-      "leader": "フョードル・セルゲイエフ",
-      "name": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国"
+      "name": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国",
+      "leader": "フョードル・セルゲイエフ"
     },
     "KPR": {
       "divisions": [],
-      "leaders": {
-        "オレクサンドル・フィリモーノウ": {
-          "imgPath": "オレクサンドル・フィリモーノウ.jpg"
-        }
-      },
-      "leader": "オレクサンドル・フィリモーノウ",
-      "name": "クバーニ人民共和国"
+      "name": "クバーニ人民共和国",
+      "leader": "オレクサンドル・フィリモーノウ"
     },
     "BPR": {
       "divisions": [],
-      "leaders": { "ヤン・シェラダ": { "imgPath": "ヤン・シェラダ.jpg" } },
-      "leader": "ヤン・シェラダ",
-      "name": "ベラルーシ人民共和国"
+      "name": "ベラルーシ人民共和国",
+      "leader": "ヤン・シェラダ"
     },
     "TUR": {
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#f02082"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#c01000"
         }
       ],
-      "leaders": { "メフメト6世": { "imgPath": "メフメト6世.jpg" } },
-      "leader": "メフメト6世",
-      "name": "オスマン帝国"
+      "name": "オスマン帝国",
+      "leader": "メフメト6世"
     },
     "ROM": {
       "divisions": [],
-      "leaders": {
-        "フェルディナンド1世": { "imgPath": "フェルディナンド1世.jpg" }
-      },
-      "leader": "フェルディナンド1世",
-      "name": "ルーマニア王国"
+      "name": "ルーマニア王国",
+      "leader": "フェルディナンド1世"
     },
     "GER": {
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#bfdf20"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#61c0a0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#40df20"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#51a0e0"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#416161"
         },
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#83b1a8"
         }
       ],
-      "leaders": { "ヴィルヘルム2世": { "imgPath": "ヴィルヘルム2世.jpg" } },
-      "leader": "ヴィルヘルム2世",
-      "name": "ドイツ帝国"
+      "name": "ドイツ帝国",
+      "leader": "ヴィルヘルム2世"
     },
     "BUL": {
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#702020"
         }
       ],
-      "leaders": {
-        "フェルディナンド1世": { "imgPath": "ツァー・フェルディナンド1世.jpg" }
-      },
-      "leader": "フェルディナンド1世",
-      "name": "大ブルガリア公国"
+      "name": "大ブルガリア公国",
+      "leader": "フェルディナンド1世"
     },
-    "Sea": {
-      "divisions": [],
-      "leaders": { "DEFAULT_LEADER_NAME": { "imgPath": "default_leader.png" } },
-      "leader": "DEFAULT_LEADER_NAME",
-      "name": "海"
-    },
-    "SER": {
-      "divisions": [],
-      "leaders": { "ペータル1世": { "imgPath": "ペータル1世.jpg" } },
-      "leader": "ペータル1世",
-      "name": "セルビア王国"
-    },
+    "Sea": { "divisions": [], "name": "海", "leader": "DEFAULT_LEADER_NAME" },
+    "SER": { "divisions": [], "name": "セルビア王国", "leader": "ペータル1世" },
     "GRE": {
       "divisions": [
         {
+          "destination": null,
           "movingProgress": 0,
           "template": "infantry",
           "organization": 100,
           "position": "#01d060"
         }
       ],
-      "leaders": {
-        "コンスタンティノス1世": { "imgPath": "コンスタンティノス1世.jpg" }
-      },
-      "leader": "コンスタンティノス1世",
-      "name": "ギリシャ王国"
+      "name": "ギリシャ王国",
+      "leader": "コンスタンティノス1世"
     },
     "POL": {
       "divisions": [],
-      "leaders": {
-        "ヤン・クチャルゼフスキー": {
-          "imgPath": "ヤン・クチャルゼフスキー.jpg"
-        }
-      },
-      "leader": "ヤン・クチャルゼフスキー",
-      "name": "ポーランド摂政王国"
+      "name": "ポーランド摂政王国",
+      "leader": "ヤン・クチャルゼフスキー"
     },
-    "GBR": {
-      "divisions": [],
-      "leaders": { "ジョージ5世": { "imgPath": "ジョージ5世.jpg" } },
-      "leader": "ジョージ5世",
-      "name": "イギリス帝国"
-    },
+    "GBR": { "divisions": [], "name": "イギリス帝国", "leader": "ジョージ5世" },
     "FRA": {
       "divisions": [],
-      "leaders": {
-        "レイモン・ポアンカレ": { "imgPath": "レイモン・ポアンカレ.jpg" }
-      },
-      "leader": "レイモン・ポアンカレ",
-      "name": "フランス共和国"
+      "name": "フランス共和国",
+      "leader": "レイモン・ポアンカレ"
     },
     "LIT": {
       "divisions": [],
-      "leaders": { "ミンダウガス2世": { "imgPath": "ミンダウガス2世.jpg" } },
-      "leader": "ミンダウガス2世",
-      "name": "リトアニア王国"
+      "name": "リトアニア王国",
+      "leader": "ミンダウガス2世"
     },
     "TCF": {
       "divisions": [],
-      "leaders": {
-        "ニコライ・チヘイゼ": { "imgPath": "ニコライ・チヘイゼ.jpg" }
-      },
-      "leader": "ニコライ・チヘイゼ",
-      "name": "ザカフカース民主連邦共和国"
+      "name": "ザカフカース民主連邦共和国",
+      "leader": "ニコライ・チヘイゼ"
     },
     "EST": {
       "divisions": [],
-      "leaders": {
-        "コンスタンティン・パッツ": {
-          "imgPath": "コンスタンティン・パッツ.jpg"
-        }
-      },
-      "leader": "コンスタンティン・パッツ",
-      "name": "エストニア共和国"
+      "name": "エストニア共和国",
+      "leader": "コンスタンティン・パッツ"
     },
     "DCS": {
       "divisions": [],
-      "leaders": { "ヴィルヘルム2世": { "imgPath": "ヴィルヘルム2世.jpg" } },
-      "leader": "ヴィルヘルム2世",
-      "name": "クールラント・ゼムガレン公国"
+      "name": "クールラント・ゼムガレン公国",
+      "leader": "ヴィルヘルム2世"
     },
     "UBD": {
       "divisions": [],
-      "leaders": {
-        "アドルフ・フリードリヒ・ツー・メクレンブルク": {
-          "imgPath": "アドルフ・フリードリヒ・ツー・メクレンブルク.jpg"
-        }
-      },
-      "leader": "アドルフ・フリードリヒ・ツー・メクレンブルク",
-      "name": "バルト連合公国"
+      "name": "バルト連合公国",
+      "leader": "アドルフ・フリードリヒ・ツー・メクレンブルク"
     },
     "TSR": {
       "divisions": [],
-      "leaders": {
-        "スラツキー・アントン・イオシフォビッチ": {
-          "imgPath": "スラツキー・アントン・イオシフォビッチ.jpg"
-        }
-      },
-      "leader": "スラツキー・アントン・イオシフォビッチ",
-      "name": "タヴリダ・ソビエト社会主義共和国"
+      "name": "タヴリダ・ソビエト社会主義共和国",
+      "leader": "スラツキー・アントン・イオシフォビッチ"
     },
     "KSR": {
       "divisions": [],
-      "leaders": { "ヤン・ポルヤン": { "imgPath": "ヤン・ポルヤン.jpg" } },
-      "leader": "ヤン・ポルヤン",
-      "name": "クバーニ・ソビエト共和国"
+      "name": "クバーニ・ソビエト共和国",
+      "leader": "ヤン・ポルヤン"
     },
     "DON": {
       "divisions": [],
-      "leaders": {
-        "ピョートル・クラスノフ": { "imgPath": "ピョートル・クラスノフ.jpg" }
-      },
-      "leader": "ピョートル・クラスノフ",
-      "name": "ドン共和国"
+      "name": "ドン共和国",
+      "leader": "ピョートル・クラスノフ"
     },
     "GEO": {
       "divisions": [],
-      "leaders": {
-        "ノエ・ラミシュビリ": { "imgPath": "ノエ・ラミシュビリ.jpg" }
-      },
-      "leader": "ノエ・ラミシュビリ",
-      "name": "グルジア民主共和国"
+      "name": "グルジア民主共和国",
+      "leader": "ノエ・ラミシュビリ"
     },
     "AZR": {
       "divisions": [],
-      "leaders": {
-        "メフメト・エミーン・ラスールザーデ": {
-          "imgPath": "メフメト・エミーン・ラスールザーデ.jpg"
-        }
-      },
-      "leader": "メフメト・エミーン・ラスールザーデ",
-      "name": "アゼルバイジャン民主共和国"
+      "name": "アゼルバイジャン民主共和国",
+      "leader": "メフメト・エミーン・ラスールザーデ"
     },
     "ARM": {
       "divisions": [],
-      "leaders": {
-        "ホヴハンネス・カチャズヌニ": {
-          "imgPath": "ホヴハンネス・カチャズヌニ.jpg"
-        }
-      },
-      "leader": "ホヴハンネス・カチャズヌニ",
-      "name": "アルメニア共和国"
+      "name": "アルメニア共和国",
+      "leader": "ホヴハンネス・カチャズヌニ"
     },
     "MRC": {
       "divisions": [],
-      "leaders": {
-        "タパ・チェルモエフ": { "imgPath": "タパ・チェルモエフ.jpg" }
-      },
-      "leader": "タパ・チェルモエフ",
-      "name": "北カフカース山岳共和国"
+      "name": "北カフカース山岳共和国",
+      "leader": "タパ・チェルモエフ"
     },
     "SCS": {
       "divisions": [],
-      "leaders": {
-        "アントン・コロシェツ": { "imgPath": "アントン・コロシェツ.jpg" }
-      },
-      "leader": "アントン・コロシェツ",
-      "name": "スロベニア人・クロアチア人・セルビア人国"
+      "name": "スロベニア人・クロアチア人・セルビア人国",
+      "leader": "アントン・コロシェツ"
     },
     "CZE": {
       "divisions": [],
-      "leaders": {
-        "トマーシュ・マサリク": { "imgPath": "トマーシュ・マサリク.jpg" }
-      },
-      "leader": "トマーシュ・マサリク",
-      "name": "チェコスロバキア共和国"
+      "name": "チェコスロバキア共和国",
+      "leader": "トマーシュ・マサリク"
     },
     "WUPR": {
       "divisions": [],
-      "leaders": {
-        "コスト・レヴィツキー": { "imgPath": "コスト・レヴィツキー.jpg" }
-      },
-      "leader": "コスト・レヴィツキー",
-      "name": "西ウクライナ人民共和国"
+      "name": "西ウクライナ人民共和国",
+      "leader": "コスト・レヴィツキー"
     },
     "AUS": {
       "divisions": [],
-      "leaders": { "カール・ザイツ": { "imgPath": "カール・ザイツ.jpg" } },
-      "leader": "カール・ザイツ",
-      "name": "ドイツ=オーストリア共和国"
+      "name": "ドイツ=オーストリア共和国",
+      "leader": "カール・ザイツ"
     },
     "HUN": {
       "divisions": [],
-      "leaders": {
-        "カーロイ・ミハーイ": { "imgPath": "カーロイ・ミハーイ.jpg" }
-      },
-      "leader": "カーロイ・ミハーイ",
-      "name": "ハンガリー民主共和国"
+      "name": "ハンガリー民主共和国",
+      "leader": "カーロイ・ミハーイ"
     },
     "ITA": {
       "divisions": [],
-      "leaders": {
-        "ヴィットーリオ・エマヌエーレ3世": {
-          "imgPath": "ヴィットーリオ・エマヌエーレ3世.jpg"
-        }
-      },
-      "leader": "ヴィットーリオ・エマヌエーレ3世",
-      "name": "イタリア王国"
+      "name": "イタリア王国",
+      "leader": "ヴィットーリオ・エマヌエーレ3世"
     },
     "SWE": {
       "divisions": [],
-      "leaders": { "グスタフ5世": { "imgPath": "グスタフ5世.jpg" } },
-      "leader": "グスタフ5世",
-      "name": "スウェーデン王国"
+      "name": "スウェーデン王国",
+      "leader": "グスタフ5世"
     },
     "LAT": {
       "divisions": [],
-      "leaders": {
-        "ヤーニス・チャクステ": { "imgPath": "ヤーニス・チャクステ.jpg" }
-      },
-      "leader": "ヤーニス・チャクステ",
-      "name": "ラトビア共和国"
+      "name": "ラトビア共和国",
+      "leader": "ヤーニス・チャクステ"
+    },
+    "LSSR": {
+      "divisions": [],
+      "name": "ラトビア共和国",
+      "leader": "ペーテリス・スツカ"
     }
   },
   "provinces": {
@@ -976,32 +873,55 @@
     "russian_civilwar_begins": { "fired": false },
     "russian_civilwar_begins_news": { "fired": false },
     "donets_leaves_ukraine": { "fired": false },
+    "donets_leaves_ukraine_news": { "fired": false },
     "kuban_independence": { "fired": false },
+    "kuban_independence_news": { "fired": false },
     "lithuania_independence": { "fired": false },
+    "lithuania_independence_news": { "fired": false },
     "kafkas_independence": { "fired": false },
+    "kafkas_independence_news": { "fired": false },
     "estonia_independence": { "fired": false },
+    "estonia_independence_news": { "fired": false },
     "udb_independence": { "fired": false },
+    "udb_independence_news": { "fired": false },
     "dcs_independence": { "fired": false },
+    "dcs_independence_news": { "fired": false },
     "ger_invasion_osr": { "fired": false },
+    "ger_invasion_osr_news": { "fired": false },
     "tsr_independence": { "fired": false },
+    "tsr_independence_news": { "fired": false },
     "ukr_civil_war": { "fired": false },
     "bpr_independence": { "fired": false },
+    "bpr_independence_news": { "fired": false },
     "rom_annex_mdr": { "fired": false },
+    "rom_annex_mdr_news": { "fired": false },
     "bucharest_peace": { "fired": false },
+    "bucharest_peace_news": { "fired": false },
     "ksr_form": { "fired": false },
+    "ksr_form_news": { "fired": false },
     "don_independence": { "fired": false },
+    "don_independence_news": { "fired": false },
     "kafkas_collapce": { "fired": false },
+    "kafkas_collapce_news": { "fired": false },
     "greece_attack_bulgaria": { "fired": false },
     "britain_landing_bulgaria": { "fired": false },
     "scs_independence": { "fired": false },
+    "scs_independence_news": { "fired": false },
     "ubd_integrate_dcs": { "fired": false },
     "wupr_independence": { "fired": false },
+    "wupr_independence_news": { "fired": false },
     "cze_independence": { "fired": false },
+    "cze_independence_news": { "fired": false },
     "ger_surrender": { "fired": false },
+    "ger_surrender_news": { "fired": false },
     "ser_annex_scs": { "fired": false },
+    "ser_annex_scs_news": { "fired": false },
     "baltic_independence": { "fired": false },
+    "baltic_independence_news": { "fired": false },
     "ussr_attack_west": { "fired": false },
-    "hungarian_occupation": { "fired": false }
+    "ussr_attack_west_news": { "fired": false },
+    "hungarian_occupation": { "fired": false },
+    "hungarian_occupation_news": { "fired": false }
   },
   "combats": []
 }
