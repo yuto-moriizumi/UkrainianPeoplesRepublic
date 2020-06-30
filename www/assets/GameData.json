@@ -3,7 +3,7 @@
     "UPR": {
       "culture": "ウクライナ",
       "leaders": {
-        "ムィハーイロ・フルシェーウシクィイ": {
+        "ムィハーイロ フルシェーウシクィイ": {
           "imgPath": "ムィハーイロ・フルシェーウシクィイ.jpg"
         }
       },
@@ -28,7 +28,7 @@
     "RPG": {
       "culture": "ロシア",
       "leaders": {
-        "アレクサンドル・コルチャーク": {
+        "アレクサンドル コルチャーク": {
           "imgPath": "アレクサンドル・コルチャーク.jpg"
         }
       },
@@ -881,18 +881,39 @@
               "type": "SetOwner",
               "provinces": ["#71e061", "#71e0e0", "#f061e0", "#7161e0"],
               "root": "DKR"
+            },
+            {
+              "type": "DispatchEvent",
+              "id": "donets_leaves_ukraine_news",
+              "time2happen": 3
             }
           ],
-          "title": "裏切り者め！"
+          "title": "NEWS_TRIGGER"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
       "id": "donets_leaves_ukraine",
+      "title": "NEWS_TRIGGER",
+      "desc": "NEWS_TRIGGER",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-02-12 00:00" }
+    },
+    "donets_leaves_ukraine_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "donets_leaves_ukraine_news",
       "title": "ドネツク＝クリヴォーイ・ローク・ソビエト共和国が独立",
       "desc": "ウクライナ南東部の支配権をボリシェビキが奪取、ソビエト共和国が成立した。今のところロシア＝ソビエトとは連携していないようだ。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-02-12 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "kuban_independence": {
       "options": [
@@ -901,16 +922,32 @@
             { "type": "SetOwner", "provinces": ["#405000"], "root": "KPR" },
             { "type": "DeclareWar", "root": "USSR", "target": "KPR" }
           ],
-          "title": "OK"
+          "title": "NEWS_TRIGGER"
         }
       ],
       "triggeredOnly": false,
       "isGlobal": false,
+      "hidden": true,
       "id": "kuban_independence",
+      "title": "NEWS_TRIGGER",
+      "desc": "NEWS_TRIGGER",
+      "picture": "russian_civilwar_begins.jpg",
+      "condition": { "type": "DateCondition", "when": "1918-02-16 00:00" }
+    },
+    "kuban_independence_news": {
+      "options": [
+        {
+          "effects": [],
+          "title": "OK"
+        }
+      ],
+      "triggeredOnly": true,
+      "isGlobal": true,
+      "id": "kuban_independence_news",
       "title": "クバーニ人民共和国が独立",
       "desc": "クバーニはロシア帝国時代から歴史的に高度な自治権を保ってきた。10月革命後、クバーニ・ラーダはロシア民主共和国の自治国家としてクバーニ人民共和国の樹立を宣言したが、今のロシアに国土を統べる力はなかった。ラーダは改めて、完全な独立国を宣言した。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-02-16 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "lithuania_independence": {
       "options": [

@@ -22,6 +22,7 @@ export default class Event extends JsonObject {
   private _options: Array<Option> = new Array<Option>();
   private time2happen: number;
   private triggeredOnly = false;
+  private hidden = false;
   /**
    * グローバルイベントであるかどうか
    * グローバルイベントは、いずれかの国で発火されたときに、全ての国で発火します
@@ -100,6 +101,7 @@ export default class Event extends JsonObject {
   }
 
   public showDialog() {
+    if (this.hidden) return; //隠しイベントであれば表示しない
     const dialog = new PIXI.Graphics();
     dialog.beginFill(0x2f2f2f);
     const renderer = GameManager.instance.game.renderer;

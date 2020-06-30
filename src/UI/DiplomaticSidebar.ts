@@ -73,7 +73,6 @@ export default class DiplomaticSidebar extends Sidebar {
       target.getLeader().getName(),
       new PIXI.TextStyle({
         fill: 0xffffff,
-        breakWords: true,
         wordWrap: true,
         wordWrapWidth: portraitBox.width,
       })

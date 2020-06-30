@@ -13,6 +13,7 @@ export default class Event extends JsonObject {
     private _options;
     private time2happen;
     private triggeredOnly;
+    private hidden;
     /**
      * グローバルイベントであるかどうか
      * グローバルイベントは、いずれかの国で発火されたときに、全ての国で発火します
