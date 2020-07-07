@@ -72,9 +72,7 @@ export default class DivisionInfo extends JsonObject {
     if (this._position) this._position.removeDivision(this);
     this._position = province;
     province.addDivision(this);
-    if (this.__sprite)
-      //スプライト生成済みかつマップ表示ずみならば
-      MainScene.instance.getMap().setDivisonPosition(this.__sprite);
+    if (this.__sprite) province.getDivisionStacker().showSprite(this);
 
     //占領処理
     const owner = province.getOwner();
@@ -185,7 +183,7 @@ export default class DivisionInfo extends JsonObject {
     this._destination = destination;
     this.movingProgress = 0;
     this.__progressBar = new ArrowProgress(this.getPosition(), destination);
-    MainScene.instance.getMap().addChild(this.__progressBar);
+    MainScene.instance.getMap().arrowLayer.addChild(this.__progressBar);
 
     if (MainScene.instance.cheat_move) {
       //移動チート有効な場合は直ちに移動
@@ -270,7 +268,7 @@ export default class DivisionInfo extends JsonObject {
       destination,
       0x3f3f3f //灰色
     );
-    MainScene.instance.getMap().addChild(this.__progressBar);
+    MainScene.instance.getMap().arrowLayer.addChild(this.__progressBar);
     this.isRetreat = true;
   }
 
@@ -315,6 +313,10 @@ export default class DivisionInfo extends JsonObject {
         this.getOrganization() + this._template.getRecoveryPerTime()
       );
     }
+  }
+
+  public getSprite() {
+    return this.sprite;
   }
 
   replacer(key: string, value: any, type: string) {

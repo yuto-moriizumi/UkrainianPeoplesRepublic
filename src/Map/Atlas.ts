@@ -21,6 +21,7 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
   private pressKeys: Set<string> = new Set<string>();
   private mode: MapMode;
   private graphArrows = new Array<PIXI.Container>();
+  public arrowLayer = new PIXI.Container();
 
   constructor(scene: Selectable, texture?: PIXI.Texture) {
     super(texture);
@@ -78,6 +79,17 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
       //そうでなければ外交画面を開く
       if (this.scene instanceof MainScene)
         this.scene.openDiplomacySidebar(this.getClickedProvince(e).getOwner());
+    });
+
+    //ArrowLayerを追加
+    this.addChild(this.arrowLayer);
+
+    //DivisionStackerを追加する
+    GameManager.instance.data.getProvinces().forEach((province) => {
+      const stacker = province.getDivisionStacker();
+      this.addChild(stacker);
+      const point = province.getCoord();
+      stacker.position.set(point.x, point.y);
     });
   }
 
@@ -208,16 +220,6 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     }
 
     return new PIXI.Point(Math.floor(x / count), Math.floor(y / count));
-  }
-
-  public setDivisonPosition(sprite: DivisionSprite) {
-    if (!sprite.getOnMap()) this.addChild(sprite);
-    const point = sprite.getInfo().getPosition().getCoord();
-    sprite.position.set(
-      point.x - sprite.width / 2,
-      point.y - sprite.height / 2
-    );
-    sprite.setOnMap(true);
   }
 
   public calculateBarycenterOfAll() {

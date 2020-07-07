@@ -16,7 +16,7 @@ export default class DivisionSprite extends VerticalBox {
   private organizationBar: ProgressBar;
 
   constructor(info: DivisionInfo) {
-    super(15, 12, 0.8, 0x216639);
+    super(10, 8, 0.5, 0x216639);
     this.info = info;
     //this.country = country;
 
@@ -32,7 +32,7 @@ export default class DivisionSprite extends VerticalBox {
 
     this.organizationBar = new ProgressBar(
       this.width * 0.9,
-      2,
+      1,
       0x000000,
       0x00ff00
     );
@@ -103,5 +103,9 @@ export default class DivisionSprite extends VerticalBox {
 
   public setOrganizationRate(organizationRate: number) {
     this.organizationBar.setProgress(organizationRate);
+  }
+
+  public getPosition() {
+    return this.info.getPosition();
   }
 }

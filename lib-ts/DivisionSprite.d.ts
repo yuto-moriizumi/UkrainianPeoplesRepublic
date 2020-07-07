@@ -17,4 +17,5 @@ export default class DivisionSprite extends VerticalBox {
     static moveSelectingDivisionsTo(province: Province): void;
     static hasSelectingDivisions(): boolean;
     setOrganizationRate(organizationRate: number): void;
+    getPosition(): Province;
 }

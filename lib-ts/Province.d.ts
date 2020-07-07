@@ -7,6 +7,7 @@ import ProvinceObserver from "./ProvinceObserver";
 import CultureObserver from "./CultureObserve";
 import JsonType from "./Utils/JsonType";
 import ExtendedSet from "./Utils/ExtendedSet";
+import DivisionStacker from "./DivisionStacker";
 export default class Province extends JsonObject implements Observable {
     private __id;
     private _owner;
@@ -26,7 +27,7 @@ export default class Province extends JsonObject implements Observable {
     getCoord(): PIXI.Point;
     addDivision(division: DivisionInfo): void;
     removeDivision(division: DivisionInfo): void;
-    getDivisons(): DivisionInfo[];
+    getDivisons(): ExtendedSet<DivisionInfo>;
     isNextTo(province: Province): boolean;
     /**
      * このプロヴィンスに対して指定の国が平和的に進入可能か
@@ -50,5 +51,6 @@ export default class Province extends JsonObject implements Observable {
     removeCultureObserver(observer: CultureObserver): void;
     set neighbours(neighbours: string[] | ExtendedSet<Province>);
     getNeighbours(): ExtendedSet<string>;
+    getDivisionStacker(): DivisionStacker;
     replacer(key: string, value: any, type: JsonType): any[];
 }

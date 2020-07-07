@@ -1,7 +1,6 @@
 import * as PIXI from "pixi.js";
 import Province from "../Province";
 import { Selectable } from "../Scenes/Selectable";
-import DivisionSprite from "../DivisionSprite";
 import ExtendedSet from "../Utils/ExtendedSet";
 import MapMode from "./MapMode";
 import MapModeObserver from "./MapModeObserver";
@@ -16,6 +15,7 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     private pressKeys;
     private mode;
     private graphArrows;
+    arrowLayer: PIXI.Container;
     constructor(scene: Selectable, texture?: PIXI.Texture);
     private getProvinceIdFromPoint;
     private getClickedProvince;
@@ -29,7 +29,6 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
      * @memberof MyMap
      */
     private getBarycenter;
-    setDivisonPosition(sprite: DivisionSprite): void;
     calculateBarycenterOfAll(): void;
     private getProvince;
     onMapModeUpdated(filter: any): void;

@@ -42,5 +42,6 @@ export default class DivisionInfo extends JsonObject {
     set template(id: string);
     retreat(): void;
     update(): void;
+    getSprite(): DivisionSprite;
     replacer(key: string, value: any, type: string): any[];
 }

@@ -9,13 +9,14 @@ import ProvinceObserver from "./ProvinceObserver";
 import CultureObserver from "./CultureObserve";
 import JsonType from "./Utils/JsonType";
 import ExtendedSet from "./Utils/ExtendedSet";
+import DivisionStacker from "./DivisionStacker";
 
 export default class Province extends JsonObject implements Observable {
   private __id: string;
   private _owner: Country;
   private x: number = 0;
   private y: number = 0;
-  private __divisions: Array<DivisionInfo> = new Array<DivisionInfo>();
+  private __divisions = new DivisionStacker();
   private _culture: string = "DEFAULT_CULTURE";
   private __observers = new Array<ProvinceObserver>();
   private __cultureObservers = new Array<CultureObserver>();
@@ -68,17 +69,15 @@ export default class Province extends JsonObject implements Observable {
   }
 
   public addDivision(division: DivisionInfo) {
-    this.__divisions.push(division);
+    this.__divisions.addDivison(division);
   }
 
   public removeDivision(division: DivisionInfo) {
-    this.__divisions = this.__divisions.filter((division2) => {
-      return division != division2;
-    });
+    this.__divisions.removeDivision(division);
   }
 
   public getDivisons() {
-    return this.__divisions;
+    return this.__divisions.getDivisions();
   }
 
   public isNextTo(province: Province): boolean {
@@ -156,6 +155,10 @@ export default class Province extends JsonObject implements Observable {
 
   public getNeighbours() {
     return this._neighbours;
+  }
+
+  public getDivisionStacker() {
+    return this.__divisions;
   }
 
   replacer(key: string, value: any, type: JsonType) {
