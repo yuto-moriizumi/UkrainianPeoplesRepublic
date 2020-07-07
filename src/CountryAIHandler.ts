@@ -18,16 +18,15 @@ export default class CountryAI extends CountryHandler {
 
   dispatchEvents() {
     GameManager.instance.data.getEvents().forEach((event: Event) => {
-      event.countFoward();
       event.dispatch(this, MainScene.instance.getDate());
     });
   }
 
   onEvent(event: Event) {
     //ランダムな選択肢を実行する
-    event
-      .getOptions()
-      [Util.getRandomInt(0, event.getOptions().length - 1)].takeEffects();
+    if (event.getOptions() === undefined) return;
+    const optionNumber = Util.getRandomInt(0, event.getOptions().length - 1);
+    event.getOptions()[optionNumber].takeEffects();
   }
 
   public update() {
@@ -80,7 +79,12 @@ export default class CountryAI extends CountryHandler {
       //最も近いプロヴィンスを求める
       Atlas.instance.getNeighborProvinces(position).forEach((province) => {
         //進入可能か確認
-        if (!province.hasPeaceAccess(this.country)) return;
+        if (!province.hasAccess(this.country)) return;
+        if (province.getOwner().getWarInfoWith(this.country) != null) {
+          //隣接したプロヴィンスに敵領土があれば、そこに突撃
+          minDistance = -1;
+          closetProvince = province;
+        }
 
         //距離の最小値で更新
         const provinceCoord = province.getCoord();

@@ -28,4 +28,5 @@ export default class DivisionSprite extends VerticalBox implements PlayCountryOb
     getPosition(): Province;
     onPlayCountryChange(country: Country): void;
     onDiplomacyChange(tie: DiplomaticTie, isCreated: boolean): void;
+    destroy(): void;
 }

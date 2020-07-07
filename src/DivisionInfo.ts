@@ -224,6 +224,7 @@ export default class DivisionInfo extends JsonObject {
       this.__progressBar.destroy();
     this.__progressBar = null;
     this._destination = null;
+    this.isRetreat = false;
   }
 
   public isMoving(): boolean {
@@ -299,7 +300,6 @@ export default class DivisionInfo extends JsonObject {
 
       if (this.movingProgress >= 100 && this.__combats.length == 0) {
         //移動終了判定
-
         this.setPosition(this._destination);
         this.stopMove();
         this.isRetreat = false;

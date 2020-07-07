@@ -14,6 +14,7 @@ export default class Event extends JsonObject {
     private time2happen;
     private triggeredOnly;
     private hidden;
+    private _immediate;
     /**
      * グローバルイベントであるかどうか
      * グローバルイベントは、いずれかの国で発火されたときに、全ての国で発火します
@@ -34,6 +35,6 @@ export default class Event extends JsonObject {
     getDesc(): string;
     getTitle(): string;
     showDialog(): void;
-    private set id(value);
+    private set immediate(value);
     replacer(key: string, value: any, type: JsonType): any[];
 }

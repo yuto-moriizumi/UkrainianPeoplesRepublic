@@ -1700,7 +1700,8 @@
         "#e001e0",
         "#01e0e0",
         "#7161a0",
-        "#416161"
+        "#416161",
+        "#e08061"
       ]
     },
     "#e08061": {
@@ -4286,23 +4287,21 @@
       "condition": { "type": "Always", "always": true }
     },
     "donets_leaves_ukraine": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": ["#71e061", "#71e0e0", "#f061e0", "#7161e0"],
-              "root": "DKR"
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "donets_leaves_ukraine_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "NEWS_TRIGGER"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": ["#71e061", "#71e0e0", "#f061e0", "#7161e0"],
+            "root": "DKR"
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "donets_leaves_ukraine_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "NEWS_TRIGGER"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4322,15 +4321,13 @@
       "condition": { "type": "Always", "always": true }
     },
     "kuban_independence": {
-      "options": [
-        {
-          "effects": [
-            { "type": "SetOwner", "provinces": ["#405000"], "root": "KPR" },
-            { "type": "DeclareWar", "root": "USSR", "target": "KPR" }
-          ],
-          "title": "NEWS_TRIGGER"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          { "type": "SetOwner", "provinces": ["#405000"], "root": "KPR" },
+          { "type": "DeclareWar", "root": "USSR", "target": "KPR" }
+        ],
+        "title": "NEWS_TRIGGER"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4350,34 +4347,33 @@
       "condition": { "type": "Always", "always": true }
     },
     "lithuania_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#8060a0",
-                "#c0a0a0",
-                "#a8ff51",
-                "#00e0a0",
-                "#809f60",
-                "#0161a0",
-                "#c06121",
-                "#406020",
-                "#41e061"
-              ],
-              "root": "LIT"
-            },
-            { "type": "GainAccess", "root": "GER", "target": "LIT" },
-            {
-              "type": "DispatchEvent",
-              "id": "lithuania_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "NEWS_TRIGGER"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#8060a0",
+              "#c0a0a0",
+              "#a8ff51",
+              "#00e0a0",
+              "#809f60",
+              "#0161a0",
+              "#c06121",
+              "#406020",
+              "#41e061"
+            ],
+            "root": "LIT"
+          },
+          { "type": "GainAccess", "root": "GER", "target": "LIT" },
+          {
+            "type": "DispatchEvent",
+            "id": "lithuania_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "NEWS_TRIGGER"
+      },
+      "options": [{ "effects": [], "title": "OK" }],
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4397,47 +4393,45 @@
       "condition": { "type": "Always", "always": true }
     },
     "kafkas_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#801080",
-                "#001080",
-                "#009000",
-                "#809001",
-                "#011141",
-                "#40d001",
-                "#801000",
-                "#f0e0df",
-                "#c0cf80",
-                "#9bc69b",
-                "#80d041",
-                "#005000",
-                "#805000",
-                "#c09080",
-                "#00d000",
-                "#30df60",
-                "#809040",
-                "#007060",
-                "#008fbf",
-                "#8090bf",
-                "#bfd159",
-                "#c01040"
-              ],
-              "root": "TCF"
-            },
-            { "type": "DeclareWar", "root": "TUR", "target": "TCF" },
-            {
-              "type": "DispatchEvent",
-              "id": "kafkas_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "NEWS_TRIGGER"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#801080",
+              "#001080",
+              "#009000",
+              "#809001",
+              "#011141",
+              "#40d001",
+              "#801000",
+              "#f0e0df",
+              "#c0cf80",
+              "#9bc69b",
+              "#80d041",
+              "#005000",
+              "#805000",
+              "#c09080",
+              "#00d000",
+              "#30df60",
+              "#809040",
+              "#007060",
+              "#008fbf",
+              "#8090bf",
+              "#bfd159",
+              "#c01040"
+            ],
+            "root": "TCF"
+          },
+          { "type": "DeclareWar", "root": "TUR", "target": "TCF" },
+          {
+            "type": "DispatchEvent",
+            "id": "kafkas_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "NEWS_TRIGGER"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4457,23 +4451,21 @@
       "condition": { "type": "Always", "always": true }
     },
     "estonia_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": ["#01a021", "#80a021", "#6040e0"],
-              "root": "EST"
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "estonia_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "EVENT_TRIGGER"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": ["#01a021", "#80a021", "#6040e0"],
+            "root": "EST"
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "estonia_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "EVENT_TRIGGER"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4493,30 +4485,28 @@
       "condition": { "type": "Always", "always": true }
     },
     "udb_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#0121a0",
-                "#bf6060",
-                "#8021a0",
-                "#00a0a0",
-                "#bf2060"
-              ],
-              "root": "UBD"
-            },
-            { "type": "GainAccess", "root": "GER", "target": "UBD" },
-            {
-              "type": "DispatchEvent",
-              "id": "udb_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "NEWS_TRIGGER"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#0121a0",
+              "#bf6060",
+              "#8021a0",
+              "#00a0a0",
+              "#bf2060"
+            ],
+            "root": "UBD"
+          },
+          { "type": "GainAccess", "root": "GER", "target": "UBD" },
+          {
+            "type": "DispatchEvent",
+            "id": "udb_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "NEWS_TRIGGER"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4536,24 +4526,22 @@
       "condition": { "type": "Always", "always": true }
     },
     "dcs_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": ["#4a8e5d", "#806121", "#01e021"],
-              "root": "DCS"
-            },
-            { "type": "GainAccess", "root": "GER", "target": "DCS" },
-            {
-              "type": "DispatchEvent",
-              "id": "dcs_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "NEWS_TRIGGER"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": ["#4a8e5d", "#806121", "#01e021"],
+            "root": "DCS"
+          },
+          { "type": "GainAccess", "root": "GER", "target": "DCS" },
+          {
+            "type": "DispatchEvent",
+            "id": "dcs_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "NEWS_TRIGGER"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4605,29 +4593,27 @@
       "condition": { "type": "Always", "always": true }
     },
     "tsr_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#31e0e0",
-                "#b0dfdf",
-                "#ef6020",
-                "#f06161",
-                "#706060"
-              ],
-              "root": "TSR"
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "tsr_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "NEWS_TRIGGER"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#31e0e0",
+              "#b0dfdf",
+              "#ef6020",
+              "#f06161",
+              "#706060"
+            ],
+            "root": "TSR"
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "tsr_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "NEWS_TRIGGER"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4671,40 +4657,38 @@
       }
     },
     "bpr_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#bfdf20",
-                "#416161",
-                "#e06176",
-                "#80e0a0",
-                "#806161",
-                "#0161e0",
-                "#80e061",
-                "#80dfdf",
-                "#41a0e0",
-                "#016161",
-                "#c0a0e0",
-                "#01e061",
-                "#8061e0",
-                "#c0a060",
-                "#c0df60"
-              ],
-              "root": "BPR"
-            },
-            { "type": "GainAccess", "root": "GER", "target": "BPR" },
-            {
-              "type": "DispatchEvent",
-              "id": "bpr_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#bfdf20",
+              "#416161",
+              "#e06176",
+              "#80e0a0",
+              "#806161",
+              "#0161e0",
+              "#80e061",
+              "#80dfdf",
+              "#41a0e0",
+              "#016161",
+              "#c0a0e0",
+              "#01e061",
+              "#8061e0",
+              "#c0a060",
+              "#c0df60"
+            ],
+            "root": "BPR"
+          },
+          { "type": "GainAccess", "root": "GER", "target": "BPR" },
+          {
+            "type": "DispatchEvent",
+            "id": "bpr_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4762,35 +4746,33 @@
       "condition": { "type": "Always", "always": true }
     },
     "bucharest_peace": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#30e0a0",
-                "#31e021",
-                "#2164e0",
-                "#b0e020",
-                "#e0a321",
-                "#e02121",
-                "#51e021",
-                "#d9e021",
-                "#b06121"
-              ],
-              "root": "ROM"
-            },
-            { "type": "GainAccess", "root": "GER", "target": "ROM" },
-            { "type": "GainAccess", "root": "AHE", "target": "ROM" },
-            {
-              "type": "DispatchEvent",
-              "id": "bucharest_peace_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#30e0a0",
+              "#31e021",
+              "#2164e0",
+              "#b0e020",
+              "#e0a321",
+              "#e02121",
+              "#51e021",
+              "#d9e021",
+              "#b06121"
+            ],
+            "root": "ROM"
+          },
+          { "type": "GainAccess", "root": "GER", "target": "ROM" },
+          { "type": "GainAccess", "root": "AHE", "target": "ROM" },
+          {
+            "type": "DispatchEvent",
+            "id": "bucharest_peace_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4807,24 +4789,22 @@
       "title": "ブカレスト講和条約",
       "desc": "1918年5月7日、ロシアが革命で戦争を離脱すると、後ろ盾を失ったルーマニア軍と政府は同盟軍に降伏した。直ちにブカレスト講和条約が締結され、ルーマニアは同盟軍の占領地として総督府が設置された。ルーマニア降伏は膨大な穀物と石油を同盟軍に与え、連合軍にとって不利な状態を与えた。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "Always", "always": true, "alywas": true }
+      "condition": { "type": "Always", "always": true }
     },
     "ksr_form": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": ["#405000", "#80d080", "#c05001"],
-              "root": "KSR"
-            },
-            { "type": "DispatchEvent", "id": "ksr_form_news", "time2happen": 3 }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": ["#405000", "#80d080", "#c05001"],
+            "root": "KSR"
+          },
+          { "type": "DispatchEvent", "id": "ksr_form_news", "time2happen": 3 }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
-      "hidden": false,
+      "hidden": true,
       "isGlobal": false,
       "title": "クバーニ・ソビエト共和国の成立",
       "desc": "1918年4月13日にクバーニ人民共和国に反して誕生した。クバン全土が含まれていた。クバーニ人民共和国はタタールの政権であったために、農民はソビエト側に付いた。",
@@ -4839,32 +4819,30 @@
       "title": "クバーニ・ソビエト共和国の成立",
       "desc": "1918年4月13日にクバーニ人民共和国に反して誕生した。クバン全土が含まれていた。クバーニ人民共和国はタタールの政権であったために、農民はソビエト側に付いた。",
       "picture": "russian_civilwar_begins.jpg",
-      "condition": { "type": "DateCondition", "when": "1918-04-13 00:00" }
+      "condition": { "type": "Always", "always": true }
     },
     "don_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#00d080",
-                "#c05180",
-                "#015080",
-                "#e06020",
-                "#805180"
-              ],
-              "root": "DON"
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "don_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#00d080",
+              "#c05180",
+              "#015080",
+              "#e06020",
+              "#805180"
+            ],
+            "root": "DON"
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "don_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4884,53 +4862,51 @@
       "condition": { "type": "DateCondition", "when": "1918-05-18 00:00" }
     },
     "kafkas_collapce": {
-      "options": [
-        {
-          "effects": [
-            { "type": "Annex", "root": "TUR", "target": "TCF" },
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#40d001",
-                "#801000",
-                "#011141",
-                "#f0e0df",
-                "#c0cf80",
-                "#809001",
-                "#9bc69b"
-              ],
-              "root": "GEO"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#008fbf",
-                "#007060",
-                "#809040",
-                "#8090bf",
-                "#80d041"
-              ],
-              "root": "AZR"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": ["#005000", "#805000", "#30df60"],
-              "root": "ARM"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": ["#c01040", "#bfd159"],
-              "root": "MRC"
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "kafkas_collapce_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          { "type": "Annex", "root": "TUR", "target": "TCF" },
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#40d001",
+              "#801000",
+              "#011141",
+              "#f0e0df",
+              "#c0cf80",
+              "#809001",
+              "#9bc69b"
+            ],
+            "root": "GEO"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#008fbf",
+              "#007060",
+              "#809040",
+              "#8090bf",
+              "#80d041"
+            ],
+            "root": "AZR"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": ["#005000", "#805000", "#30df60"],
+            "root": "ARM"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": ["#c01040", "#bfd159"],
+            "root": "MRC"
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "kafkas_collapce_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -4996,52 +4972,50 @@
         "type": "And",
         "conditions": [
           { "type": "DateCondition", "when": "1918-09-30 00:00" },
-          { "type": "CountryIs", "country": "USSR" }
+          { "type": "CountryIs", "country": "GBE" }
         ]
       }
     },
     "scs_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#51a0a0",
-                "#1121e0",
-                "#d0a0a0",
-                "#50209f",
-                "#f06101",
-                "#71a0c0",
-                "#d0a021",
-                "#70df00",
-                "#71a041",
-                "#f021c0",
-                "#106020",
-                "#d021a0",
-                "#9021e0",
-                "#124d73",
-                "#51a021",
-                "#906121",
-                "#80cf00",
-                "#efa0c0",
-                "#11a0e0",
-                "#902161"
-              ],
-              "root": "SCS"
-            },
-            { "type": "GainAccess", "root": "SER", "target": "SCS" },
-            {
-              "type": "DispatchEvent",
-              "id": "scs_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#51a0a0",
+              "#1121e0",
+              "#d0a0a0",
+              "#50209f",
+              "#f06101",
+              "#71a0c0",
+              "#d0a021",
+              "#70df00",
+              "#71a041",
+              "#f021c0",
+              "#106020",
+              "#d021a0",
+              "#9021e0",
+              "#124d73",
+              "#51a021",
+              "#906121",
+              "#80cf00",
+              "#efa0c0",
+              "#11a0e0",
+              "#902161"
+            ],
+            "root": "SCS"
+          },
+          { "type": "GainAccess", "root": "SER", "target": "SCS" },
+          {
+            "type": "DispatchEvent",
+            "id": "scs_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
-      "hidden": false,
+      "hidden": true,
       "isGlobal": false,
       "title": "クロアチア・ボスニアがオーストリアを離脱",
       "desc": "有力政治家で構成される国民評議会が、「スロベニア人・クロアチア人・セルビア人国」の独立を宣言した。もはやクロアチアはオーストリアにとどまっていない。",
@@ -5059,14 +5033,12 @@
       "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
     "ubd_integrate_dcs": {
-      "options": [
-        {
-          "effects": [{ "type": "Annex", "root": "UBD", "target": "DCS" }],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [{ "type": "Annex", "root": "UBD", "target": "DCS" }],
+        "title": "OK"
+      },
       "triggeredOnly": false,
-      "hidden": false,
+      "hidden": true,
       "isGlobal": false,
       "title": "クールラント公国がバルト連合公国に統合",
       "desc": "クールラント公国成立の後に構想されたバルト連合公国は、クールラントよりも大きな支持を得ており、結果的にこの国は統合されることとなった。",
@@ -5074,35 +5046,33 @@
       "condition": { "type": "DateCondition", "when": "1918-09-22 00:00" }
     },
     "wupr_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#90e060",
-                "#11a021",
-                "#8f9f20",
-                "#b021a0",
-                "#7edd9e",
-                "#31a0a0",
-                "#00a7f4",
-                "#11e061",
-                "#1161e0"
-              ],
-              "root": "WUPR"
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "wupr_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#90e060",
+              "#11a021",
+              "#8f9f20",
+              "#b021a0",
+              "#7edd9e",
+              "#31a0a0",
+              "#00a7f4",
+              "#11e061",
+              "#1161e0"
+            ],
+            "root": "WUPR"
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "wupr_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
-      "hidden": false,
+      "hidden": true,
       "isGlobal": false,
       "title": "西ウクライナ人民共和国がオーストリアを離脱",
       "desc": "20世紀初頭、ガリツィア地方の住民はウクライナ人が6割を占めていたが、彼らの大半は農村部に住んでおり、都市部は主にポーランド人やユダヤ人によって支配されていた。とりわけ本国の首都とされるリヴィウには多くのポーランド人が住んでおり、ポーランドにとって最も重要な都市の一つと見なされている。この国の政情は不安定だ。",
@@ -5120,23 +5090,21 @@
       "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
     "cze_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": ["#71e041", "#ef6080", "#9080a0", "#71e080"],
-              "root": "CZE"
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "cze_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": ["#71e041", "#ef6080", "#9080a0", "#71e080"],
+            "root": "CZE"
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "cze_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -5156,133 +5124,131 @@
       "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
     "ger_surrender": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": ["#11e061", "#1161e0", "#90e060", "#9061e0"],
-              "root": "POL"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": ["#31a0a0", "#00a7f4"],
-              "root": "ROM"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#8f8020",
-                "#f0e0c0",
-                "#f061c0",
-                "#1101a0",
-                "#9001a0",
-                "#1180a0",
-                "#a9793b",
-                "#f0e041",
-                "#b06141",
-                "#316141",
-                "#f06141",
-                "#716141",
-                "#1d6b94",
-                "#b0e040",
-                "#31e041",
-                "#3060bf",
-                "#b061c0",
-                "#f0a040"
-              ],
-              "root": "AUS"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#d061e0",
-                "#51e0e0",
-                "#846165",
-                "#b02121",
-                "#cf2020",
-                "#cfdfdf",
-                "#716180",
-                "#f0e001",
-                "#30a020",
-                "#715f5d",
-                "#d06161",
-                "#109f9f",
-                "#5060df",
-                "#90a0a0",
-                "#5161a0",
-                "#90e021",
-                "#1161a0",
-                "#d0e021",
-                "#d061a0",
-                "#d0e0a0",
-                "#9021a0",
-                "#b06161",
-                "#3161a0",
-                "#51e0a0",
-                "#306060",
-                "#af609f",
-                "#516161",
-                "#90e0e0",
-                "#51306a",
-                "#51e061",
-                "#20c000",
-                "#d0e061",
-                "#11e021",
-                "#626998",
-                "#906121"
-              ],
-              "root": "HUN"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": ["#f0e080", "#10dfdf"],
-              "root": "CZE"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": ["#71c0e0", "#d0a061", "#c771e0", "#51a061"],
-              "root": "ITA"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#707040",
-                "#e0118b",
-                "#11e0a0",
-                "#a5d3a9",
-                "#d02161",
-                "#62a730",
-                "#d021e0",
-                "#9061a0",
-                "#90a061",
-                "#edba20",
-                "#9dffaf",
-                "#a12f82",
-                "#446e84",
-                "#8c6292",
-                "#f5f6c2",
-                "#90a0e0",
-                "#10a060"
-              ],
-              "root": "SER"
-            },
-            { "type": "Peace", "root": "GER", "target": "OSR" },
-            { "type": "Peace", "root": "GER", "target": "UPRS" },
-            {
-              "type": "DispatchEvent",
-              "id": "ussr_attack_west",
-              "time2happen": 7
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "ger_surrender_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": ["#11e061", "#1161e0", "#90e060", "#9061e0"],
+            "root": "POL"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": ["#31a0a0", "#00a7f4"],
+            "root": "ROM"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#8f8020",
+              "#f0e0c0",
+              "#f061c0",
+              "#1101a0",
+              "#9001a0",
+              "#1180a0",
+              "#a9793b",
+              "#f0e041",
+              "#b06141",
+              "#316141",
+              "#f06141",
+              "#716141",
+              "#1d6b94",
+              "#b0e040",
+              "#31e041",
+              "#3060bf",
+              "#b061c0",
+              "#f0a040"
+            ],
+            "root": "AUS"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#d061e0",
+              "#51e0e0",
+              "#846165",
+              "#b02121",
+              "#cf2020",
+              "#cfdfdf",
+              "#716180",
+              "#f0e001",
+              "#30a020",
+              "#715f5d",
+              "#d06161",
+              "#109f9f",
+              "#5060df",
+              "#90a0a0",
+              "#5161a0",
+              "#90e021",
+              "#1161a0",
+              "#d0e021",
+              "#d061a0",
+              "#d0e0a0",
+              "#9021a0",
+              "#b06161",
+              "#3161a0",
+              "#51e0a0",
+              "#306060",
+              "#af609f",
+              "#516161",
+              "#90e0e0",
+              "#51306a",
+              "#51e061",
+              "#20c000",
+              "#d0e061",
+              "#11e021",
+              "#626998",
+              "#906121"
+            ],
+            "root": "HUN"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": ["#f0e080", "#10dfdf"],
+            "root": "CZE"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": ["#71c0e0", "#d0a061", "#c771e0", "#51a061"],
+            "root": "ITA"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#707040",
+              "#e0118b",
+              "#11e0a0",
+              "#a5d3a9",
+              "#d02161",
+              "#62a730",
+              "#d021e0",
+              "#9061a0",
+              "#90a061",
+              "#edba20",
+              "#9dffaf",
+              "#a12f82",
+              "#446e84",
+              "#8c6292",
+              "#f5f6c2",
+              "#90a0e0",
+              "#10a060"
+            ],
+            "root": "SER"
+          },
+          { "type": "Peace", "root": "GER", "target": "OSR" },
+          { "type": "Peace", "root": "GER", "target": "UPRS" },
+          {
+            "type": "DispatchEvent",
+            "id": "ussr_attack_west",
+            "time2happen": 7
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "ger_surrender_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -5302,24 +5268,22 @@
       "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
     "ser_annex_scs": {
-      "options": [
-        {
-          "effects": [
-            { "type": "Annex", "root": "SER", "target": "SCS" },
-            {
-              "type": "ChangeName",
-              "country": "SER",
-              "name": "ユーゴスラビア王国"
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "ser_annex_scs_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          { "type": "Annex", "root": "SER", "target": "SCS" },
+          {
+            "type": "ChangeName",
+            "country": "SER",
+            "name": "ユーゴスラビア王国"
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "ser_annex_scs_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -5339,35 +5303,33 @@
       "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
     "baltic_independence": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": ["#0121a0", "#bf6060"],
-              "root": "EST"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#4a8e5d",
-                "#806121",
-                "#01e021",
-                "#00a0a0",
-                "#8021a0",
-                "#bf2060"
-              ],
-              "root": "LAT"
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "baltic_independence_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": ["#0121a0", "#bf6060"],
+            "root": "EST"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#4a8e5d",
+              "#806121",
+              "#01e021",
+              "#00a0a0",
+              "#8021a0",
+              "#bf2060"
+            ],
+            "root": "LAT"
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "baltic_independence_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -5387,27 +5349,24 @@
       "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
     "ussr_attack_west": {
-      "options": [
-        {
-          "effects": [
-            { "type": "DeclareWar", "root": "USSR", "target": "UPR" },
-            { "type": "DeclareWar", "root": "USSR", "target": "BPR" },
-            { "type": "DeclareWar", "root": "USSR", "target": "EST" },
-            { "type": "DeclareWar", "root": "USSR", "target": "LAT" },
-            { "type": "DeclareWar", "root": "USSR", "target": "LIT" },
-            { "type": "DeclareWar", "root": "USSR", "target": "DON" },
-            {
-              "type": "DispatchEvent",
-              "effects": [],
-              "id": "ussr_attack_west_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          { "type": "DeclareWar", "root": "USSR", "target": "UPR" },
+          { "type": "DeclareWar", "root": "USSR", "target": "BPR" },
+          { "type": "DeclareWar", "root": "USSR", "target": "EST" },
+          { "type": "DeclareWar", "root": "USSR", "target": "LAT" },
+          { "type": "DeclareWar", "root": "USSR", "target": "LIT" },
+          { "type": "DeclareWar", "root": "USSR", "target": "DON" },
+          {
+            "type": "DispatchEvent",
+            "id": "ussr_attack_west_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": true,
-      "hidden": false,
+      "hidden": true,
       "isGlobal": false,
       "title": "ソ連軍の東進",
       "desc": "ドイツの敗戦に伴い、東欧には権力の空白が生まれた。これに目を付けたソビエトは、直ちに攻撃を開始した。",
@@ -5425,65 +5384,63 @@
       "condition": { "type": "DateCondition", "when": "1918-10-29 00:00" }
     },
     "hungarian_occupation": {
-      "options": [
-        {
-          "effects": [
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#1161a0",
-                "#d061a0",
-                "#d0e0a0",
-                "#b06161",
-                "#00a7f4",
-                "#31a0a0",
-                "#3161a0",
-                "#51e0a0",
-                "#d0e021",
-                "#e02121",
-                "#306060",
-                "#af609f"
-              ],
-              "root": "ROM"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#11e021",
-                "#626998",
-                "#902161",
-                "#906121",
-                "#80cf00"
-              ],
-              "root": "SER"
-            },
-            {
-              "type": "SetOwner",
-              "provinces": [
-                "#f0e080",
-                "#71e080",
-                "#10dfdf",
-                "#1d6b94",
-                "#716141",
-                "#f06141",
-                "#90e0e0",
-                "#51306a",
-                "#20c000",
-                "#516161",
-                "#d06161",
-                "#51e061"
-              ],
-              "root": "CZE"
-            },
-            {
-              "type": "DispatchEvent",
-              "id": "hungarian_occupation_news",
-              "time2happen": 3
-            }
-          ],
-          "title": "OK"
-        }
-      ],
+      "immediate": {
+        "effects": [
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#1161a0",
+              "#d061a0",
+              "#d0e0a0",
+              "#b06161",
+              "#00a7f4",
+              "#31a0a0",
+              "#3161a0",
+              "#51e0a0",
+              "#d0e021",
+              "#e02121",
+              "#306060",
+              "#af609f"
+            ],
+            "root": "ROM"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#11e021",
+              "#626998",
+              "#902161",
+              "#906121",
+              "#80cf00"
+            ],
+            "root": "SER"
+          },
+          {
+            "type": "SetOwner",
+            "provinces": [
+              "#f0e080",
+              "#71e080",
+              "#10dfdf",
+              "#1d6b94",
+              "#716141",
+              "#f06141",
+              "#90e0e0",
+              "#51306a",
+              "#20c000",
+              "#516161",
+              "#d06161",
+              "#51e061"
+            ],
+            "root": "CZE"
+          },
+          {
+            "type": "DispatchEvent",
+            "id": "hungarian_occupation_news",
+            "time2happen": 3
+          }
+        ],
+        "title": "OK"
+      },
       "triggeredOnly": false,
       "hidden": true,
       "isGlobal": false,
@@ -5537,9 +5494,9 @@
     "infantry": {
       "organization": 100,
       "attack": 20,
-      "speed": 10,
-      "cost": 200,
-      "maintenance": 1
+      "speed": 5,
+      "cost": 300,
+      "maintenance": 2
     }
   },
   "cultures": [

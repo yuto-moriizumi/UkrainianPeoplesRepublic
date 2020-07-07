@@ -48,7 +48,6 @@ export default class Country extends JsonObject implements Observable {
     this.__diplomaticTies = this.__diplomaticTies.filter((tie2) => {
       return tie !== tie2;
     });
-    tie.deactivate();
     this.__observers.forEach((o) => o.onDiplomacyChange(tie, false));
   }
 

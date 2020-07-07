@@ -144,6 +144,9 @@ export default class MainScene extends Scene implements Selectable, Observable {
 
     //ヘッダ更新
     this.header.update();
+
+    //イベントタイマ更新
+    GameManager.instance.data.getEvents().forEach((e) => e.countFoward());
   }
 
   public getMyCountry() {

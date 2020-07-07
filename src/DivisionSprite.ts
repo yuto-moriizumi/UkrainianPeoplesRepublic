@@ -143,4 +143,10 @@ export default class DivisionSprite extends VerticalBox
     this.beginFill(this.color);
     this.drawRect(0, 0, this.width, this.height);
   }
+
+  public destroy() {
+    MainScene.instance.removeObserver(this);
+    this.info.owner.removeObserver(this);
+    super.destroy();
+  }
 }
