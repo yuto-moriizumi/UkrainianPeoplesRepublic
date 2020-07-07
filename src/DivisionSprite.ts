@@ -7,11 +7,13 @@ import Resource from "./Resources";
 import * as Filters from "pixi-filters";
 import MainScene from "./Scenes/MainScene";
 import Province from "Province";
+import ProgressBar from "./UI/ProgressBar";
 export default class DivisionSprite extends VerticalBox {
   private static selects = new Set<DivisionSprite>();
   private info: DivisionInfo;
   private selected = false; //JSONに保存する必要が無いのでこのクラスのメンバにしてる
   private onMap = false;
+  private organizationBar: ProgressBar;
 
   constructor(info: DivisionInfo) {
     super(15, 12, 0.8, 0x216639);
@@ -27,6 +29,14 @@ export default class DivisionSprite extends VerticalBox {
     this.interactive = true;
     this.buttonMode = true;
     this.on("click", (e: PIXI.interaction.InteractionEvent) => this.onClick(e));
+
+    this.organizationBar = new ProgressBar(
+      this.width * 0.9,
+      2,
+      0x000000,
+      0x00ff00
+    );
+    this.addPart(this.organizationBar);
   }
 
   public getInfo() {
@@ -89,5 +99,9 @@ export default class DivisionSprite extends VerticalBox {
 
   public static hasSelectingDivisions() {
     return DivisionSprite.selects.size > 0;
+  }
+
+  public setOrganizationRate(organizationRate: number) {
+    this.organizationBar.setProgress(organizationRate);
   }
 }

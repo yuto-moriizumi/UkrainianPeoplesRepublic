@@ -29,9 +29,15 @@ export default class Province extends JsonObject implements Observable {
     getDivisons(): DivisionInfo[];
     isNextTo(province: Province): boolean;
     /**
-     * このプロヴィンスに対して指定の国が進入可能か
+     * このプロヴィンスに対して指定の国が平和的に進入可能か
      * @param {Country} country
      * @returns
+     * @memberof Province
+     */
+    hasPeaceAccess(country: Country): boolean;
+    /**
+     * このプロヴィンスに対して指定の国が何らかの手段で進入可能か
+     * @param {Country} country
      * @memberof Province
      */
     hasAccess(country: Country): true | import("./DiplomaticTies/War").default;

@@ -80,7 +80,7 @@ export default class CountryAI extends CountryHandler {
       //最も近いプロヴィンスを求める
       Atlas.instance.getNeighborProvinces(position).forEach((province) => {
         //進入可能か確認
-        if (!province.hasAccess(this.country)) return;
+        if (!province.hasPeaceAccess(this.country)) return;
 
         //距離の最小値で更新
         const provinceCoord = province.getCoord();

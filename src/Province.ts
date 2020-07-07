@@ -86,17 +86,24 @@ export default class Province extends JsonObject implements Observable {
   }
 
   /**
-   * このプロヴィンスに対して指定の国が進入可能か
+   * このプロヴィンスに対して指定の国が平和的に進入可能か
    * @param {Country} country
    * @returns
    * @memberof Province
    */
-  public hasAccess(country: Country) {
+  public hasPeaceAccess(country: Country) {
     return (
-      this._owner == country ||
-      country.hasAccessTo(this._owner) || //軍事通行権があるか
-      country.getWarInfoWith(this._owner) //戦争中か
+      this._owner == country || country.hasAccessTo(this._owner) //軍事通行権があるか
     );
+  }
+
+  /**
+   * このプロヴィンスに対して指定の国が何らかの手段で進入可能か
+   * @param {Country} country
+   * @memberof Province
+   */
+  public hasAccess(country: Country) {
+    return this.hasPeaceAccess(country) || this._owner.getWarInfoWith(country);
   }
 
   private set culture(culture: string) {

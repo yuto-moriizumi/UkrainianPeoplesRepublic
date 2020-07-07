@@ -6,6 +6,7 @@ export default class DivisionSprite extends VerticalBox {
     private info;
     private selected;
     private onMap;
+    private organizationBar;
     constructor(info: DivisionInfo);
     getInfo(): DivisionInfo;
     setOnMap(flag: boolean): void;
@@ -15,4 +16,5 @@ export default class DivisionSprite extends VerticalBox {
     private onClick;
     static moveSelectingDivisionsTo(province: Province): void;
     static hasSelectingDivisions(): boolean;
+    setOrganizationRate(organizationRate: number): void;
 }

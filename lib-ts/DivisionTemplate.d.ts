@@ -9,6 +9,7 @@ export default class DivisionTemplate extends JsonObject {
     private cost;
     private maintenance;
     private aiProductionRate;
+    private recoveryPerTime;
     constructor(id: any);
     getId(): string;
     getSpeed(): number;
@@ -17,6 +18,7 @@ export default class DivisionTemplate extends JsonObject {
     getAiProductionRate(): number;
     getCost(): number;
     getMaintainance(): number;
+    getRecoveryPerTime(): number;
     /**
      * 師団を生産します
      * 生産コストがかかります
