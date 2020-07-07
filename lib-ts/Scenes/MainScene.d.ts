@@ -5,7 +5,9 @@ import Atlas from "../Map/Atlas";
 import { Selectable } from "./Selectable";
 import Province from "../Province";
 import DivisionSprite from "../DivisionSprite";
-export default class MainScene extends Scene implements Selectable {
+import Observable from "Observable";
+import PlayCountryObserver from "../PlayCountryObserver";
+export default class MainScene extends Scene implements Selectable, Observable {
     static instance: MainScene;
     private playCountry;
     private map;
@@ -13,6 +15,7 @@ export default class MainScene extends Scene implements Selectable {
     private sidebar;
     selectingDivison: DivisionSprite;
     cheat_move: boolean;
+    private observers;
     constructor(playCountry: Country);
     protected createInitialResourceList(): (LoaderAddParam | string)[];
     protected onResourceLoaded(): void;
@@ -26,4 +29,6 @@ export default class MainScene extends Scene implements Selectable {
     getMyCountry(): Country;
     setPlayCountry(country: Country): void;
     getDate(): Date;
+    addObserver(observer: PlayCountryObserver): void;
+    removeObserver(observer: PlayCountryObserver): void;
 }

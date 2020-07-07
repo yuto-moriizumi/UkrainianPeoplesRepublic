@@ -14,8 +14,10 @@ import CountryHandler from "./CountryHandler";
 import Event from "./Events/Event";
 import Util from "./Utils/Util";
 import JsonType from "./Utils/JsonType";
+import Observable from "Observable";
+import DiplomacyObserver from "./DiplomacyObserver";
 
-export default class Country extends JsonObject {
+export default class Country extends JsonObject implements Observable {
   private __id: string;
   private static readonly SEA_ID = "Sea";
   private _color: number;
@@ -28,6 +30,7 @@ export default class Country extends JsonObject {
   public __money: Money = new Money();
   private _leaders = new Map<string, Leader>();
   private _leader: Leader;
+  private __observers = new Array<DiplomacyObserver>();
 
   constructor(id: string) {
     super();
@@ -38,12 +41,15 @@ export default class Country extends JsonObject {
 
   public addDiplomaticRelation(tie: DiplomaticTie) {
     this.__diplomaticTies.push(tie);
+    this.__observers.forEach((o) => o.onDiplomacyChange(tie, true));
   }
 
   public removeDiplomaticRelation(tie: DiplomaticTie) {
     this.__diplomaticTies = this.__diplomaticTies.filter((tie2) => {
       return tie !== tie2;
     });
+    tie.deactivate();
+    this.__observers.forEach((o) => o.onDiplomacyChange(tie, false));
   }
 
   public getDiplomacy() {
@@ -155,6 +161,7 @@ export default class Country extends JsonObject {
   public destroy() {
     this.__diplomaticTies.forEach((diplomacy) => {
       //全ての外交関係を削除
+      this.__observers.forEach((o) => o.onDiplomacyChange(diplomacy, false));
       diplomacy.deactivate();
     });
     this._divisions.forEach((d) => d.destroy());
@@ -217,6 +224,16 @@ export default class Country extends JsonObject {
 
   public onEvent(event: Event) {
     this.__handler.onEvent(event);
+  }
+
+  public addObserver(observer: DiplomacyObserver) {
+    this.__observers.push(observer);
+  }
+
+  public removeObserver(observer: DiplomacyObserver) {
+    this.__observers = this.__observers.filter((o) => {
+      o != observer;
+    });
   }
 
   replacer(key: string, value: any, type: JsonType) {

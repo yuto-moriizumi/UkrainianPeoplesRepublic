@@ -32,6 +32,14 @@ export default class Arrow extends PIXI.Graphics {
     triangle.position.set(this.length, Arrow.TRIANGLE_HEIGHT);
 
     //this.filters = [new Filters.OutlineFilter(0.1, 0, 1)];
+
+    const toPoint = to.getCoord();
+    const fromPoint = from.getCoord();
+    this.rotation = Math.atan2(
+      toPoint.y - fromPoint.y,
+      toPoint.x - fromPoint.x
+    );
+    this.position.set(fromPoint.x, fromPoint.y);
   }
   private createTriangle() {
     const triangle = new PIXI.Graphics();

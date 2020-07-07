@@ -19,8 +19,10 @@ import DebugSidebar from "../UI/DebugSidebar";
 import ProvinceSidebar from "../UI/ProvinceSidebar";
 import CountryPlayerHandler from "../CountryPlayerHandler";
 import CountryAIHandler from "../CountryAIHandler";
+import Observable from "Observable";
+import PlayCountryObserver from "../PlayCountryObserver";
 
-export default class MainScene extends Scene implements Selectable {
+export default class MainScene extends Scene implements Selectable, Observable {
   public static instance: MainScene;
   private playCountry: Country;
   private map: Atlas;
@@ -28,6 +30,7 @@ export default class MainScene extends Scene implements Selectable {
   private sidebar: Sidebar;
   public selectingDivison: DivisionSprite;
   public cheat_move = false;
+  private observers = new Array<PlayCountryObserver>();
 
   constructor(playCountry: Country) {
     super();
@@ -153,9 +156,21 @@ export default class MainScene extends Scene implements Selectable {
     this.header.setPlayCountry(country);
     //プレイヤー国にプレイヤーハンドラをセット
     country.setHandler(new CountryPlayerHandler(country));
+
+    this.observers.forEach((o) => o.onPlayCountryChange(this.playCountry));
   }
 
   public getDate() {
     return this.header.getTimer().getDate();
+  }
+
+  public addObserver(observer: PlayCountryObserver) {
+    this.observers.push(observer);
+  }
+
+  public removeObserver(observer: PlayCountryObserver) {
+    this.observers = this.observers.filter((o) => {
+      o != observer;
+    });
   }
 }

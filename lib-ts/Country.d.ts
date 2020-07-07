@@ -7,7 +7,9 @@ import Leader from "./Leader";
 import CountryHandler from "./CountryHandler";
 import Event from "./Events/Event";
 import JsonType from "./Utils/JsonType";
-export default class Country extends JsonObject {
+import Observable from "Observable";
+import DiplomacyObserver from "./DiplomacyObserver";
+export default class Country extends JsonObject implements Observable {
     private __id;
     private static readonly SEA_ID;
     private _color;
@@ -20,6 +22,7 @@ export default class Country extends JsonObject {
     __money: Money;
     private _leaders;
     private _leader;
+    private __observers;
     constructor(id: string);
     addDiplomaticRelation(tie: DiplomaticTie): void;
     removeDiplomaticRelation(tie: DiplomaticTie): void;
@@ -68,5 +71,7 @@ export default class Country extends JsonObject {
     getLeader(): Leader;
     setHandler(handler: CountryHandler): void;
     onEvent(event: Event): void;
+    addObserver(observer: DiplomacyObserver): void;
+    removeObserver(observer: DiplomacyObserver): void;
     replacer(key: string, value: any, type: JsonType): any[];
 }
