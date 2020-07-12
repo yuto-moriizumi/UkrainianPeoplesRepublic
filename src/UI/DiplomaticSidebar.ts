@@ -97,8 +97,6 @@ export default class DiplomaticSidebar extends Sidebar {
       const relationBox = new HorizontalBox(relationsBox.width, 50);
 
       //外交関係のアイコンを表示
-      console.log("tie", tie);
-
       const iconSrc =
         tie.getRoot() == target ? tie.getRootIcon() : tie.getTargetIcon();
       const icon = new PIXI.Sprite(
