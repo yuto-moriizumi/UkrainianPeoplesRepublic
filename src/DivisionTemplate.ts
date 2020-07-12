@@ -13,6 +13,7 @@ export default class DivisionTemplate extends JsonObject {
   private cost: number = 50;
   private maintenance: number = 1;
   private aiProductionRate: number;
+  private recoveryPerTime = 20;
 
   constructor(id) {
     super();
@@ -45,6 +46,10 @@ export default class DivisionTemplate extends JsonObject {
 
   public getMaintainance() {
     return this.maintenance;
+  }
+
+  public getRecoveryPerTime() {
+    return this.recoveryPerTime;
   }
 
   /**

@@ -1,24 +1,26 @@
 import Country from "./Country";
 import GameManager from "./GameManager";
-import JsonObject from "./Utils/JsonObject";
 import * as PIXI from "pixi.js";
 import MainScene from "./Scenes/MainScene";
-import Atlas from "./Map/Atlas";
 import DivisionInfo from "./DivisionInfo";
+import JsonObject from "./Utils/JsonObject";
 import Observable from "./Observable";
-import ProvinceObserver from "ProvinceObserver";
+import ProvinceObserver from "./ProvinceObserver";
 import CultureObserver from "./CultureObserve";
 import JsonType from "./Utils/JsonType";
+import ExtendedSet from "./Utils/ExtendedSet";
+import DivisionStacker from "./DivisionStacker";
 
 export default class Province extends JsonObject implements Observable {
   private __id: string;
   private _owner: Country;
   private x: number = 0;
   private y: number = 0;
-  private __divisions: Array<DivisionInfo> = new Array<DivisionInfo>();
+  private __divisions = new DivisionStacker();
   private _culture: string = "DEFAULT_CULTURE";
   private __observers = new Array<ProvinceObserver>();
   private __cultureObservers = new Array<CultureObserver>();
+  private _neighbours = new ExtendedSet<string>();
 
   constructor(id: string) {
     super();
@@ -67,37 +69,42 @@ export default class Province extends JsonObject implements Observable {
   }
 
   public addDivision(division: DivisionInfo) {
-    this.__divisions.push(division);
+    this.__divisions.addDivison(division);
   }
 
   public removeDivision(division: DivisionInfo) {
-    this.__divisions = this.__divisions.filter((division2) => {
-      return division != division2;
-    });
+    this.__divisions.removeDivision(division);
   }
 
   public getDivisons() {
-    return this.__divisions;
+    return this.__divisions.getDivisions();
   }
 
   public isNextTo(province: Province): boolean {
-    const ans = MainScene.instance.getMap().isNextTo(this, province);
-    //console.log(this, province, ans);
-    return ans;
+    return this._neighbours.some((p) => p === province.getId());
   }
 
   /**
-   * このプロヴィンスに対して指定の国が進入可能か
+   * このプロヴィンスに対して指定の国が平和的に進入可能か
    * @param {Country} country
    * @returns
    * @memberof Province
    */
-  public hasAccess(country: Country) {
+  public hasPeaceAccess(country: Country) {
     return (
       this._owner == country ||
       country.hasAccessTo(this._owner) || //軍事通行権があるか
-      country.getWarInfoWith(this._owner) //戦争中か
+      country.alliesWith(this._owner) //同盟しているか
     );
+  }
+
+  /**
+   * このプロヴィンスに対して指定の国が何らかの手段で進入可能か
+   * @param {Country} country
+   * @memberof Province
+   */
+  public hasAccess(country: Country) {
+    return this.hasPeaceAccess(country) || this._owner.getWarInfoWith(country);
   }
 
   private set culture(culture: string) {
@@ -140,8 +147,20 @@ export default class Province extends JsonObject implements Observable {
     );
   }
 
-  public debug_getCultureObservers(): CultureObserver[] {
-    return this.__cultureObservers;
+  public set neighbours(neighbours: string[] | ExtendedSet<Province>) {
+    if (neighbours instanceof ExtendedSet) {
+      const array = [];
+      neighbours.forEach((p) => array.push(p.getId()));
+      this._neighbours = new ExtendedSet(array);
+    } else this._neighbours = new ExtendedSet(neighbours);
+  }
+
+  public getNeighbours() {
+    return this._neighbours;
+  }
+
+  public getDivisionStacker() {
+    return this.__divisions;
   }
 
   replacer(key: string, value: any, type: JsonType) {
@@ -150,7 +169,13 @@ export default class Province extends JsonObject implements Observable {
         if (key === "owner") return []; //除外リスト
         return [key, value];
       case JsonType.SaveData:
-        if (key === "culture" || key === "x" || key === "y") return []; //除外リスト
+        if (
+          key === "culture" ||
+          key === "x" ||
+          key === "y" ||
+          key == "neighbours"
+        )
+          return []; //除外リスト
         if (value instanceof Country) return [key, value.id];
         return [key, value];
       default:

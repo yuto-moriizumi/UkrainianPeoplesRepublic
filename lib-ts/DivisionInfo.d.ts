@@ -15,6 +15,7 @@ export default class DivisionInfo extends JsonObject {
     private __combats;
     private __dead;
     private __owner;
+    private isRetreat;
     constructor(owner: Country);
     setTemplate(template: DivisionTemplate): void;
     createSprite(): void;
@@ -29,7 +30,6 @@ export default class DivisionInfo extends JsonObject {
     attack(target: DivisionInfo): void;
     getOrganization(): number;
     setOrganization(organization: number): void;
-    movableTo(province: Province): true | import("./DiplomaticTies/War").default;
     getTemplate(): DivisionTemplate;
     moveTo(destination: Province): void;
     private hasCombatWith;
@@ -40,6 +40,8 @@ export default class DivisionInfo extends JsonObject {
     isMoving(): boolean;
     isFighting(): boolean;
     set template(id: string);
+    retreat(): void;
     update(): void;
+    getSprite(): DivisionSprite;
     replacer(key: string, value: any, type: string): any[];
 }

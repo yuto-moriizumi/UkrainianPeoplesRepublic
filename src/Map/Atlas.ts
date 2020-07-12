@@ -8,6 +8,7 @@ import ExtendedSet from "../Utils/ExtendedSet";
 import MapMode from "./MapMode";
 import PoliticalMap from "./PoliticalMap";
 import MapModeObserver from "./MapModeObserver";
+import Arrow from "../Arrow";
 
 export default class Atlas extends PIXI.Sprite implements MapModeObserver {
   public static instance: Atlas;
@@ -19,6 +20,8 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
   private defaultHeight: number;
   private pressKeys: Set<string> = new Set<string>();
   private mode: MapMode;
+  private graphArrows = new Array<PIXI.Container>();
+  public arrowLayer = new PIXI.Container();
 
   constructor(scene: Selectable, texture?: PIXI.Texture) {
     super(texture);
@@ -77,6 +80,17 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
       if (this.scene instanceof MainScene)
         this.scene.openDiplomacySidebar(this.getClickedProvince(e).getOwner());
     });
+
+    //ArrowLayerを追加
+    this.addChild(this.arrowLayer);
+
+    //DivisionStackerを追加する
+    GameManager.instance.data.getProvinces().forEach((province) => {
+      const stacker = province.getDivisionStacker();
+      this.addChild(stacker);
+      const point = province.getCoord();
+      stacker.position.set(point.x, point.y);
+    });
   }
 
   private getProvinceIdFromPoint(position: PIXI.Point): string {
@@ -118,12 +132,9 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     const position = e.data.getLocalPosition(this);
     const province = this.getProvince(position);
     if (!province) return null; //プロヴィンスが存在しなければ何もしない
-    console.log(
-      "selected province id",
-      province.getId(),
-      "neighbours",
-      this.getNeighborProvinces(province)
-    );
+    console.log("clicked point", position.x, position.y);
+
+    console.log("selected province", province);
 
     return province;
   }
@@ -167,9 +178,9 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     let x = 0;
     let y = 0;
     let count = 0;
-    const candidates = new Array<PIXI.Point>();
+    const candidates = new Array<object>(); //{x: number, y: number,over:number} 形式
     const already = new Set<number>();
-    candidates.push(point);
+    candidates.push({ x: point.x, y: point.y, over: 0 });
     while (candidates.length > 0) {
       const searchPoint = candidates.shift();
       const idx =
@@ -181,41 +192,46 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
         continue;
       }
       already.add(idx);
-      const provinceId2 = this.getProvinceIdFromPoint(searchPoint);
-      if (provinceId !== provinceId2) continue; //provinceIdが異なる（=色が異なる）場合は何もしない
+      const provinceId2 = this.getProvinceIdFromPoint(
+        new PIXI.Point(searchPoint["x"], searchPoint["y"])
+      );
+      if (provinceId2 == Atlas.BORDER_COLOR) searchPoint["over"]++;
+      //黒線であれば超える
+      else if (
+        searchPoint["over"] > Atlas.BORDER_WIDTH + 5 || //上限以上黒線を辿っている場合
+        provinceId !== provinceId2 //色が異なる場合
+      )
+        continue; //provinceIdが異なる（=色が異なる）場合は何もしない
+      if (provinceId2 !== Atlas.BORDER_COLOR) {
+        //境界線でなければ重心にカウント
+        x += searchPoint["x"];
+        y += searchPoint["y"];
+        count += 1;
+      }
 
-      x += searchPoint["x"];
-      y += searchPoint["y"];
-      count += 1;
-
-      if (0 < searchPoint["x"])
+      if (0 <= searchPoint["x"] - 1)
         candidates.push(new PIXI.Point(searchPoint["x"] - 1, searchPoint["y"]));
-      if (searchPoint["x"] < this.defaultWidth - 1)
+      if (searchPoint["x"] + 1 < this.defaultWidth)
         candidates.push(new PIXI.Point(searchPoint["x"] + 1, searchPoint["y"]));
-      if (0 < searchPoint["y"])
+      if (0 <= searchPoint["y"] - 1)
         candidates.push(new PIXI.Point(searchPoint["x"], searchPoint["y"] - 1));
-      if (searchPoint["y"] < this.defaultHeight - 1)
+      if (searchPoint["y"] + 1 < this.defaultHeight)
         candidates.push(new PIXI.Point(searchPoint["x"], searchPoint["y"] + 1));
     }
 
     return new PIXI.Point(Math.floor(x / count), Math.floor(y / count));
   }
 
-  public setDivisonPosition(sprite: DivisionSprite) {
-    if (!sprite.getOnMap()) this.addChild(sprite);
-    const point = sprite.getInfo().getPosition().getCoord();
-    sprite.position.set(
-      point.x - sprite.width / 2,
-      point.y - sprite.height / 2
-    );
-    sprite.setOnMap(true);
-  }
-
   public calculateBarycenterOfAll() {
+    const already = new Set<Province>();
     //全てのピクセルを走査し、重心座標を設定します
     for (let i = 0; i < this.defaultHeight; i++) {
       for (let j = 0; j < this.defaultWidth; j++) {
-        this.getProvince(new PIXI.Point(j, i));
+        const province = this.getProvince(new PIXI.Point(j, i));
+        if (!already.has(province) && province != null) {
+          province.setCoord(this.getBarycenter(new PIXI.Point(j, i)));
+          already.add(province);
+        }
       }
     }
     console.log("重心走査終了");
@@ -224,13 +240,11 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
   private getProvince(position: PIXI.Point): Province {
     const provinceId = this.getProvinceIdFromPoint(position);
     const data = GameManager.instance.data;
-    console.log(provinceId);
 
     if (!provinceId) return null; //provinceIdがnullの時は何もしない
     if (provinceId == Atlas.BORDER_COLOR) return null; //境界線の時は何もしない
 
     let province = data.getProvinces().get(provinceId);
-    console.log(provinceId, province);
 
     if (!province) {
       //プロビンスデータが無かったら新規作成
@@ -333,5 +347,31 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     this.mode = mode;
     this.mode.addObserver(this);
     this.mode.update();
+  }
+
+  public generateProvinceGraph() {
+    console.log("Generating Province Graph...");
+    GameManager.instance.data.getProvinces().forEach((province) => {
+      province.neighbours = this.getNeighborProvinces(province);
+    });
+    console.log("Province Graph Generated");
+  }
+
+  public switchProvinceGraph() {
+    if (this.graphArrows.length > 0) {
+      this.graphArrows.forEach((graphArrow) => graphArrow.destroy());
+      this.graphArrows = [];
+      return;
+    }
+    GameManager.instance.data.getProvinces().forEach((province) => {
+      province.getNeighbours().forEach((neighbour) => {
+        const province2 = GameManager.instance.data
+          .getProvinces()
+          .get(neighbour);
+        const arrow = new Arrow(province, province2, 1, 0xffff00);
+        this.graphArrows.push(arrow);
+        this.addChild(arrow);
+      });
+    });
   }
 }

@@ -26,13 +26,13 @@ export default class Combat extends JsonObject {
         return;
       } else {
         //防衛側の勝ち
-        this.attacker.destroy(); //攻撃側は死ぬ
+        this.attacker.stopMove(); //攻撃側は移動を停止
         this.endCombat();
         return;
       }
     } else if (this.defender.getOrganization() <= 0) {
       //攻撃側の勝ち
-      this.defender.destroy(); //防衛側は死ぬ
+      this.defender.retreat(); //防衛側は撤退
       this.endCombat();
       return;
     }

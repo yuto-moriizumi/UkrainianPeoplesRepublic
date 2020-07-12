@@ -2,6 +2,7 @@ import Arrow from "./Arrow";
 import Province from "./Province";
 export default class ArrowProgress extends Arrow {
     private progress;
-    constructor(from: Province, to: Province);
+    private static readonly RECT_WIDTH;
+    constructor(from: Province, to: Province, color?: number);
     setProgress(progress: number): void;
 }

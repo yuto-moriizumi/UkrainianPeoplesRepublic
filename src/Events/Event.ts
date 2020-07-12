@@ -23,6 +23,7 @@ export default class Event extends JsonObject {
   private time2happen: number;
   private triggeredOnly = false;
   private hidden = false;
+  private _immediate: Option;
   /**
    * グローバルイベントであるかどうか
    * グローバルイベントは、いずれかの国で発火されたときに、全ての国で発火します
@@ -51,6 +52,9 @@ export default class Event extends JsonObject {
   public dispatch(dispatcher: CountryHandler, date: Date) {
     if (!this.isDispatchable(dispatcher.getCountry(), date)) return; //発火可能でないなら発火しない
     this.fired = true;
+    console.log("event dispatched", this.__id);
+    if (this._immediate) this._immediate.takeEffects();
+
     if (this.isGlobal) {
       //グローバルイベントの場合は全ての国で発火します
       GameManager.instance.data
@@ -196,7 +200,9 @@ export default class Event extends JsonObject {
     sound.play(false);
   }
 
-  private set id(id) {} //なにもしない
+  private set immediate(immediate: object) {
+    this._immediate = Object.assign(new Option(), immediate);
+  }
 
   replacer(key: string, value: any, type: JsonType) {
     switch (type) {

@@ -404,7 +404,7 @@
     },
     "LSSR": {
       "divisions": [],
-      "name": "ラトビア共和国",
+      "name": "ラトビア社会主義 ソビエト共和国",
       "leader": "ペーテリス・スツカ"
     }
   },
@@ -866,8 +866,8 @@
     "#3161e0": { "owner": "Rebels" }
   },
   "diplomacy": [
-    { "type": "Access", "active": false, "root": "GER", "target": "POL" },
-    { "type": "Access", "active": false, "root": "GER", "target": "UPR" }
+    { "type": "Alliance", "active": false, "root": "GER", "target": "POL" },
+    { "type": "Alliance", "active": false, "root": "GER", "target": "UPR" }
   ],
   "events": {
     "russian_civilwar_begins": { "fired": false },

@@ -15,7 +15,6 @@ export default class CountryPlayerHandler extends CountryHandler {
   dispatchEvents() {
     //イベント発火処理
     GameManager.instance.data.getEvents().forEach((event: Event) => {
-      event.countFoward();
       event.dispatch(this, MainScene.instance.getDate());
     });
   }

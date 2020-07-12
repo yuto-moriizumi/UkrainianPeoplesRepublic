@@ -22,6 +22,7 @@ export default class MapDataManager<T, U> extends DataManager {
     get(id: T): U;
     forEach(callback: (item: U) => void): void;
     get size(): number;
+    some(callback: (item: U) => boolean): boolean;
     /**
      * 保留していた関数を実行します
      * データのロードが終わったときに必ず呼び出してください

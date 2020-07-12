@@ -3,12 +3,16 @@ import * as Filters from "pixi-filters";
 import Province from "./Province";
 export default class Arrow extends PIXI.Graphics {
   static readonly TRIANGLE_HEIGHT = 10;
-  static readonly RECT_WIDTH = 5;
-  private color = 0xff0000;
   length = 0;
+  width: number;
+  color: number;
 
-  constructor(from: Province, to: Province) {
+  constructor(from: Province, to: Province, width = 5, color = 0xff0000) {
     super();
+
+    this.width = width;
+    this.color = color;
+
     const point1 = from.getCoord();
     const point2 = to.getCoord();
     this.length = Math.max(
@@ -16,22 +20,26 @@ export default class Arrow extends PIXI.Graphics {
       ((point2.x - point1.x) ** 2 + (point2.y - point1.y) ** 2) ** 0.5 -
         Arrow.TRIANGLE_HEIGHT
     );
+
     const triangle = this.createTriangle();
     triangle.angle = -90;
     this.addChild(triangle);
 
-    this.beginFill(this.color, 1);
-    this.drawRect(
-      0,
-      (Arrow.TRIANGLE_HEIGHT - Arrow.RECT_WIDTH) / 2,
-      this.length,
-      Arrow.RECT_WIDTH
-    );
+    this.beginFill(color, 1);
+    this.drawRect(0, (Arrow.TRIANGLE_HEIGHT - width) / 2, this.length, width);
     this.endFill();
 
     triangle.position.set(this.length, Arrow.TRIANGLE_HEIGHT);
 
     //this.filters = [new Filters.OutlineFilter(0.1, 0, 1)];
+
+    const toPoint = to.getCoord();
+    const fromPoint = from.getCoord();
+    this.rotation = Math.atan2(
+      toPoint.y - fromPoint.y,
+      toPoint.x - fromPoint.x
+    );
+    this.position.set(fromPoint.x, fromPoint.y);
   }
   private createTriangle() {
     const triangle = new PIXI.Graphics();

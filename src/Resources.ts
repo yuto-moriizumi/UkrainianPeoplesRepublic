@@ -21,6 +21,7 @@ const Resource = Object.freeze({
   money: "mark_yen_okaikei.png",
   access_root: "access_root.png",
   access_target: "access_target.png",
+  alliance_icon: "alliance_icon.png",
   se: {
     news: "world_news.mp3",
     click_ok: "click_ok.mp3",

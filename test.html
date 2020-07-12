@@ -1,0 +1,18 @@
+<html>
+  <script>
+    var conn = new WebSocket("ws://localhost:8080");
+    conn.onopen = function (e) {
+      console.log("Connection established!");
+    };
+    conn.onmessage = function (e) {
+      console.log(e.data);
+    };
+    conn.onerror = (e) => {
+      console.log("error", e);
+      const req = new XMLHttpRequest();
+      req.open("GET", "./bin/chat-server.php");
+      req.send(null);
+    };
+  </script>
+  <body></body>
+</html>
