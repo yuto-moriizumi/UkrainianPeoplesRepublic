@@ -62,6 +62,7 @@ export default class MainScene extends Scene implements Selectable, Observable {
     assets.push(Resource.money);
     assets.push(Resource.access_root);
     assets.push(Resource.access_target);
+    assets.push(Resource.alliance_icon);
 
     //肖像画を追加
     GameManager.instance.data.getCountries().forEach((country) =>

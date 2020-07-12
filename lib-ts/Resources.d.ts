@@ -17,6 +17,7 @@ declare const Resource: Readonly<{
     money: string;
     access_root: string;
     access_target: string;
+    alliance_icon: string;
     se: {
         news: string;
         click_ok: string;

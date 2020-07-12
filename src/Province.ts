@@ -92,7 +92,9 @@ export default class Province extends JsonObject implements Observable {
    */
   public hasPeaceAccess(country: Country) {
     return (
-      this._owner == country || country.hasAccessTo(this._owner) //軍事通行権があるか
+      this._owner == country ||
+      country.hasAccessTo(this._owner) || //軍事通行権があるか
+      country.alliesWith(this._owner) //同盟しているか
     );
   }
 

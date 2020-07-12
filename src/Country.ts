@@ -16,6 +16,7 @@ import Util from "./Utils/Util";
 import JsonType from "./Utils/JsonType";
 import Observable from "Observable";
 import DiplomacyObserver from "./DiplomacyObserver";
+import Alliance from "./DiplomaticTies/Alliance";
 
 export default class Country extends JsonObject implements Observable {
   private __id: string;
@@ -233,6 +234,18 @@ export default class Country extends JsonObject implements Observable {
     this.__observers = this.__observers.filter((o) => {
       o != observer;
     });
+  }
+
+  /**
+   * この国が引数の国と同盟しているか
+   * @param {Country} target
+   * @returns
+   * @memberof Country
+   */
+  public alliesWith(target: Country) {
+    return this.__diplomaticTies.some(
+      (d) => d instanceof Alliance && d.getOpponent(this) == target
+    );
   }
 
   replacer(key: string, value: any, type: JsonType) {

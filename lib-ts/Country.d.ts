@@ -73,5 +73,12 @@ export default class Country extends JsonObject implements Observable {
     onEvent(event: Event): void;
     addObserver(observer: DiplomacyObserver): void;
     removeObserver(observer: DiplomacyObserver): void;
+    /**
+     * この国が引数の国と同盟しているか
+     * @param {Country} target
+     * @returns
+     * @memberof Country
+     */
+    alliesWith(target: Country): boolean;
     replacer(key: string, value: any, type: JsonType): any[];
 }

@@ -48,6 +48,10 @@ export default class MapDataManager<T, U> extends DataManager {
     return this.map.size;
   }
 
+  public some(callback: (item: U) => boolean): boolean {
+    return Array.from(this.map.values()).some(callback);
+  }
+
   /**
    * 保留していた関数を実行します
    * データのロードが終わったときに必ず呼び出してください

@@ -5468,7 +5468,9 @@
               "provinces": ["#bf2060", "#8021a0"],
               "root": "LSSR"
             },
-            { "type": "DeclareWar", "root": "LSSR", "target": "LAT" }
+            { "type": "DeclareWar", "root": "LSSR", "target": "LAT" },
+            { "type": "GainAccess", "root": "USSR", "target": "LSSR" },
+            { "type": "GainAccess", "root": "LSSR", "target": "USSR" }
           ],
           "title": "OK"
         }
@@ -5494,7 +5496,7 @@
     "infantry": {
       "organization": 100,
       "attack": 20,
-      "speed": 5,
+      "speed": 20,
       "cost": 300,
       "maintenance": 2
     }

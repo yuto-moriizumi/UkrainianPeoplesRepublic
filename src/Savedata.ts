@@ -8,9 +8,9 @@ import Combat from "./Combat";
 import Access from "./DiplomaticTies/Access";
 import DivisionTemplate from "./DivisionTemplate";
 import MapDataManager from "./Utils/MapDataManager";
-import ExtendedSet from "./Utils/ExtendedSet";
 import SetDataManager from "./Utils/SetDataManager";
 import JsonType from "./Utils/JsonType";
+import Alliance from "./DiplomaticTies/Alliance";
 
 export default class Savedata extends JsonObject {
   private _countries: Map<string, Country> = new Map<string, Country>();
@@ -105,6 +105,13 @@ export default class Savedata extends JsonObject {
             this._countries.get(tie["target"])
           );
           access.activate();
+          return;
+        case "Alliance":
+          const alliance = new Alliance(
+            this._countries.get(tie["root"]),
+            this._countries.get(tie["target"])
+          );
+          alliance.activate();
           return;
         default:
           new Error("diplomacy load error:" + tie["type"]);
