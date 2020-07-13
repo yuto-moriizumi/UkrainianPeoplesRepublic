@@ -5,6 +5,7 @@ import GameManager from "../GameManager";
 import LoaderAddParam from "../Utils/LoaderAddParam";
 import Resource from "../Resources";
 import SelectScene from "./SelectScene";
+import MenuScene from "./MenuScene";
 
 export default class TitleScene extends Scene {
   private text!: PIXI.Text;
@@ -76,7 +77,7 @@ export default class TitleScene extends Scene {
 
   private onPointerDown() {
     //次のシーン
-    GameManager.loadScene(new SelectScene());
+    GameManager.loadScene(new MenuScene());
   }
 
   public update(dt: number) {

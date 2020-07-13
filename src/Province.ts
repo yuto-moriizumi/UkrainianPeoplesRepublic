@@ -6,7 +6,7 @@ import DivisionInfo from "./DivisionInfo";
 import JsonObject from "./Utils/JsonObject";
 import Observable from "./Observable";
 import ProvinceObserver from "./ProvinceObserver";
-import CultureObserver from "./CultureObserve";
+import CultureObserver from "./CultureObserver";
 import JsonType from "./Utils/JsonType";
 import ExtendedSet from "./Utils/ExtendedSet";
 import DivisionStacker from "./DivisionStacker";

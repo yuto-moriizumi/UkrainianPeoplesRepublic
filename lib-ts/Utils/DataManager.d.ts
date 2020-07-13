@@ -9,9 +9,9 @@ import JsonObject from "./JsonObject";
  * @extends {JsonObject}
  */
 export default abstract class DataManager extends JsonObject {
-    onLoaded: any[];
-    _isLoaded: boolean;
-    ON_CREATED: void;
+    __onLoaded: any[];
+    __isLoaded: boolean;
+    __ON_CREATED: void;
     isLoaded(): boolean;
     addListener(func: any): void;
     /**

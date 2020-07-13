@@ -1,7 +1,7 @@
 import MapMode from "./MapMode";
 import Observable from "../Observable";
 import MapModeObserver from "./MapModeObserver";
-import CultureObserver from "../CultureObserve";
+import CultureObserver from "../CultureObserver";
 export default class CultureMap extends MapMode implements CultureObserver, Observable {
     observers: MapModeObserver[];
     private filter;

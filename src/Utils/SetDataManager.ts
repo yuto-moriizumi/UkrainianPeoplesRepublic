@@ -1,6 +1,6 @@
 import JsonConverter from "./JsonConverter";
 import JsonObject from "./JsonObject";
-import DataManager from "../DataManager";
+import DataManager from "./DataManager";
 import ExtendedSet from "./ExtendedSet";
 import JsonType from "./JsonType";
 

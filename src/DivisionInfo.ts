@@ -5,7 +5,7 @@ import JsonObject from "./Utils/JsonObject";
 import Province from "./Province";
 import DivisionTemplate from "./DivisionTemplate";
 import MainScene from "./Scenes/MainScene";
-import ArrowProgress from "./ArrowProgress";
+import ArrowProgress from "./UI/ArrowProgress";
 import Combat from "./Combat";
 import JsonConverter from "./Utils/JsonConverter";
 import DivisionSprite from "./DivisionSprite";

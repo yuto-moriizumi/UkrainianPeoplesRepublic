@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import Scene from "./Scenes/Scene";
 import Savedata from "./Savedata";
+import NetworkManager from "./NetworkManager";
 export default class GameManager {
     static instance: GameManager;
     game: PIXI.Application;
@@ -8,6 +9,7 @@ export default class GameManager {
     private currentScene?;
     private sceneResourceLoaded;
     data: Savedata;
+    net: NetworkManager;
     constructor(app: PIXI.Application);
     static start(params: {
         glWidth: number;

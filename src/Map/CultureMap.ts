@@ -5,7 +5,7 @@ import * as Filters from "pixi-filters";
 import ProvinceObserver from "../ProvinceObserver";
 import Observable from "../Observable";
 import MapModeObserver from "./MapModeObserver";
-import CultureObserver from "../CultureObserve";
+import CultureObserver from "../CultureObserver";
 
 export default class CultureMap extends MapMode
   implements CultureObserver, Observable {

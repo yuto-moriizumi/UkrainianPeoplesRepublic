@@ -1,5 +1,5 @@
-import JsonObject from "./Utils/JsonObject";
-import JsonType from "./Utils/JsonType";
+import JsonObject from "./JsonObject";
+import JsonType from "./JsonType";
 
 /**
  * データロードの順番が重要になる場合に使用します

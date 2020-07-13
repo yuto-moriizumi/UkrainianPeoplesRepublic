@@ -8,7 +8,7 @@ import ExtendedSet from "../Utils/ExtendedSet";
 import MapMode from "./MapMode";
 import PoliticalMap from "./PoliticalMap";
 import MapModeObserver from "./MapModeObserver";
-import Arrow from "../Arrow";
+import Arrow from "../UI/Arrow";
 
 export default class Atlas extends PIXI.Sprite implements MapModeObserver {
   public static instance: Atlas;

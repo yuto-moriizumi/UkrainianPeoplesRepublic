@@ -1,5 +1,5 @@
 import Arrow from "./Arrow";
-import Province from "./Province";
+import Province from "../Province";
 import * as PIXI from "pixi.js";
 
 export default class ArrowProgress extends Arrow {

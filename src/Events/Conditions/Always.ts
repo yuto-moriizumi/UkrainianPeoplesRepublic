@@ -1,5 +1,5 @@
 import Condition from "./Condition";
-import DateAdapter from "../../DateAdapter";
+import DateAdapter from "../../Utils/DateAdapter";
 import Country from "../../Country";
 import ConditionCreator from "./ConditionCreator";
 

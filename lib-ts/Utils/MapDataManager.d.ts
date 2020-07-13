@@ -1,4 +1,4 @@
-import DataManager from "../DataManager";
+import DataManager from "./DataManager";
 import JsonType from "./JsonType";
 /**
  * Mapの拡張クラスです
