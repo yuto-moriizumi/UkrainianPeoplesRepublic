@@ -13,6 +13,6 @@ export default class NetworkManager {
     private listen;
     private onMessage;
     private send;
-    getRooms(callback: (array: Array<string>) => void): void;
+    getRooms(callback: (array: Set<string>) => void): void;
     removeObserver(observer: () => void): void;
 }

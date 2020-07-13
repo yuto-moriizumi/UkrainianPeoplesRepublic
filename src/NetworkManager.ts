@@ -4,7 +4,7 @@ import Util from "./Utils/Util";
 
 export default class NetworkManager {
   private observers = new Array<any>();
-  private rooms = [];
+  private rooms = new Set<string>();
   public isHost = false;
   /**
    * IPアドレスのようなもの もしかしたら被るかもしれないね（やばい）
@@ -37,11 +37,10 @@ export default class NetworkManager {
   }
 
   private onMessage(data: Array<object>) {
-    const rooms = [];
     data.forEach((i) => {
       if ((i["to"] != 0 && i["to"] != this.id) || i["from"] == this.id) return; //グローバルキャストと自分宛以外は排除
       if (i["type"] == "host") {
-        rooms.push(i["from"]);
+        this.rooms.add(i["from"]);
       }
       if (i["type"] == "getRooms" && this.isHost) {
         setTimeout(() => {
@@ -49,7 +48,6 @@ export default class NetworkManager {
         }, 1000); //1秒ラグを持たせてホスト応答する
       }
     });
-    this.rooms = rooms;
     this.observers.forEach((o) => o());
   }
 
@@ -57,10 +55,14 @@ export default class NetworkManager {
     const req = new XMLHttpRequest();
     req.open("GET", "./server.php?write=" + JSON.stringify(data));
     req.send(null);
+    req.onload = () => {
+      console.log("message sent status", req.responseText);
+    };
     console.log("message send", JSON.stringify(data));
   }
 
-  public getRooms(callback: (array: Array<string>) => void) {
+  public getRooms(callback: (array: Set<string>) => void) {
+    this.rooms.clear(); //ルームリストをクリア
     this.send({ type: "getRooms", from: this.id, to: 0 });
     setTimeout(() => {
       callback(this.rooms);
