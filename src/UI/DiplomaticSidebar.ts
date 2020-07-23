@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar";
-import Country from "../Country";
-import Flag from "../Flag";
+import Country from "../Country/Country";
+import Flag from "./Flag";
 import * as PIXI from "pixi.js";
 import Button from "./Button";
 import MainScene from "../Scenes/MainScene";

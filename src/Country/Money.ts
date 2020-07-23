@@ -1,9 +1,9 @@
-import HorizontalBox from "./UI/HorizontalBox";
-import GameManager from "./GameManager";
-import Resource from "./Resources";
+import HorizontalBox from "../UI/HorizontalBox";
+import GameManager from "../GameManager";
+import Resource from "../Resources";
 import * as PIXI from "pixi.js";
 import MoneyObserver from "./MoneyObserver";
-import Observable from "./Observable";
+import Observable from "../Observable";
 
 export default class Money implements Observable {
   private money: number = 0;

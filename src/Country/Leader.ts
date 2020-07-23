@@ -1,4 +1,4 @@
-import JsonObject from "./Utils/JsonObject";
+import JsonObject from "../Utils/JsonObject";
 
 export default class Leader extends JsonObject {
   public static readonly DEFAULT_NAME = "DEFAULT_LEADER_NAME";

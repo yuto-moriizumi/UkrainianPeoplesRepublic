@@ -1,6 +1,6 @@
 import Condition from "./Condition";
 import DateAdapter from "../../Utils/DateAdapter";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 import ConditionCreator from "./ConditionCreator";
 
 export default class And extends Condition {

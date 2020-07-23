@@ -1,6 +1,6 @@
 import Condition from "./Condition";
 import GameManager from "../../GameManager";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 
 export default class AtWarWith extends Condition {
   private country: string; //Country

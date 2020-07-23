@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
-import Country from "./Country";
-import GameManager from "./GameManager";
+import Country from "../Country/Country";
+import GameManager from "../GameManager";
 export default class Flag extends PIXI.Sprite {
   private country: Country;
   constructor(country: Country) {

@@ -1,6 +1,6 @@
 import Condition from "./Condition";
 import DateAdapter from "../../Utils/DateAdapter";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 import GameManager from "../../GameManager";
 import JsonType from "../../Utils/JsonType";
 

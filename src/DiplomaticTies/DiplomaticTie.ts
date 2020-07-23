@@ -1,4 +1,4 @@
-import Country from "../Country";
+import Country from "../Country/Country";
 import JsonConverter from "../Utils/JsonConverter";
 import GameManager from "../GameManager";
 import JsonType from "../Utils/JsonType";

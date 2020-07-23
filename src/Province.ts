@@ -1,4 +1,4 @@
-import Country from "./Country";
+import Country from "./Country/Country";
 import GameManager from "./GameManager";
 import * as PIXI from "pixi.js";
 import MainScene from "./Scenes/MainScene";

@@ -1,22 +1,22 @@
-import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
-import JsonObject from "./Utils/JsonObject";
-import War from "./DiplomaticTies/War";
-import DivisionTemplate from "./DivisionTemplate";
-import GameManager from "./GameManager";
-import JsonConverter from "./Utils/JsonConverter";
+import DiplomaticTie from "../DiplomaticTies/DiplomaticTie";
+import JsonObject from "../Utils/JsonObject";
+import War from "../DiplomaticTies/War";
+import DivisionTemplate from "../DivisionTemplate";
+import GameManager from "../GameManager";
+import JsonConverter from "../Utils/JsonConverter";
 import CountryAI from "./CountryAIHandler";
-import MainScene from "./Scenes/MainScene";
+import MainScene from "../Scenes/MainScene";
 import Money from "./Money";
-import Access from "./DiplomaticTies/Access";
-import DivisionInfo from "./DivisionInfo";
+import Access from "../DiplomaticTies/Access";
+import DivisionInfo from "../DivisionInfo";
 import Leader from "./Leader";
 import CountryHandler from "./CountryHandler";
-import Event from "./Events/Event";
-import Util from "./Utils/Util";
-import JsonType from "./Utils/JsonType";
+import Event from "../Events/Event";
+import Util from "../Utils/Util";
+import JsonType from "../Utils/JsonType";
 import Observable from "Observable";
-import DiplomacyObserver from "./DiplomacyObserver";
-import Alliance from "./DiplomaticTies/Alliance";
+import DiplomacyObserver from "../DiplomacyObserver";
+import Alliance from "../DiplomaticTies/Alliance";
 
 export default class Country extends JsonObject implements Observable {
   private __id: string;

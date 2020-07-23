@@ -1,5 +1,5 @@
 import Effect from "./Effect";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 import GameManager from "../../GameManager";
 import Access from "../../DiplomaticTies/Access";
 import JsonType from "../../Utils/JsonType";

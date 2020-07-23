@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
-import Country from "../Country";
-import Flag from "../Flag";
+import Country from "../Country/Country";
+import Flag from "./Flag";
 import GameManager from "../GameManager";
 import HorizontalBox from "./HorizontalBox";
 import SpriteButton from "./SpriteButton";

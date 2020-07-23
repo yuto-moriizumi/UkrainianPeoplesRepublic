@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 import Scene from "./Scene";
-import Country from "../Country";
+import Country from "../Country/Country";
 import Fade from "./Fade";
 import LoaderAddParam from "../Utils/LoaderAddParam";
 import Atlas from "../Map/Atlas";

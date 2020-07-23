@@ -1,6 +1,6 @@
 import Condition from "./Condition";
 import GameManager from "../../GameManager";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 
 export default class EventFired extends Condition {
   private id: string;

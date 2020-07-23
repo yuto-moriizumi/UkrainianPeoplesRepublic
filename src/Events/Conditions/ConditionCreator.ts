@@ -1,6 +1,6 @@
 import DateAdapter from "../../Utils/DateAdapter";
 import JsonConverter from "../../Utils/JsonConverter";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 import DateCondition from "./DateCondition";
 import EventFired from "./EventFired";
 import CountryIs from "./CountryIs";

@@ -4,7 +4,7 @@ import Dialog from "../UI/Dialog";
 import Sound from "../Sound";
 import GameManager from "../GameManager";
 import Resource from "../Resources";
-import Country from "../Country";
+import Country from "../Country/Country";
 import Observable from "Observable";
 
 export default class War extends DiplomaticTie {

@@ -1,6 +1,6 @@
 import DateAdapter from "../../Utils/DateAdapter";
 import JsonConverter from "../../Utils/JsonConverter";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 import JsonObject from "../../Utils/JsonObject";
 
 export default abstract class Condition extends JsonObject {

@@ -46,6 +46,7 @@ export default class MultiScene extends Scene {
     hostButton.on("click", () => {
       net.isHost = !net.isHost;
       hostButton.setText("ホスト" + net.isHost);
+      GameManager.loadScene(new SelectScene());
     });
     menuBox.addPart(hostButton);
     this.addChild(menuBox);

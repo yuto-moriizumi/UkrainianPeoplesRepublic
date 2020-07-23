@@ -1,6 +1,6 @@
 import Condition from "./Condition";
 import DateAdapter from "../../Utils/DateAdapter";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 
 export default class DateCondition extends Condition {
   private _when: DateAdapter;

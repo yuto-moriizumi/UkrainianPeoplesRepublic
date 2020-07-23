@@ -1,5 +1,5 @@
 import Effect from "./Effect";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 import War from "../../DiplomaticTies/War";
 import GameManager from "../../GameManager";
 

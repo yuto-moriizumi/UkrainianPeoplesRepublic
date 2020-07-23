@@ -6,8 +6,8 @@ import LoaderAddParam from "../Utils/LoaderAddParam";
 import Resource from "../Resources";
 
 import Atlas from "../Map/Atlas";
-import Country from "../Country";
-import Flag from "../Flag";
+import Country from "../Country/Country";
+import Flag from "../UI/Flag";
 import Button from "../UI/Button";
 import Province from "../Province";
 import MainScene from "./MainScene";

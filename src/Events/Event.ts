@@ -7,7 +7,7 @@ import Button from "../UI/Button";
 import Sound from "../Sound";
 import Resource from "../Resources";
 import CountryHandler from "../CountryHandler";
-import Country from "../Country";
+import Country from "../Country/Country";
 import ConditionCreator from "./Conditions/ConditionCreator";
 import JsonObject from "../Utils/JsonObject";
 import JsonType from "../Utils/JsonType";
