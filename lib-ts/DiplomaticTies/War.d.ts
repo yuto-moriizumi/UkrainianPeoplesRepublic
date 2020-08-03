@@ -1,5 +1,5 @@
 import DiplomaticTie from "./DiplomaticTie";
-import Country from "../Country";
+import Country from "../Country/Country";
 export default class War extends DiplomaticTie {
     static readonly root_icon: string;
     static readonly target_icon: string;

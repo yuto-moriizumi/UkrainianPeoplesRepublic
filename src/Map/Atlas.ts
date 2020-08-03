@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import GameManager from "../GameManager";
 import Province from "../Province";
 import { Selectable } from "../Scenes/Selectable";
-import DivisionSprite from "../DivisionSprite";
+import DivisionSprite from "../Division/DivisionSprite";
 import MainScene from "../Scenes/MainScene";
 import ExtendedSet from "../Utils/ExtendedSet";
 import MapMode from "./MapMode";

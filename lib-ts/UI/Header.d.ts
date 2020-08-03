@@ -1,4 +1,4 @@
-import Country from "../Country";
+import Country from "../Country/Country";
 import HorizontalBox from "./HorizontalBox";
 import Timer from "./Timer";
 export default class Header extends HorizontalBox {

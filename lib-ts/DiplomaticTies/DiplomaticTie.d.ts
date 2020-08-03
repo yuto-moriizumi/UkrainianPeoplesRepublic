@@ -1,4 +1,4 @@
-import Country from "../Country";
+import Country from "../Country/Country";
 import JsonType from "../Utils/JsonType";
 import JsonObject from "../Utils/JsonObject";
 export default abstract class DiplomaticTie extends JsonObject {

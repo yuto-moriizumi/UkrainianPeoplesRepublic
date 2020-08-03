@@ -2,14 +2,14 @@ import Country from "./Country/Country";
 import GameManager from "./GameManager";
 import * as PIXI from "pixi.js";
 import MainScene from "./Scenes/MainScene";
-import DivisionInfo from "./DivisionInfo";
+import DivisionInfo from "./Division/DivisionInfo";
 import JsonObject from "./Utils/JsonObject";
 import Observable from "./Observable";
 import ProvinceObserver from "./ProvinceObserver";
 import CultureObserver from "./CultureObserver";
 import JsonType from "./Utils/JsonType";
 import ExtendedSet from "./Utils/ExtendedSet";
-import DivisionStacker from "./DivisionStacker";
+import DivisionStacker from "./Division/DivisionStacker";
 
 export default class Province extends JsonObject implements Observable {
   private __id: string;

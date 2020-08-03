@@ -6,7 +6,7 @@ import Event from "./Events/Event";
 import JsonObject from "./Utils/JsonObject";
 import Combat from "./Division/Combat";
 import Access from "./DiplomaticTies/Access";
-import DivisionTemplate from "./DivisionTemplate";
+import DivisionTemplate from "./Division/DivisionTemplate";
 import MapDataManager from "./Utils/MapDataManager";
 import SetDataManager from "./Utils/SetDataManager";
 import JsonType from "./Utils/JsonType";

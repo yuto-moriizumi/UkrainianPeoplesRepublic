@@ -1,5 +1,5 @@
 import Condition from "./Condition";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 export default class And extends Condition {
     private _conditions;
     set conditions(conditions: object[]);

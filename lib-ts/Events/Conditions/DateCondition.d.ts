@@ -1,5 +1,5 @@
 import Condition from "./Condition";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 export default class DateCondition extends Condition {
     private _when;
     set when(date: string);

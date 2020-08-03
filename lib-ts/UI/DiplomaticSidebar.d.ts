@@ -1,5 +1,5 @@
 import Sidebar from "./Sidebar";
-import Country from "../Country";
+import Country from "../Country/Country";
 import MainScene from "../Scenes/MainScene";
 export default class DiplomaticSidebar extends Sidebar {
     private scene;

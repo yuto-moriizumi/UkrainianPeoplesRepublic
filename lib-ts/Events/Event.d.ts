@@ -1,6 +1,6 @@
 import Option from "./Option";
-import CountryHandler from "../CountryHandler";
-import Country from "../Country";
+import CountryHandler from "../Country/CountryHandler";
+import Country from "../Country/Country";
 import JsonObject from "../Utils/JsonObject";
 import JsonType from "../Utils/JsonType";
 export default class Event extends JsonObject {

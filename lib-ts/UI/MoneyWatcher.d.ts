@@ -1,5 +1,5 @@
 import HorizontalBox from "./HorizontalBox";
-import MoneyObserver from "../MoneyObserver";
+import MoneyObserver from "../Country/MoneyObserver";
 export default class MoneyWatcher extends HorizontalBox implements MoneyObserver {
     private moneyText;
     private target;

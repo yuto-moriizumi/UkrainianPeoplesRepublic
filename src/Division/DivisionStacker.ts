@@ -1,7 +1,7 @@
-import ExtendedSet from "./Utils/ExtendedSet";
+import ExtendedSet from "../Utils/ExtendedSet";
 import DivisionInfo from "./DivisionInfo";
 import * as PIXI from "pixi.js";
-import DivisionSprite from "DivisionSprite";
+import DivisionSprite from "./DivisionSprite";
 
 export default class DivisionStacker extends PIXI.Container {
   private static readonly GAP = 2;

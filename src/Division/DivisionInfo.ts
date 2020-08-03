@@ -1,16 +1,14 @@
-import * as PIXI from "pixi.js";
-import Country from "./Country/Country";
-import GameManager from "./GameManager";
-import JsonObject from "./Utils/JsonObject";
-import Province from "./Province";
+import Country from "../Country/Country";
+import GameManager from "../GameManager";
+import JsonObject from "../Utils/JsonObject";
+import Province from "../Province";
 import DivisionTemplate from "./DivisionTemplate";
-import MainScene from "./Scenes/MainScene";
-import ArrowProgress from "./UI/ArrowProgress";
+import MainScene from "../Scenes/MainScene";
+import ArrowProgress from "../UI/ArrowProgress";
 import Combat from "./Combat";
-import JsonConverter from "./Utils/JsonConverter";
 import DivisionSprite from "./DivisionSprite";
-import Atlas from "./Map/Atlas";
-import JsonType from "./Utils/JsonType";
+import Atlas from "../Map/Atlas";
+
 export default class DivisionInfo extends JsonObject {
   private _template: DivisionTemplate;
   private _position: Province;

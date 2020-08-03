@@ -1,10 +1,10 @@
 import Scene from "./Scene";
-import Country from "../Country";
+import Country from "../Country/Country";
 import LoaderAddParam from "../Utils/LoaderAddParam";
 import Atlas from "../Map/Atlas";
 import { Selectable } from "./Selectable";
 import Province from "../Province";
-import DivisionSprite from "../DivisionSprite";
+import DivisionSprite from "../Division/DivisionSprite";
 import Observable from "Observable";
 import PlayCountryObserver from "../PlayCountryObserver";
 export default class MainScene extends Scene implements Selectable, Observable {

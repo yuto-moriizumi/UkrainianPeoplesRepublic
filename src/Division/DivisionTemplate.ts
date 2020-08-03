@@ -1,8 +1,6 @@
 import * as PIXI from "pixi.js";
-import Country from "./Country/Country";
-import GameManager from "./GameManager";
-import JsonObject from "./Utils/JsonObject";
-import Province from "./Province";
+import Country from "../Country/Country";
+import JsonObject from "../Utils/JsonObject";
 import DivisionInfo from "./DivisionInfo";
 
 export default class DivisionTemplate extends JsonObject {

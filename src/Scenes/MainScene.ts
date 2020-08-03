@@ -11,14 +11,12 @@ import Province from "../Province";
 import Header from "../UI/Header";
 import Sidebar from "../UI/Sidebar";
 import DiplomaticSidebar from "../UI/DiplomaticSidebar";
-import Event from "../Events/Event";
-import Button from "../UI/Button";
 import Conscription from "../UI/Conscription";
-import DivisionSprite from "../DivisionSprite";
+import DivisionSprite from "../Division/DivisionSprite";
 import DebugSidebar from "../UI/DebugSidebar";
 import ProvinceSidebar from "../UI/ProvinceSidebar";
-import CountryPlayerHandler from "../CountryPlayerHandler";
-import CountryAIHandler from "../CountryAIHandler";
+import CountryPlayerHandler from "../Country/CountryPlayerHandler";
+import CountryAIHandler from "../Country/CountryAIHandler";
 import Observable from "Observable";
 import PlayCountryObserver from "../PlayCountryObserver";
 

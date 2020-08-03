@@ -3,7 +3,7 @@ import GameManager from "../GameManager";
 import Resource from "../Resources";
 import * as PIXI from "pixi.js";
 import MainScene from "../Scenes/MainScene";
-import MoneyObserver from "../MoneyObserver";
+import MoneyObserver from "../Country/MoneyObserver";
 import Country from "../Country/Country";
 
 export default class MoneyWatcher extends HorizontalBox

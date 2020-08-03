@@ -6,7 +6,7 @@ import * as PIXI from "pixi.js";
 import Button from "../UI/Button";
 import Sound from "../Sound";
 import Resource from "../Resources";
-import CountryHandler from "../CountryHandler";
+import CountryHandler from "../Country/CountryHandler";
 import Country from "../Country/Country";
 import ConditionCreator from "./Conditions/ConditionCreator";
 import JsonObject from "../Utils/JsonObject";

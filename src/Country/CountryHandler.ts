@@ -1,7 +1,5 @@
 import Country from "./Country";
-import GameManager from "./GameManager";
-import MainScene from "./Scenes/MainScene";
-import Event from "./Events/Event";
+import Event from "../Events/Event";
 
 export default abstract class CountryHandler {
   country: Country;

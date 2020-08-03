@@ -1,5 +1,5 @@
 import Condition from "./Condition";
-import Country from "../../Country";
+import Country from "../../Country/Country";
 import JsonType from "../../Utils/JsonType";
 /**
  * イベント発火者が指定した国であることを確認します
