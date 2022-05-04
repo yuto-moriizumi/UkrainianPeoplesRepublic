@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import * as Filters from "pixi-filters";
-import Province from "./Province";
-export default class Arrow extends PIXI.Graphics {
+import { Province } from "./Province";
+export class Arrow extends PIXI.Graphics {
   static readonly TRIANGLE_HEIGHT = 10;
   length = 0;
   width: number;

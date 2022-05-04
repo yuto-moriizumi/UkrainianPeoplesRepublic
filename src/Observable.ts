@@ -1,4 +1,4 @@
-export default interface Observable {
+export interface Observable {
   addObserver(observer): void;
   removeObserver(observer): void;
 }

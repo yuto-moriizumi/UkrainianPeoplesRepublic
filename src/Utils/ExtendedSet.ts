@@ -1,7 +1,7 @@
-import JsonObject from "./JsonObject";
+import { JsonObject } from "./JsonObject";
 import JsonType from "./JsonType";
 
-export default class ExtendedSet<T> extends JsonObject {
+export class ExtendedSet<T> extends JsonObject {
   private set = new Set<T>();
 
   constructor(array?: any) {

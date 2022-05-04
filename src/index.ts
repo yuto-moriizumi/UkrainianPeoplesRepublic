@@ -1,7 +1,7 @@
-import GameManager from "./GameManager";
-import TitleScene from "./Scenes/TitleScene";
+import { GameManager } from "./GameManager";
+import { TitleScene } from "./Scenes/TitleScene";
 import * as WebFont from "webfontloader";
-import Resources from "./Resources";
+import { Resources } from "./Resources";
 
 let fontLoaded = false;
 let windowLoaded = false;

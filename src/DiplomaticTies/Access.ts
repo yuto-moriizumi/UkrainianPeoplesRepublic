@@ -1,4 +1,4 @@
-import DiplomaticTie from "./DiplomaticTie";
+import { DiplomaticTie } from "./DiplomaticTie";
 import Resource from "../Resources";
 
 /**
@@ -7,7 +7,7 @@ import Resource from "../Resources";
  * @class Access
  * @extends {DiplomaticTie}
  */
-export default class Access extends DiplomaticTie {
+export class Access extends DiplomaticTie {
   public static readonly root_icon = Resource.access_root;
   public static readonly target_icon = Resource.access_target;
 

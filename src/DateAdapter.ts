@@ -1,4 +1,4 @@
-export default class DateAdapter {
+export class DateAdapter {
   private date: Date;
 
   constructor(dateString) {

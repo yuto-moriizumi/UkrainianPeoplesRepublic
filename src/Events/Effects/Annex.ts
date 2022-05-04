@@ -1,10 +1,10 @@
-import Effect from "./Effect";
-import Country from "../../Country";
-import GameManager from "../../GameManager";
-import MainScene from "../../Scenes/MainScene";
+import { Effect } from "./Effect";
+import { Country } from "../../Country";
+import { GameManager } from "../../GameManager";
+import { MainScene } from "../../Scenes/MainScene";
 import JsonType from "../../Utils/JsonType";
 
-export default class Annex extends Effect {
+export class Annex extends Effect {
   private type = this.constructor.name;
   private _root: Country;
   private _target: Country;

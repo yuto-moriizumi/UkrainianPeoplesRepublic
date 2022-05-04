@@ -1,9 +1,9 @@
 import * as PIXI from "pixi.js";
-import GameManager from "../GameManager";
+import { GameManager } from "../GameManager";
 import Resource from "../Resources";
-import SpriteButton from "./SpriteButton";
-import Sound from "../Sound";
-export default class Timer extends PIXI.Container {
+import { SpriteButton } from "./SpriteButton";
+import { Sound } from "../Sound";
+export class Timer extends PIXI.Container {
   private text: PIXI.Text;
   private date: Date;
   private isActive: boolean = false;
@@ -96,9 +96,9 @@ export default class Timer extends PIXI.Container {
   private playSE() {
     // SE再生
     const sound = new Sound(
-      (GameManager.instance.game.loader.resources[
-        Resource.se.click_ok
-      ] as any).buffer
+      (
+        GameManager.instance.game.loader.resources[Resource.se.click_ok] as any
+      ).buffer
     );
     sound.volume = 0.5;
     sound.play(false);

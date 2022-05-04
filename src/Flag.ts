@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
-import Country from "./Country";
-import GameManager from "./GameManager";
-export default class Flag extends PIXI.Sprite {
+import { Country } from "./Country";
+import { GameManager } from "./GameManager";
+export class Flag extends PIXI.Sprite {
   private country: Country;
   constructor(country: Country) {
     super(GameManager.instance.game.loader.resources[country.flag].texture);

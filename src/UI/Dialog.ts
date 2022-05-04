@@ -1,10 +1,10 @@
 import * as PIXI from "pixi.js";
-import GameManager from "../GameManager";
-import Button from "./Button";
-import Sound from "../Sound";
+import { GameManager } from "../GameManager";
+import { Button } from "./Button";
+import { Sound } from "../Sound";
 import Resource from "../Resources";
 
-export default class Dialog extends PIXI.Graphics {
+export class Dialog extends PIXI.Graphics {
   constructor(titleStr: string, desc: string) {
     super();
     this.beginFill(0x2f2f2f);
@@ -59,9 +59,11 @@ export default class Dialog extends PIXI.Graphics {
       this.destroy();
       // SE再生
       const sound = new Sound(
-        (GameManager.instance.game.loader.resources[
-          Resource.se.click_ok
-        ] as any).buffer
+        (
+          GameManager.instance.game.loader.resources[
+            Resource.se.click_ok
+          ] as any
+        ).buffer
       );
       sound.volume = 0.5;
       sound.play(false);

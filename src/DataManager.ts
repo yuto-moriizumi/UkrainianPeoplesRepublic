@@ -1,4 +1,4 @@
-import JsonObject from "./Utils/JsonObject";
+import { JsonObject } from "./Utils/JsonObject";
 import JsonType from "./Utils/JsonType";
 
 /**
@@ -10,7 +10,7 @@ import JsonType from "./Utils/JsonType";
  * @class DataManager
  * @extends {JsonObject}
  */
-export default abstract class DataManager extends JsonObject {
+export abstract class DataManager extends JsonObject {
   __onLoaded = new Array<any>();
   __isLoaded = false;
   __ON_CREATED = console.info("DataManagerがインスタンス化されました");

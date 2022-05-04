@@ -1,19 +1,21 @@
 import * as PIXI from "pixi.js";
-import Country from "./Country";
-import GameManager from "./GameManager";
-import DivisionInfo from "./DivisionInfo";
-import VerticalBox from "./UI/VerticalBox";
+import { Country } from "./Country";
+import { GameManager } from "./GameManager";
+import { DivisionInfo } from "./DivisionInfo";
+import { VerticalBox } from "./UI/VerticalBox";
 import Resource from "./Resources";
 import * as Filters from "pixi-filters";
-import MainScene from "./Scenes/MainScene";
-import Province from "Province";
-import ProgressBar from "./UI/ProgressBar";
-import PlayCountryObserver from "PlayCountryObserver";
-import DiplomacyObserver from "DiplomacyObserver";
-import DiplomaticTie from "DiplomaticTies/DiplomaticTie";
-import War from "./DiplomaticTies/War";
-export default class DivisionSprite extends VerticalBox
-  implements PlayCountryObserver, DiplomacyObserver {
+import { MainScene } from "./Scenes/MainScene";
+import { Province } from "Province";
+import { ProgressBar } from "./UI/ProgressBar";
+import { PlayCountryObserver } from "PlayCountryObserver";
+import { DiplomacyObserver } from "DiplomacyObserver";
+import { DiplomaticTie } from "DiplomaticTies/DiplomaticTie";
+import { War } from "./DiplomaticTies/War";
+export class DivisionSprite
+  extends VerticalBox
+  implements PlayCountryObserver, DiplomacyObserver
+{
   private static readonly MINE_COLOR = 0x216639;
   private static readonly FRIEND_COLOR = 0x183bd9;
   private static readonly NEUTRAL_COLOR = 0x3f3f3f;

@@ -1,13 +1,13 @@
-import DeclareWar from "./DeclareWar";
-import SetOwner from "./SetOwner";
-import Annex from "./Annex";
-import Peace from "./Peace";
-import ChangeName from "./ChangeName";
-import GainAccess from "./GainAccess";
-import Effect from "./Effect";
-import DispatchEvent from "./DispatchEvent";
+import { DeclareWar } from "./DeclareWar";
+import { SetOwner } from "./SetOwner";
+import { Annex } from "./Annex";
+import { Peace } from "./Peace";
+import { ChangeName } from "./ChangeName";
+import { GainAccess } from "./GainAccess";
+import { Effect } from "./Effect";
+import { DispatchEvent } from "./DispatchEvent";
 
-export default class EffectCreator {
+export class EffectCreator {
   public static createEffect(effect: any): Effect {
     switch (effect.type) {
       case "DeclareWar":

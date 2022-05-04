@@ -1,18 +1,18 @@
-import Country from "./Country";
-import Province from "./Province";
-import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
-import War from "./DiplomaticTies/War";
-import Event from "./Events/Event";
-import JsonObject from "./Utils/JsonObject";
-import Combat from "./Combat";
-import Access from "./DiplomaticTies/Access";
-import DivisionTemplate from "./DivisionTemplate";
-import MapDataManager from "./Utils/MapDataManager";
-import SetDataManager from "./Utils/SetDataManager";
+import { Country } from "./Country";
+import { Province } from "./Province";
+import { DiplomaticTie } from "./DiplomaticTies/DiplomaticTie";
+import { War } from "./DiplomaticTies/War";
+import { Event } from "./Events/Event";
+import { JsonObject } from "./Utils/JsonObject";
+import { Combat } from "./Combat";
+import { Access } from "./DiplomaticTies/Access";
+import { DivisionTemplate } from "./DivisionTemplate";
+import { MapDataManager } from "./Utils/MapDataManager";
+import { SetDataManager } from "./Utils/SetDataManager";
 import JsonType from "./Utils/JsonType";
-import Alliance from "./DiplomaticTies/Alliance";
+import { Alliance } from "./DiplomaticTies/Alliance";
 
-export default class Savedata extends JsonObject {
+export class Savedata extends JsonObject {
   private _countries: Map<string, Country> = new Map<string, Country>();
   private _provinces = new MapDataManager<string, Province>();
   private _diplomacy: Array<DiplomaticTie> = new Array<DiplomaticTie>();

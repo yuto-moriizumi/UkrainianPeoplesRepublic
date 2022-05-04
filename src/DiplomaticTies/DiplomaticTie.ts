@@ -1,10 +1,10 @@
-import Country from "../Country";
-import JsonConverter from "../Utils/JsonConverter";
-import GameManager from "../GameManager";
+import { Country } from "../Country";
+import { JsonConverter } from "../Utils/JsonConverter";
+import { GameManager } from "../GameManager";
 import JsonType from "../Utils/JsonType";
-import JsonObject from "../Utils/JsonObject";
+import { JsonObject } from "../Utils/JsonObject";
 
-export default abstract class DiplomaticTie extends JsonObject {
+export abstract class DiplomaticTie extends JsonObject {
   private type = this.constructor.name;
   public static readonly root_icon: string;
   public static readonly target_icon: string;

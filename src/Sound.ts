@@ -1,6 +1,6 @@
-import SoundManager from "./SoundManager";
+import { SoundManager } from "./SoundManager";
 
-export default class Sound {
+export class Sound {
   private loop = false;
   private buffer: AudioBuffer;
   private gainNode: GainNode;

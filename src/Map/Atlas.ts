@@ -1,16 +1,16 @@
 import * as PIXI from "pixi.js";
-import GameManager from "../GameManager";
-import Province from "../Province";
+import { GameManager } from "../GameManager";
+import { Province } from "../Province";
 import { Selectable } from "../Scenes/Selectable";
-import DivisionSprite from "../DivisionSprite";
-import MainScene from "../Scenes/MainScene";
-import ExtendedSet from "../Utils/ExtendedSet";
-import MapMode from "./MapMode";
-import PoliticalMap from "./PoliticalMap";
-import MapModeObserver from "./MapModeObserver";
-import Arrow from "../Arrow";
+import { DivisionSprite } from "../DivisionSprite";
+import { MainScene } from "../Scenes/MainScene";
+import { ExtendedSet } from "../Utils/ExtendedSet";
+import { MapMode } from "./MapMode";
+import { PoliticalMap } from "./PoliticalMap";
+import { MapModeObserver } from "./MapModeObserver";
+import { Arrow } from "../Arrow";
 
-export default class Atlas extends PIXI.Sprite implements MapModeObserver {
+export class Atlas extends PIXI.Sprite implements MapModeObserver {
   public static instance: Atlas;
   private static readonly BORDER_COLOR = "#000000"; //プロヴィンス境界の色
   private static readonly BORDER_WIDTH = 5; //境界線のだいたいの太さ
@@ -29,9 +29,8 @@ export default class Atlas extends PIXI.Sprite implements MapModeObserver {
     Atlas.instance = this;
     this.scene = scene;
     //this.canvas =texture
-    this.provinceMap = GameManager.instance.game.renderer.plugins.extract.pixels(
-      this
-    );
+    this.provinceMap =
+      GameManager.instance.game.renderer.plugins.extract.pixels(this);
     this.interactive = true;
     this.buttonMode = true;
 

@@ -1,13 +1,12 @@
-import HorizontalBox from "./HorizontalBox";
-import GameManager from "../GameManager";
+import { HorizontalBox } from "./HorizontalBox";
+import { GameManager } from "../GameManager";
 import Resource from "../Resources";
 import * as PIXI from "pixi.js";
-import MainScene from "../Scenes/MainScene";
-import MoneyObserver from "../MoneyObserver";
-import Country from "../Country";
+import { MainScene } from "../Scenes/MainScene";
+import { MoneyObserver } from "../MoneyObserver";
+import { Country } from "../Country";
 
-export default class MoneyWatcher extends HorizontalBox
-  implements MoneyObserver {
+export class MoneyWatcher extends HorizontalBox implements MoneyObserver {
   private moneyText: PIXI.Text;
   private target: Country;
 

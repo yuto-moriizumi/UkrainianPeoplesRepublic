@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
-import UIBox from "./UIBox";
-export default class HorizontalBox extends UIBox {
+import { UIBox } from "./UIBox";
+export class HorizontalBox extends UIBox {
   private uiWidth: number = 0;
 
   constructor(

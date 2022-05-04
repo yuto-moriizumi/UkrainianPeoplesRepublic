@@ -1,3 +1,3 @@
-export default interface CultureObserver {
+export interface CultureObserver {
   onCultureChange();
 }

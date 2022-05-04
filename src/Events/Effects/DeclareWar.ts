@@ -1,10 +1,10 @@
-import Effect from "./Effect";
-import Country from "../../Country";
-import War from "../../DiplomaticTies/War";
-import GameManager from "../../GameManager";
+import { Effect } from "./Effect";
+import { Country } from "../../Country";
+import { War } from "../../DiplomaticTies/War";
+import { GameManager } from "../../GameManager";
 import JsonType from "../../Utils/JsonType";
 
-export default class DeclareWar extends Effect {
+export class DeclareWar extends Effect {
   private type = this.constructor.name;
   private _root: Country;
   private _target: Country;

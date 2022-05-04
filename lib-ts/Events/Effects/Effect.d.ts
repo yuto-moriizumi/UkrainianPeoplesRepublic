@@ -1,4 +1,4 @@
-import JsonObject from "../../Utils/JsonObject";
-export default abstract class Effect extends JsonObject {
-    abstract activate(): void;
+import { JsonObject } from "../../Utils/JsonObject";
+export abstract class Effect extends JsonObject {
+  abstract activate(): void;
 }

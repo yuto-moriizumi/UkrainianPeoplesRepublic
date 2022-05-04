@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-export default abstract class UIBox extends PIXI.Graphics {
+export abstract class UIBox extends PIXI.Graphics {
   color = 0x2c2a2b;
   padding = 5;
   fixSize: boolean;

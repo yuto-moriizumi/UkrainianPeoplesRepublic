@@ -1,8 +1,8 @@
-import Condition from "./Condition";
-import GameManager from "../../GameManager";
-import Country from "../../Country";
+import { Condition } from "./Condition";
+import { GameManager } from "../../GameManager";
+import { Country } from "../../Country";
 
-export default class OwnProvince extends Condition {
+export class OwnProvince extends Condition {
   private province: string;
 
   public isValid(country: Country, date: Date): boolean {

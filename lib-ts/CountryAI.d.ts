@@ -1,6 +1,6 @@
-import Country from "./Country";
-export default class CountryAI {
-    private country;
-    constructor(country: Country);
-    update(): void;
+import { Country } from "./Country";
+export class CountryAI {
+  private country;
+  constructor(country: Country);
+  update(): void;
 }

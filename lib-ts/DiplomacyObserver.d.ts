@@ -1,4 +1,4 @@
-import DiplomaticTie from "./DiplomaticTies/DiplomaticTie";
-export default interface DiplomacyObserver {
-    onDiplomacyChange(tie: DiplomaticTie, isCreated: boolean): any;
+import { DiplomaticTie } from "./DiplomaticTies/DiplomaticTie";
+export interface DiplomacyObserver {
+  onDiplomacyChange(tie: DiplomaticTie, isCreated: boolean): any;
 }

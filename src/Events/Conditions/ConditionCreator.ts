@@ -1,15 +1,15 @@
-import DateAdapter from "../../DateAdapter";
-import JsonConverter from "../../Utils/JsonConverter";
-import Country from "../../Country";
-import DateCondition from "./DateCondition";
-import EventFired from "./EventFired";
-import CountryIs from "./CountryIs";
-import And from "./And";
-import Always from "./Always";
-import OwnProvince from "./OwnProvince";
-import AtWarWith from "./AtWarWith";
+import { DateAdapter } from "../../DateAdapter";
+import { JsonConverter } from "../../Utils/JsonConverter";
+import { Country } from "../../Country";
+import { DateCondition } from "./DateCondition";
+import { EventFired } from "./EventFired";
+import { CountryIs } from "./CountryIs";
+import { And } from "./And";
+import { Always } from "./Always";
+import { OwnProvince } from "./OwnProvince";
+import { AtWarWith } from "./AtWarWith";
 
-export default abstract class ConditionCreator {
+export abstract class ConditionCreator {
   public static createCondition(condition: object) {
     switch (condition["type"]) {
       case "DateCondition":

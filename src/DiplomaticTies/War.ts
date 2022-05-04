@@ -1,13 +1,13 @@
-import DiplomaticTie from "./DiplomaticTie";
-import MainScene from "../Scenes/MainScene";
-import Dialog from "../UI/Dialog";
-import Sound from "../Sound";
-import GameManager from "../GameManager";
+import { DiplomaticTie } from "./DiplomaticTie";
+import { MainScene } from "../Scenes/MainScene";
+import { Dialog } from "../UI/Dialog";
+import { Sound } from "../Sound";
+import { GameManager } from "../GameManager";
 import Resource from "../Resources";
-import Country from "../Country";
-import Observable from "Observable";
+import { Country } from "../Country";
+import { Observable } from "Observable";
 
-export default class War extends DiplomaticTie {
+export class War extends DiplomaticTie {
   public static readonly root_icon = Resource.war;
   public static readonly target_icon = Resource.war;
 
@@ -22,9 +22,11 @@ export default class War extends DiplomaticTie {
     );
     //SE再生
     const sound = new Sound(
-      (GameManager.instance.game.loader.resources[
-        Resource.se.declare_war
-      ] as any).buffer
+      (
+        GameManager.instance.game.loader.resources[
+          Resource.se.declare_war
+        ] as any
+      ).buffer
     );
     sound.volume = 0.5;
     sound.play(false);
@@ -40,9 +42,11 @@ export default class War extends DiplomaticTie {
     );
     //SE再生
     const sound = new Sound(
-      (GameManager.instance.game.loader.resources[
-        Resource.se.declare_war
-      ] as any).buffer
+      (
+        GameManager.instance.game.loader.resources[
+          Resource.se.declare_war
+        ] as any
+      ).buffer
     );
     sound.volume = 0.5;
     sound.play(false);

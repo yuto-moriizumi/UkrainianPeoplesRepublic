@@ -1,15 +1,15 @@
-import Country from "./Country";
-import War from "./DiplomaticTies/War";
-import Atlas from "./Map/Atlas";
-import DivisionTemplate from "./DivisionTemplate";
-import DivisionInfo from "./DivisionInfo";
-import GameManager from "./GameManager";
-import CountryHandler from "./CountryHandler";
-import MainScene from "./Scenes/MainScene";
-import Event from "./Events/Event";
-import Util from "./Utils/Util";
+import { Country } from "./Country";
+import { War } from "./DiplomaticTies/War";
+import { Atlas } from "./Map/Atlas";
+import { DivisionTemplate } from "./DivisionTemplate";
+import { DivisionInfo } from "./DivisionInfo";
+import { GameManager } from "./GameManager";
+import { CountryHandler } from "./CountryHandler";
+import { MainScene } from "./Scenes/MainScene";
+import { Event } from "./Events/Event";
+import { Util } from "./Utils/Util";
 
-export default class CountryAI extends CountryHandler {
+export class CountryAI extends CountryHandler {
   country: Country;
   constructor(country: Country) {
     super();

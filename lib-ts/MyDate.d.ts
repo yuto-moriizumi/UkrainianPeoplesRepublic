@@ -1,3 +1,3 @@
-export default class MyDate extends Date {
-    valueOf(): number;
+export class MyDate extends Date {
+  valueOf(): number;
 }

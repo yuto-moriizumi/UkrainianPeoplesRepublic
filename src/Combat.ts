@@ -1,8 +1,8 @@
-import JsonObject from "./Utils/JsonObject";
-import DivisionInfo from "./DivisionInfo";
-import GameManager from "./GameManager";
+import { JsonObject } from "./Utils/JsonObject";
+import { DivisionInfo } from "./DivisionInfo";
+import { GameManager } from "./GameManager";
 
-export default class Combat extends JsonObject {
+export class Combat extends JsonObject {
   private attacker: DivisionInfo;
   private defender: DivisionInfo;
 

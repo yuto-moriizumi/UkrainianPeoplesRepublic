@@ -1,8 +1,8 @@
-import Transition from "./Transition";
+import { Transition } from "./Transition";
 import * as PIXI from "pixi.js";
-import GameManager from "../GameManager";
+import { GameManager } from "../GameManager";
 
-export default class Fade implements Transition {
+export class Fade implements Transition {
   private onTransitionFinished: () => void = () => {}; //トランジション終了時コールバック
   private alphaFrom!: number; //フェード開始時の黒画面アルファ
   private alphaTo!: number; //フェード終了時の黒画面アルファ

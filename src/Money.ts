@@ -1,11 +1,8 @@
-import HorizontalBox from "./UI/HorizontalBox";
-import GameManager from "./GameManager";
-import Resource from "./Resources";
 import * as PIXI from "pixi.js";
-import MoneyObserver from "./MoneyObserver";
-import Observable from "./Observable";
+import { MoneyObserver } from "./MoneyObserver";
+import { Observable } from "./Observable";
 
-export default class Money implements Observable {
+export class Money implements Observable {
   private money: number = 0;
   observers = new Array<MoneyObserver>();
 

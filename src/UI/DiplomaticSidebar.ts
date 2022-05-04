@@ -1,18 +1,17 @@
-import Sidebar from "./Sidebar";
-import Country from "../Country";
-import Flag from "../Flag";
+import { Sidebar } from "./Sidebar";
+import { Country } from "../Country";
+import { Flag } from "../Flag";
 import * as PIXI from "pixi.js";
-import Button from "./Button";
-import MainScene from "../Scenes/MainScene";
-import Dialog from "./Dialog";
-import War from "../DiplomaticTies/War";
-import GameManager from "../GameManager";
-import Resource from "../Resources";
-import HorizontalBox from "./HorizontalBox";
-import VerticalBox from "./VerticalBox";
-import Access from "../DiplomaticTies/Access";
+import { Button } from "./Button";
+import { MainScene } from "../Scenes/MainScene";
+import { Dialog } from "./Dialog";
+import { War } from "../DiplomaticTies/War";
+import { GameManager } from "../GameManager";
+import { HorizontalBox } from "./HorizontalBox";
+import { VerticalBox } from "./VerticalBox";
+import { Access } from "../DiplomaticTies/Access";
 
-export default class DiplomaticSidebar extends Sidebar {
+export class DiplomaticSidebar extends Sidebar {
   private scene: MainScene;
   private readonly DIPLOMACY_HEIGHT: number = 40;
   private static readonly SUMMARY_HEIGHT_RATE: number = 0.32;

@@ -1,8 +1,8 @@
-import Arrow from "./Arrow";
-import Province from "./Province";
+import { Arrow } from "./Arrow";
+import { Province } from "./Province";
 import * as PIXI from "pixi.js";
 
-export default class ArrowProgress extends Arrow {
+export class ArrowProgress extends Arrow {
   private progress = 0; //これは0～100%
   private static readonly RECT_WIDTH = 5;
 

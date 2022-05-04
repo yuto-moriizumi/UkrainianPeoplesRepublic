@@ -1,3 +1,3 @@
-export default interface MapModeObserver {
+export interface MapModeObserver {
   onMapModeUpdated(filter: PIXI.Filter);
 }

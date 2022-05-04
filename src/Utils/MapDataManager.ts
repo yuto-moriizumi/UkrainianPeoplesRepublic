@@ -1,6 +1,6 @@
-import JsonConverter from "./JsonConverter";
-import JsonObject from "./JsonObject";
-import DataManager from "../DataManager";
+import { JsonConverter } from "./JsonConverter";
+import { JsonObject } from "./JsonObject";
+import { DataManager } from "../DataManager";
 import JsonType from "./JsonType";
 
 /**
@@ -11,7 +11,7 @@ import JsonType from "./JsonType";
  * @template T
  * @template U
  */
-export default class MapDataManager<T, U> extends DataManager {
+export class MapDataManager<T, U> extends DataManager {
   private map = new Map<T, U>();
 
   public set(id: T, item: U) {

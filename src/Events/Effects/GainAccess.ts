@@ -1,10 +1,10 @@
-import Effect from "./Effect";
-import Country from "../../Country";
-import GameManager from "../../GameManager";
-import Access from "../../DiplomaticTies/Access";
+import { Effect } from "./Effect";
+import { Country } from "../../Country";
+import { GameManager } from "../../GameManager";
+import { Access } from "../../DiplomaticTies/Access";
 import JsonType from "../../Utils/JsonType";
 
-export default class GainAccess extends Effect {
+export class GainAccess extends Effect {
   private type = this.constructor.name;
   private _root: Country;
   private _target: Country;

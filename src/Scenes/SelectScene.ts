@@ -1,20 +1,20 @@
 import * as PIXI from "pixi.js";
-import Scene from "./Scene";
-import Fade from "./Fade";
-import GameManager from "../GameManager";
-import LoaderAddParam from "../Utils/LoaderAddParam";
+import { Scene } from "./Scene";
+import { Fade } from "./Fade";
+import { GameManager } from "../GameManager";
+import { LoaderAddParam } from "../Utils/LoaderAddParam";
 import Resource from "../Resources";
 
-import Atlas from "../Map/Atlas";
-import Country from "../Country";
-import Flag from "../Flag";
-import Button from "../UI/Button";
-import Province from "../Province";
-import MainScene from "./MainScene";
+import { Atlas } from "../Map/Atlas";
+import { Country } from "../Country";
+import { Flag } from "../Flag";
+import { Button } from "../UI/Button";
+import { Province } from "../Province";
+import { MainScene } from "./MainScene";
 import { Selectable } from "./Selectable";
 import JsonType from "../Utils/JsonType";
 
-export default class SelectScene extends Scene implements Selectable {
+export class SelectScene extends Scene implements Selectable {
   private myFlag: Flag;
   private static readonly myFlagSize = 150;
   private target: Country;

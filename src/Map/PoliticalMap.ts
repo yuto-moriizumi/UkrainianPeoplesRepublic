@@ -1,13 +1,15 @@
-import MapMode from "./MapMode";
-import GameManager from "../GameManager";
+import { MapMode } from "./MapMode";
+import { GameManager } from "../GameManager";
 import * as PIXI from "pixi.js";
 import * as Filters from "pixi-filters";
-import ProvinceObserver from "../ProvinceObserver";
-import Observable from "../Observable";
-import MapModeObserver from "./MapModeObserver";
+import { ProvinceObserver } from "../ProvinceObserver";
+import { Observable } from "../Observable";
+import { MapModeObserver } from "./MapModeObserver";
 
-export default class PoliticalMap extends MapMode
-  implements ProvinceObserver, Observable {
+export class PoliticalMap
+  extends MapMode
+  implements ProvinceObserver, Observable
+{
   observers = Array<MapModeObserver>();
   private filter: PIXI.Filter;
 

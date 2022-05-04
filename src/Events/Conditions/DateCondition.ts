@@ -1,8 +1,8 @@
-import Condition from "./Condition";
-import DateAdapter from "../../DateAdapter";
-import Country from "../../Country";
+import { Condition } from "./Condition";
+import { DateAdapter } from "../../DateAdapter";
+import { Country } from "../../Country";
 
-export default class DateCondition extends Condition {
+export class DateCondition extends Condition {
   private _when: DateAdapter;
 
   public set when(date: string) {

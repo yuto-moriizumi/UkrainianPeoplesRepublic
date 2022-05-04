@@ -1,5 +1,5 @@
-export default class DataManager {
-    private countries;
-    constructor();
-    load(): void;
+export class DataManager {
+  private countries;
+  constructor();
+  load(): void;
 }

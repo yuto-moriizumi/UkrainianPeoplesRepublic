@@ -1,5 +1,5 @@
-import Condition from "./Condition";
-import Country from "../../Country";
+import { Condition } from "./Condition";
+import { Country } from "../../Country";
 import JsonType from "../../Utils/JsonType";
 /**
  * イベント発火者が指定した国であることを確認します
@@ -8,9 +8,9 @@ import JsonType from "../../Utils/JsonType";
  * @class CountryIs
  * @extends {Condition}
  */
-export default class CountryIs extends Condition {
-    private _country;
-    isValid(country: Country, date: Date): boolean;
-    private set country(value);
-    replacer(key: string, value: any, type: JsonType): any[];
+export class CountryIs extends Condition {
+  private _country;
+  isValid(country: Country, date: Date): boolean;
+  private set country(value);
+  replacer(key: string, value: any, type: JsonType): any[];
 }

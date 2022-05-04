@@ -4,13 +4,13 @@ import JsonType from "./JsonType";
  * @export
  * @class JsonObject
  */
-export default abstract class JsonObject {
-    /**
-     * JSON文字列のベースになるobjectを生成します
-     * Json.stringify()で利用します
-     * @returns {object}
-     * @memberof JsonObject
-     */
-    replacer(key: string, value: any, type: JsonType): any[];
-    toJsonObject(type: JsonType): object;
+export abstract class JsonObject {
+  /**
+   * JSON文字列のベースになるobjectを生成します
+   * Json.stringify()で利用します
+   * @returns {object}
+   * @memberof JsonObject
+   */
+  replacer(key: string, value: any, type: JsonType): any[];
+  toJsonObject(type: JsonType): object;
 }

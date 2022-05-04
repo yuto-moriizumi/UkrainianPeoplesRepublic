@@ -1,3 +1,3 @@
-export default interface MoneyObserver {
-    onMoneyChange(amount: number): any;
+export interface MoneyObserver {
+  onMoneyChange(amount: number): any;
 }

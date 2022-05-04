@@ -1,9 +1,9 @@
-import Effect from "./Effect";
-import Country from "../../Country";
-import War from "../../DiplomaticTies/War";
-import GameManager from "../../GameManager";
+import { Effect } from "./Effect";
+import { Country } from "../../Country";
+import { War } from "../../DiplomaticTies/War";
+import { GameManager } from "../../GameManager";
 
-export default class DispatchEvent extends Effect {
+export class DispatchEvent extends Effect {
   private type = this.constructor.name;
   private id: string;
   private time2happen: number;

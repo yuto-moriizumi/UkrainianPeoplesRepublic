@@ -1,3 +1,3 @@
-export default interface ProvinceObserver {
-    onProvinceChange(): any;
+export interface ProvinceObserver {
+  onProvinceChange(): any;
 }

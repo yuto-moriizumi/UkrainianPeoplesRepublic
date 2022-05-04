@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-export default interface Transition {
+export interface Transition {
   getContainer(): PIXI.Container | null;
   begin(): void;
   isBegan(): boolean;

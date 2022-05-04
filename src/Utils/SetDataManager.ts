@@ -1,7 +1,7 @@
-import JsonConverter from "./JsonConverter";
-import JsonObject from "./JsonObject";
-import DataManager from "../DataManager";
-import ExtendedSet from "./ExtendedSet";
+import { JsonConverter } from "./JsonConverter";
+import { JsonObject } from "./JsonObject";
+import { DataManager } from "../DataManager";
+import { ExtendedSet } from "./ExtendedSet";
 import JsonType from "./JsonType";
 
 /**
@@ -12,7 +12,7 @@ import JsonType from "./JsonType";
  * @template T
  * @template U
  */
-export default class SetDataManager<T> extends DataManager {
+export class SetDataManager<T> extends DataManager {
   private set = new ExtendedSet<T>();
 
   constructor() {

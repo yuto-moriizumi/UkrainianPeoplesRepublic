@@ -1,11 +1,11 @@
-import Sidebar from "./Sidebar";
+import { Sidebar } from "./Sidebar";
 import * as PIXI from "pixi.js";
-import MainScene from "../Scenes/MainScene";
-import Province from "../Province";
-import Button from "./Button";
-import Atlas from "../Map/Atlas";
+import { MainScene } from "../Scenes/MainScene";
+import { Province } from "../Province";
+import { Button } from "./Button";
+import { Atlas } from "../Map/Atlas";
 
-export default class ProvinceSidebar extends Sidebar {
+export class ProvinceSidebar extends Sidebar {
   private static culture_spoit: string;
   private static province_spoit: Province;
   private cultureButton: Button;

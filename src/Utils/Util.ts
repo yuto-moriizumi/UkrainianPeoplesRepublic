@@ -1,4 +1,4 @@
-export default abstract class Util {
+export abstract class Util {
   /**
    * [最小値,最大値]の乱数を生成します
    * デフォルトでは[0,1]がの乱数が返されます

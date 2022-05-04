@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
-import UIBox from "./UIBox";
-export default class VerticalBox extends UIBox {
+import { UIBox } from "./UIBox";
+export class VerticalBox extends UIBox {
   private uiHeight = 0;
 
   constructor(

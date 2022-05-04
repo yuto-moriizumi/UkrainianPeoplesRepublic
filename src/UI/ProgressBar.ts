@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 
-export default class ProgressBar extends PIXI.Container {
+export class ProgressBar extends PIXI.Container {
   private bgColor: number;
   private frontColor: number;
   private bar: PIXI.Graphics;

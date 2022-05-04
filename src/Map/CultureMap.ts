@@ -1,14 +1,13 @@
-import MapMode from "./MapMode";
-import GameManager from "../GameManager";
+import { MapMode } from "./MapMode";
+import { GameManager } from "../GameManager";
 import * as PIXI from "pixi.js";
 import * as Filters from "pixi-filters";
-import ProvinceObserver from "../ProvinceObserver";
-import Observable from "../Observable";
-import MapModeObserver from "./MapModeObserver";
-import CultureObserver from "../CultureObserve";
+import { ProvinceObserver } from "../ProvinceObserver";
+import { Observable } from "../Observable";
+import { MapModeObserver } from "./MapModeObserver";
+import { CultureObserver } from "../CultureObserve";
 
-export default class CultureMap extends MapMode
-  implements CultureObserver, Observable {
+export class CultureMap extends MapMode implements CultureObserver, Observable {
   observers = Array<MapModeObserver>();
   private filter: PIXI.Filter;
   private cultureDictionaly = new Map<string, string>();

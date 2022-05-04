@@ -1,4 +1,4 @@
-export default interface LoaderAddParam {
+export interface LoaderAddParam {
   name: string;
   url: string;
 }

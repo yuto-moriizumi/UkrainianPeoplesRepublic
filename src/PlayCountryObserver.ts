@@ -1,5 +1,5 @@
-import Country from "./Country";
+import { Country } from "./Country";
 
-export default interface PlayCountryObserver {
+export interface PlayCountryObserver {
   onPlayCountryChange(country: Country);
 }

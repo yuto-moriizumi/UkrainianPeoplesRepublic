@@ -1,12 +1,12 @@
-import GameManager from "../GameManager";
-import Header from "./Header";
-import Resources from "../Resources";
-import SpriteButton from "./SpriteButton";
+import { GameManager } from "../GameManager";
+import { Header } from "./Header";
+import { Resources } from "../Resources";
+import { SpriteButton } from "./SpriteButton";
 import * as PIXI from "pixi.js";
-import VerticalBox from "./VerticalBox";
-import HorizontalBox from "./HorizontalBox";
+import { VerticalBox } from "./VerticalBox";
+import { HorizontalBox } from "./HorizontalBox";
 
-export default class Sidebar extends VerticalBox {
+export class Sidebar extends VerticalBox {
   private static readonly COLOR = 0x3e3e36;
   private static readonly DEFAULT_WIDTH = 400;
   private static readonly HEADER_MARGIN = 5;

@@ -3,14 +3,14 @@ enum JsonType {
     GameData
     SaveData
 }
-class default {
+class JsonConverter {
     +{static} toJSON(object: any, replacer?: (key: any, value: any) => Array<any>): any
 }
-interface default {
+interface UpdateObject {
     +isDestroyed(): boolean
     +update(dt: number): void
 }
-interface default {
+interface Transition {
     +getContainer(): PIXI.Container
     +begin(): void
     +isBegan(): boolean
@@ -19,7 +19,7 @@ interface default {
     +update(dt: number): void
     +setCallback(callback: () => void): void
 }
-class default implements Transition {
+class Immediate implements Transition {
     -onTransitionFinished: () => void
     -finished: boolean
     +getContainer(): PIXI.Container
@@ -30,11 +30,11 @@ class default implements Transition {
     +update(_dt: number): void
     +setCallback(callback: () => void): void
 }
-interface default {
+interface LoaderAddParam {
     +name: string
     +url: string
 }
-abstract class default {
+abstract class Scene {
     #transitionIn: Transition
     #transitionOut: Transition
     #objectsToUpdate: UpdateObject[]
@@ -46,16 +46,16 @@ abstract class default {
     +beginTransitionIn(onTransitionFinished: (scene: Scene) => void): void
     +beginTransitionOut(onTransitionFinished: (scene: Scene) => void): void
     +update(delta: number): void
-    #createInitialResourceList(): (string | LoaderAddParam)[]
+    #createInitialResourceList(): any[]
     +beginLoadResource(onLoaded: () => void): Promise<void>
     #loadInitialResource(onLoaded: () => void): void
-    -filterLoadedAssets(assets: (string | LoaderAddParam)[]): LoaderAddParam[]
+    -filterLoadedAssets(assets: any[]): LoaderAddParam[]
     #onInitialResourceLoaded(): LoaderAddParam[] | string[]
     #loadAdditionalResource(assets: LoaderAddParam[] | string[], onLoaded: () => void): void
     #onAdditionalResourceLoaded(): void
     #onResourceLoaded(): void
 }
-class default {
+class SoundManager {
     +{static} instance: SoundManager
     -{static} context: AudioContext
     -{static} supportedExtensions: string[]
@@ -67,7 +67,7 @@ class default {
     +{static} decodeAudio(binary: any, callback: (buf: AudioBuffer) => void): void
     +{static} decodeAudioWithPromise(binary: any, callback: (buf: AudioBuffer) => void): void
 }
-class default implements Transition {
+class Fade implements Transition {
     -onTransitionFinished: () => void
     -alphaFrom: number
     -alphaTo: number
@@ -87,11 +87,11 @@ class default implements Transition {
 interface Selectable {
     +selectProvince(province: Province): void
 }
-abstract class default {
+abstract class JsonObject {
     +replacer(key: string, value: any, type: JsonType): any[]
     +toJsonObject(type: JsonType): object
 }
-class default extends JsonObject {
+class DivisionTemplate extends JsonObject {
     -__id: string
     -organization: number
     -attack: number
@@ -108,24 +108,24 @@ class default extends JsonObject {
     +getCost(): number
     +getMaintainance(): number
     +getRecoveryPerTime(): number
-    +buildDivision(country: Country): DivisionInfo
+    +buildDivision(country: Country): any
 }
-class default extends Arrow {
+class ArrowProgress extends Arrow {
     -progress: number
     +setProgress(progress: number): void
     -{static} RECT_WIDTH: 5
 }
-class default extends JsonObject {
+class Combat extends JsonObject {
     -attacker: DivisionInfo
     -defender: DivisionInfo
     +combat(): void
     -endCombat(): void
     +getRoot(): DivisionInfo
     +getTarget(): DivisionInfo
-    +getOpponent(division: DivisionInfo): DivisionInfo
+    +getOpponent(division: DivisionInfo): any
     +{static} create(root: DivisionInfo, target: DivisionInfo): Combat
 }
-class default extends JsonObject {
+class DivisionInfo extends JsonObject {
     -_template: DivisionTemplate
     -_position: Province
     -organization: number
@@ -142,7 +142,7 @@ class default extends JsonObject {
     +applyCost(): void
     +position: string
     +destination: string
-    +getMaintainance(): number
+    +getMaintainance(): any
     +setPosition(province: Province): void
     +getPosition(): Province
     +owner: Country
@@ -152,7 +152,7 @@ class default extends JsonObject {
     +setOrganization(organization: number): void
     +getTemplate(): DivisionTemplate
     +moveTo(destination: Province): void
-    -hasCombatWith(target: DivisionInfo): Combat
+    -hasCombatWith(target: DivisionInfo): any
     +addCombat(combat: Combat): void
     +removeCombat(combat: Combat): void
     +destroy(): void
@@ -165,31 +165,31 @@ class default extends JsonObject {
     +getSprite(): DivisionSprite
     +replacer(key: string, value: any, type: string): any[]
 }
-abstract class default {
+abstract class UIBox {
     +color: number
     +padding: number
     +fixSize: boolean
     +setSize(width: number, height: number): void
     +{abstract} addPart(part: PIXI.Container, maxLength?: number): void
 }
-class default extends UIBox {
+class VerticalBox extends UIBox {
     -uiHeight: number
     +addPart(part: PIXI.Container): void
     +getUiHeight(): number
 }
-class default {
+class ProgressBar {
     -bgColor: number
     -frontColor: number
     -bar: PIXI.Graphics
     +setProgress(progress: number): void
 }
-interface default {
+interface PlayCountryObserver {
     +onPlayCountryChange(country: Country): any
 }
-interface default {
+interface DiplomacyObserver {
     +onDiplomacyChange(tie: DiplomaticTie, isCreated: boolean): any
 }
-class default extends VerticalBox implements PlayCountryObserver, DiplomacyObserver {
+class DivisionSprite extends VerticalBox implements PlayCountryObserver, DiplomacyObserver {
     -info: DivisionInfo
     -selected: boolean
     -onMap: boolean
@@ -201,7 +201,7 @@ class default extends VerticalBox implements PlayCountryObserver, DiplomacyObser
     +deselect(): void
     -onClick(e: PIXI.interaction.InteractionEvent): void
     +setOrganizationRate(organizationRate: number): void
-    +getPosition(): Province
+    +getPosition(): any
     +onPlayCountryChange(country: Country): void
     +onDiplomacyChange(tie: DiplomaticTie, isCreated: boolean): void
     +destroy(): void
@@ -213,7 +213,7 @@ class default extends VerticalBox implements PlayCountryObserver, DiplomacyObser
     +{static} moveSelectingDivisionsTo(province: Province): void
     +{static} hasSelectingDivisions(): boolean
 }
-class default<T> extends JsonObject {
+class ExtendedSet<T> extends JsonObject {
     -set: Set<T>
     +add(value: T): void
     +delete(value: T): boolean
@@ -224,23 +224,23 @@ class default<T> extends JsonObject {
     +size: number
     +toJsonObject(type: JsonType): object
 }
-interface default {
+interface Observable {
     +addObserver(observer: any): void
     +removeObserver(observer: any): void
 }
-abstract class default implements Observable {
+abstract class MapMode implements Observable {
     +{abstract} update(): void
     +{abstract} addObserver(observer: any): void
     +{abstract} removeObserver(observer: any): void
     +{abstract} destroy(): void
 }
-interface default {
+interface ProvinceObserver {
     +onProvinceChange(): any
 }
-interface default {
+interface MapModeObserver {
     +onMapModeUpdated(filter: PIXI.Filter): any
 }
-class default extends MapMode implements ProvinceObserver, Observable {
+class PoliticalMap extends MapMode implements ProvinceObserver, Observable {
     +observers: MapModeObserver[]
     -filter: PIXI.Filter
     +update(): void
@@ -249,7 +249,7 @@ class default extends MapMode implements ProvinceObserver, Observable {
     +removeObserver(observer: MapModeObserver): void
     +destroy(): void
 }
-class default implements MapModeObserver {
+class Atlas implements MapModeObserver {
     -provinceMap: Uint8Array
     -scene: Selectable
     -defaultWidth: number
@@ -266,7 +266,7 @@ class default implements MapModeObserver {
     -getProvince(position: PIXI.Point): Province
     +onMapModeUpdated(filter: any): void
     -moveDivisionsTo(province: Province): void
-    +getNeighborProvinces(province: Province): ExtendedSet<Province>
+    +getNeighborProvinces(province: Province): any
     +isNextTo(province1: Province, province2: Province): boolean
     +setMode(mode: MapMode): void
     +generateProvinceGraph(): void
@@ -275,23 +275,23 @@ class default implements MapModeObserver {
     -{static} BORDER_COLOR: "#000000"
     -{static} BORDER_WIDTH: 5
 }
-class default {
+class Flag {
     -country: Country
     -onClick(): void
 }
-class default extends UIBox {
+class HorizontalBox extends UIBox {
     -uiWidth: number
     +addPart(part: PIXI.Container, align?: number): void
     +replacePart(before: PIXI.Container, after: PIXI.Container): void
 }
-class default
-class default {
+class SpriteButton
+class Button {
     -text: PIXI.Text
     +setText(text: string): void
     -{static} color1: 1097536
     -{static} color2: 1114047
 }
-class default {
+class Sound {
     -loop: boolean
     -buffer: AudioBuffer
     -gainNode: GainNode
@@ -310,7 +310,7 @@ class default {
     +isPlayed: boolean
     +isPaused: boolean
 }
-class default {
+class Timer {
     -text: PIXI.Text
     -date: Date
     -isActive: boolean
@@ -326,17 +326,17 @@ class default {
     +getDate(): Date
     -drawProgress(): void
 }
-interface default {
+interface MoneyObserver {
     +onMoneyChange(amount: number): any
 }
-class default extends HorizontalBox implements MoneyObserver {
+class MoneyWatcher extends HorizontalBox implements MoneyObserver {
     -moneyText: PIXI.Text
     -target: Country
     +update(): void
     +destroy(): void
     +onMoneyChange(amount: number): void
 }
-class default extends HorizontalBox {
+class Header extends HorizontalBox {
     -myCountry: Country
     -timer: Timer
     -myFlag: Flag
@@ -346,30 +346,30 @@ class default extends HorizontalBox {
     +update(): void
     +{static} DEFAULT_HEIGHT: 100
 }
-class default extends VerticalBox {
+class Sidebar extends VerticalBox {
     #contentHeight: any
     -{static} COLOR: 4079158
     -{static} DEFAULT_WIDTH: 400
     -{static} HEADER_MARGIN: 5
     -{static} HEADER_HEIGHT: 100
 }
-class default
-class default extends DiplomaticTie {
-    +getRootIcon(): string
-    +getTargetIcon(): string
-    +{static} root_icon: string
-    +{static} target_icon: string
+class Dialog
+class Access extends DiplomaticTie {
+    +getRootIcon(): any
+    +getTargetIcon(): any
+    +{static} root_icon: any
+    +{static} target_icon: any
 }
-class default extends Sidebar {
+class DiplomaticSidebar extends Sidebar {
     -scene: MainScene
     -DIPLOMACY_HEIGHT: number
     -{static} SUMMARY_HEIGHT_RATE: number
     -{static} FLAG_BOX_RATE: number
 }
-abstract class default extends JsonObject {
+abstract class Effect extends JsonObject {
     +{abstract} activate(): void
 }
-class default extends Effect {
+class DeclareWar extends Effect {
     -type: string
     -_root: Country
     -_target: Country
@@ -378,7 +378,7 @@ class default extends Effect {
     +target: string
     +replacer(key: string, value: any, type: JsonType): any[]
 }
-class default extends Effect {
+class SetOwner extends Effect {
     -type: string
     -_root: Country
     -_provinces: Province[]
@@ -387,7 +387,7 @@ class default extends Effect {
     +provinces: string[]
     +replacer(key: string, value: any, type: JsonType): any[]
 }
-class default extends Effect {
+class Annex extends Effect {
     -type: string
     -_root: Country
     -_target: Country
@@ -396,7 +396,7 @@ class default extends Effect {
     +target: string
     +replacer(key: string, value: any, type: JsonType): any[]
 }
-class default extends Effect {
+class Peace extends Effect {
     -type: string
     -_root: Country
     -_target: Country
@@ -405,7 +405,7 @@ class default extends Effect {
     +target: string
     +replacer(key: string, value: any, type: JsonType): any[]
 }
-class default extends Effect {
+class ChangeName extends Effect {
     -type: string
     -_country: Country
     -name: string
@@ -413,7 +413,7 @@ class default extends Effect {
     +country: string
     +replacer(key: string, value: any, type: JsonType): any[]
 }
-class default extends Effect {
+class GainAccess extends Effect {
     -type: string
     -_root: Country
     -_target: Country
@@ -422,76 +422,76 @@ class default extends Effect {
     +target: string
     +replacer(key: string, value: any, type: JsonType): any[]
 }
-class default extends Effect {
+class DispatchEvent extends Effect {
     -type: string
     -id: string
     -time2happen: number
     +activate(): void
 }
-class default {
+class EffectCreator {
     +{static} createEffect(effect: any): Effect
 }
-class default extends JsonObject {
+class Option extends JsonObject {
     -title: string
     -_effects: Effect[]
     -effects: any[]
     +takeEffects(): void
     +getTitle(): string
 }
-class default {
+class DateAdapter {
     -date: Date
     +getTime(): number
     +getFormatedDate(format_str?: string): string
     +toJSON(): string
 }
-abstract class default extends JsonObject {
+abstract class Condition extends JsonObject {
     +type: string
     +{abstract} isValid(root: Country, date: Date): boolean
     +toJSON(): any
 }
-abstract class default {
+abstract class CountryHandler {
     +country: Country
     +update(): void
     +getCountry(): Country
     +{abstract} dispatchEvents(): void
     +{abstract} onEvent(event: Event): void
 }
-class default extends Condition {
+class DateCondition extends Condition {
     -_when: DateAdapter
     +when: string
     +isValid(country: Country, date: Date): boolean
 }
-class default extends Condition {
+class EventFired extends Condition {
     -id: string
     +isValid(country: Country, date: Date): boolean
 }
-class default extends Condition {
+class CountryIs extends Condition {
     -_country: Country
     +isValid(country: Country, date: Date): boolean
     -country: string
     +replacer(key: string, value: any, type: JsonType): any[]
 }
-class default extends Condition {
+class And extends Condition {
     -_conditions: Condition[]
     +conditions: object[]
     +isValid(country: Country, date: Date): boolean
 }
-class default extends Condition {
+class Always extends Condition {
     -always: boolean
     +isValid(country: Country, date: Date): boolean
 }
-class default extends Condition {
+class OwnProvince extends Condition {
     -province: string
     +isValid(country: Country, date: Date): boolean
 }
-class default extends Condition {
+class AtWarWith extends Condition {
     -country: string
     +isValid(country: Country, date: Date): boolean
 }
-abstract class default {
-    +{static} createCondition(condition: object): (DateCondition & object) | (EventFired & object) | (CountryIs & object) | (And & object) | (Always & object) | (OwnProvince & object) | (AtWarWith & object)
+abstract class ConditionCreator {
+    +{static} createCondition(condition: object): any
 }
-class default extends JsonObject {
+class Event extends JsonObject {
     -__id: string
     -title: string
     -desc: string
@@ -519,10 +519,10 @@ class default extends JsonObject {
     -immediate: object
     +replacer(key: string, value: any, type: JsonType): any[]
 }
-class default extends Sidebar {
+class Conscription extends Sidebar {
     -scene: MainScene
 }
-class default extends Scene implements Selectable {
+class SelectScene extends Scene implements Selectable {
     -myFlag: Flag
     -target: Country
     -selectButton: Button
@@ -533,7 +533,7 @@ class default extends Scene implements Selectable {
     -countryName: PIXI.Text
     -moddingMode: boolean
     -moddingProvinces: any[]
-    #createInitialResourceList(): (string | LoaderAddParam)[]
+    #createInitialResourceList(): any[]
     #onResourceLoaded(): void
     -selectAsMyCountry(country?: Country): void
     -deselectMyCountry(): void
@@ -544,10 +544,10 @@ class default extends Scene implements Selectable {
     +update(dt: number): void
     -{static} myFlagSize: 150
 }
-interface default {
+interface CultureObserver {
     +onCultureChange(): any
 }
-class default extends MapMode implements CultureObserver, Observable {
+class CultureMap extends MapMode implements CultureObserver, Observable {
     +observers: MapModeObserver[]
     -filter: PIXI.Filter
     -cultureDictionaly: Map<string, string>
@@ -557,30 +557,30 @@ class default extends MapMode implements CultureObserver, Observable {
     +removeObserver(observer: MapModeObserver): void
     +destroy(): void
 }
-class default extends Sidebar
-class default extends Sidebar {
+class DebugSidebar extends Sidebar
+class ProvinceSidebar extends Sidebar {
     -cultureButton: Button
     -provinceButton: Button
     -provinceButton2: Button
     -{static} culture_spoit: string
     -{static} province_spoit: Province
 }
-class default extends CountryHandler {
+class CountryPlayerHandler extends CountryHandler {
     +country: Country
     +dispatchEvents(): void
     +onEvent(event: Event): void
     +update(): void
 }
-abstract class default {
+abstract class Util {
     +{static} getRandomInt(min?: number, max?: number): number
 }
-class default extends CountryHandler {
+class CountryAI extends CountryHandler {
     +country: Country
     +dispatchEvents(): void
     +onEvent(event: Event): void
     +update(): void
 }
-class default extends Scene implements Selectable, Observable {
+class MainScene extends Scene implements Selectable, Observable {
     -playCountry: Country
     -map: Atlas
     -header: Header
@@ -588,7 +588,7 @@ class default extends Scene implements Selectable, Observable {
     +selectingDivison: DivisionSprite
     +cheat_move: boolean
     -observers: PlayCountryObserver[]
-    #createInitialResourceList(): (string | LoaderAddParam)[]
+    #createInitialResourceList(): any[]
     #onResourceLoaded(): void
     +selectProvince(province: Province): void
     +openDiplomacySidebar(country: Country): void
@@ -599,20 +599,20 @@ class default extends Scene implements Selectable, Observable {
     +update(dt: number): void
     +getMyCountry(): Country
     +setPlayCountry(country: Country): void
-    +getDate(): Date
+    +getDate(): any
     +addObserver(observer: PlayCountryObserver): void
     +removeObserver(observer: PlayCountryObserver): void
     +{static} instance: MainScene
 }
-class default extends DiplomaticTie {
+class War extends DiplomaticTie {
     +activate(): void
     +deactivate(): void
-    +getRootIcon(): string
-    +getTargetIcon(): string
-    +{static} root_icon: string
-    +{static} target_icon: string
+    +getRootIcon(): any
+    +getTargetIcon(): any
+    +{static} root_icon: any
+    +{static} target_icon: any
 }
-abstract class default extends JsonObject {
+abstract class DataManager extends JsonObject {
     +__onLoaded: any[]
     +__isLoaded: boolean
     +__ON_CREATED: void
@@ -620,7 +620,7 @@ abstract class default extends JsonObject {
     +addListener(func: any): void
     +endLoad(test?: string): void
 }
-class default<T, U> extends DataManager {
+class MapDataManager<T, U> extends DataManager {
     -map: Map<T, U>
     +set(id: T, item: U): Map<T, U>
     +safeGet(id: T, onload: (item: U) => void): void
@@ -630,37 +630,37 @@ class default<T, U> extends DataManager {
     +some(callback: (item: U) => boolean): boolean
     +toJsonObject(type: JsonType): object
 }
-class default<T> extends DataManager {
-    -set: ExtendedSet<T>
+class SetDataManager<T> extends DataManager {
+    -set: any
     +add(value: T): void
-    +delete(value: T): boolean
-    +has(value: T): boolean
-    +size: number
+    +delete(value: T): any
+    +has(value: T): any
+    +size: any
     +setCollection(collection: any): void
     +toJsonObject(type: JsonType): object
 }
-class default extends DiplomaticTie {
-    +getRootIcon(): string
-    +getTargetIcon(): string
-    +{static} root_icon: string
-    +{static} target_icon: string
+class Alliance extends DiplomaticTie {
+    +getRootIcon(): any
+    +getTargetIcon(): any
+    +{static} root_icon: any
+    +{static} target_icon: any
 }
-class default extends JsonObject {
+class Savedata extends JsonObject {
     -_countries: Map<string, Country>
-    -_provinces: MapDataManager<string, Province>
+    -_provinces: any
     -_diplomacy: DiplomaticTie[]
     -_events: Map<string, Event>
     -_combats: Combat[]
-    -_templates: MapDataManager<string, DivisionTemplate>
-    -_cultures: SetDataManager<string>
+    -_templates: any
+    -_cultures: any
     -countries: object
     +getCountries(): Map<string, Country>
     +getCountry(id: string): Country
     -templates: object
-    +getTemplates(): MapDataManager<string, DivisionTemplate>
+    +getTemplates(): any
     -provinces: object
     +setProvince(id: string, province: Province): void
-    +getProvinces(): MapDataManager<string, Province>
+    +getProvinces(): any
     -diplomacy: object[]
     +addDiplomacy(diplomacy: DiplomaticTie): void
     +removeDiplomacy(diplomacy: DiplomaticTie): void
@@ -672,11 +672,11 @@ class default extends JsonObject {
     +getCombats(): Combat[]
     +load(json: object): void
     -cultures: object
-    +getCultures(): SetDataManager<string>
+    +getCultures(): any
     +download(type: JsonType): void
     +replacer(key: string, value: any, type: JsonType): any[]
 }
-class default {
+class GameManager {
     +game: PIXI.Application
     -sceneTransitionOutFinished: boolean
     -currentScene?: Scene
@@ -687,14 +687,14 @@ class default {
     +{static} transitionInIfPossible(newScene: Scene): boolean
     +{static} loadScene(newScene: Scene): void
 }
-abstract class default extends JsonObject {
+abstract class DiplomaticTie extends JsonObject {
     -type: string
     #root: Country
     #target: Country
     #active: boolean
     +getRoot(): Country
     +getTarget(): Country
-    +getOpponent(country: Country): Country
+    +getOpponent(country: Country): any
     +activate(): void
     +deactivate(): void
     +{abstract} getRootIcon(): any
@@ -703,7 +703,7 @@ abstract class default extends JsonObject {
     +{static} root_icon: string
     +{static} target_icon: string
 }
-class default implements Observable {
+class Money implements Observable {
     -money: number
     +observers: MoneyObserver[]
     +getMoney(): number
@@ -711,7 +711,7 @@ class default implements Observable {
     +addObserver(observer: MoneyObserver): void
     +removeObserver(observer: MoneyObserver): void
 }
-class default extends JsonObject {
+class Leader extends JsonObject {
     -__name: string
     -imgPath: string
     -name: string
@@ -719,7 +719,7 @@ class default extends JsonObject {
     +getImgPath(): string
     +{static} DEFAULT_NAME: "DEFAULT_LEADER_NAME"
 }
-class default extends JsonObject implements Observable {
+class Country extends JsonObject implements Observable {
     -__id: string
     -_color: number
     +name: string
@@ -764,28 +764,28 @@ class default extends JsonObject implements Observable {
     +replacer(key: string, value: any, type: JsonType): any[]
     -{static} SEA_ID: "Sea"
 }
-class default {
-    -divisions: ExtendedSet<DivisionInfo>
-    -sprites: ExtendedSet<DivisionSprite>
+class DivisionStacker {
+    -divisions: any
+    -sprites: any
     +addDivison(division: DivisionInfo): void
     +removeDivision(division: DivisionInfo): void
     +showSprite(division: DivisionInfo): void
-    +getDivisions(): ExtendedSet<DivisionInfo>
+    +getDivisions(): any
     -addSprite(sprite: DivisionSprite): void
     -removeSprite(sprite: DivisionSprite): void
     -repositionStack(): void
     -{static} GAP: 2
 }
-class default extends JsonObject implements Observable {
+class Province extends JsonObject implements Observable {
     -__id: string
     -_owner: Country
     -x: number
     -y: number
-    -__divisions: DivisionStacker
+    -__divisions: any
     -_culture: string
     -__observers: ProvinceObserver[]
     -__cultureObservers: CultureObserver[]
-    -_neighbours: ExtendedSet<string>
+    -_neighbours: any
     -owner: string
     +getId(): string
     +getOwner(): Country
@@ -794,10 +794,10 @@ class default extends JsonObject implements Observable {
     +getCoord(): PIXI.Point
     +addDivision(division: DivisionInfo): void
     +removeDivision(division: DivisionInfo): void
-    +getDivisons(): ExtendedSet<DivisionInfo>
+    +getDivisons(): any
     +isNextTo(province: Province): boolean
-    +hasPeaceAccess(country: Country): boolean
-    +hasAccess(country: Country): true | War
+    +hasPeaceAccess(country: Country): any
+    +hasAccess(country: Country): any
     -culture: string
     +setCulture(culture: string): void
     +getCulture(): string
@@ -805,26 +805,154 @@ class default extends JsonObject implements Observable {
     +removeObserver(observer: ProvinceObserver): void
     +addCultureObserver(observer: CultureObserver): void
     +removeCultureObserver(observer: CultureObserver): void
-    +neighbours: string[] | ExtendedSet<Province>
-    +getNeighbours(): ExtendedSet<string>
-    +getDivisionStacker(): DivisionStacker
+    +neighbours: any
+    +getNeighbours(): any
+    +getDivisionStacker(): any
     +replacer(key: string, value: any, type: JsonType): any[]
 }
-class default {
+class Arrow {
     +length: number
     +width: number
     +color: number
     -createTriangle(): PIXI.Graphics
     +{static} TRIANGLE_HEIGHT: 10
 }
-class default extends Scene {
+class TitleScene extends Scene {
     -text: PIXI.Text
     -textAppealDuration: number
-    #createInitialResourceList(): (string | LoaderAddParam)[]
+    #createInitialResourceList(): any[]
     #onResourceLoaded(): void
     -onPointerDown(): void
     +update(dt: number): void
 }
-default --> "1" JsonType
-default --> "1" Selectable
+Scene --> "1" Transition
+Scene --> "*" UpdateObject
+Scene --> "1" UpdateObject
+Scene --> "*" LoaderAddParam
+Scene --> "1" LoaderAddParam
+Selectable --> "1" Province
+JsonObject --> "1" JsonType
+DivisionTemplate --> "1" Country
+Combat --> "1" DivisionInfo
+DivisionInfo --> "1" DivisionTemplate
+DivisionInfo --> "1" Province
+DivisionInfo --> "1" DivisionSprite
+DivisionInfo --> "1" ArrowProgress
+DivisionInfo --> "*" Combat
+DivisionInfo --> "1" Country
+DivisionInfo --> "1" Combat
+PlayCountryObserver --> "1" Country
+DiplomacyObserver --> "1" DiplomaticTie
+DivisionSprite --> "1" DivisionInfo
+DivisionSprite --> "1" ProgressBar
+DivisionSprite --> "1" Country
+DivisionSprite --> "1" DiplomaticTie
+DivisionSprite --> "1" Province
+ExtendedSet --> "1" JsonType
+PoliticalMap --> "*" MapModeObserver
+PoliticalMap --> "1" MapModeObserver
+Atlas --> "1" Selectable
+Atlas --> "1" MapMode
+Atlas --> "1" Province
+Flag --> "1" Country
+MoneyWatcher --> "1" Country
+Header --> "1" Country
+Header --> "1" Timer
+Header --> "1" Flag
+Header --> "1" MoneyWatcher
+DiplomaticSidebar --> "1" MainScene
+DeclareWar --> "1" Country
+DeclareWar --> "1" JsonType
+SetOwner --> "1" Country
+SetOwner --> "*" Province
+SetOwner --> "1" JsonType
+Annex --> "1" Country
+Annex --> "1" JsonType
+Peace --> "1" Country
+Peace --> "1" JsonType
+ChangeName --> "1" Country
+ChangeName --> "1" JsonType
+GainAccess --> "1" Country
+GainAccess --> "1" JsonType
+EffectCreator --> "1" Effect
+Option --> "*" Effect
+Condition --> "1" Country
+CountryHandler --> "1" Country
+CountryHandler --> "1" Event
+DateCondition --> "1" DateAdapter
+DateCondition --> "1" Country
+EventFired --> "1" Country
+CountryIs --> "1" Country
+CountryIs --> "1" JsonType
+And --> "*" Condition
+And --> "1" Country
+Always --> "1" Country
+OwnProvince --> "1" Country
+AtWarWith --> "1" Country
+Event --> "1" Condition
+Event --> "*" Option
+Event --> "1" Option
+Event --> "1" Country
+Event --> "1" CountryHandler
+Event --> "1" JsonType
+Conscription --> "1" MainScene
+SelectScene --> "1" Flag
+SelectScene --> "1" Country
+SelectScene --> "1" Button
+SelectScene --> "1" Atlas
+SelectScene --> "*" Country
+SelectScene --> "1" Province
+CultureMap --> "*" MapModeObserver
+CultureMap --> "1" MapModeObserver
+ProvinceSidebar --> "1" Button
+ProvinceSidebar --> "1" Province
+CountryPlayerHandler --> "1" Country
+CountryPlayerHandler --> "1" Event
+CountryAI --> "1" Country
+CountryAI --> "1" Event
+MainScene --> "1" Country
+MainScene --> "1" Atlas
+MainScene --> "1" Header
+MainScene --> "1" Sidebar
+MainScene --> "1" DivisionSprite
+MainScene --> "*" PlayCountryObserver
+MainScene --> "1" Province
+MainScene --> "1" PlayCountryObserver
+MapDataManager --> "1" JsonType
+SetDataManager --> "1" JsonType
+Savedata --> "1" Country
+Savedata --> "*" DiplomaticTie
+Savedata --> "1" Event
+Savedata --> "*" Combat
+Savedata --> "1" Province
+Savedata --> "1" DiplomaticTie
+Savedata --> "1" Combat
+Savedata --> "1" JsonType
+GameManager --> "1" Scene
+GameManager --> "1" Savedata
+DiplomaticTie --> "1" Country
+DiplomaticTie --> "1" JsonType
+Money --> "*" MoneyObserver
+Money --> "1" MoneyObserver
+Country --> "*" DiplomaticTie
+Country --> "*" DivisionInfo
+Country --> "1" CountryHandler
+Country --> "1" Money
+Country --> "1" Leader
+Country --> "*" DiplomacyObserver
+Country --> "1" DiplomaticTie
+Country --> "1" War
+Country --> "1" DivisionInfo
+Country --> "1" Event
+Country --> "1" DiplomacyObserver
+Country --> "1" JsonType
+DivisionStacker --> "1" DivisionInfo
+DivisionStacker --> "1" DivisionSprite
+Province --> "1" Country
+Province --> "*" ProvinceObserver
+Province --> "*" CultureObserver
+Province --> "1" DivisionInfo
+Province --> "1" ProvinceObserver
+Province --> "1" CultureObserver
+Province --> "1" JsonType
 @enduml

@@ -1,10 +1,10 @@
-import Country from "./Country";
-import CountryHandler from "./CountryHandler";
-import GameManager from "./GameManager";
-import MainScene from "./Scenes/MainScene";
-import Event from "./Events/Event";
+import { Country } from "./Country";
+import { CountryHandler } from "./CountryHandler";
+import { GameManager } from "./GameManager";
+import { MainScene } from "./Scenes/MainScene";
+import { Event } from "./Events/Event";
 
-export default class CountryPlayerHandler extends CountryHandler {
+export class CountryPlayerHandler extends CountryHandler {
   country: Country;
 
   constructor(country: Country) {

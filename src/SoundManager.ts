@@ -1,8 +1,8 @@
-import GameManager from "./GameManager";
+import { GameManager } from "./GameManager";
 import { BrowserInfo, BotInfo, NodeInfo, detect } from "detect-browser";
 import * as PIXI from "pixi.js";
 
-export default class SoundManager {
+export class SoundManager {
   public static instance: SoundManager;
   private static context: AudioContext | null = null;
   private static readonly supportedExtensions = ["mp3"];

@@ -1,7 +1,7 @@
-import Transition from "./Transition";
+import { Transition } from "./Transition";
 import * as PIXI from "pixi.js";
 
-export default class Immediate implements Transition {
+export class Immediate implements Transition {
   private onTransitionFinished: () => void = () => {};
   private finished: boolean = false;
 

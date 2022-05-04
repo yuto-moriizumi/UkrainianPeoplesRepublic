@@ -1,6 +1,6 @@
-import JsonObject from "./Utils/JsonObject";
+import { JsonObject } from "./Utils/JsonObject";
 
-export default class Leader extends JsonObject {
+export class Leader extends JsonObject {
   public static readonly DEFAULT_NAME = "DEFAULT_LEADER_NAME";
   private __name = Leader.DEFAULT_NAME;
   private imgPath = "default_leader.png";

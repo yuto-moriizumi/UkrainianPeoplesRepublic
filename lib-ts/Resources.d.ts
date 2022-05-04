@@ -24,4 +24,4 @@ declare const Resource: Readonly<{
         declare_war: string;
     };
 }>;
-export default Resource;
+export Resource;

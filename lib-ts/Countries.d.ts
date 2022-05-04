@@ -3,4 +3,4 @@ declare const Countries: readonly {
     img: string;
     isDefault: boolean;
 }[];
-export default Countries;
+export Countries;

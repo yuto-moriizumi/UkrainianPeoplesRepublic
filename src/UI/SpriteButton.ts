@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 import * as Filters from "pixi-filters";
-export default class SpriteButton extends PIXI.Sprite {
+export class SpriteButton extends PIXI.Sprite {
   constructor(texture?: PIXI.Texture) {
     super(texture);
 

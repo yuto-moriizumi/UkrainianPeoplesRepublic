@@ -1,7 +1,7 @@
-import Condition from "./Condition";
-import DateAdapter from "../../DateAdapter";
-import Country from "../../Country";
-import GameManager from "../../GameManager";
+import { Condition } from "./Condition";
+import { DateAdapter } from "../../DateAdapter";
+import { Country } from "../../Country";
+import { GameManager } from "../../GameManager";
 import JsonType from "../../Utils/JsonType";
 
 /**
@@ -11,7 +11,7 @@ import JsonType from "../../Utils/JsonType";
  * @class CountryIs
  * @extends {Condition}
  */
-export default class CountryIs extends Condition {
+export class CountryIs extends Condition {
   private _country: Country;
 
   public isValid(country: Country, date: Date): boolean {

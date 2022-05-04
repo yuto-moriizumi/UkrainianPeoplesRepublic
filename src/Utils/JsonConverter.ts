@@ -8,7 +8,7 @@ import JsonType from "./JsonType";
  * @export
  * @class JsonConverter
  */
-export default class JsonConverter {
+export class JsonConverter {
   public static toJSON(object: any, replacer?: (key, value) => Array<any>) {
     return Object.fromEntries(
       Object.entries(object).map(([key, value]) => {

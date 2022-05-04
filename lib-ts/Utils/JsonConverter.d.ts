@@ -6,6 +6,9 @@
  * @export
  * @class JsonConverter
  */
-export default class JsonConverter {
-    static toJSON(object: any, replacer?: (key: any, value: any) => Array<any>): any;
+export class JsonConverter {
+  static toJSON(
+    object: any,
+    replacer?: (key: any, value: any) => Array<any>
+  ): any;
 }

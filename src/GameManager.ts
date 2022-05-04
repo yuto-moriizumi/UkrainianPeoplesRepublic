@@ -1,9 +1,9 @@
 import * as PIXI from "pixi.js";
-import Scene from "./Scenes/Scene";
-import SoundManager from "./SoundManager";
-import Savedata from "./Savedata";
+import { Scene } from "./Scenes/Scene";
+import { SoundManager } from "./SoundManager";
+import { Savedata } from "./Savedata";
 
-export default class GameManager {
+export class GameManager {
   public static instance: GameManager;
   public game!: PIXI.Application;
   private sceneTransitionOutFinished: boolean = true;

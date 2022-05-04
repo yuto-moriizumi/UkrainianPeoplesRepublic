@@ -5,7 +5,7 @@ import JsonType from "./JsonType";
  * @export
  * @class JsonObject
  */
-export default abstract class JsonObject {
+export abstract class JsonObject {
   /**
    * JSON文字列のベースになるobjectを生成します
    * Json.stringify()で利用します

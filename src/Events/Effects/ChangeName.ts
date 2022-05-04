@@ -1,10 +1,10 @@
-import Effect from "./Effect";
-import Country from "../../Country";
-import GameManager from "../../GameManager";
-import MainScene from "../../Scenes/MainScene";
+import { Effect } from "./Effect";
+import { Country } from "../../Country";
+import { GameManager } from "../../GameManager";
+import { MainScene } from "../../Scenes/MainScene";
 import JsonType from "../../Utils/JsonType";
 
-export default class ChangeName extends Effect {
+export class ChangeName extends Effect {
   private type = this.constructor.name;
   private _country: Country;
   private name: string;

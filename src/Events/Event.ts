@@ -1,18 +1,18 @@
-import Option from "./Option";
-import Condition from "./Conditions/Condition";
-import MainScene from "../Scenes/MainScene";
-import GameManager from "../GameManager";
+import { Option } from "./Option";
+import { Condition } from "./Conditions/Condition";
+import { MainScene } from "../Scenes/MainScene";
+import { GameManager } from "../GameManager";
 import * as PIXI from "pixi.js";
-import Button from "../UI/Button";
-import Sound from "../Sound";
+import { Button } from "../UI/Button";
+import { Sound } from "../Sound";
 import Resource from "../Resources";
-import CountryHandler from "../CountryHandler";
-import Country from "../Country";
-import ConditionCreator from "./Conditions/ConditionCreator";
-import JsonObject from "../Utils/JsonObject";
+import { CountryHandler } from "../CountryHandler";
+import { Country } from "../Country";
+import { ConditionCreator } from "./Conditions/ConditionCreator";
+import { JsonObject } from "../Utils/JsonObject";
 import JsonType from "../Utils/JsonType";
 
-export default class Event extends JsonObject {
+export class Event extends JsonObject {
   private __id: string;
   private title: string;
   private desc: string;
@@ -175,9 +175,11 @@ export default class Event extends JsonObject {
 
         //SE再生
         const sound = new Sound(
-          (GameManager.instance.game.loader.resources[
-            Resource.se.click_ok
-          ] as any).buffer
+          (
+            GameManager.instance.game.loader.resources[
+              Resource.se.click_ok
+            ] as any
+          ).buffer
         );
         sound.volume = 0.5;
         sound.play(false);
@@ -192,9 +194,9 @@ export default class Event extends JsonObject {
 
     //SE再生
     const sound = new Sound(
-      (GameManager.instance.game.loader.resources[
-        Resource.se.news
-      ] as any).buffer
+      (
+        GameManager.instance.game.loader.resources[Resource.se.news] as any
+      ).buffer
     );
     sound.volume = 0.25;
     sound.play(false);

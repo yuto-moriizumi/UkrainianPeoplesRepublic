@@ -1,4 +1,4 @@
-import Effect from "./Effect";
-export default class EffectCreator {
-    static createEffect(effect: any): Effect;
+import { Effect } from "./Effect";
+export class EffectCreator {
+  static createEffect(effect: any): Effect;
 }

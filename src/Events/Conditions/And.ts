@@ -1,9 +1,9 @@
-import Condition from "./Condition";
-import DateAdapter from "../../DateAdapter";
-import Country from "../../Country";
-import ConditionCreator from "./ConditionCreator";
+import { Condition } from "./Condition";
+import { DateAdapter } from "../../DateAdapter";
+import { Country } from "../../Country";
+import { ConditionCreator } from "./ConditionCreator";
 
-export default class And extends Condition {
+export class And extends Condition {
   private _conditions: Condition[] = [];
 
   public set conditions(conditions: object[]) {

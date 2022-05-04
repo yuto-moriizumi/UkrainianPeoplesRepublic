@@ -1,11 +1,11 @@
 import * as PIXI from "pixi.js";
-import Country from "./Country";
-import GameManager from "./GameManager";
-import JsonObject from "./Utils/JsonObject";
-import Province from "./Province";
-import DivisionInfo from "./DivisionInfo";
+import { Country } from "./Country";
+import { GameManager } from "./GameManager";
+import { JsonObject } from "./Utils/JsonObject";
+import { Province } from "./Province";
+import { DivisionInfo } from "./DivisionInfo";
 
-export default class DivisionTemplate extends JsonObject {
+export class DivisionTemplate extends JsonObject {
   private __id: string;
   private organization: number = 100;
   private attack: number = 20;

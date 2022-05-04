@@ -1,11 +1,11 @@
-import UpdateObject from "../UpdateObject";
+import { UpdateObject } from "../UpdateObject";
 import * as PIXI from "pixi.js";
-import Transition from "./Transition";
-import Immediate from "./Immediate";
-import LoaderAddParam from "../Utils/LoaderAddParam";
-import GameManager from "../GameManager";
+import { Transition } from "./Transition";
+import { Immediate } from "./Immediate";
+import { LoaderAddParam } from "../Utils/LoaderAddParam";
+import { GameManager } from "../GameManager";
 
-export default abstract class Scene extends PIXI.Container {
+export abstract class Scene extends PIXI.Container {
   protected transitionIn: Transition = new Immediate();
   protected transitionOut: Transition = new Immediate();
   protected objectsToUpdate: UpdateObject[] = [];

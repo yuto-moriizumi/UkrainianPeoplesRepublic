@@ -1,15 +1,15 @@
 import * as PIXI from "pixi.js";
-import Country from "../Country";
-import Flag from "../Flag";
-import GameManager from "../GameManager";
-import HorizontalBox from "./HorizontalBox";
-import SpriteButton from "./SpriteButton";
+import { Country } from "../Country";
+import { Flag } from "../Flag";
+import { GameManager } from "../GameManager";
+import { HorizontalBox } from "./HorizontalBox";
+import { SpriteButton } from "./SpriteButton";
 import Resource from "../Resources";
-import MainScene from "../Scenes/MainScene";
-import Button from "./Button";
-import Timer from "./Timer";
-import MoneyWatcher from "./MoneyWatcher";
-export default class Header extends HorizontalBox {
+import { MainScene } from "../Scenes/MainScene";
+import { Button } from "./Button";
+import { Timer } from "./Timer";
+import { MoneyWatcher } from "./MoneyWatcher";
+export class Header extends HorizontalBox {
   public static readonly DEFAULT_HEIGHT = 100;
   private myCountry: Country;
   private timer: Timer;

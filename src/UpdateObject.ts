@@ -1,4 +1,4 @@
-export default interface UpdateObject {
+export interface UpdateObject {
   isDestroyed(): boolean;
   update(dt: number): void;
 }

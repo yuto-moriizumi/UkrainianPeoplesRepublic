@@ -1,13 +1,13 @@
-import Effect from "./Effect";
-import Country from "../../Country";
-import GameManager from "../../GameManager";
-import Province from "../../Province";
-import MainScene from "../../Scenes/MainScene";
+import { Effect } from "./Effect";
+import { Country } from "../../Country";
+import { GameManager } from "../../GameManager";
+import { Province } from "../../Province";
+import { MainScene } from "../../Scenes/MainScene";
 import * as PIXI from "pixi.js";
 import JsonType from "../../Utils/JsonType";
-import JsonObject from "../../Utils/JsonObject";
+import { JsonObject } from "../../Utils/JsonObject";
 
-export default class SetOwner extends Effect {
+export class SetOwner extends Effect {
   private type = this.constructor.name;
   private _root: Country;
   private _provinces: Array<Province> = new Array<Province>();

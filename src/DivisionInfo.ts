@@ -1,17 +1,17 @@
 import * as PIXI from "pixi.js";
-import Country from "./Country";
-import GameManager from "./GameManager";
-import JsonObject from "./Utils/JsonObject";
-import Province from "./Province";
-import DivisionTemplate from "./DivisionTemplate";
-import MainScene from "./Scenes/MainScene";
-import ArrowProgress from "./ArrowProgress";
-import Combat from "./Combat";
-import JsonConverter from "./Utils/JsonConverter";
-import DivisionSprite from "./DivisionSprite";
-import Atlas from "./Map/Atlas";
+import { Country } from "./Country";
+import { GameManager } from "./GameManager";
+import { JsonObject } from "./Utils/JsonObject";
+import { Province } from "./Province";
+import { DivisionTemplate } from "./DivisionTemplate";
+import { MainScene } from "./Scenes/MainScene";
+import { ArrowProgress } from "./ArrowProgress";
+import { Combat } from "./Combat";
+import { JsonConverter } from "./Utils/JsonConverter";
+import { DivisionSprite } from "./DivisionSprite";
+import { Atlas } from "./Map/Atlas";
 import JsonType from "./Utils/JsonType";
-export default class DivisionInfo extends JsonObject {
+export class DivisionInfo extends JsonObject {
   private _template: DivisionTemplate;
   private _position: Province;
   private organization: number;
@@ -243,13 +243,14 @@ export default class DivisionInfo extends JsonObject {
 
   public retreat() {
     //撤退
-    const neighbours = this._position.getNeighbours().filter((
-      p //撤退可能なプロヴィンスをフィルタ
-    ) =>
-      GameManager.instance.data
-        .getProvinces()
-        .get(p)
-        .hasPeaceAccess(this.__owner)
+    const neighbours = this._position.getNeighbours().filter(
+      (
+        p //撤退可能なプロヴィンスをフィルタ
+      ) =>
+        GameManager.instance.data
+          .getProvinces()
+          .get(p)
+          .hasPeaceAccess(this.__owner)
     );
     if (neighbours.length == 0) {
       //撤退先が無ければ破壊

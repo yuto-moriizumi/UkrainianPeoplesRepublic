@@ -1,8 +1,8 @@
-import Condition from "./Condition";
-import GameManager from "../../GameManager";
-import Country from "../../Country";
+import { Condition } from "./Condition";
+import { GameManager } from "../../GameManager";
+import { Country } from "../../Country";
 
-export default class EventFired extends Condition {
+export class EventFired extends Condition {
   private id: string;
 
   public isValid(country: Country, date: Date): boolean {
