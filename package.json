@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "tplant": "tplant --input ./src/**/*.ts --output ./class.puml -A"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/pixi.js": "^5.0.0",
+    "tplant": "^3.1.0",
     "ts-loader": "^6.2.1",
     "tslint": "^6.1.0",
     "tslint-config-airbnb": "^5.11.2",
